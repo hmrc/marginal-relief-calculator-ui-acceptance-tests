@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,13 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.cucumber.stepdefs
+import uk.gov.hmrc.test.ui.pages.MarginalReliefCalculatorHomePage.CheckYourMRCHomePage
 
-import org.openqa.selenium.By
+class MarginalReliefCalculatorStepDef extends BaseStepDef {
 
-object Turnover extends BasePage {
-
-  val turnover      = "Enter your turnover - Check your VAT flat rate - GOV.UK"
-  val turnoverInput = "turnover"
-
-  def provideTurnoverAmount(amount: String): CostOfGoods.type = {
-    onPage(turnover)
-    driver.findElement(By.id(turnoverInput)).sendKeys(amount)
-    submitPage()
-    CostOfGoods
+  Given("the MR calculator is configured for 2023") { () =>
+    CheckYourMRCHomePage
   }
 
 }
