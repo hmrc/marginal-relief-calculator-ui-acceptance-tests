@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.runner
+package uk.gov.hmrc.test.ui.cucumber.stepdefs
+import uk.gov.hmrc.test.ui.pages.MarginalReliefCalculatorHomePage
 
-import io.cucumber.junit.Cucumber
-import io.cucumber.junit.CucumberOptions
-import org.junit.runner.RunWith
+class MarginalReliefCalculatorStepDef extends BaseStepDef {
 
-@RunWith(classOf[Cucumber])
-@CucumberOptions(
-  features = Array("src/test/resources/features"),
-  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin =
-    Array("pretty", "html:target/cucumber", "json:target/cucumber.json", "junit:target/test-reports/ZapRunner.xml"),
-  tags = "@ZAP"
-)
-class ZapRunner {}
+  Given("Marginal Relief Calculator is launched") { () =>
+    MarginalReliefCalculatorHomePage.loadPage
+  }
+  When("the accounting period start date is empty") { () =>
+    MarginalReliefCalculatorHomePage.provideAccountingStartDate
+    MarginalReliefCalculatorHomePage.submitaccountingPeriodInformation
+  }
+  Then("the user is alerted to an error") { () =>
+    MarginalReliefCalculatorHomePage.verifyErrorMessage
+  }
+}

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 object TestConfiguration {
   val config: Config        = ConfigFactory.load()
   val env: String           = config.getString("environment")
-  val defaultConfig: Config = config.getConfig("local")
+  val defaultConfig: Config = config.getConfig("qa")
   val envConfig: Config     = config.getConfig(env).withFallback(defaultConfig)
 
   def url(service: String): String = {
