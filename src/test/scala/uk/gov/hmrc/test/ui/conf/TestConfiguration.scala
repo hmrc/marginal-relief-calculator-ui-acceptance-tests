@@ -21,7 +21,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 object TestConfiguration {
   val config: Config        = ConfigFactory.load()
   val env: String           = config.getString("environment")
-  val defaultConfig: Config = config.getConfig("local")
+  val defaultConfig: Config = config.getConfig("qa")
   val envConfig: Config     = config.getConfig(env).withFallback(defaultConfig)
 
   def url(service: String): String = {

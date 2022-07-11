@@ -20,12 +20,28 @@ import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object MarginalReliefCalculatorHomePage extends BasePage {
-  val url: String     = TestConfiguration.url("marginal-relief-calculator-frontend") + "/HomePage"
-  val accountingPeriod = "What are your accounting period dates?"
-  def CheckYourMRCHomePage: this.type = {
+//  val url: String = TestConfiguration.url("marginal-relief-calculator") + "/accounting-period"
+  val url: String     = "https://www.qa.tax.service.gov.uk/marginal-relief-calculator/accounting-period"
+  val mrcHomePage     = "What are your accounting period dates? - marginal-relief-calculator-frontend - GOV.UK"
+  val mrcErrorSummary = "Error: What are your accounting period dates? - marginal-relief-calculator-frontend - GOV.UK"
+
+  def loadPage: this.type = {
     driver.navigate().to(url)
-    onPage(accountingPeriod)
+    onPage(mrcHomePage)
     this
   }
+  def provideAccountingStartDate: Unit = {
+    driver.findElement(By.id("accountingPeriodStartDate.day")).sendKeys("");
+    driver.findElement(By.id("accountingPeriodStartDate.month")).sendKeys("12");
+    driver.findElement(By.id("accountingPeriodStartDate.year")).sendKeys("2022");
+  }
+  def submitaccountingPeriodInformation: Unit = {
+    Thread.sleep(1000)
+    submitPage()
+  }
 
+  def verifyErrorMessage: Unit =
+    onPage(mrcErrorSummary)
+  val errorMessage             = driver.findElement(By.className("govuk-list govuk-error-summary__list")).getText
+  print(errorMessage)
 }

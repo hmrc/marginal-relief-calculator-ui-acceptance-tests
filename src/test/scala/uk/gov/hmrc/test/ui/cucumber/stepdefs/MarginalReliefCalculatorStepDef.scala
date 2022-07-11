@@ -15,12 +15,18 @@
  */
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
-import uk.gov.hmrc.test.ui.pages.MarginalReliefCalculatorHomePage.CheckYourMRCHomePage
+import uk.gov.hmrc.test.ui.pages.MarginalReliefCalculatorHomePage
 
 class MarginalReliefCalculatorStepDef extends BaseStepDef {
 
-  Given("the MR calculator is configured for 2023") { () =>
-    CheckYourMRCHomePage
+  Given("Marginal Relief Calculator is launched") { () =>
+    MarginalReliefCalculatorHomePage.loadPage
   }
-
+  When("the accounting period start date is empty") { () =>
+    MarginalReliefCalculatorHomePage.provideAccountingStartDate
+    MarginalReliefCalculatorHomePage.submitaccountingPeriodInformation
+  }
+  Then("the user is alerted to an error") { () =>
+    MarginalReliefCalculatorHomePage.verifyErrorMessage
+  }
 }
