@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.stepdefs
-import uk.gov.hmrc.test.ui.pages.MarginalReliefCalculatorHomePage
+package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
-class MarginalReliefCalculatorStepDef extends BaseStepDef {
+import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
+import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.{accountingPeriodLengthError, error}
+import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage
 
-  Given("Marginal Relief Calculator is launched") { () =>
-    MarginalReliefCalculatorHomePage.loadPage
+class TaxableProfitStepDef extends BaseStepDef {
+  And("""the profit is {string}""") { (profitValue: String) =>
+    TaxableProfitPage.provideInvalidProfit(profitValue)
+    TaxableProfitPage.submitPage()
   }
-  When("the accounting period start date is empty") { () =>
-    MarginalReliefCalculatorHomePage.provideAccountingStartDate
-    MarginalReliefCalculatorHomePage.submitaccountingPeriodInformation
-  }
-  Then("the user is alerted to an error") { () =>
-    MarginalReliefCalculatorHomePage.verifyErrorMessage
+  And("""the user is alerted to taxable profits {string}""") { (profitError: String) =>
+    error should be(profitError)
   }
 }
