@@ -37,7 +37,8 @@ Feature: Marginal Relief Calculator- Validations
 
     Examples:
       | accountingStartDate | ExpectedAccountingEndDate |
-      | 15/02/2024          | 14/2/2025                 |
+      | 29/02/2024          | 27/2/2025                 |
+      | 01/03/2025          | 28/2/2026                 |
       | 08/09/2022          | 7/9/2023                  |
 
   Scenario: Verify accounting end date by clicking back
