@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.{accountingPeriodLengthError, error}
-import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage
+import uk.gov.hmrc.test.ui.pages.mrc.{AccountingPeriodPage, TaxableProfitPage}
 
 class TaxableProfitStepDef extends BaseStepDef {
   And("""the profit is {string}""") { (profitValue: String) =>
@@ -27,5 +27,9 @@ class TaxableProfitStepDef extends BaseStepDef {
   }
   And("""the user is alerted to taxable profits {string}""") { (profitError: String) =>
     error should be(profitError)
+  }
+  And("the user click on back button") { () =>
+    Thread.sleep(2000)
+    TaxableProfitPage.clickBackLink()
   }
 }

@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.{accountingPeriodLengthError, accountingPeriodMandatoryFieldError, accountingPeriodMandatoryValueError, error}
-import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage
+import uk.gov.hmrc.test.ui.pages.mrc.{AccountingPeriodPage, TaxableProfitPage}
 
 class AccountingPeriodStepDef extends BaseStepDef {
 
@@ -44,6 +44,18 @@ class AccountingPeriodStepDef extends BaseStepDef {
   }
   When("the accounting period start date is valid") { () =>
     AccountingPeriodPage.provideValidAccountingStartDate
+  }
+  And("""the accounting period start date is provided as {string}""") { (accountingStartDate: String) =>
+    AccountingPeriodPage.provideValidAccountingStartDate(accountingStartDate)
+  }
+  And("""the accounting period end date is provided as {string}""") { (accountingEndDate: String) =>
+    AccountingPeriodPage.provideValidAccountingEndDate(accountingEndDate)
+  }
+  Then("""the user can see the accounting end period as {string}""") { (accountingEndDate: String) =>
+    AccountingPeriodPage.verifyAccountingEndDate(accountingEndDate)
+  }
+  And("the user clicks on continue button") { () =>
+    AccountingPeriodPage.submitPage()
   }
   When("the accounting period greater than one Year") { () =>
     AccountingPeriodPage.provideInvalidAccountingEndDate

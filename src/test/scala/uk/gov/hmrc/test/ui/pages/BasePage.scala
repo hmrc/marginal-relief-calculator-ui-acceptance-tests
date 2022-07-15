@@ -30,6 +30,10 @@ trait BasePage extends BrowserDriver with Matchers {
       throw PageNotFoundException(
         s"Expected '$pageTitle' page, but found '${driver.getTitle}' page."
       )
+
+  def clickBackLink(): Unit =
+    driver.findElement(By.cssSelector("body > div > a")).click()
+
 }
 
 case class PageNotFoundException(s: String) extends Exception(s)
