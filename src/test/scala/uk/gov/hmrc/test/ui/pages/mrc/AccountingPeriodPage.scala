@@ -30,6 +30,7 @@ object AccountingPeriodPage extends BasePage {
     "The accounting period End date must be less than or equal to a full calendar year from the Start date"
 
   def loadPage: this.type = {
+    driver.manage().deleteAllCookies()
     driver.navigate().to(url)
     onPage(mrcHomePage)
     this
@@ -58,6 +59,33 @@ object AccountingPeriodPage extends BasePage {
     driver.findElement(By.id("accountingPeriodStartDate.month")).sendKeys("01")
     driver.findElement(By.id("accountingPeriodStartDate.year")).clear()
     driver.findElement(By.id("accountingPeriodStartDate.year")).sendKeys("2023")
+  }
+
+  def provideValidAccountingStartDate(accountingStartDate: String) = {
+    val date = accountingStartDate.split("/")
+    driver.findElement(By.id("accountingPeriodStartDate.day")).clear()
+    driver.findElement(By.id("accountingPeriodStartDate.day")).sendKeys(date(0))
+    driver.findElement(By.id("accountingPeriodStartDate.month")).clear()
+    driver.findElement(By.id("accountingPeriodStartDate.month")).sendKeys(date(1))
+    driver.findElement(By.id("accountingPeriodStartDate.year")).clear()
+    driver.findElement(By.id("accountingPeriodStartDate.year")).sendKeys(date(2))
+  }
+
+  def provideValidAccountingEndDate(accountingEndDate: String) = {
+    val date = accountingEndDate.split("/")
+    driver.findElement(By.id("accountingPeriodEndDate.day")).clear()
+    driver.findElement(By.id("accountingPeriodEndDate.day")).sendKeys(date(0))
+    driver.findElement(By.id("accountingPeriodEndDate.month")).clear()
+    driver.findElement(By.id("accountingPeriodEndDate.month")).sendKeys(date(1))
+    driver.findElement(By.id("accountingPeriodEndDate.year")).clear()
+    driver.findElement(By.id("accountingPeriodEndDate.year")).sendKeys(date(2))
+  }
+
+  def verifyAccountingEndDate(accountingEndDate: String) = {
+    val date = accountingEndDate.split("/")
+    assert(driver.findElement(By.id("accountingPeriodEndDate.day")).getAttribute("value").contains(date(0)))
+    assert(driver.findElement(By.id("accountingPeriodEndDate.month")).getAttribute("value").contains(date(1)))
+    assert(driver.findElement(By.id("accountingPeriodEndDate.year")).getAttribute("value").contains(date(2)))
   }
 
   def provideInvalidAccountingEndDate: Unit = {

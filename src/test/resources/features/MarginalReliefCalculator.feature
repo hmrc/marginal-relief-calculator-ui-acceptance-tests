@@ -29,7 +29,21 @@ Feature: Marginal Relief Calculator- Validations
       | ONE THOUSAND | Enter a valid taxable profit. For example, 70000                                        |
       | -1000        | Enter a taxable profit amount between 0 and 2,147,483,647                               |
 
+  Scenario Outline: Auto generated accounting end date when accounting end date is not provided
+    When the accounting period start date is provided as "<accountingStartDate>"
+    And the user clicks on continue button
+    And the user click on back button
+    Then the user can see the accounting end period as "<ExpectedAccountingEndDate>"
 
+    Examples:
+      | accountingStartDate | ExpectedAccountingEndDate |
+      | 29/02/2024          | 27/2/2025                 |
+      | 01/03/2025          | 28/2/2026                 |
+      | 08/09/2022          | 7/9/2023                  |
 
-
-
+  Scenario: Verify accounting end date by clicking back
+    When the accounting period start date is provided as "31/03/2024"
+    And the accounting period end date is provided as "30/03/2025"
+    And the user clicks on continue button
+    And the user click on back button
+    Then the user can see the accounting end period as "30/3/2025"
