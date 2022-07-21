@@ -19,9 +19,9 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-object TaxableProfitPage extends BasePage {
-  def provideProfit(profitValue: String) =
-    driver.findElement(By.id("value")).sendKeys(profitValue)
+object ExcemptDistrubutionsPage extends BasePage {
+  def provideDistributions(excemptDistributions: String) =
+    driver.findElement(By.id("distribution")).sendKeys(excemptDistributions)
   def submitaccountingPeriodInformation: Unit = {
     Thread.sleep(1000)
     submitPage()

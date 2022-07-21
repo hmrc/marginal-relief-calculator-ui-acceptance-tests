@@ -47,3 +47,28 @@ Feature: Marginal Relief Calculator- Validations
     And the user clicks on continue button
     And the user click on back button
     Then the user can see the accounting end period as "30/3/2025"
+
+  Scenario Outline: Enter associated companies for a portion of the accounting period
+    When the accounting period start date is provided as "<accountingStartDate>"
+    And the user clicks on continue button
+    And the user click on back button
+    Then the user can see the accounting end period as "<ExpectedAccountingEndDate>"
+
+    Examples:
+      | accountingStartDate | ExpectedAccountingEndDate |
+      | 29/02/2024          | 27/2/2025                 |
+      | 01/03/2025          | 28/2/2026                 |
+      | 08/09/2022          | 7/9/2023                  |
+
+  Scenario Outline:Enter associated companies for a portion of the accounting period
+    When the accounting period start date is provided as "<accountingStartDate>"
+    And the accounting period end date is provided as "<accountingEndDate>"
+    And the user clicks on continue button
+    And the profit is "<profitValue>"
+    And the distributions is "<excemptDistributions>"
+    Then display the "<message>" on associated company
+
+    Examples:
+      | accountingStartDate | accountingEndDate | profitValue | excemptDistributions | message                                                                                    |
+      | 01/01/2024          | 31/12/2024        | 50000       | 0                    | Did your company have any active associated companies?                                     |
+      | 01/01/2023          | 31/12/2023        | 50000       | 0                    | Did your company have any active associated companies between 01 Apr 2023 and 31 Dec 2023? |
