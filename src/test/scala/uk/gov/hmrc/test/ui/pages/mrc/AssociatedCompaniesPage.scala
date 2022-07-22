@@ -56,8 +56,8 @@ object AssociatedCompaniesPage extends BasePage {
   def clickOnContinue: Unit =
     driver.findElement(By.cssSelector("form > button")).click()
 
-  def inputAssociatedCompanies(noOfAssociatedCompanies: Int): Unit =
-    driver.findElement(By.id("associatedCompaniesCount")).sendKeys(noOfAssociatedCompanies.toString)
+  def inputAssociatedCompanies(noOfAssociatedCompanies: String): Unit =
+    driver.findElement(By.id("associatedCompaniesCount")).sendKeys(noOfAssociatedCompanies)
 
   def errorMessage: String = {
     Thread.sleep(3000)

@@ -45,8 +45,8 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
     AssociatedCompaniesPage.isAssociatedCompaniesCountInputDisplayed
   }
 
-  And("""user inputs a valid number as {int} associated companies""") { (option: Int) =>
-    AssociatedCompaniesPage.inputAssociatedCompanies(option)
+  And("""user inputs a valid number as {string} associated companies""") { (InvalidAC: String) =>
+    AssociatedCompaniesPage.inputAssociatedCompanies(InvalidAC)
   }
 
   Then("the user clicks continue button on associated companies page") { () =>

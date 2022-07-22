@@ -1,4 +1,3 @@
-@test
 Feature: Marginal Relief Calculator - Associated companies validations
 
   Background:
@@ -11,7 +10,8 @@ Feature: Marginal Relief Calculator - Associated companies validations
     And the distributions is "10000"
     Then the user clicks continue button on distributions page
 
-  @Ac-11 @AC-10
+
+  @mrc-38
   Scenario: Associated companies - Happy path
     Then user is landed on associated companies page
     And user can see the options yes and No as not selected
@@ -21,7 +21,7 @@ Feature: Marginal Relief Calculator - Associated companies validations
     Then the user clicks continue button on associated companies page
     Then user is presented with Check Your Answers page
 
-  @Ac-13
+  @mrc-38
   Scenario: No Associated companies - Happy path
     Then user is landed on associated companies page
     And user can see the options yes and No as not selected
@@ -29,14 +29,14 @@ Feature: Marginal Relief Calculator - Associated companies validations
     And the user clicks continue button on associated companies page
     Then user is presented with Check Your Answers page
 
-  @Ac-15
+  @mrc-38
   Scenario: Yes / No is not selected and clicked on continue on associated companies page
     Then user is landed on associated companies page
     And user can see the options yes and No as not selected
     Then the user clicks continue button on associated companies page
     Then the user is displayed with error message "Select whether you have associated companies or not"
 
-  @Ac-14
+  @mrc-38
   Scenario: Yes selected and clicked on continue on associated companies page
     Then user is landed on associated companies page
     And user can see the options yes and No as not selected
@@ -45,19 +45,19 @@ Feature: Marginal Relief Calculator - Associated companies validations
     Then the user clicks continue button on associated companies page
     Then the user is displayed with error message "Enter the number of associated companies you have. For example, 1"
 
-  @Ac-7
+  @mrc-38
   Scenario Outline: Associated companies - Error Message validations
     Then user is landed on associated companies page
     And user can see the options yes and No as not selected
     When the user selects option "yes"
     Then user is presented with input field for associated companies
-    And user inputs a valid number as <Invalid A C> associated companies
+    And user inputs a valid number as "<InvalidAC>" associated companies
     Then the user clicks continue button on associated companies page
     Then the user is displayed with error message "<Error Message>"
 
     Examples:
-      | Invalid A C | Error Message                                                   |
-      | 1.          | Do not use decimal points. Enter a whole number. For example, 1 |
-      | -3          | Enter an amount between 1 and 99                                |
-      | 1B          | Enter your Number of associated companies using numbers         |
-      | 0           | Enter an amount between 1 and 99                                |
+      | InvalidAC | Error Message                                                   |
+      | 1.        | Do not use decimal points. Enter a whole number. For example, 1 |
+      | -3        | Enter an amount between 1 and 99                                |
+      | 1B        | Enter your Number of associated companies using numbers         |
+      | 0         | Enter an amount between 1 and 99                                |
