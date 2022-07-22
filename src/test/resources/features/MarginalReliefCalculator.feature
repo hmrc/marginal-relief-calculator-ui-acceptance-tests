@@ -20,6 +20,7 @@ Feature: Marginal Relief Calculator- Validations
     When the accounting period start date is valid
     When the accounting period end date is valid
     And the profit is "<profitValue>"
+    And the user clicks continue button on taxable profit page
     And the user is alerted to taxable profits "<profitError>"
     Examples:
       | profitValue  | profitError                                                                             |
@@ -31,7 +32,7 @@ Feature: Marginal Relief Calculator- Validations
 
   Scenario Outline: Auto generated accounting end date when accounting end date is not provided
     When the accounting period start date is provided as "<accountingStartDate>"
-    And the user clicks on continue button
+    And the user clicks continue button on accounting period page
     And the user click on back button
     Then the user can see the accounting end period as "<ExpectedAccountingEndDate>"
 
@@ -44,13 +45,13 @@ Feature: Marginal Relief Calculator- Validations
   Scenario: Verify accounting end date by clicking back
     When the accounting period start date is provided as "31/03/2024"
     And the accounting period end date is provided as "30/03/2025"
-    And the user clicks on continue button
+    And the user clicks continue button on accounting period page
     And the user click on back button
     Then the user can see the accounting end period as "30/3/2025"
 
   Scenario Outline: Enter associated companies for a portion of the accounting period
     When the accounting period start date is provided as "<accountingStartDate>"
-    And the user clicks on continue button
+    And the user clicks continue button on accounting period page
     And the user click on back button
     Then the user can see the accounting end period as "<ExpectedAccountingEndDate>"
 
@@ -63,9 +64,11 @@ Feature: Marginal Relief Calculator- Validations
   Scenario Outline:Enter associated companies for a portion of the accounting period
     When the accounting period start date is provided as "<accountingStartDate>"
     And the accounting period end date is provided as "<accountingEndDate>"
-    And the user clicks on continue button
+    And the user clicks continue button on accounting period page
     And the profit is "<profitValue>"
+    And the user clicks continue button on taxable profit page
     And the distributions is "<excemptDistributions>"
+    And the user clicks continue button on distributions page
     Then display the "<message>" on associated company
 
     Examples:

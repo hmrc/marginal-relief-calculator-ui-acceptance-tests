@@ -54,7 +54,7 @@ class AccountingPeriodStepDef extends BaseStepDef {
   Then("""the user can see the accounting end period as {string}""") { (accountingEndDate: String) =>
     AccountingPeriodPage.verifyAccountingEndDate(accountingEndDate)
   }
-  And("the user clicks on continue button") { () =>
+  And("the user clicks continue button on accounting period page") { () =>
     AccountingPeriodPage.submitPage()
   }
   When("the accounting period greater than one Year") { () =>
