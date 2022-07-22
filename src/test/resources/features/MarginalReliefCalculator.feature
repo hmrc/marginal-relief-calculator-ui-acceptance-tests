@@ -54,4 +54,4 @@ Feature: Marginal Relief Calculator- Validations
     Examples:
       | accountingStartDate | accountingEndDate | profitValue | excemptDistributions | message                                                                                    |
       | 01/01/2024          | 31/12/2024        | 50000       | 0                    | Did your company have any active associated companies?                                     |
-      | 01/01/2023          | 31/12/2023        | 50000       | 0                    | Did your company have any active associated companies between 01 Apr 2023 and 31 Dec 2023? |
+      | 01/01/2023          | 31/12/2023        | 50000       | 0                    | Did your company have any active associated companies between 1 Apr 2023 and 31 Dec 2023? |

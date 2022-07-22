@@ -22,7 +22,7 @@ object CheckYourAnswersPage extends BasePage {
 
   def verifyPageTitle: Unit = {
     Thread.sleep(4000)
-    assert(driver.getTitle().contains("Check Your Answers"))
+    verifyPageTitle("Check Your Answers - marginal-relief-calculator-frontend - GOV.UK")
   }
 
 }

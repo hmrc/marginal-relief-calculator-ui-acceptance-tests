@@ -23,9 +23,9 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 trait BasePage extends BrowserDriver with Matchers {
 
   def submitPage(): Unit =
-    driver.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/form/button")).click()
+    driver.findElement(By.cssSelector("button.govuk-button")).click()
 
-  def onPage(pageTitle: String): Unit =
+  def verifyPageTitle(pageTitle: String): Unit =
     if (driver.getTitle != pageTitle)
       throw PageNotFoundException(
         s"Expected '$pageTitle' page, but found '${driver.getTitle}' page."

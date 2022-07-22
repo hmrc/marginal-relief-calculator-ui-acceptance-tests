@@ -16,12 +16,18 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object TaxableProfitPage extends BasePage {
+  @FindBy(how = How.ID, using = "value") var inputProfitValue: WebElement = _
+
+  PageFactory.initElements(driver, this)
+
   def provideProfit(profitValue: String) =
-    driver.findElement(By.id("value")).sendKeys(profitValue)
+    inputProfitValue.sendKeys(profitValue)
+
   def submitaccountingPeriodInformation: Unit = {
     Thread.sleep(1000)
     submitPage()

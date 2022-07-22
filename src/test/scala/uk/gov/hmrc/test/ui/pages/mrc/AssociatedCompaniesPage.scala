@@ -16,51 +16,60 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.junit.Assert
-import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object AssociatedCompaniesPage extends BasePage {
 
+  @FindBy(how = How.CSS, using = "span h1") var headderMessage: WebElement                                = _
+  @FindBy(how = How.ID, using = "associatedCompanies") var yesOption: WebElement                          = _
+  @FindBy(how = How.ID, using = "associatedCompanies-2") var noOption: WebElement                         = _
+  @FindBy(how = How.ID, using = "associatedCompaniesCount") var inputAssociatedCompaniesCount: WebElement = _
+  @FindBy(how = How.CSS, using = "form > button") var continueButton: WebElement                          = _
+  @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var errorMsg: WebElement                 = _
+
+  PageFactory.initElements(driver, this)
+
   def titleMessage: String = {
     Thread.sleep(1000)
-    driver.findElement(By.xpath("h1")).getText
+    headderMessage.getText
   }
 
   def verifyPageTitle: Unit =
-    assert(driver.getTitle().equals("Number of associated companies - marginal-relief-calculator-frontend - GOV.UK"))
+    verifyPageTitle("Number of associated companies - marginal-relief-calculator-frontend - GOV.UK")
 
   def verifyYesAndNoOptionsPresent: Unit = {
-    driver.findElement(By.id("associatedCompanies")).isDisplayed
-    driver.findElement(By.id("associatedCompanies-2")).isDisplayed
+    yesOption.isDisplayed
+    noOption.isDisplayed
   }
 
   def verifyYesAndNoOptionsNotSelected: Unit = {
-    Assert.assertFalse(driver.findElement(By.id("associatedCompanies")).isSelected)
-    Assert.assertFalse(driver.findElement(By.id("associatedCompanies-2")).isSelected)
+    yesOption.isSelected
+    noOption.isSelected
   }
 
   def selectOptionYes: Unit = {
-    driver.findElement(By.id("associatedCompanies")).click
-    driver.findElement(By.id("associatedCompanies")).isSelected
+    yesOption.click
+    yesOption.isSelected
   }
 
   def selectOptionNo: Unit = {
-    driver.findElement(By.id("associatedCompanies-2")).click
-    driver.findElement(By.id("associatedCompanies-2")).isSelected
+    noOption.click
+    noOption.isSelected
   }
 
   def isAssociatedCompaniesCountInputDisplayed: Unit =
-    driver.findElement(By.id("associatedCompaniesCount")).isDisplayed
+    inputAssociatedCompaniesCount.isDisplayed
 
   def clickOnContinue: Unit =
-    driver.findElement(By.cssSelector("form > button")).click()
+    continueButton.click()
 
   def inputAssociatedCompanies(noOfAssociatedCompanies: String): Unit =
-    driver.findElement(By.id("associatedCompaniesCount")).sendKeys(noOfAssociatedCompanies)
+    inputAssociatedCompaniesCount.sendKeys(noOfAssociatedCompanies)
 
   def errorMessage: String = {
     Thread.sleep(3000)
-    driver.findElement(By.cssSelector(".govuk-error-summary__body a")).getText
+    errorMsg.getText
   }
 }
