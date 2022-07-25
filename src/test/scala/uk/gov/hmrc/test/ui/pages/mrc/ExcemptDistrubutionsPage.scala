@@ -16,14 +16,21 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ExcemptDistrubutionsPage extends BasePage {
+  @FindBy(how = How.ID, using = "distribution") var inputExcemptDistribution: WebElement = _
+
+  PageFactory.initElements(driver, this)
+
   def provideDistributions(excemptDistributions: String) =
-    driver.findElement(By.id("distribution")).sendKeys(excemptDistributions)
+    inputExcemptDistribution.sendKeys(excemptDistributions)
+
   def submitaccountingPeriodInformation: Unit = {
     Thread.sleep(1000)
     submitPage()
   }
+
 }

@@ -16,11 +16,24 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object AccountingPeriodPage extends BasePage {
-  //  val url: String = TestConfiguration.url("marginal-relief-calculator") + "/accounting-period"
+
+  @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var errorMessage: WebElement = _
+
+  @FindBy(how = How.ID, using = "accountingPeriodStartDate.day") var accountingStartDay: WebElement     = _
+  @FindBy(how = How.ID, using = "accountingPeriodStartDate.month") var accountingStartMonth: WebElement = _
+  @FindBy(how = How.ID, using = "accountingPeriodStartDate.year") var accountingStartYear: WebElement   = _
+
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate.day") var accountingEndDay: WebElement     = _
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate.month") var accountingEndMonth: WebElement = _
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate.year") var accountingEndYear: WebElement   = _
+
+  PageFactory.initElements(driver, this)
+
   val url: String                         = "https://www.qa.tax.service.gov.uk/marginal-relief-calculator/accounting-period"
   val mrcHomePage                         = "What are your accounting period dates? - marginal-relief-calculator-frontend - GOV.UK"
   val mrcHomePageError                    = "Error: What are your accounting period dates? - marginal-relief-calculator-frontend - GOV.UK"
@@ -32,74 +45,74 @@ object AccountingPeriodPage extends BasePage {
   def loadPage: this.type = {
     driver.manage().deleteAllCookies()
     driver.navigate().to(url)
-    onPage(mrcHomePage)
+    verifyPageTitle(mrcHomePage)
     this
   }
 
-  def error: String = {
-    Thread.sleep(1000)
-    driver.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/form/div[1]/div/ul/li/a")).getText
-  }
+  def error: String =
+    errorMessage.getText
 
   def provideEmptyAccountingStartDay: Unit = {
-    driver.findElement(By.id("accountingPeriodStartDate.day")).sendKeys("")
-    driver.findElement(By.id("accountingPeriodStartDate.month")).sendKeys("12")
-    driver.findElement(By.id("accountingPeriodStartDate.year")).sendKeys("2022")
+    accountingStartDay.sendKeys("")
+    accountingStartMonth.sendKeys("12")
+    accountingStartYear.sendKeys("2022")
   }
+
   def provideEmptyAccountingStartDate: Unit = {
-    driver.findElement(By.id("accountingPeriodStartDate.day")).sendKeys("")
-    driver.findElement(By.id("accountingPeriodStartDate.month")).sendKeys("")
-    driver.findElement(By.id("accountingPeriodStartDate.year")).sendKeys("")
+    accountingStartDay.sendKeys("")
+    accountingStartMonth.sendKeys("")
+    accountingStartYear.sendKeys("")
   }
 
   def provideValidAccountingStartDate: Unit = {
-    driver.findElement(By.id("accountingPeriodStartDate.day")).clear()
-    driver.findElement(By.id("accountingPeriodStartDate.day")).sendKeys("01")
-    driver.findElement(By.id("accountingPeriodStartDate.month")).clear()
-    driver.findElement(By.id("accountingPeriodStartDate.month")).sendKeys("01")
-    driver.findElement(By.id("accountingPeriodStartDate.year")).clear()
-    driver.findElement(By.id("accountingPeriodStartDate.year")).sendKeys("2023")
+    accountingStartDay.clear()
+    accountingStartDay.sendKeys("01")
+    accountingStartMonth.clear()
+    accountingStartMonth.sendKeys("01")
+    accountingStartYear.clear()
+    accountingStartYear.sendKeys("2023")
   }
 
   def provideValidAccountingStartDate(accountingStartDate: String) = {
     val date = accountingStartDate.split("/")
-    driver.findElement(By.id("accountingPeriodStartDate.day")).clear()
-    driver.findElement(By.id("accountingPeriodStartDate.day")).sendKeys(date(0))
-    driver.findElement(By.id("accountingPeriodStartDate.month")).clear()
-    driver.findElement(By.id("accountingPeriodStartDate.month")).sendKeys(date(1))
-    driver.findElement(By.id("accountingPeriodStartDate.year")).clear()
-    driver.findElement(By.id("accountingPeriodStartDate.year")).sendKeys(date(2))
+    accountingStartDay.clear()
+    accountingStartDay.sendKeys(date(0))
+    accountingStartMonth.clear()
+    accountingStartMonth.sendKeys(date(1))
+    accountingStartYear.clear()
+    accountingStartYear.sendKeys(date(2))
   }
 
   def provideValidAccountingEndDate(accountingEndDate: String) = {
     val date = accountingEndDate.split("/")
-    driver.findElement(By.id("accountingPeriodEndDate.day")).clear()
-    driver.findElement(By.id("accountingPeriodEndDate.day")).sendKeys(date(0))
-    driver.findElement(By.id("accountingPeriodEndDate.month")).clear()
-    driver.findElement(By.id("accountingPeriodEndDate.month")).sendKeys(date(1))
-    driver.findElement(By.id("accountingPeriodEndDate.year")).clear()
-    driver.findElement(By.id("accountingPeriodEndDate.year")).sendKeys(date(2))
+    accountingEndDay.clear()
+    accountingEndDay.sendKeys(date(0))
+    accountingEndMonth.clear()
+    accountingEndMonth.sendKeys(date(1))
+    accountingEndYear.clear()
+    accountingEndYear.sendKeys(date(2))
   }
 
   def verifyAccountingEndDate(accountingEndDate: String) = {
     val date = accountingEndDate.split("/")
-    assert(driver.findElement(By.id("accountingPeriodEndDate.day")).getAttribute("value").contains(date(0)))
-    assert(driver.findElement(By.id("accountingPeriodEndDate.month")).getAttribute("value").contains(date(1)))
-    assert(driver.findElement(By.id("accountingPeriodEndDate.year")).getAttribute("value").contains(date(2)))
+    accountingEndDay.getAttribute("value").contains(date(0))
+    accountingEndMonth.getAttribute("value").contains(date(1))
+    accountingEndYear.getAttribute("value").contains(date(2))
   }
 
   def provideInvalidAccountingEndDate: Unit = {
-    driver.findElement(By.id("accountingPeriodEndDate.day")).sendKeys("01")
-    driver.findElement(By.id("accountingPeriodEndDate.month")).sendKeys("01")
-    driver.findElement(By.id("accountingPeriodEndDate.year")).sendKeys("2024")
+    accountingEndDay.sendKeys("01")
+    accountingEndMonth.sendKeys("01")
+    accountingEndYear.sendKeys("2024")
   }
+
   def provideValidAccountingEndDate: Unit = {
-    driver.findElement(By.id("accountingPeriodEndDate.day")).clear()
-    driver.findElement(By.id("accountingPeriodEndDate.day")).sendKeys("31")
-    driver.findElement(By.id("accountingPeriodEndDate.month")).clear()
-    driver.findElement(By.id("accountingPeriodEndDate.month")).sendKeys("12")
-    driver.findElement(By.id("accountingPeriodEndDate.year")).clear()
-    driver.findElement(By.id("accountingPeriodEndDate.year")).sendKeys("2023")
+    accountingEndDay.clear()
+    accountingEndDay.sendKeys("31")
+    accountingEndMonth.clear()
+    accountingEndMonth.sendKeys("12")
+    accountingEndYear.clear()
+    accountingEndYear.sendKeys("2023")
   }
 
 }

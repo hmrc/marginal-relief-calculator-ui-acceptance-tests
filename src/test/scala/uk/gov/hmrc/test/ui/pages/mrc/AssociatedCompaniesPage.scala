@@ -16,12 +16,60 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object AssociatedCompaniesPage extends BasePage {
+
+  @FindBy(how = How.CSS, using = "span h1") var headderMessage: WebElement                                = _
+  @FindBy(how = How.ID, using = "associatedCompanies") var yesOption: WebElement                          = _
+  @FindBy(how = How.ID, using = "associatedCompanies-2") var noOption: WebElement                         = _
+  @FindBy(how = How.ID, using = "associatedCompaniesCount") var inputAssociatedCompaniesCount: WebElement = _
+  @FindBy(how = How.CSS, using = "form > button") var continueButton: WebElement                          = _
+  @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var errorMsg: WebElement                 = _
+
+  PageFactory.initElements(driver, this)
+
   def titleMessage: String = {
     Thread.sleep(1000)
-    driver.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/form/span/h1")).getText
+    headderMessage.getText
+  }
+
+  def verifyPageTitle: Unit =
+    verifyPageTitle("Number of associated companies - marginal-relief-calculator-frontend - GOV.UK")
+
+  def verifyYesAndNoOptionsPresent: Unit = {
+    yesOption.isDisplayed
+    noOption.isDisplayed
+  }
+
+  def verifyYesAndNoOptionsNotSelected: Unit = {
+    yesOption.isSelected
+    noOption.isSelected
+  }
+
+  def selectOptionYes: Unit = {
+    yesOption.click
+    yesOption.isSelected
+  }
+
+  def selectOptionNo: Unit = {
+    noOption.click
+    noOption.isSelected
+  }
+
+  def isAssociatedCompaniesCountInputDisplayed: Unit =
+    inputAssociatedCompaniesCount.isDisplayed
+
+  def clickOnContinue: Unit =
+    continueButton.click()
+
+  def inputAssociatedCompanies(noOfAssociatedCompanies: String): Unit =
+    inputAssociatedCompaniesCount.sendKeys(noOfAssociatedCompanies)
+
+  def errorMessage: String = {
+    Thread.sleep(3000)
+    errorMsg.getText
   }
 }

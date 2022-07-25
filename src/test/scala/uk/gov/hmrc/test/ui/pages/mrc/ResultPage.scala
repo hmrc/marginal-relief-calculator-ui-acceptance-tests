@@ -14,18 +14,15 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
+package uk.gov.hmrc.test.ui.pages.mrc
 
-import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.error
-import uk.gov.hmrc.test.ui.pages.mrc.{ExcemptDistrubutionsPage, TaxableProfitPage}
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-class ExcemptDistributionsStepDef extends BaseStepDef {
-  And("""the distributions is {string}""") { (excemptDistributions: String) =>
-    ExcemptDistrubutionsPage.provideDistributions(excemptDistributions)
+object ResultPage extends BasePage {
+
+  def verifyPageTitle: Unit = {
+    Thread.sleep(4000)
+    assert(driver.getTitle().contains("resultsPage"))
   }
 
-  And("the user clicks continue button on distributions page") { () =>
-    ExcemptDistrubutionsPage.submitPage()
-  }
 }
