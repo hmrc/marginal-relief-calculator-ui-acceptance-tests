@@ -2,6 +2,8 @@ Feature: Marginal Relief Calculator - Associated companies validations
 
   Background:
     Given Marginal Relief Calculator is launched
+    When the user clicks on start now button
+    Then the user lands on accounting period page
     When the accounting period start date is provided as "31/03/2024"
     And the accounting period end date is provided as "30/03/2025"
     Then the user clicks continue button on accounting period page

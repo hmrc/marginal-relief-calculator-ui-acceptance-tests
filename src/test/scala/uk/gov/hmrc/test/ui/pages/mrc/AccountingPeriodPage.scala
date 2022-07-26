@@ -34,7 +34,6 @@ object AccountingPeriodPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  val url: String                         = "https://www.qa.tax.service.gov.uk/marginal-relief-calculator/accounting-period"
   val mrcHomePage                         = "What are your accounting period dates? - marginal-relief-calculator-frontend - GOV.UK"
   val mrcHomePageError                    = "Error: What are your accounting period dates? - marginal-relief-calculator-frontend - GOV.UK"
   val accountingPeriodMandatoryValueError = "The Start date must include day"
@@ -42,12 +41,8 @@ object AccountingPeriodPage extends BasePage {
   val accountingPeriodLengthError         =
     "The accounting period End date must be less than or equal to a full calendar year from the Start date"
 
-  def loadPage: this.type = {
-    driver.manage().deleteAllCookies()
-    driver.navigate().to(url)
+  def verifyTitle =
     verifyPageTitle(mrcHomePage)
-    this
-  }
 
   def error: String =
     errorMessage.getText
