@@ -2,6 +2,8 @@ Feature: Taxable profit page- Validations
 
   Background:
     Given Marginal Relief Calculator is launched
+    When the user clicks on start now button
+    Then the user lands on accounting period page
 
   @mrc-36
   Scenario Outline:Taxable Profit Validations

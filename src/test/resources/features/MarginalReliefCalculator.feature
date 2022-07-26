@@ -2,6 +2,8 @@ Feature: Marginal Relief Calculator- Validations
 
   Background:
     Given Marginal Relief Calculator is launched
+    When the user clicks on start now button
+    Then the user lands on accounting period page
 
   @mrc-35
   Scenario:Accounting Period Validation 01:Accounting Period Start Date
