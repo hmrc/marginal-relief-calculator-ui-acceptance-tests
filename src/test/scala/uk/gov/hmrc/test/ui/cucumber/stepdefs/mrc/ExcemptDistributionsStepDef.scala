@@ -18,13 +18,29 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.error
-import uk.gov.hmrc.test.ui.pages.mrc.{ExcemptDistrubutionsPage, TaxableProfitPage}
+import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, ExcemptDistrubutionsPage, TaxableProfitPage}
 
 class ExcemptDistributionsStepDef extends BaseStepDef {
-  And("""the distributions is {string}""") { (excemptDistributions: String) =>
+  And("""the user selects option {string} for the question Did your company receive any distributions?""") {
+    (option: String) =>
+      if (option.equalsIgnoreCase("yes")) {
+        ExcemptDistrubutionsPage.selectOptionYes
+      } else {
+        ExcemptDistrubutionsPage.selectOptionNo
+      }
+  }
+  And(
+    """the user selects option {string} for the question Do any distributions need to be included with your profits?"""
+  ) { (option: String) =>
+    if (option.equalsIgnoreCase("yes")) {
+      ExcemptDistrubutionsPage.selectOptionYes
+    } else {
+      ExcemptDistrubutionsPage.selectOptionNo
+    }
+  }
+  And("""the user provides {string}""") { (excemptDistributions: String) =>
     ExcemptDistrubutionsPage.provideDistributions(excemptDistributions)
   }
-
   And("the user clicks continue button on distributions page") { () =>
     ExcemptDistrubutionsPage.submitPage()
   }
