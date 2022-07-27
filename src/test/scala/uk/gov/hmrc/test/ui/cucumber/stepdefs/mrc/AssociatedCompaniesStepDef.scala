@@ -33,12 +33,13 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
     AssociatedCompaniesPage.verifyYesAndNoOptionsNotSelected
   }
 
-  When("""the user selects option {string}""") { (option: String) =>
-    if (option.equalsIgnoreCase("yes")) {
-      AssociatedCompaniesPage.selectOptionYes
-    } else {
-      AssociatedCompaniesPage.selectOptionNo
-    }
+  When("""the user selects option {string} for the question Did your company have any active associated companies?""") {
+    (option: String) =>
+      if (option.equalsIgnoreCase("yes")) {
+        AssociatedCompaniesPage.selectOptionYes
+      } else {
+        AssociatedCompaniesPage.selectOptionNo
+      }
   }
 
   And("user is presented with input field for associated companies") { () =>

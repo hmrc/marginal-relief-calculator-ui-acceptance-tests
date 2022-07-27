@@ -19,11 +19,23 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.mrc.AssociatedCompaniesPage.{noOption, yesOption}
 
 object ExcemptDistrubutionsPage extends BasePage {
-  @FindBy(how = How.ID, using = "distribution") var inputExcemptDistribution: WebElement = _
+  @FindBy(how = How.ID, using = "distributionsIncludedAmount") var inputExcemptDistribution: WebElement = _
+  @FindBy(how = How.ID, using = "value_0") var yesOption: WebElement                                    = _
+  @FindBy(how = How.ID, using = "value_1") var noOption: WebElement                                     = _
 
   PageFactory.initElements(driver, this)
+  def selectOptionYes: Unit = {
+    yesOption.click
+    yesOption.isSelected
+  }
+
+  def selectOptionNo: Unit = {
+    noOption.click
+    noOption.isSelected
+  }
 
   def provideDistributions(excemptDistributions: String) =
     inputExcemptDistribution.sendKeys(excemptDistributions)
