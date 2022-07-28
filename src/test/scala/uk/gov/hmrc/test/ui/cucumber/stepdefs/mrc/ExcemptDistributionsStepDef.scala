@@ -33,15 +33,24 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
     """the user selects option {string} for the question Do any distributions need to be included with your profits?"""
   ) { (option: String) =>
     if (option.equalsIgnoreCase("yes")) {
-      ExcemptDistrubutionsPage.selectOptionYes
+      ExcemptDistrubutionsPage.yesToIncludeInProfits
     } else {
-      ExcemptDistrubutionsPage.selectOptionNo
+      ExcemptDistrubutionsPage.noToIncludeInProfits
     }
   }
-  And("""the user provides {string}""") { (excemptDistributions: String) =>
-    ExcemptDistrubutionsPage.provideDistributions(excemptDistributions)
+  Then("the user is provided with input field to provide distributions") { () =>
+    ExcemptDistrubutionsPage.inputExcemptDistribution.isDisplayed
   }
+
+  And("""the user provides {string} as distributions""") { (distributions: String) =>
+    ExcemptDistrubutionsPage.provideDistributions(distributions)
+  }
+
   And("the user clicks continue button on distributions page") { () =>
     ExcemptDistrubutionsPage.submitPage()
+  }
+
+  Then("""the user is displayed with error message {string} for distributions""") { (message: String) =>
+    AssociatedCompaniesPage.errorMessage contains message
   }
 }
