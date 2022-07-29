@@ -22,7 +22,7 @@ object CheckYourAnswersPage extends BasePage {
 
   def verifyPageTitle: Unit = {
     Thread.sleep(4000)
-    verifyPageTitle("Check Your Answers - marginal-relief-calculator-frontend - GOV.UK")
+    verifyPageTitle("Check Your Answers - Calculate Marginal Relief for Corporation Tax - GOV.UK")
   }
 
 }
