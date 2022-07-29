@@ -19,12 +19,12 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
-import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.driver
 
 object BeforeYouStartPage extends BasePage {
 
   val url: String           = "https://www.qa.tax.service.gov.uk/marginal-relief-calculator"
-  val mrcBeforeYouStartPage = "marginal-relief-calculator-frontend - marginal-relief-calculator-frontend - GOV.UK"
+  val mrcBeforeYouStartPage =
+    "marginal-relief-calculator-frontend - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
   @FindBy(how = How.XPATH, using = "//a[contains(text(),'Start now')]") var startNowButton: WebElement = _
   PageFactory.initElements(driver, this)

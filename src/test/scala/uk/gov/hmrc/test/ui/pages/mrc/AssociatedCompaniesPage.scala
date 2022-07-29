@@ -36,39 +36,39 @@ object AssociatedCompaniesPage extends BasePage {
     headderMessage.getText
   }
 
-  def verifyPageTitle: Unit =
-    verifyPageTitle("Number of associated companies - marginal-relief-calculator-frontend - GOV.UK")
+  def verifyPageTitle(): Unit =
+    verifyPageTitle("Number of associated companies - Calculate Marginal Relief for Corporation Tax - GOV.UK")
 
-  def verifyYesAndNoOptionsPresent: Unit = {
+  def verifyYesAndNoOptionsPresent(): Unit = {
     yesOption.isDisplayed
     noOption.isDisplayed
   }
 
-  def verifyYesAndNoOptionsNotSelected: Unit = {
-    yesOption.isSelected
-    noOption.isSelected
+  def verifyYesAndNoOptionsNotSelected(): Unit = {
+    yesOption.isSelected()
+    noOption.isSelected()
   }
 
-  def selectOptionYes: Unit = {
-    yesOption.click
-    yesOption.isSelected
+  def selectOptionYes(): Unit = {
+    yesOption.click()
+    yesOption.isSelected()
   }
 
-  def selectOptionNo: Unit = {
-    noOption.click
-    noOption.isSelected
+  def selectOptionNo(): Unit = {
+    noOption.click()
+    noOption.isSelected()
   }
 
-  def isAssociatedCompaniesCountInputDisplayed: Unit =
-    inputAssociatedCompaniesCount.isDisplayed
+  def isAssociatedCompaniesCountInputDisplayed(): Unit =
+    inputAssociatedCompaniesCount.isDisplayed()
 
-  def clickOnContinue: Unit =
+  def clickOnContinue(): Unit =
     continueButton.click()
 
   def inputAssociatedCompanies(noOfAssociatedCompanies: String): Unit =
     inputAssociatedCompaniesCount.sendKeys(noOfAssociatedCompanies)
 
-  def errorMessage: String = {
+  def errorMessage(): String = {
     Thread.sleep(3000)
     errorMsg.getText
   }

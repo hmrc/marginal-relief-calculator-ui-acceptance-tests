@@ -34,32 +34,32 @@ object AccountingPeriodPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  val mrcHomePage                         = "What are your accounting period dates? - marginal-relief-calculator-frontend - GOV.UK"
+  val mrcHomePage                         = "What are your accounting period dates? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
   val mrcHomePageError                    = "Error: What are your accounting period dates? - marginal-relief-calculator-frontend - GOV.UK"
   val accountingPeriodMandatoryValueError = "The Start date must include day"
   val accountingPeriodMandatoryFieldError = "Enter a valid Start date for the accounting period, like 27 3 2023"
   val accountingPeriodLengthError         =
     "The accounting period End date must be less than or equal to a full calendar year from the Start date"
 
-  def verifyTitle =
+  def verifyTitle() =
     verifyPageTitle(mrcHomePage)
 
   def error: String =
     errorMessage.getText
 
-  def provideEmptyAccountingStartDay: Unit = {
+  def provideEmptyAccountingStartDay(): Unit = {
     accountingStartDay.sendKeys("")
     accountingStartMonth.sendKeys("12")
     accountingStartYear.sendKeys("2022")
   }
 
-  def provideEmptyAccountingStartDate: Unit = {
+  def provideEmptyAccountingStartDate(): Unit = {
     accountingStartDay.sendKeys("")
     accountingStartMonth.sendKeys("")
     accountingStartYear.sendKeys("")
   }
 
-  def provideValidAccountingStartDate: Unit = {
+  def provideValidAccountingStartDate(): Unit = {
     accountingStartDay.clear()
     accountingStartDay.sendKeys("01")
     accountingStartMonth.clear()
@@ -95,13 +95,13 @@ object AccountingPeriodPage extends BasePage {
     accountingEndYear.getAttribute("value").contains(date(2))
   }
 
-  def provideInvalidAccountingEndDate: Unit = {
+  def provideInvalidAccountingEndDate(): Unit = {
     accountingEndDay.sendKeys("01")
     accountingEndMonth.sendKeys("01")
     accountingEndYear.sendKeys("2024")
   }
 
-  def provideValidAccountingEndDate: Unit = {
+  def provideValidAccountingEndDate(): Unit = {
     accountingEndDay.clear()
     accountingEndDay.sendKeys("31")
     accountingEndMonth.clear()
