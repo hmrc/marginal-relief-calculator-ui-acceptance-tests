@@ -58,7 +58,7 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
     CheckYourAnswersPage.verifyPageTitle
   }
 
-  Then("""the user is displayed with error message {string}""") { (message: String) =>
+  Then("""the user is displayed with error message {string} for associated company""") { (message: String) =>
     AssociatedCompaniesPage.errorMessage contains message
   }
 

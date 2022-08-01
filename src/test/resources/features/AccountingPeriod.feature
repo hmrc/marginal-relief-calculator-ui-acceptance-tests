@@ -42,3 +42,33 @@ Feature: Accounting Period - Validations
     And the user click on back button
     Then the user can see the accounting end period as "30/3/2025"
 
+  Scenario Outline:Marginal Relief not relevant for accounting period
+    When the accounting period start date is provided as "<accountingStartDate>"
+    And the accounting period end date is provided as "<accountingEndDate>"
+    And the user clicks continue button on accounting period page
+    Then the user should given with an irrelevant accounting period page
+
+    Examples:
+      | accountingStartDate | accountingEndDate |
+      | 01/04/2022          | 31/03/2023        |
+      | 01/10/2022          | 28/02/2023        |
+
+  Scenario Outline:Marginal Relief not relevant for accounting period
+    When the accounting period start date is provided as "<accountingStartDate>"
+    And the user clicks continue button on accounting period page
+    Then the user should given with an irrelevant accounting period page
+
+    Examples:
+      | accountingStartDate |
+      | 01/04/2022          |
+
+  Scenario Outline:Marginal Relief not relevant for accounting period- Error Page
+    When the accounting period start date is provided as "<accountingStartDate>"
+    And the accounting period end date is provided as "<accountingEndDate>"
+    And the user clicks continue button on accounting period page
+    Then the user is displayed with error message "<errorMessage>" for accounting period
+
+    Examples:
+      | accountingStartDate | accountingEndDate | errorMessage                                                                                          |
+      | 01/04/2022          | 30/04/2023        | The accounting period End date must be less than or equal to a full calendar year from the Start date |
+      | 01/04/2022          | 31/03/2022        | The accounting period End date must be after the Start date                                           |

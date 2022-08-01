@@ -55,7 +55,7 @@ Feature: Marginal Relief Calculator - Associated companies validations
     Then user is presented with input field for associated companies
     And user inputs a valid number as "<InvalidAC>" associated companies
     Then the user clicks continue button on associated companies page
-    Then the user is displayed with error message "<Error Message>"
+    Then the user is displayed with error message "<Error Message>" for associated company
 
     Examples:
       | InvalidAC | Error Message                                                   |

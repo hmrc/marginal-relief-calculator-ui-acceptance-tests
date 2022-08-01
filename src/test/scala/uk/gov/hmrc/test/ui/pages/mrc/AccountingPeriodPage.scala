@@ -22,15 +22,18 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 
 object AccountingPeriodPage extends BasePage {
 
-  @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var errorMessage: WebElement = _
-
+  @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var errorMsg: WebElement               = _
   @FindBy(how = How.ID, using = "accountingPeriodStartDate.day") var accountingStartDay: WebElement     = _
   @FindBy(how = How.ID, using = "accountingPeriodStartDate.month") var accountingStartMonth: WebElement = _
   @FindBy(how = How.ID, using = "accountingPeriodStartDate.year") var accountingStartYear: WebElement   = _
 
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate.day") var accountingEndDay: WebElement     = _
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate.month") var accountingEndMonth: WebElement = _
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate.year") var accountingEndYear: WebElement   = _
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate.day") var accountingEndDay: WebElement           = _
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate.month") var accountingEndMonth: WebElement       = _
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate.year") var accountingEndYear: WebElement         = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-xl']") var irrelevantPageHeader: WebElement = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var irrelevantPageContent: WebElement   = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var restartButton: WebElement           = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var referenceLink: WebElement           = _
 
   PageFactory.initElements(driver, this)
 
@@ -38,14 +41,13 @@ object AccountingPeriodPage extends BasePage {
   val mrcHomePageError                    = "Error: What are your accounting period dates? - marginal-relief-calculator-frontend - GOV.UK"
   val accountingPeriodMandatoryValueError = "The Start date must include day"
   val accountingPeriodMandatoryFieldError = "Enter a valid Start date for the accounting period, like 27 3 2023"
+  val irrelevantPageTitle                 = "You're not eligible for Marginal Relief"
+  val irrelevantPageMessage               = "Your accounting period is before the 1 April 2023 start date for Marginal Relief."
   val accountingPeriodLengthError         =
     "The accounting period End date must be less than or equal to a full calendar year from the Start date"
 
   def verifyTitle() =
     verifyPageTitle(mrcHomePage)
-
-  def error: String =
-    errorMessage.getText
 
   def provideEmptyAccountingStartDay(): Unit = {
     accountingStartDay.sendKeys("")
@@ -86,6 +88,7 @@ object AccountingPeriodPage extends BasePage {
     accountingEndMonth.sendKeys(date(1))
     accountingEndYear.clear()
     accountingEndYear.sendKeys(date(2))
+
   }
 
   def verifyAccountingEndDate(accountingEndDate: String) = {
@@ -110,4 +113,20 @@ object AccountingPeriodPage extends BasePage {
     accountingEndYear.sendKeys("2023")
   }
 
+  def validatePageTitle() =
+    irrelevantPageHeader.getText().contains(irrelevantPageTitle)
+
+  def validatePageContent() =
+    irrelevantPageContent.getText().contains(irrelevantPageMessage)
+
+  def verifyRestartButton() =
+    restartButton.isDisplayed
+
+  def verifyReferenceLink() =
+    referenceLink.isDisplayed
+
+  def errorMessage(): String = {
+    Thread.sleep(3000)
+    errorMsg.getText
+  }
 }

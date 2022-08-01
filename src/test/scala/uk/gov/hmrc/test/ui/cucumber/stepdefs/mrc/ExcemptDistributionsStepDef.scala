@@ -17,8 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.error
-import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, ExcemptDistrubutionsPage, TaxableProfitPage}
+import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, ExcemptDistrubutionsPage}
 
 class ExcemptDistributionsStepDef extends BaseStepDef {
   And("""the user selects option {string} for the question Did your company receive any distributions?""") {

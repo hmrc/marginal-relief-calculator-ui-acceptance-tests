@@ -17,8 +17,8 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.{accountingPeriodLengthError, accountingPeriodMandatoryFieldError, accountingPeriodMandatoryValueError, error}
-import uk.gov.hmrc.test.ui.pages.mrc.{AccountingPeriodPage}
+import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage
+import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.{accountingPeriodLengthError, accountingPeriodMandatoryFieldError, accountingPeriodMandatoryValueError, errorMessage}
 
 class AccountingPeriodStepDef extends BaseStepDef {
   Then("the user lands on accounting period page") { () =>
@@ -34,13 +34,13 @@ class AccountingPeriodStepDef extends BaseStepDef {
     AccountingPeriodPage.submitPage()
   }
   Then("the user is alerted to a mandatory value error") { () =>
-    error should be(accountingPeriodMandatoryValueError)
+    errorMessage should be(accountingPeriodMandatoryValueError)
   }
   Then("the user is alerted to a mandatory field error") { () =>
-    error should be(accountingPeriodMandatoryFieldError)
+    errorMessage should be(accountingPeriodMandatoryFieldError)
   }
   Then("the user is alerted to an accounting period length error") { () =>
-    error should be(accountingPeriodLengthError)
+    errorMessage should be(accountingPeriodLengthError)
   }
   When("the accounting period start date is valid") { () =>
     AccountingPeriodPage.provideValidAccountingStartDate
@@ -65,5 +65,13 @@ class AccountingPeriodStepDef extends BaseStepDef {
     AccountingPeriodPage.provideValidAccountingEndDate
     AccountingPeriodPage.submitPage()
   }
-
+  Then("the user should given with an irrelevant accounting period page") { () =>
+    AccountingPeriodPage.validatePageTitle
+    AccountingPeriodPage.validatePageContent
+    AccountingPeriodPage.verifyRestartButton
+    AccountingPeriodPage.verifyReferenceLink
+  }
+  Then("""the user is displayed with error message {string} for accounting period""") { (errorMessage: String) =>
+    AccountingPeriodPage.errorMessage contains errorMessage
+  }
 }
