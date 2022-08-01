@@ -36,7 +36,7 @@ Feature: Marginal Relief Calculator - Associated companies validations
     Then user is landed on associated companies page
     And user can see the options yes and No as not selected
     Then the user clicks continue button on associated companies page
-    Then the user is displayed with error message "Select whether you have associated companies or not"
+    Then the user is displayed with error message "Select whether you have associated companies or not" for associated company
 
   @mrc-38
   Scenario: Yes selected and clicked on continue on associated companies page
@@ -45,7 +45,7 @@ Feature: Marginal Relief Calculator - Associated companies validations
     When the user selects option "yes" for the question Did your company have any active associated companies?
     Then user is presented with input field for associated companies
     Then the user clicks continue button on associated companies page
-    Then the user is displayed with error message "Enter the number of associated companies you have. For example, 1"
+    Then the user is displayed with error message "Enter the number of associated companies you have. For example, 1" for associated company
 
   @mrc-38
   Scenario Outline: Associated companies - Error Message validations
