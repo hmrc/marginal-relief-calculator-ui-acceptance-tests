@@ -47,6 +47,7 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
   }
 
   And("""user inputs a valid number as {string} associated companies""") { (InvalidAC: String) =>
+    Thread.sleep(2000)
     AssociatedCompaniesPage.inputAssociatedCompanies(InvalidAC)
   }
 

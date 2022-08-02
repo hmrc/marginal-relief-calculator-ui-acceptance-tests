@@ -16,13 +16,34 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object CheckYourAnswersPage extends BasePage {
+  val checkYourAnswers =
+    "Check Your Answers - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd >a") var changeLinkForDist: WebElement = _
+  @FindBy(how = How.CSS, using = "div:nth-child(3) > dd") var distributions: WebElement             = _
+
+  PageFactory.initElements(driver, this)
 
   def verifyPageTitle: Unit = {
     Thread.sleep(4000)
-    verifyPageTitle("Check Your Answers - Calculate Marginal Relief for Corporation Tax - GOV.UK")
+    verifyPageTitle(checkYourAnswers)
   }
+
+  def changeLinkForDistributions(): Unit =
+    changeLinkForDist.isDisplayed
+
+  def clickOnChangeLinkForDistributions(): Unit =
+    changeLinkForDist.click()
+
+  def verifyDistributionsValue(distributionsAmount: String): Unit =
+    distributions.getText().contains(distributionsAmount)
+
+  def clickOnBackButton(): Unit =
+    backButton.click()
 
 }

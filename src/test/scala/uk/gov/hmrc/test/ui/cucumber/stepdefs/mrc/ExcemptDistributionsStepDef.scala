@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, ExcemptDistrubutionsPage}
+import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, CheckYourAnswersPage, ExcemptDistrubutionsPage}
 
 class ExcemptDistributionsStepDef extends BaseStepDef {
   And("""the user selects option {string} for the question Did your company receive any distributions?""") {
@@ -51,5 +51,29 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
 
   Then("""the user is displayed with error message {string} for distributions""") { (message: String) =>
     AssociatedCompaniesPage.errorMessage contains message
+  }
+
+  Then("I am presented with change link next to the distribution amount") { () =>
+    CheckYourAnswersPage.changeLinkForDistributions()
+  }
+
+  Then("""I can validate my distribution amount as {string}""") { (distributionsAmount: String) =>
+    CheckYourAnswersPage.verifyDistributionsValue(distributionsAmount)
+  }
+
+  Then("I click on change link next to the distribution amount") { () =>
+    CheckYourAnswersPage.clickOnChangeLinkForDistributions()
+  }
+
+  Then("I am navigated to exempt distributions page") { () =>
+    ExcemptDistrubutionsPage.verifyTitle()
+  }
+
+  Then("I am navigated to Second exempt distributions page") { () =>
+    ExcemptDistrubutionsPage.verifySecondPageTitle()
+  }
+
+  Then("""I change the distributions value to {string}""") { (distributions: String) =>
+    ExcemptDistrubutionsPage.provideDistributions(distributions)
   }
 }

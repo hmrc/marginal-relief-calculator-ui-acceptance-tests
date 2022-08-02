@@ -21,6 +21,11 @@ import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ExcemptDistrubutionsPage extends BasePage {
+  val distributionsPageTitle  =
+    "Did your company receive any distributions? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+  val distributionsPageTitle2 =
+    "Do any distributions need to be included with your profits? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+
   @FindBy(how = How.ID, using = "distributionsIncludedAmount") var inputExcemptDistribution: WebElement = _
   @FindBy(how = How.ID, using = "value_0") var yesOption: WebElement                                    = _
   @FindBy(how = How.ID, using = "value_1") var noOption: WebElement                                     = _
@@ -28,6 +33,12 @@ object ExcemptDistrubutionsPage extends BasePage {
   @FindBy(how = How.ID, using = "distributionsIncluded-2") var noForIncludeInProfits: WebElement        = _
 
   PageFactory.initElements(driver, this)
+
+  def verifyTitle() =
+    verifyPageTitle(distributionsPageTitle)
+
+  def verifySecondPageTitle() =
+    verifyPageTitle(distributionsPageTitle2)
 
   def selectOptionYes: Unit = {
     yesOption.click
@@ -49,8 +60,10 @@ object ExcemptDistrubutionsPage extends BasePage {
     noForIncludeInProfits.isSelected
   }
 
-  def provideDistributions(distributions: String) =
+  def provideDistributions(distributions: String) = {
+    inputExcemptDistribution.clear()
     inputExcemptDistribution.sendKeys(distributions)
+  }
 
   def submitaccountingPeriodInformation: Unit = {
     Thread.sleep(1000)
