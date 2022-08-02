@@ -16,11 +16,14 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import org.openqa.selenium.support.{FindBy, How}
+import org.openqa.selenium.{By, WebElement}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 trait BasePage extends BrowserDriver with Matchers {
+
+  @FindBy(how = How.XPATH, using = "//a[text()='Back']") var backButton: WebElement = _
 
   def submitPage(): Unit =
     driver.findElement(By.cssSelector("button.govuk-button")).click()
@@ -32,8 +35,7 @@ trait BasePage extends BrowserDriver with Matchers {
       )
 
   def clickBackLink(): Unit =
-    driver.findElement(By.cssSelector("body > div > a")).click()
-
+    backButton.click()
 }
 
 case class PageNotFoundException(s: String) extends Exception(s)

@@ -30,7 +30,7 @@ Feature: Marginal Relief Calculator - Exempt Distributions page validations
     And the user clicks continue button on distributions page
     And the user selects option "Yes" for the question Do any distributions need to be included with your profits?
     Then the user is provided with input field to provide distributions
-    And the user provides "50000" as distributions
+    And the user provides "£50,000" as distributions
     And the user clicks continue button on distributions page
     Then user is landed on associated companies page
 
@@ -43,7 +43,6 @@ Feature: Marginal Relief Calculator - Exempt Distributions page validations
     And the user provides "<distributions>" as distributions
     And the user clicks continue button on distributions page
     Then the user is displayed with error message "<ErrorMessage>" for distributions
-
 
     Examples:
       | distributions | ErrorMessage                                                        |
@@ -64,3 +63,37 @@ Feature: Marginal Relief Calculator - Exempt Distributions page validations
     And the user clicks continue button on distributions page
     And the user clicks continue button on distributions page
     Then the user is displayed with error message "Select whether you received distributions or not" for distributions
+
+  @mrc-118
+  Scenario: Happy Path - Distributions amount is displayed on check your answers page
+    And the user selects option "Yes" for the question Did your company receive any distributions?
+    And the user clicks continue button on distributions page
+    And the user selects option "Yes" for the question Do any distributions need to be included with your profits?
+    And the user provides "£200,500,000" as distributions
+    And the user clicks continue button on distributions page
+    Then user is landed on associated companies page
+    When the user selects option "yes" for the question Did your company have any active associated companies?
+    And user inputs a valid number as "1" associated companies
+    Then the user clicks continue button on associated companies page
+    Then user is presented with Check Your Answers page
+    Then I am presented with change link next to the distribution amount
+    And I can validate my distribution amount as "£200,500,000"
+    When I click on change link next to the distribution amount
+    Then I am navigated to exempt distributions page
+    And the user selects option "Yes" for the question Did your company receive any distributions?
+    And the user clicks continue button on distributions page
+    When I change the distributions value to "£30,000"
+    And the user clicks continue button on distributions page
+    Then user is presented with Check Your Answers page
+    And I can validate my distribution amount as "£30,000"
+
+
+  @mrc-118
+  Scenario: Zero Distributions Shown as NONE on check your answers page
+    And the user selects option "No" for the question Did your company receive any distributions?
+    And the user clicks continue button on distributions page
+    Then user is landed on associated companies page
+    When the user selects option "no" for the question Did your company have any active associated companies?
+    And the user clicks continue button on associated companies page
+    Then user is presented with Check Your Answers page
+    And I can validate my distribution amount as "None"
