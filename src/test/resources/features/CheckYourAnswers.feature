@@ -28,7 +28,7 @@ Feature: Marginal Relief Calculator - Check your answers page validations
     When the user clicks on back button
     Then user is landed on associated companies page
 
-  @mrc-118
+  @mrc-118 @zap
   Scenario: Clicking on back button after changing the distributions amount
     Then I am presented with change link next to the distribution amount
     And I can validate my distribution amount as "£50,000"
