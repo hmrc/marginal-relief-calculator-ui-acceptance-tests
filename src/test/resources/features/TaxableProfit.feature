@@ -1,4 +1,4 @@
-Feature: Taxable profit page- Validations
+Feature:Taxable Profit - Validations
 
   Background:
     Given Marginal Relief Calculator is launched

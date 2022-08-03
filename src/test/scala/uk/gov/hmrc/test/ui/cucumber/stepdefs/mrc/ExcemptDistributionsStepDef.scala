@@ -60,11 +60,19 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
   Then("""I can validate my distribution amount as {string}""") { (distributionsAmount: String) =>
     CheckYourAnswersPage.verifyDistributionsValue(distributionsAmount)
   }
+  Then("I am presented with change link next to the accounting period dates") { () =>
+    CheckYourAnswersPage.changeLinkForAccountingPeriod()
+  }
 
+  Then("""I can validate my accounting period dates as {string}""") { (AccountingPeriod: String) =>
+    CheckYourAnswersPage.verifyAccountingPeriodValue(AccountingPeriod)
+  }
   Then("I click on change link next to the distribution amount") { () =>
     CheckYourAnswersPage.clickOnChangeLinkForDistributions()
   }
-
+  Then("I click on change link next to the accounting period dates") { () =>
+    CheckYourAnswersPage.clickOnChangeLinkForAccPeriod()
+  }
   Then("I am navigated to exempt distributions page") { () =>
     ExcemptDistrubutionsPage.verifyTitle()
   }
