@@ -1,4 +1,4 @@
-Feature: Marginal Relief Calculator - Check your answers page validations
+Feature:Check your answers - Validations
 
   Background:
     Given Marginal Relief Calculator is launched

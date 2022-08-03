@@ -25,6 +25,8 @@ object CheckYourAnswersPage extends BasePage {
     "Check Your Answers - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
   @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd >a") var changeLinkForDist: WebElement = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-summary-list__actions'][1]") var changeLinkForAccPeriod
+    : WebElement                                                                                    = _
   @FindBy(how = How.CSS, using = "div:nth-child(3) > dd") var distributions: WebElement             = _
 
   PageFactory.initElements(driver, this)
@@ -33,6 +35,8 @@ object CheckYourAnswersPage extends BasePage {
     Thread.sleep(4000)
     verifyPageTitle(checkYourAnswers)
   }
+  def changeLinkForAccountingPeriod(): Unit =
+    changeLinkForAccPeriod.isDisplayed
 
   def changeLinkForDistributions(): Unit =
     changeLinkForDist.isDisplayed
@@ -40,7 +44,13 @@ object CheckYourAnswersPage extends BasePage {
   def clickOnChangeLinkForDistributions(): Unit =
     changeLinkForDist.click()
 
+  def clickOnChangeLinkForAccPeriod(): Unit =
+    changeLinkForAccPeriod.click()
+
   def verifyDistributionsValue(distributionsAmount: String): Unit =
+    distributions.getText().contains(distributionsAmount)
+
+  def verifyAccountingPeriodValue(distributionsAmount: String): Unit =
     distributions.getText().contains(distributionsAmount)
 
   def clickOnBackButton(): Unit =

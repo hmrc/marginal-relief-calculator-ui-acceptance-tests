@@ -1,4 +1,4 @@
-Feature: Marginal Relief Calculator - Associated companies validations
+Feature: Associated companies - Validations
 
   Background:
     Given Marginal Relief Calculator is launched

@@ -1,4 +1,4 @@
-Feature: Marginal Relief Calculator - Exempt Distributions page validations
+Feature:Exempt Distributions - Validations
 
   Background:
     Given Marginal Relief Calculator is launched

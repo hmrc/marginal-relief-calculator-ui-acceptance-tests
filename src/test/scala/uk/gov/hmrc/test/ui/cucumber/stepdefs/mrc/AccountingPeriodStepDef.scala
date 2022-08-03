@@ -17,12 +17,15 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage
+import uk.gov.hmrc.test.ui.pages.mrc.{AccountingPeriodPage, ExcemptDistrubutionsPage}
 import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.{accountingPeriodLengthError, accountingPeriodMandatoryFieldError, accountingPeriodMandatoryValueError, errorMessage}
 
 class AccountingPeriodStepDef extends BaseStepDef {
   Then("the user lands on accounting period page") { () =>
     AccountingPeriodPage.verifyTitle
+  }
+  Then("I am navigated to accounting period page") { () =>
+    AccountingPeriodPage.verifyTitle()
   }
 
   When("the accounting period start day is empty") { () =>
