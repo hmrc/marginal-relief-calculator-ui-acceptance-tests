@@ -25,4 +25,24 @@ class CheckYourAnswersStepDef extends BaseStepDef {
     Thread.sleep(2000)
     CheckYourAnswersPage.clickBackLink()
   }
+
+  And("I can see calculate margin relief button enabled") { () =>
+    CheckYourAnswersPage.verifyMRCButtonEnabled()
+  }
+
+  Then("""I can validate accounting period as {string}""") { (accountingPeriod: String) =>
+    CheckYourAnswersPage.verifyAccountingPeriodValue(accountingPeriod)
+  }
+
+  Then("""I can validate profit as {string}""") { (profit: String) =>
+    CheckYourAnswersPage.verifyProfitValue(profit)
+  }
+
+  Then("""I can validate distributions included as {string}""") { (distributions: String) =>
+    CheckYourAnswersPage.verifyDistributionsValue(distributions)
+  }
+
+  Then("""I can validate associated companies as {string}""") { (associatedCompanies: String) =>
+    CheckYourAnswersPage.verifyNoOfAssociatedCompanies(associatedCompanies)
+  }
 }
