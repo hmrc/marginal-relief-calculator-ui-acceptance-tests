@@ -41,7 +41,8 @@ Feature: Accounting Period - Validations
     And the user clicks continue button on accounting period page
     And the user click on back button
     Then the user can see the accounting end period as "30/3/2025"
-@mrc-90
+
+  @mrc-90
   Scenario Outline:Marginal Relief not relevant for accounting period
     When the accounting period start date is provided as "<accountingStartDate>"
     And the accounting period end date is provided as "<accountingEndDate>"
@@ -52,7 +53,8 @@ Feature: Accounting Period - Validations
       | accountingStartDate | accountingEndDate |
       | 01/04/2022          | 31/03/2023        |
       | 01/10/2022          | 28/02/2023        |
-@mrc-90
+
+  @mrc-90
   Scenario Outline:Marginal Relief not relevant for accounting period
     When the accounting period start date is provided as "<accountingStartDate>"
     And the user clicks continue button on accounting period page
@@ -61,7 +63,8 @@ Feature: Accounting Period - Validations
     Examples:
       | accountingStartDate |
       | 01/04/2022          |
-@mrc-90
+
+  @mrc-90
   Scenario Outline:Marginal Relief not relevant for accounting period- Error Page
     When the accounting period start date is provided as "<accountingStartDate>"
     And the accounting period end date is provided as "<accountingEndDate>"
