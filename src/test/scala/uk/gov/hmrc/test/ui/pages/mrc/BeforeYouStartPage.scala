@@ -21,12 +21,15 @@ import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object BeforeYouStartPage extends BasePage {
-
+  val beforeYouStartPage    =
+    "marginal-relief-calculator-frontend - Calculate Marginal Relief for Corporation Tax - GOV.UK"
   val url: String           = "https://www.qa.tax.service.gov.uk/marginal-relief-calculator"
   val mrcBeforeYouStartPage =
     "marginal-relief-calculator-frontend - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
   @FindBy(how = How.XPATH, using = "//a[contains(text(),'Start now')]") var startNowButton: WebElement = _
+  @FindBy(how = How.CLASS_NAME, using = "govuk-breadcrumbs__list") var breadcrumbs: WebElement         = _
+
   PageFactory.initElements(driver, this)
 
   def loadPage = {
@@ -35,7 +38,15 @@ object BeforeYouStartPage extends BasePage {
     verifyPageTitle(mrcBeforeYouStartPage)
   }
 
+  def verifyTitle() =
+    verifyPageTitle(beforeYouStartPage)
+
+  def verifyBreadcrumbs() = {
+    breadcrumbs.getText().contains("Home")
+    breadcrumbs.getText().contains("Corporation Tax")
+    breadcrumbs.getText().contains("Marginal Relief for Corporation Tax")
+  }
+
   def clickOnStartNowButton =
     startNowButton.click()
-
 }

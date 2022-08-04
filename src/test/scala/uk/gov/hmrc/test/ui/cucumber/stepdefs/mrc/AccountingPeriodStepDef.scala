@@ -17,12 +17,12 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.{AccountingPeriodPage, ExcemptDistrubutionsPage}
+import uk.gov.hmrc.test.ui.pages.mrc.{AccountingPeriodPage}
 import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.{accountingPeriodLengthError, accountingPeriodMandatoryFieldError, accountingPeriodMandatoryValueError, errorMessage}
 
 class AccountingPeriodStepDef extends BaseStepDef {
   Then("the user lands on accounting period page") { () =>
-    AccountingPeriodPage.verifyTitle
+    AccountingPeriodPage.verifyTitle()
   }
   Then("I am navigated to accounting period page") { () =>
     AccountingPeriodPage.verifyTitle()
@@ -46,7 +46,7 @@ class AccountingPeriodStepDef extends BaseStepDef {
     errorMessage should be(accountingPeriodLengthError)
   }
   When("the accounting period start date is valid") { () =>
-    AccountingPeriodPage.provideValidAccountingStartDate
+    AccountingPeriodPage.provideValidAccountingStartDate()
   }
   And("""the accounting period start date is provided as {string}""") { (accountingStartDate: String) =>
     AccountingPeriodPage.provideValidAccountingStartDate(accountingStartDate)
@@ -61,18 +61,18 @@ class AccountingPeriodStepDef extends BaseStepDef {
     AccountingPeriodPage.submitPage()
   }
   When("the accounting period greater than one Year") { () =>
-    AccountingPeriodPage.provideInvalidAccountingEndDate
+    AccountingPeriodPage.provideInvalidAccountingEndDate()
     AccountingPeriodPage.submitPage()
   }
   When("the accounting period end date is valid") { () =>
-    AccountingPeriodPage.provideValidAccountingEndDate
+    AccountingPeriodPage.provideValidAccountingEndDate()
     AccountingPeriodPage.submitPage()
   }
   Then("the user should given with an irrelevant accounting period page") { () =>
-    AccountingPeriodPage.validatePageTitle
-    AccountingPeriodPage.validatePageContent
-    AccountingPeriodPage.verifyRestartButton
-    AccountingPeriodPage.verifyReferenceLink
+    AccountingPeriodPage.validatePageTitle()
+    AccountingPeriodPage.validatePageContent()
+    AccountingPeriodPage.verifyRestartButton()
+    AccountingPeriodPage.verifyReferenceLink()
   }
   Then("""the user is displayed with error message {string} for accounting period""") { (errorMessage: String) =>
     AccountingPeriodPage.errorMessage contains errorMessage

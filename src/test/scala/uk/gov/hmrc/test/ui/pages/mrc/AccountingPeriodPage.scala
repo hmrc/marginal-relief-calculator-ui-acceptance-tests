@@ -37,7 +37,8 @@ object AccountingPeriodPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  val mrcHomePage                         = "What are your accounting period dates? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+  val accountingPeriodPage                =
+    "What are your accounting period dates? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
   val mrcHomePageError                    = "Error: What are your accounting period dates? - marginal-relief-calculator-frontend - GOV.UK"
   val accountingPeriodMandatoryValueError = "The Start date must include day"
   val accountingPeriodMandatoryFieldError = "Enter a valid Start date for the accounting period, like 27 3 2023"
@@ -47,7 +48,7 @@ object AccountingPeriodPage extends BasePage {
     "The accounting period End date must be less than or equal to a full calendar year from the Start date"
 
   def verifyTitle() =
-    verifyPageTitle(mrcHomePage)
+    verifyPageTitle(accountingPeriodPage)
 
   def provideEmptyAccountingStartDay(): Unit = {
     accountingStartDay.sendKeys("")

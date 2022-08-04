@@ -22,7 +22,7 @@ Feature:Edit Accounting Period - Validations
     Then the user clicks continue button on associated companies page
     Then user is presented with Check Your Answers page
 
-  @mrc-115
+  @mrc-115 @wip
   Scenario: Edit Accounting Period
     Then I am presented with change link next to the accounting period dates
     And I can validate my accounting period dates as "1 Apr 2023 to 31 Mar 2024"
@@ -42,7 +42,7 @@ Feature:Edit Accounting Period - Validations
     Then user is presented with Check Your Answers page
     And I can validate my accounting period dates as "1 Jan 2023 to 31 Dec 2023"
 
-  @nrc-115
+  @mrc-115 @wip
   Scenario Outline: Edit Accounting Period-Invalid end date
     Then I am presented with change link next to the accounting period dates
     And I can validate my accounting period dates as "1 Apr 2023 to 31 Mar 2024"
@@ -67,5 +67,5 @@ Feature:Edit Accounting Period - Validations
     Then the user clicks continue button on accounting period page
     Then the user is displayed with error message "<errorMessage>" for accounting period
     Examples:
-    |errorMessage|
-    | The accounting period End date must be less than or equal to a full calendar year from the Start date |
+      | errorMessage                                                                                          |
+      | The accounting period End date must be less than or equal to a full calendar year from the Start date |
