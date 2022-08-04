@@ -42,7 +42,7 @@ Feature:Edit Accounting Period - Validations
     Then user is presented with Check Your Answers page
     And I can validate my accounting period dates as "1 Jan 2023 to 31 Dec 2023"
 
-  @mrc-115
+  @mrc-115 @a11y
   Scenario Outline: Edit Accounting Period-Invalid end date
     Then I am presented with change link next to the accounting period dates
     And I can validate my accounting period dates as "1 Apr 2023 to 31 Mar 2024"
