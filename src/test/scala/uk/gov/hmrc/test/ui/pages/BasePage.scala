@@ -21,6 +21,8 @@ import org.openqa.selenium.{By, WebElement}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
+import java.util.List
+
 trait BasePage extends BrowserDriver with Matchers {
 
   @FindBy(how = How.XPATH, using = "//a[text()='Back']") var backButton: WebElement = _
@@ -33,6 +35,19 @@ trait BasePage extends BrowserDriver with Matchers {
       throw PageNotFoundException(
         s"Expected '$pageTitle' page, but found '${driver.getTitle}' page."
       )
+
+  def verifyLinkText(linkText: String): Unit = {
+    var elements: List[WebElement] = driver.findElements(By.tagName("a"))
+    print(elements.size())
+    print(elements.get(0).getText)
+
+    var linkFound = false
+    for (i <- 0 until elements.size())
+      if (elements.get(i).getText.contains(linkText))
+        linkFound = true
+
+    assert(linkFound)
+  }
 
   def clickBackLink(): Unit =
     backButton.click()

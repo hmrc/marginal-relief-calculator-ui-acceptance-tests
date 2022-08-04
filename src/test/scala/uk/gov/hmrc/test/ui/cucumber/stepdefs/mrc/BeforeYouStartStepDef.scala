@@ -16,14 +16,30 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
+import io.cucumber.datatable.DataTable
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.BeforeYouStartPage
+import uk.gov.hmrc.test.ui.pages.mrc.BeforeYouStartPage.verifyLinkText
 
 class BeforeYouStartStepDef extends BaseStepDef {
 
   Given("Marginal Relief Calculator is launched") { () =>
     BeforeYouStartPage.loadPage
   }
+
+  Then("I am landed on before you start page") { () =>
+    BeforeYouStartPage.verifyTitle()
+  }
+
+  And("I can see the breadcrumbs on the page") { () =>
+    BeforeYouStartPage.verifyBreadcrumbs()
+  }
+
+  And("""I can verify the link present on screen""") { (linkText: DataTable) =>
+    for (i <- 0 until linkText.asList().size())
+      verifyLinkText(linkText.asList().get(i))
+  }
+
   And("the user clicks on start now button") { () =>
     BeforeYouStartPage.clickOnStartNowButton
   }

@@ -18,32 +18,32 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.AssociatedCompaniesPage.titleMessage
-import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, CheckYourAnswersPage, ResultPage}
+import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, CheckYourAnswersPage}
 
 class AssociatedCompaniesStepDef extends BaseStepDef {
   Then("""display the {string} on associated company""") { (message: String) =>
     titleMessage should be(message)
   }
   Then("user is landed on associated companies page") { () =>
-    AssociatedCompaniesPage.verifyPageTitle
+    AssociatedCompaniesPage.verifyPageTitle()
   }
 
   And("user can see the options yes and No as not selected") { () =>
-    AssociatedCompaniesPage.verifyYesAndNoOptionsPresent
-    AssociatedCompaniesPage.verifyYesAndNoOptionsNotSelected
+    AssociatedCompaniesPage.verifyYesAndNoOptionsPresent()
+    AssociatedCompaniesPage.verifyYesAndNoOptionsNotSelected()
   }
 
   When("""the user selects option {string} for the question Did your company have any active associated companies?""") {
     (option: String) =>
       if (option.equalsIgnoreCase("yes")) {
-        AssociatedCompaniesPage.selectOptionYes
+        AssociatedCompaniesPage.selectOptionYes()
       } else {
-        AssociatedCompaniesPage.selectOptionNo
+        AssociatedCompaniesPage.selectOptionNo()
       }
   }
 
   And("user is presented with input field for associated companies") { () =>
-    AssociatedCompaniesPage.isAssociatedCompaniesCountInputDisplayed
+    AssociatedCompaniesPage.isAssociatedCompaniesCountInputDisplayed()
   }
 
   And("""user inputs a valid number as {string} associated companies""") { (InvalidAC: String) =>
@@ -52,7 +52,7 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
   }
 
   Then("the user clicks continue button on associated companies page") { () =>
-    AssociatedCompaniesPage.clickOnContinue
+    AssociatedCompaniesPage.clickOnContinue()
   }
 
   Then("user is presented with Check Your Answers page") { () =>
