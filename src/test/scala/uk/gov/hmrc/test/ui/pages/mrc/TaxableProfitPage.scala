@@ -25,10 +25,12 @@ object TaxableProfitPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  def provideProfit(profitValue: String) =
+  def provideProfit(profitValue: String) = {
+    inputProfitValue.clear()
     inputProfitValue.sendKeys(profitValue)
+  }
 
-  def submitaccountingPeriodInformation: Unit = {
+  def submitAccountingPeriodInformation(): Unit = {
     Thread.sleep(1000)
     submitPage()
   }
