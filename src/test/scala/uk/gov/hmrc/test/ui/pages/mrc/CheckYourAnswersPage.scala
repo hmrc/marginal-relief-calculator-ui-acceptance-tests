@@ -24,10 +24,9 @@ object CheckYourAnswersPage extends BasePage {
   val checkYourAnswers =
     "Check Your Answers - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd >a") var changeLinkForDist: WebElement = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-summary-list__actions'][1]") var changeLinkForAccPeriod
-    : WebElement                                                                                    = _
-  @FindBy(how = How.CSS, using = "div:nth-child(3) > dd") var distributions: WebElement             = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd >a") var changeLinkForDist: WebElement      = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd >a") var changeLinkForAccPeriod: WebElement = _
+  @FindBy(how = How.CSS, using = "div:nth-child(3) > dd") var distributions: WebElement                  = _
 
   PageFactory.initElements(driver, this)
 
