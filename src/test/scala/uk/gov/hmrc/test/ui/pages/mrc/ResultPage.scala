@@ -16,13 +16,21 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ResultPage extends BasePage {
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-panel__body']") var panelMessage: WebElement = _
+
+  PageFactory.initElements(driver, this)
 
   def verifyPageTitle: Unit = {
     Thread.sleep(4000)
     assert(driver.getTitle().contains("resultsPage"))
   }
-
+  def greenBoxMessage: String = {
+    Thread.sleep(1000)
+    panelMessage.getText
+  }
 }
