@@ -22,6 +22,14 @@ Feature:Check your answers - Validations
     Then the user clicks continue button on associated companies page
     Then user is presented with Check Your Answers page
 
+  @mrc-39
+  Scenario: Validate all values on check your answers page
+    Then I can validate accounting period as "31/03/2024 to 30/03/2025"
+    Then I can validate profit as "50,000"
+    Then I can validate distributions included as "50,000"
+    Then I can validate associated companies as "10"
+    And I can see calculate margin relief button enabled
+
 
   @mrc-118
   Scenario: Clicking on back button
