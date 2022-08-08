@@ -8,7 +8,6 @@ ENV=$2
 if [ -z "$BROWSER_TYPE" ]; then
     echo "BROWSER_TYPE value not set, defaulting to $DEFAULT_BROWSER..."
     echo ""
-
 fi
 
 # NOTE: It is not required to proxy every journey test via ZAP. The intention of proxying a test through ZAP is to expose all the
