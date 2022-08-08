@@ -17,16 +17,10 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.CheckYourAnswersPage
+import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.greenBoxMessage
 
-class CheckYourAnswersStepDef extends BaseStepDef {
-
-  When("the user clicks on back button") { () =>
-    Thread.sleep(2000)
-    CheckYourAnswersPage.clickBackLink()
-  }
-  When("the user clicks on calculate marginal relief button on check you answers page") { () =>
-    Thread.sleep(1000)
-    CheckYourAnswersPage.clickOnCalculateMarginalReliefButton()
+class ResultsStepDef extends BaseStepDef {
+  Then("""display the green box of type {string}""") { (panelBody: String) =>
+    greenBoxMessage should be(panelBody)
   }
 }
