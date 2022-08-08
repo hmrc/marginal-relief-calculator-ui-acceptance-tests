@@ -45,8 +45,8 @@ object AssociatedCompaniesPage extends BasePage {
   }
 
   def verifyYesAndNoOptionsNotSelected(): Unit = {
-    yesOption.isSelected()
-    noOption.isSelected()
+    assert(!yesOption.isSelected())
+    assert(!noOption.isSelected())
   }
 
   def selectOptionYes(): Unit = {
