@@ -21,7 +21,11 @@ import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ResultPage extends BasePage {
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-panel__body']") var panelMessage: WebElement = _
+  val resultsPage =
+    "Marginal Relief Results - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+
+  @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-panel__body']") var panelMessage: WebElement            = _
 
   PageFactory.initElements(driver, this)
 
@@ -29,6 +33,12 @@ object ResultPage extends BasePage {
     Thread.sleep(4000)
     assert(driver.getTitle().contains("resultsPage"))
   }
+
+  def clickRunAnotherCalculation: Unit     =
+    runAnotherCalculationButton.click()
+  def runAnotherCalculationIsEnabled: Unit =
+    runAnotherCalculationButton.isEnabled()
+
   def greenBoxMessage: String = {
     Thread.sleep(1000)
     panelMessage.getText
