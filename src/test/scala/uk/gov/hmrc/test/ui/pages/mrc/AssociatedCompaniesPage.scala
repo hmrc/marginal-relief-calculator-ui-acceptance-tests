@@ -72,4 +72,7 @@ object AssociatedCompaniesPage extends BasePage {
     Thread.sleep(3000)
     errorMsg.getText
   }
+
+  def associatedCompaniesCountAsNull(): Unit =
+    inputAssociatedCompaniesCount.getAttribute("value").contains("")
 }

@@ -70,4 +70,14 @@ object ExcemptDistrubutionsPage extends BasePage {
     submitPage()
   }
 
+  def verifyYesNoNotSelected: Unit = {
+    assert(!yesOption.isSelected)
+    assert(!noOption.isSelected)
+  }
+
+  def verifyYesNoNotSelectedForIncludeInProfits: Unit = {
+    assert(!yesForIncludeInProfits.isSelected)
+    assert(!noForIncludeInProfits.isSelected)
+  }
+
 }

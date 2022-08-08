@@ -130,4 +130,14 @@ object AccountingPeriodPage extends BasePage {
     Thread.sleep(3000)
     errorMsg.getText
   }
+
+  def VerifyAccountingPeriodsDatesAsNUll(): Unit = {
+    accountingStartDay.getAttribute("value").contains("")
+    accountingStartMonth.getAttribute("value").contains("")
+    accountingStartYear.getAttribute("value").contains("")
+
+    accountingEndDay.getAttribute("value").contains("")
+    accountingEndMonth.getAttribute("value").contains("")
+    accountingEndYear.getAttribute("value").contains("")
+  }
 }

@@ -31,7 +31,31 @@ Feature: Run another calculation - Validations
     When I click on run another calculation button
     Then I am landed on before you start page
     When the user clicks on start now button
-    Then I can see accounting period start and end dates as empty
+    Then I can see accounting period start and end dates as null
     When the accounting period start date is provided as "31/03/2023"
-    And the accounting period end date is provided as "30/03/2024"
-    Then the user clicks continue button on accounting period page
+    When the user clicks continue button on accounting period page
+    Then I can see companies taxable profit as null
+    And the profit is "50000"
+    When the user clicks continue button on taxable profit page
+    Then I am navigated to exempt distributions page
+    And I can see options yes,no are not selected
+    And the user selects option "Yes" for the question Did your company receive any distributions?
+    And the user clicks continue button on distributions page
+    Then I am navigated to Second exempt distributions page
+    And I can see options yes,no are not selected on Second exempt distributions page
+    And the user selects option "Yes" for the question Do any distributions need to be included with your profits?
+    Then the user is provided with input field to provide distributions
+    And the user provides "£50,000" as distributions
+    And the user clicks continue button on distributions page
+    Then user is landed on associated companies page
+    And user can see the options yes and No as not selected
+    When the user selects option "yes" for the question Did your company have any active associated companies?
+    Then user is presented with input field for associated companies
+    And user is presented with input field for associated companies with value as null
+    And user inputs a valid number as "2" associated companies
+    Then the user clicks continue button on associated companies page
+    Then user is presented with Check Your Answers page
+    And I can see calculate margin relief button enabled
+    When I can click on calculate margin relief button
+    Then I am navigated to MRC results page
+    And I can see run another calculation button enabled

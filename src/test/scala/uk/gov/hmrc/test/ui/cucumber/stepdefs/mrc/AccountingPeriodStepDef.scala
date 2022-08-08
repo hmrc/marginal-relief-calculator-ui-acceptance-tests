@@ -78,8 +78,8 @@ class AccountingPeriodStepDef extends BaseStepDef {
     AccountingPeriodPage.errorMessage contains errorMessage
   }
 
-  Then("I can see accounting period start and end dates as empty") { () =>
-    //AccountingPeriodPage.VerifyAccountingPeriodsDatesAsNUll() //TODO
+  Then("I can see accounting period start and end dates as null") { () =>
+    AccountingPeriodPage.VerifyAccountingPeriodsDatesAsNUll()
   }
 
 }
