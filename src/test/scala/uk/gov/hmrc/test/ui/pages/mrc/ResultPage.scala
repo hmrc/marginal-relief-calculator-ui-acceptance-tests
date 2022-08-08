@@ -19,22 +19,28 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
-import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.driver
 
 object ResultPage extends BasePage {
   val resultsPage =
     "Marginal Relief Results - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-panel__body']") var panelMessage: WebElement            = _
 
   PageFactory.initElements(driver, this)
+
   def verifyPageTitle: Unit = {
-    Thread.sleep(2000)
-    assert(driver.getTitle().contains(resultsPage))
+    Thread.sleep(4000)
+    assert(driver.getTitle().contains("resultsPage"))
   }
 
   def clickRunAnotherCalculation: Unit     =
     runAnotherCalculationButton.click()
   def runAnotherCalculationIsEnabled: Unit =
     runAnotherCalculationButton.isEnabled()
+
+  def greenBoxMessage: String = {
+    Thread.sleep(1000)
+    panelMessage.getText
+  }
 }

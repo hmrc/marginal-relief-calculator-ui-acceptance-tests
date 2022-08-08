@@ -26,6 +26,10 @@ class CheckYourAnswersStepDef extends BaseStepDef {
     Thread.sleep(2000)
     CheckYourAnswersPage.clickBackLink()
   }
+  When("the user clicks on calculate marginal relief button on check you answers page") { () =>
+    Thread.sleep(500)
+    CheckYourAnswersPage.clickMRCButton()
+  }
 
   And("I can see calculate margin relief button enabled") { () =>
     CheckYourAnswersPage.verifyMRCButtonEnabled()

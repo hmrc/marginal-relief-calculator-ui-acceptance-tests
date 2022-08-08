@@ -27,7 +27,6 @@ object CheckYourAnswersPage extends BasePage {
 
   @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd >a") var changeLinkForDist: WebElement                    = _
   @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd >a") var changeLinkForAccPeriod: WebElement               = _
-  // @FindBy(how = How.CSS, using = "div:nth-child(3) > dd") var distributions: WebElement                  = _
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var calculateMRCButton: WebElement                   = _
   @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd.govuk-summary-list__value") var accountingPeriodDates
     : WebElement                                                                                                       = _
