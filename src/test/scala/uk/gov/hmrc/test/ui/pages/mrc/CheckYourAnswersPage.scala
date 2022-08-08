@@ -70,7 +70,12 @@ object CheckYourAnswersPage extends BasePage {
   def clickOnBackButton(): Unit =
     backButton.click()
 
-  def verifyMRCButtonEnabled(): Unit =
-    calculateMRCButton.isEnabled
+  def verifyMRCButtonEnabled(): Unit = {
+    calculateMRCButton.isEnabled()
+    Thread.sleep(10000)
+  }
+
+  def clickMRCButton(): Unit =
+    calculateMRCButton.click()
 
 }

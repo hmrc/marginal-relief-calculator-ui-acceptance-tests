@@ -77,4 +77,9 @@ class AccountingPeriodStepDef extends BaseStepDef {
   Then("""the user is displayed with error message {string} for accounting period""") { (errorMessage: String) =>
     AccountingPeriodPage.errorMessage contains errorMessage
   }
+
+  Then("I can see accounting period start and end dates as empty") { () =>
+    //AccountingPeriodPage.VerifyAccountingPeriodsDatesAsNUll() //TODO
+  }
+
 }
