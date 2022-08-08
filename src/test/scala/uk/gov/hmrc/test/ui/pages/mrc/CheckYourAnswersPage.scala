@@ -21,13 +21,20 @@ import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object CheckYourAnswersPage extends BasePage {
+
   val checkYourAnswers =
     "Check Your Answers - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd >a") var changeLinkForDist: WebElement            = _
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd >a") var changeLinkForAccPeriod: WebElement       = _
-  @FindBy(how = How.CSS, using = "div:nth-child(3) > dd") var distributions: WebElement                        = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-button']") var calculateMarginalReliefButton: WebElement = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd >a") var changeLinkForDist: WebElement                    = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd >a") var changeLinkForAccPeriod: WebElement               = _
+  @FindBy(how = How.CSS, using = "#main-content > div > div > a") var calculateMRCButton: WebElement                   = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd.govuk-summary-list__value") var accountingPeriodDates
+    : WebElement                                                                                                       = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(2) > dd.govuk-summary-list__value") var profit: WebElement        = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd.govuk-summary-list__value") var distributions: WebElement =
+    _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd.govuk-summary-list__value") var NoOfAssociatedCompanies
+    : WebElement                                                                                                       = _
 
   PageFactory.initElements(driver, this)
 
@@ -50,13 +57,24 @@ object CheckYourAnswersPage extends BasePage {
   def verifyDistributionsValue(distributionsAmount: String): Unit =
     distributions.getText().contains(distributionsAmount)
 
-  def verifyAccountingPeriodValue(distributionsAmount: String): Unit =
-    distributions.getText().contains(distributionsAmount)
+  def verifyAccountingPeriodValue(AccountingPeriod: String): Unit =
+    distributions.getText().contains(AccountingPeriod)
+
+  def verifyProfitValue(profitValue: String): Unit =
+    profit.getText().contains(profitValue)
+
+  def verifyNoOfAssociatedCompanies(associatedCompanies: String): Unit =
+    NoOfAssociatedCompanies.getText().contains(associatedCompanies)
 
   def clickOnBackButton(): Unit =
     backButton.click()
 
-  def clickOnCalculateMarginalReliefButton(): Unit =
-    calculateMarginalReliefButton.click()
+  def verifyMRCButtonEnabled(): Unit = {
+    calculateMRCButton.isEnabled()
+    Thread.sleep(10000)
+  }
+
+  def clickMRCButton(): Unit =
+    calculateMRCButton.click()
 
 }

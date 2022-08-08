@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.CheckYourAnswersPage
+import uk.gov.hmrc.test.ui.pages.mrc.ResultPage
 
 class CheckYourAnswersStepDef extends BaseStepDef {
 
@@ -26,7 +27,43 @@ class CheckYourAnswersStepDef extends BaseStepDef {
     CheckYourAnswersPage.clickBackLink()
   }
   When("the user clicks on calculate marginal relief button on check you answers page") { () =>
-    Thread.sleep(1000)
-    CheckYourAnswersPage.clickOnCalculateMarginalReliefButton()
+    Thread.sleep(500)
+    CheckYourAnswersPage.clickMRCButton()
+  }
+
+  And("I can see calculate margin relief button enabled") { () =>
+    CheckYourAnswersPage.verifyMRCButtonEnabled()
+  }
+
+  When("I can click on calculate margin relief button") { () =>
+    CheckYourAnswersPage.clickMRCButton()
+  }
+
+  Then("""I can validate accounting period as {string}""") { (accountingPeriod: String) =>
+    CheckYourAnswersPage.verifyAccountingPeriodValue(accountingPeriod)
+  }
+
+  Then("""I can validate profit as {string}""") { (profit: String) =>
+    CheckYourAnswersPage.verifyProfitValue(profit)
+  }
+
+  Then("I am navigated to MRC results page") { () =>
+    ResultPage.verifyPageTitle
+  }
+
+  Then("I can see run another calculation button enabled") { () =>
+    ResultPage.runAnotherCalculationIsEnabled
+  }
+
+  Then("I click on run another calculation button") { () =>
+    ResultPage.clickRunAnotherCalculation
+  }
+
+  Then("""I can validate distributions included as {string}""") { (distributions: String) =>
+    CheckYourAnswersPage.verifyDistributionsValue(distributions)
+  }
+
+  Then("""I can validate associated companies as {string}""") { (associatedCompanies: String) =>
+    CheckYourAnswersPage.verifyNoOfAssociatedCompanies(associatedCompanies)
   }
 }
