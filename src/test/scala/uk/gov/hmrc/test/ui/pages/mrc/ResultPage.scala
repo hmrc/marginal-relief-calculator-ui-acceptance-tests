@@ -29,10 +29,8 @@ object ResultPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  def verifyPageTitle: Unit = {
-    Thread.sleep(4000)
-    assert(driver.getTitle().contains("resultsPage"))
-  }
+  def verifyPageTitle: Unit =
+    assert(driver.getTitle().contains(resultsPage))
 
   def clickRunAnotherCalculation: Unit     =
     runAnotherCalculationButton.click()
