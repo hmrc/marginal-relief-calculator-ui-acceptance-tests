@@ -2,10 +2,12 @@
 DEFAULT_BROWSER=chrome
 BROWSER_TYPE=$1
 ENV=$2
+tags="not @wip and not @ignore"
 
 if [ -z "$BROWSER_TYPE" ]; then
     echo "BROWSER_TYPE value not set, defaulting to $DEFAULT_BROWSER..."
     echo ""
+    tags="not @wip and not @ignore"
 fi
 
 # Scalafmt checks have been separated from the test command to avoid OutOfMemoryError in Jenkins
