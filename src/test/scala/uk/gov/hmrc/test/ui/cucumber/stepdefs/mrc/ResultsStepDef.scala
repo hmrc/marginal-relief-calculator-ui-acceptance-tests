@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.ResultPage
-import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{corporationTaxLiabilityBody, corporationTaxLiabilityHeader, corporationTaxLiabilityTable, greenBoxMessage}
+import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{corporationTaxLiabilityBody, corporationTaxLiabilityHeader, greenBoxMessage}
 
 class ResultsStepDef extends BaseStepDef {
   Then("""display the green box of type {string}""") { (panelBody: String) =>
