@@ -36,4 +36,8 @@ class TaxableProfitStepDef extends BaseStepDef {
   And("the user clicks continue button on taxable profit page") { () =>
     TaxableProfitPage.submitPage()
   }
+
+  Then("I can see companies taxable profit as null") { () =>
+    TaxableProfitPage.verifyCompaniesProfitAsNull()
+  }
 }

@@ -38,10 +38,8 @@ object CheckYourAnswersPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  def verifyPageTitle: Unit = {
-    Thread.sleep(4000)
+  def verifyPageTitle: Unit                 =
     verifyPageTitle(checkYourAnswers)
-  }
   def changeLinkForAccountingPeriod(): Unit =
     changeLinkForAccPeriod.isDisplayed
 
@@ -69,10 +67,8 @@ object CheckYourAnswersPage extends BasePage {
   def clickOnBackButton(): Unit =
     backButton.click()
 
-  def verifyMRCButtonEnabled(): Unit = {
+  def verifyMRCButtonEnabled(): Unit =
     calculateMRCButton.isEnabled()
-    Thread.sleep(10000)
-  }
 
   def clickMRCButton(): Unit =
     calculateMRCButton.click()

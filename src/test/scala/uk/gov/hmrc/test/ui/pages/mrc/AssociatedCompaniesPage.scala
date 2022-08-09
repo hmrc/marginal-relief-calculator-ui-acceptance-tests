@@ -45,8 +45,8 @@ object AssociatedCompaniesPage extends BasePage {
   }
 
   def verifyYesAndNoOptionsNotSelected(): Unit = {
-    yesOption.isSelected()
-    noOption.isSelected()
+    assert(!yesOption.isSelected())
+    assert(!noOption.isSelected())
   }
 
   def selectOptionYes(): Unit = {
@@ -72,4 +72,7 @@ object AssociatedCompaniesPage extends BasePage {
     Thread.sleep(3000)
     errorMsg.getText
   }
+
+  def associatedCompaniesCountAsNull(): Unit =
+    inputAssociatedCompaniesCount.getAttribute("value").contains("")
 }

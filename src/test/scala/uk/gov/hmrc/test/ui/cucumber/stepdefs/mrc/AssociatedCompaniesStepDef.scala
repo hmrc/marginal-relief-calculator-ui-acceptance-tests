@@ -63,4 +63,8 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
     AssociatedCompaniesPage.errorMessage contains message
   }
 
+  And("user is presented with input field for associated companies with value as null") { () =>
+    AssociatedCompaniesPage.associatedCompaniesCountAsNull()
+  }
+
 }

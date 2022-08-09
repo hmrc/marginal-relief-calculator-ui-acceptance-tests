@@ -84,4 +84,12 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
   Then("""I change the distributions value to {string}""") { (distributions: String) =>
     ExcemptDistrubutionsPage.provideDistributions(distributions)
   }
+
+  Then("I can see options yes,no are not selected") { () =>
+    ExcemptDistrubutionsPage.verifyYesNoNotSelected
+  }
+
+  Then("I can see options yes,no are not selected on Second exempt distributions page") { () =>
+    ExcemptDistrubutionsPage.verifyYesNoNotSelectedForIncludeInProfits
+  }
 }

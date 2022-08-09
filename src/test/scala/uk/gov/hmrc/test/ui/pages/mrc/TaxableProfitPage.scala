@@ -34,4 +34,7 @@ object TaxableProfitPage extends BasePage {
     Thread.sleep(1000)
     submitPage()
   }
+
+  def verifyCompaniesProfitAsNull(): Unit =
+    inputProfitValue.getAttribute("value").contains("")
 }

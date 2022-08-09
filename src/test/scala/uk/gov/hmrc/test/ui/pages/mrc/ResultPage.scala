@@ -26,21 +26,31 @@ object ResultPage extends BasePage {
 
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-panel__body']") var panelMessage: WebElement            = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l']") var ctAmount: WebElement                  = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body']") var ctBody: WebElement                         = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-table']") var ctTable: WebElement                       = _
 
   PageFactory.initElements(driver, this)
 
-  def verifyPageTitle: Unit = {
-    Thread.sleep(4000)
-    assert(driver.getTitle().contains("resultsPage"))
-  }
+  def verifyPageTitle: Unit =
+    assert(driver.getTitle().contains(resultsPage))
 
-  def clickRunAnotherCalculation: Unit     =
+  def clickRunAnotherCalculation: Unit      =
     runAnotherCalculationButton.click()
-  def runAnotherCalculationIsEnabled: Unit =
+  def runAnotherCalculationIsEnabled: Unit  =
     runAnotherCalculationButton.isEnabled()
 
   def greenBoxMessage: String = {
     Thread.sleep(1000)
     panelMessage.getText
   }
+  def corporationTaxLiabilityHeader: String =
+    ctAmount.getText
+
+  def corporationTaxLiabilityBody: String =
+    ctBody.getText
+
+  def verifyTable: Unit =
+    ctTable.isDisplayed
+
 }
