@@ -86,10 +86,10 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
   }
 
   Then("I can see options yes,no are not selected") { () =>
-    ExcemptDistrubutionsPage.verifyYesNoNotSelected
+    ExcemptDistrubutionsPage.verifyYesNoNotSelected()
   }
 
   Then("I can see options yes,no are not selected on Second exempt distributions page") { () =>
-    ExcemptDistrubutionsPage.verifyYesNoNotSelectedForIncludeInProfits
+    ExcemptDistrubutionsPage.verifyYesNoNotSelectedForIncludeInProfits()
   }
 }

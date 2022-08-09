@@ -16,9 +16,11 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
+
+import java.util.List
 
 object ExcemptDistrubutionsPage extends BasePage {
   val distributionsPageTitle  =
@@ -31,6 +33,13 @@ object ExcemptDistrubutionsPage extends BasePage {
   @FindBy(how = How.ID, using = "value_1") var noOption: WebElement                                     = _
   @FindBy(how = How.ID, using = "distributionsIncluded") var yesForIncludeInProfits: WebElement         = _
   @FindBy(how = How.ID, using = "distributionsIncluded-2") var noForIncludeInProfits: WebElement        = _
+
+  @FindBy(how = How.CSS, using = "#value_0:checked") var yesOptionChecked: List[WebElement]                            = _
+  @FindBy(how = How.CSS, using = "#value_1:checked") var noOptionChecked: List[WebElement]                             = _
+  @FindBy(how = How.CSS, using = "#distributionsIncluded:checked") var yesForIncludeInProfitsChecked: List[WebElement] =
+    _
+  @FindBy(how = How.CSS, using = "#distributionsIncluded-2:checked") var noForIncludeInProfitsChecked
+    : List[WebElement]                                                                                                 = _
 
   PageFactory.initElements(driver, this)
 
@@ -70,14 +79,15 @@ object ExcemptDistrubutionsPage extends BasePage {
     submitPage()
   }
 
-  def verifyYesNoNotSelected: Unit = {
-    assert(!yesOption.isSelected)
-    assert(!noOption.isSelected)
+  def verifyYesNoNotSelected(): Unit = {
+    val elementsYes: List[WebElement] = driver.findElements(By.cssSelector("#value_0:checked"))
+    val elementsNo: List[WebElement]  = driver.findElements(By.cssSelector("#value_1:checked"))
+    assert(((elementsYes.size === 0) && (elementsNo.size === 0)) === true)
   }
 
-  def verifyYesNoNotSelectedForIncludeInProfits: Unit = {
-    assert(!yesForIncludeInProfits.isSelected)
-    assert(!noForIncludeInProfits.isSelected)
+  def verifyYesNoNotSelectedForIncludeInProfits(): Unit = {
+    val elementsYes: List[WebElement] = driver.findElements(By.cssSelector("#distributionsIncluded:checked"))
+    val elementsNo: List[WebElement]  = driver.findElements(By.cssSelector("#distributionsIncluded-2:checked"))
+    assert(((elementsYes.size === 0) && (elementsNo.size === 0)) === true)
   }
-
 }
