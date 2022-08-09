@@ -17,10 +17,20 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.greenBoxMessage
+import uk.gov.hmrc.test.ui.pages.mrc.ResultPage
+import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{corporationTaxLiabilityBody, corporationTaxLiabilityHeader, corporationTaxLiabilityTable, greenBoxMessage}
 
 class ResultsStepDef extends BaseStepDef {
   Then("""display the green box of type {string}""") { (panelBody: String) =>
     greenBoxMessage should be(panelBody)
+  }
+  Then("""the Corporation Tax liability heading is displayed as {string}""") { (ctAmount: String) =>
+    corporationTaxLiabilityHeader should be(ctAmount)
+  }
+  Then("""the Corporation Tax liability body is displayed as {string}""") { (ctAmount: String) =>
+    corporationTaxLiabilityBody should be(ctAmount)
+  }
+  Then("the Corporation Tax liability table is displayed") { () =>
+    ResultPage.verifyTable;
   }
 }

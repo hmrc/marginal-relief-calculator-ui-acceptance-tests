@@ -83,3 +83,18 @@ Feature:Results - Validations
     Then user is presented with Check Your Answers page
     And the user clicks on calculate marginal relief button on check you answers page
     Then display the green box of type "£1,929.93"
+
+  @mrc-42
+  Scenario: CT liability payable- MRC Dual year
+    When the profit is "70000"
+    Then the user clicks continue button on taxable profit page
+    And the user selects option "no" for the question Did your company receive any distributions?
+    And the user clicks continue button on distributions page
+    Then user is landed on associated companies page
+    When the user selects option "no" for the question Did your company have any active associated companies?
+    Then the user clicks continue button on associated companies page
+    Then user is presented with Check Your Answers page
+    And the user clicks on calculate marginal relief button on check you answers page
+    Then the Corporation Tax liability heading is displayed as "£14,430.13"
+    And the Corporation Tax liability body is displayed as "Reduced from £16,464.38 after £2,034.25 Marginal Relief"
+    And the Corporation Tax liability table is displayed
