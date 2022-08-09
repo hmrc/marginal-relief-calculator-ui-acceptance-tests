@@ -95,6 +95,8 @@ Feature:Results - Validations
     Then the user clicks continue button on associated companies page
     Then user is presented with Check Your Answers page
     And the user clicks on calculate marginal relief button on check you answers page
+    Then display the green box of type "£2,034.25"
     Then the Corporation Tax liability heading is displayed as "£14,430.13"
     And the Corporation Tax liability body is displayed as "Reduced from £16,464.38 after £2,034.25 Marginal Relief"
     And the Corporation Tax liability table is displayed
+

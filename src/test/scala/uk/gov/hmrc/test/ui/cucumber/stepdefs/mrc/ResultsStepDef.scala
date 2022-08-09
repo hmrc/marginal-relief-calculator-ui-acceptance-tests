@@ -32,5 +32,6 @@ class ResultsStepDef extends BaseStepDef {
   }
   Then("the Corporation Tax liability table is displayed") { () =>
     ResultPage.verifyTable;
+    ResultPage.verifyRows;
   }
 }
