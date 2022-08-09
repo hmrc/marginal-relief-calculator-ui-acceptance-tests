@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.WebElement
+import org.openqa.selenium.{By, WebElement}
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
@@ -29,6 +29,12 @@ object ResultPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l']") var ctAmount: WebElement                  = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body']") var ctBody: WebElement                         = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-table']") var ctTable: WebElement                       = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table/thead/tr/th[4]") var ctThirdRow
+    : WebElement                                                                                              = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table/thead/tr/th[2]") var ctFirstRow
+    : WebElement                                                                                              = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table/thead/tr/th[3]") var ctSecondRow
+    : WebElement                                                                                              = _
 
   PageFactory.initElements(driver, this)
 
@@ -53,4 +59,8 @@ object ResultPage extends BasePage {
   def verifyTable: Unit =
     ctTable.isDisplayed
 
+  def verifyRows: Unit =
+    ctFirstRow.getText.contains("2022 to 2023")
+  ctSecondRow.getText.contains("2022 to 2023")
+  ctThirdRow.getText.contains("Overall")
 }
