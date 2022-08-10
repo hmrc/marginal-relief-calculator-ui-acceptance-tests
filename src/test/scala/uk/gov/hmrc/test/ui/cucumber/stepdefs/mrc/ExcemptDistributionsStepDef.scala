@@ -50,7 +50,7 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
   }
 
   Then("""the user is displayed with error message {string} for distributions""") { (message: String) =>
-    AssociatedCompaniesPage.errorMessage contains message
+    ExcemptDistrubutionsPage.errorMessage.contains(message)
   }
 
   Then("I am navigated to exempt distributions page") { () =>

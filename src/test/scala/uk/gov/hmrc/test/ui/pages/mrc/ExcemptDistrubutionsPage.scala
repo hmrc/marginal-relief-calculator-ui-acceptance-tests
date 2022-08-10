@@ -19,6 +19,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.mrc.AssociatedCompaniesPage.errorMsg
 
 import java.util.List
 
@@ -90,4 +91,7 @@ object ExcemptDistrubutionsPage extends BasePage {
     val elementsNo: List[WebElement]  = driver.findElements(By.cssSelector("#distributionsIncluded-2:checked"))
     assert(((elementsYes.size === 0) && (elementsNo.size === 0)) === true)
   }
+
+  def errorMessage(): String =
+    errorMsg.getText
 }
