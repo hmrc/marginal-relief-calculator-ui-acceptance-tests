@@ -51,7 +51,7 @@ Feature:Exempt Distributions - Validations
       | 6.23          | Do not use decimal points. Enter a whole number. For example, 70000 |
       | Zero          | Enter a valid received distributions amount. For example, 70000     |
       | 1000000001    | Enter an amount lower than or equal to 1000000000                   |
-      |               | Enter an amount for your received distributions10                   |
+      |               | Enter an amount for your received distributions                     |
 
   @mrc-37
   Scenario: Continue with out selecting Yes or no option for question Did your company receive any distributions

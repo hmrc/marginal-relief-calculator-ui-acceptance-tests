@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, ExcemptDistrubutionsPage}
+import uk.gov.hmrc.test.ui.pages.mrc.ExcemptDistrubutionsPage
 
 class ExcemptDistributionsStepDef extends BaseStepDef {
   And("""the user selects option {string} for the question Did your company receive any distributions?""") {
@@ -50,7 +50,7 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
   }
 
   Then("""the user is displayed with error message {string} for distributions""") { (message: String) =>
-    ExcemptDistrubutionsPage.errorMessage.contains(message)
+    assert(ExcemptDistrubutionsPage.errorMessage.contains(message) === true, "Error message is not matching")
   }
 
   Then("I am navigated to exempt distributions page") { () =>
