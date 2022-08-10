@@ -24,14 +24,23 @@ class ResultsStepDef extends BaseStepDef {
   Then("""display the green box of type {string}""") { (panelBody: String) =>
     greenBoxMessage should be(panelBody)
   }
-  Then("""the Corporation Tax liability heading is displayed as {string}""") { (ctAmount: String) =>
+  Then("""the corporation tax liability heading is displayed as {string}""") { (ctAmount: String) =>
     corporationTaxLiabilityHeader should be(ctAmount)
   }
-  Then("""the Corporation Tax liability body is displayed as {string}""") { (ctAmount: String) =>
-    corporationTaxLiabilityBody should be(ctAmount)
+  Then("""the corporation tax liability body is displayed as {string}""") { (ctAmountReduced: String) =>
+    corporationTaxLiabilityBody should be(ctAmountReduced)
   }
-  Then("the Corporation Tax liability table is displayed") { () =>
-    ResultPage.verifyTable;
-    ResultPage.verifyRows;
+  Then("the dual year corporation tax liability table is displayed") { () =>
+    ResultPage.verifyTable
+    ResultPage.verifyRowsCountForDualYear
+    ResultPage.verifyRows
+  }
+  Then("the single year corporation tax liability table is displayed") { () =>
+    ResultPage.verifyTable
+    ResultPage.verifyRowsCountForSingleYear
+    ResultPage.verifyRows
+  }
+  Then("the corporation tax liability body is not displayed") { () =>
+    ResultPage.verifycorporationTaxLiabilityBody
   }
 }

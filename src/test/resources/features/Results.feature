@@ -80,7 +80,6 @@ Feature:Results - Validations
     Then user is landed on associated companies page
     When the user selects option "no" for the question Did your company have any active associated companies?
     Then the user clicks continue button on associated companies page
-    Then user is presented with Check Your Answers page
     And the user clicks on calculate marginal relief button on check you answers page
     Then display the green box of type "£1,929.93"
 
@@ -93,10 +92,50 @@ Feature:Results - Validations
     Then user is landed on associated companies page
     When the user selects option "no" for the question Did your company have any active associated companies?
     Then the user clicks continue button on associated companies page
-    Then user is presented with Check Your Answers page
     And the user clicks on calculate marginal relief button on check you answers page
     Then display the green box of type "£2,034.25"
-    Then the Corporation Tax liability heading is displayed as "£14,430.13"
-    And the Corporation Tax liability body is displayed as "Reduced from £16,464.38 after £2,034.25 Marginal Relief"
-    And the Corporation Tax liability table is displayed
+    Then the corporation tax liability heading is displayed as "£14,430.13"
+    And the corporation tax liability body is displayed as "Reduced from £16,464.38 after £2,034.25 Marginal Relief"
+    And the dual year corporation tax liability table is displayed
+
+  @mrc-42
+  Scenario: CT liability payable- MRC Single year
+    When the profit is "70000"
+    And the user clicks continue button on taxable profit page
+    And the user selects option "no" for the question Did your company receive any distributions?
+    And the user clicks continue button on distributions page
+    And user is landed on associated companies page
+    And the user selects option "no" for the question Did your company have any active associated companies?
+    And the user clicks continue button on associated companies page
+    And I click on change link next to the accounting period dates
+    And the accounting period start date is provided as "01/06/2023"
+    And the user clicks continue button on accounting period page
+    And the profit is "70000"
+    And the user clicks continue button on taxable profit page
+    And the user selects option "no" for the question Did your company receive any distributions?
+    And the user clicks continue button on distributions page
+    And the user selects option "no" for the question Did your company have any active associated companies?
+    And the user clicks continue button on associated companies page
+    And the user clicks on calculate marginal relief button on check you answers page
+    Then display the green box of type "£1,148.63"
+    And the corporation tax liability heading is displayed as "£16,351.37"
+    And the corporation tax liability body is displayed as "Reduced from £17,500 after £1,148.63 Marginal Relief"
+    And the single year corporation tax liability table is displayed
+
+  @mrc-42
+  Scenario: CT liability payable- No MRC
+    When the profit is "45000"
+    Then the user clicks continue button on taxable profit page
+    And the user selects option "No" for the question Did your company receive any distributions?
+    And the user clicks continue button on distributions page
+    Then user is landed on associated companies page
+    When the user selects option "no" for the question Did your company have any active associated companies?
+    Then the user clicks continue button on associated companies page
+    And the user clicks on calculate marginal relief button on check you answers page
+    Then display the green box of type "Your taxable profits are below the Marginal Relief limit"
+    And the corporation tax liability heading is displayed as "£8,550"
+    And the corporation tax liability body is not displayed
+    And the dual year corporation tax liability table is displayed
+
+
 
