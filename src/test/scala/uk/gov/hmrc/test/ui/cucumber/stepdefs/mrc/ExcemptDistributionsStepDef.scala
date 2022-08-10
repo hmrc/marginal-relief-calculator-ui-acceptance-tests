@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, CheckYourAnswersPage, ExcemptDistrubutionsPage}
+import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, ExcemptDistrubutionsPage}
 
 class ExcemptDistributionsStepDef extends BaseStepDef {
   And("""the user selects option {string} for the question Did your company receive any distributions?""") {
@@ -53,26 +53,6 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
     AssociatedCompaniesPage.errorMessage contains message
   }
 
-  Then("I am presented with change link next to the distribution amount") { () =>
-    CheckYourAnswersPage.changeLinkForDistributions()
-  }
-
-  Then("""I can validate my distribution amount as {string}""") { (distributionsAmount: String) =>
-    CheckYourAnswersPage.verifyDistributionsValue(distributionsAmount)
-  }
-  Then("I am presented with change link next to the accounting period dates") { () =>
-    CheckYourAnswersPage.changeLinkForAccountingPeriod()
-  }
-
-  Then("""I can validate my accounting period dates as {string}""") { (AccountingPeriod: String) =>
-    CheckYourAnswersPage.verifyAccountingPeriodValue(AccountingPeriod)
-  }
-  Then("I click on change link next to the distribution amount") { () =>
-    CheckYourAnswersPage.clickOnChangeLinkForDistributions()
-  }
-  Then("I click on change link next to the accounting period dates") { () =>
-    CheckYourAnswersPage.clickOnChangeLinkForAccPeriod()
-  }
   Then("I am navigated to exempt distributions page") { () =>
     ExcemptDistrubutionsPage.verifyTitle()
   }

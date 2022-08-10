@@ -40,4 +40,11 @@ class TaxableProfitStepDef extends BaseStepDef {
   Then("I can see companies taxable profit as null") { () =>
     TaxableProfitPage.verifyCompaniesProfitAsNull()
   }
+  Then("I am navigated to taxable profit page") { () =>
+    TaxableProfitPage.verifyTitle
+  }
+  Then("""I validate company profit is pre-populated as {string}""") { (profit: String) =>
+    TaxableProfitPage.verifyProfitValue(profit)
+  }
+
 }
