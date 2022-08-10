@@ -22,13 +22,18 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 
 object TaxableProfitPage extends BasePage {
   @FindBy(how = How.ID, using = "value") var inputProfitValue: WebElement = _
-
+  val taxableProfitPage                                                   =
+    "How much is your company's taxable profit? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
   PageFactory.initElements(driver, this)
+  def verifyTitle(): Unit                                                 =
+    verifyPageTitle(taxableProfitPage)
 
   def provideProfit(profitValue: String) = {
     inputProfitValue.clear()
     inputProfitValue.sendKeys(profitValue)
   }
+  def verifyProfitValue(profitValue: String): Unit                        =
+    inputProfitValue.getAttribute("value").contains(profitValue)
 
   def submitAccountingPeriodInformation(): Unit = {
     Thread.sleep(1000)

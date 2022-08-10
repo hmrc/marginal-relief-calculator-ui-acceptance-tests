@@ -26,6 +26,7 @@ object CheckYourAnswersPage extends BasePage {
     "Check Your Answers - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
   @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd >a") var changeLinkForDist: WebElement                    = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(2) > dd >a") var changeLinkForProfit: WebElement                  = _
   @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd >a") var changeLinkForAccPeriod: WebElement               = _
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var calculateMRCButton: WebElement                   = _
   @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd.govuk-summary-list__value") var accountingPeriodDates
@@ -43,11 +44,17 @@ object CheckYourAnswersPage extends BasePage {
   def changeLinkForAccountingPeriod(): Unit =
     changeLinkForAccPeriod.isDisplayed
 
+  def verifyChangeLinkForProfit(): Unit =
+    changeLinkForProfit.isDisplayed
+
   def changeLinkForDistributions(): Unit =
     changeLinkForDist.isDisplayed
 
   def clickOnChangeLinkForDistributions(): Unit =
     changeLinkForDist.click()
+
+  def clickOnChangeLinkForProfit(): Unit =
+    changeLinkForProfit.click()
 
   def clickOnChangeLinkForAccPeriod(): Unit =
     changeLinkForAccPeriod.click()
@@ -59,7 +66,7 @@ object CheckYourAnswersPage extends BasePage {
     distributions.getText().contains(AccountingPeriod)
 
   def verifyProfitValue(profitValue: String): Unit =
-    profit.getText().contains(profitValue)
+    profit.getText.contains(profitValue)
 
   def verifyNoOfAssociatedCompanies(associatedCompanies: String): Unit =
     NoOfAssociatedCompanies.getText().contains(associatedCompanies)

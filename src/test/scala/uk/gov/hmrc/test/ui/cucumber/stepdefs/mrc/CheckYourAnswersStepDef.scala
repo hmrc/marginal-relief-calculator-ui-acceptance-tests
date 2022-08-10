@@ -21,6 +21,34 @@ import uk.gov.hmrc.test.ui.pages.mrc.CheckYourAnswersPage
 import uk.gov.hmrc.test.ui.pages.mrc.ResultPage
 
 class CheckYourAnswersStepDef extends BaseStepDef {
+  Then("I am presented with change link next to the distribution amount") { () =>
+    CheckYourAnswersPage.changeLinkForDistributions()
+  }
+
+  Then("""I can validate my distribution amount as {string}""") { (distributionsAmount: String) =>
+    CheckYourAnswersPage.verifyDistributionsValue(distributionsAmount)
+  }
+  Then("I am presented with change link next to the accounting period dates") { () =>
+    CheckYourAnswersPage.changeLinkForAccountingPeriod()
+  }
+  Then("I am presented with change link next to the company's profit") { () =>
+    CheckYourAnswersPage.verifyChangeLinkForProfit
+  }
+  Then("""I can validate my accounting period dates as {string}""") { (AccountingPeriod: String) =>
+    CheckYourAnswersPage.verifyAccountingPeriodValue(AccountingPeriod)
+  }
+  Then("""I can validate my company profit as {string}""") { (profit: String) =>
+    CheckYourAnswersPage.verifyProfitValue(profit)
+  }
+  Then("I click on change link next to the distribution amount") { () =>
+    CheckYourAnswersPage.clickOnChangeLinkForDistributions()
+  }
+  Then("I click on change link next to the company's profit") { () =>
+    CheckYourAnswersPage.clickOnChangeLinkForProfit()
+  }
+  Then("I click on change link next to the accounting period dates") { () =>
+    CheckYourAnswersPage.clickOnChangeLinkForAccPeriod()
+  }
 
   When("the user clicks on back button") { () =>
     Thread.sleep(2000)
