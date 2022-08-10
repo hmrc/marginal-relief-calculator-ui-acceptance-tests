@@ -28,6 +28,9 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
     AssociatedCompaniesPage.verifyPageTitle()
   }
 
+  Then("""I validate associated companies is pre-populated as {string}""") { (associatedCo: String) =>
+    AssociatedCompaniesPage.verifyAssociatedCompanies(associatedCo)
+  }
   And("user can see the options yes and No as not selected") { () =>
     AssociatedCompaniesPage.verifyYesAndNoOptionsPresent()
     AssociatedCompaniesPage.verifyYesAndNoOptionsNotSelected()
@@ -46,9 +49,9 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
     AssociatedCompaniesPage.isAssociatedCompaniesCountInputDisplayed()
   }
 
-  And("""user inputs a valid number as {string} associated companies""") { (InvalidAC: String) =>
-    Thread.sleep(2000)
-    AssociatedCompaniesPage.inputAssociatedCompanies(InvalidAC)
+  And("""user inputs a valid number as {string} associated companies""") { (associatedCo: String) =>
+    Thread.sleep(1000)
+    AssociatedCompaniesPage.inputAssociatedCompanies(associatedCo)
   }
 
   Then("the user clicks continue button on associated companies page") { () =>

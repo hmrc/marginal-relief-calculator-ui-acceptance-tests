@@ -32,13 +32,19 @@ class CheckYourAnswersStepDef extends BaseStepDef {
     CheckYourAnswersPage.changeLinkForAccountingPeriod()
   }
   Then("I am presented with change link next to the company's profit") { () =>
-    CheckYourAnswersPage.verifyChangeLinkForProfit
+    CheckYourAnswersPage.verifyChangeLinkForProfit()
+  }
+  Then("I am presented with change link next to the associated companies") { () =>
+    CheckYourAnswersPage.verifyChangeLinkForAC()
   }
   Then("""I can validate my accounting period dates as {string}""") { (AccountingPeriod: String) =>
     CheckYourAnswersPage.verifyAccountingPeriodValue(AccountingPeriod)
   }
   Then("""I can validate my company profit as {string}""") { (profit: String) =>
     CheckYourAnswersPage.verifyProfitValue(profit)
+  }
+  Then("""I can validate the associated companies as {string}""") { (associatedCompanies: String) =>
+    CheckYourAnswersPage.verifyNoOfAssociatedCompanies(associatedCompanies)
   }
   Then("I click on change link next to the distribution amount") { () =>
     CheckYourAnswersPage.clickOnChangeLinkForDistributions()
@@ -49,7 +55,9 @@ class CheckYourAnswersStepDef extends BaseStepDef {
   Then("I click on change link next to the accounting period dates") { () =>
     CheckYourAnswersPage.clickOnChangeLinkForAccPeriod()
   }
-
+  Then("I click on change link next to the associated companies") { () =>
+    CheckYourAnswersPage.clickOnChangeLinkForAssociatedCompanies()
+  }
   When("the user clicks on back button") { () =>
     Thread.sleep(2000)
     CheckYourAnswersPage.clickBackLink()

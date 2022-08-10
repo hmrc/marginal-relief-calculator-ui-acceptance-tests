@@ -28,6 +28,7 @@ object CheckYourAnswersPage extends BasePage {
   @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd >a") var changeLinkForDist: WebElement                    = _
   @FindBy(how = How.CSS, using = "dl > div:nth-child(2) > dd >a") var changeLinkForProfit: WebElement                  = _
   @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd >a") var changeLinkForAccPeriod: WebElement               = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd >a") var changeLinkForAC: WebElement                      = _
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var calculateMRCButton: WebElement                   = _
   @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd.govuk-summary-list__value") var accountingPeriodDates
     : WebElement                                                                                                       = _
@@ -47,6 +48,9 @@ object CheckYourAnswersPage extends BasePage {
   def verifyChangeLinkForProfit(): Unit =
     changeLinkForProfit.isDisplayed
 
+  def verifyChangeLinkForAC(): Unit =
+    changeLinkForAC.isDisplayed
+
   def changeLinkForDistributions(): Unit =
     changeLinkForDist.isDisplayed
 
@@ -59,17 +63,24 @@ object CheckYourAnswersPage extends BasePage {
   def clickOnChangeLinkForAccPeriod(): Unit =
     changeLinkForAccPeriod.click()
 
+  def clickOnChangeLinkForAssociatedCompanies(): Unit =
+    changeLinkForAC.click()
+
   def verifyDistributionsValue(distributionsAmount: String): Unit =
-    distributions.getText().contains(distributionsAmount)
+    distributions.getText.contains(distributionsAmount)
 
   def verifyAccountingPeriodValue(AccountingPeriod: String): Unit =
-    distributions.getText().contains(AccountingPeriod)
+    distributions.getText.contains(AccountingPeriod)
 
-  def verifyProfitValue(profitValue: String): Unit =
-    profit.getText.contains(profitValue)
+  def verifyProfitValue(profitValue: String): Unit = {
+    val TP = profit.getText
+    assert(TP === profitValue)
+  }
 
-  def verifyNoOfAssociatedCompanies(associatedCompanies: String): Unit =
-    NoOfAssociatedCompanies.getText().contains(associatedCompanies)
+  def verifyNoOfAssociatedCompanies(associatedCompanies: String): Unit = {
+    val AC = NoOfAssociatedCompanies.getText()
+    assert(AC === associatedCompanies)
+  }
 
   def clickOnBackButton(): Unit =
     backButton.click()

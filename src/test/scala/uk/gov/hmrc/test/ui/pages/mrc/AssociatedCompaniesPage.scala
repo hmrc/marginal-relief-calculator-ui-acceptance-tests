@@ -19,6 +19,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
 
 object AssociatedCompaniesPage extends BasePage {
 
@@ -65,7 +66,8 @@ object AssociatedCompaniesPage extends BasePage {
   def clickOnContinue(): Unit =
     continueButton.click()
 
-  def inputAssociatedCompanies(noOfAssociatedCompanies: String): Unit =
+  def inputAssociatedCompanies(noOfAssociatedCompanies:String): Unit =
+    inputAssociatedCompaniesCount.clear()
     inputAssociatedCompaniesCount.sendKeys(noOfAssociatedCompanies)
 
   def errorMessage(): String = {
@@ -75,4 +77,13 @@ object AssociatedCompaniesPage extends BasePage {
 
   def associatedCompaniesCountAsNull(): Unit =
     inputAssociatedCompaniesCount.getAttribute("value").contains("")
+
+  def verifyCompaniesProfitAsNull(): Unit =
+    inputProfitValue.getAttribute("value").contains("")
+
+  def verifyAssociatedCompanies(associatedCo: String): Unit = {
+    val AC = inputAssociatedCompaniesCount.getAttribute("value")
+    assert(AC === associatedCo)
+  }
+
 }

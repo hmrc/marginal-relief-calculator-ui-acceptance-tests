@@ -1,4 +1,4 @@
-Feature:Edit Accounting Period - Validations
+Feature:Edit Taxable Profit - Validations
 
   Background:
     Given Marginal Relief Calculator is launched
