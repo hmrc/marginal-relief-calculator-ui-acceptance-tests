@@ -85,7 +85,7 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
     ExcemptDistrubutionsPage.provideDistributions(distributions)
   }
 
-  Then("I can see options yes,no are not selected") { () =>
+  Then("I can see options yes, no are not selected") { () =>
     ExcemptDistrubutionsPage.verifyYesNoNotSelected()
   }
 

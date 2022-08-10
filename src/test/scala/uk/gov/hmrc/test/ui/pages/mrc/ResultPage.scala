@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
+import org.openqa.selenium
 import org.openqa.selenium.{By, WebElement}
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
@@ -56,6 +57,11 @@ object ResultPage extends BasePage {
   def corporationTaxLiabilityBody: String =
     ctBody.getText
 
+  def verifycorporationTaxLiabilityBody: Unit = {
+    val corporationTaxLiabilityBody = driver.getPageSource.contains("Reduced from")
+    assert(corporationTaxLiabilityBody === false)
+  }
+
   def verifyTable: Unit =
     ctTable.isDisplayed
 
@@ -63,4 +69,15 @@ object ResultPage extends BasePage {
     ctFirstRow.getText.contains("2022 to 2023")
   ctSecondRow.getText.contains("2022 to 2023")
   ctThirdRow.getText.contains("Overall")
+
+  def verifyRowsCountForDualYear: Unit = {
+    val rows  = driver.findElements(By.xpath("//table/thead/tr/th"))
+    val count = rows.size
+    assert(count == 4)
+  }
+  def verifyRowsCountForSingleYear: Unit = {
+    val rows  = driver.findElements(By.xpath("//table/thead/tr/th"))
+    val count = rows.size
+    assert(count == 2)
+  }
 }

@@ -38,7 +38,7 @@ Feature: Run another calculation - Validations
     And the profit is "50000"
     When the user clicks continue button on taxable profit page
     Then I am navigated to exempt distributions page
-    And I can see options yes,no are not selected
+    And I can see options yes, no are not selected
     And the user selects option "Yes" for the question Did your company receive any distributions?
     And the user clicks continue button on distributions page
     Then I am navigated to Second exempt distributions page
