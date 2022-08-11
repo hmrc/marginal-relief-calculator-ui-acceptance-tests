@@ -45,7 +45,7 @@ object AccountingPeriodPage extends BasePage {
   val accountingPeriodLengthError         =
     "The accounting period End date must be less than or equal to a full calendar year from the Start date"
 
-  def verifyTitle() =
+  def verifyTitle(): Unit =
     verifyPageTitle(accountingPeriodPage)
 
   def provideEmptyAccountingStartDay(): Unit = {
@@ -69,7 +69,7 @@ object AccountingPeriodPage extends BasePage {
     accountingStartYear.sendKeys("2023")
   }
 
-  def provideValidAccountingStartDate(accountingStartDate: String) = {
+  def provideValidAccountingStartDate(accountingStartDate: String): Unit = {
     val date = accountingStartDate.split("/")
     accountingStartDay.clear()
     accountingStartDay.sendKeys(date(0))
@@ -79,7 +79,7 @@ object AccountingPeriodPage extends BasePage {
     accountingStartYear.sendKeys(date(2))
   }
 
-  def provideValidAccountingEndDate(accountingEndDate: String) = {
+  def provideValidAccountingEndDate(accountingEndDate: String): Unit = {
     val date = accountingEndDate.split("/")
     accountingEndDay.clear()
     accountingEndDay.sendKeys(date(0))
@@ -90,7 +90,7 @@ object AccountingPeriodPage extends BasePage {
 
   }
 
-  def verifyAccountingEndDate(accountingEndDate: String) = {
+  def verifyAccountingEndDate(accountingEndDate: String): Unit = {
     val date = accountingEndDate.split("/")
     accountingEndDay.getAttribute("value").contains(date(0))
     accountingEndMonth.getAttribute("value").contains(date(1))
@@ -112,16 +112,16 @@ object AccountingPeriodPage extends BasePage {
     accountingEndYear.sendKeys("2023")
   }
 
-  def validatePageTitle() =
-    irrelevantPageHeader.getText().contains(irrelevantPageTitle)
+  def validatePageTitle(): Unit =
+    irrelevantPageHeader.getText.contains(irrelevantPageTitle)
 
-  def validatePageContent() =
-    irrelevantPageContent.getText().contains(irrelevantPageMessage)
+  def validatePageContent(): Unit =
+    irrelevantPageContent.getText.contains(irrelevantPageMessage)
 
-  def verifyRestartButton() =
+  def verifyRestartButton(): Unit =
     restartButton.isDisplayed
 
-  def verifyReferenceLink() =
+  def verifyReferenceLink(): Unit =
     referenceLink.isDisplayed
 
   def VerifyAccountingPeriodsDatesAsNUll(): Unit = {

@@ -19,9 +19,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
-
-import java.util.List
-
+import java.util
 object ExcemptDistrubutionsPage extends BasePage {
   val distributionsPageTitle  =
     "Did your company receive any distributions? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
@@ -34,60 +32,61 @@ object ExcemptDistrubutionsPage extends BasePage {
   @FindBy(how = How.ID, using = "distributionsIncluded") var yesForIncludeInProfits: WebElement         = _
   @FindBy(how = How.ID, using = "distributionsIncluded-2") var noForIncludeInProfits: WebElement        = _
 
-  @FindBy(how = How.CSS, using = "#value_0:checked") var yesOptionChecked: List[WebElement]                            = _
-  @FindBy(how = How.CSS, using = "#value_1:checked") var noOptionChecked: List[WebElement]                             = _
-  @FindBy(how = How.CSS, using = "#distributionsIncluded:checked") var yesForIncludeInProfitsChecked: List[WebElement] =
+  @FindBy(how = How.CSS, using = "#value_0:checked") var yesOptionChecked: util.List[WebElement] = _
+  @FindBy(how = How.CSS, using = "#value_1:checked") var noOptionChecked: util.List[WebElement]  = _
+  @FindBy(how = How.CSS, using = "#distributionsIncluded:checked") var yesForIncludeInProfitsChecked
+    : util.List[WebElement]                                                                      =
     _
   @FindBy(how = How.CSS, using = "#distributionsIncluded-2:checked") var noForIncludeInProfitsChecked
-    : List[WebElement]                                                                                                 = _
+    : util.List[WebElement]                                                                      = _
 
   PageFactory.initElements(driver, this)
 
-  def verifyTitle() =
+  def verifyTitle(): Unit =
     verifyPageTitle(distributionsPageTitle)
 
-  def verifySecondPageTitle() =
+  def verifySecondPageTitle(): Unit =
     verifyPageTitle(distributionsPageTitle2)
 
-  def selectOptionYes: Unit = {
-    yesOption.click
+  def selectOptionYes(): Unit = {
+    yesOption.click()
     yesOption.isSelected
   }
 
-  def selectOptionNo: Unit = {
-    noOption.click
+  def selectOptionNo(): Unit = {
+    noOption.click()
     noOption.isSelected
   }
 
-  def yesToIncludeInProfits: Unit = {
-    yesForIncludeInProfits.click
+  def yesToIncludeInProfits(): Unit = {
+    yesForIncludeInProfits.click()
     yesForIncludeInProfits.isSelected
   }
 
-  def noToIncludeInProfits: Unit = {
-    noForIncludeInProfits.click
+  def noToIncludeInProfits(): Unit = {
+    noForIncludeInProfits.click()
     noForIncludeInProfits.isSelected
   }
 
-  def provideDistributions(distributions: String) = {
+  def provideDistributions(distributions: String): Unit = {
     inputExcemptDistribution.clear()
     inputExcemptDistribution.sendKeys(distributions)
   }
 
-  def submitaccountingPeriodInformation: Unit = {
+  def submitaccountingPeriodInformation(): Unit = {
     Thread.sleep(1000)
     submitPage()
   }
 
   def verifyYesNoNotSelected(): Unit = {
-    val elementsYes: List[WebElement] = driver.findElements(By.cssSelector("#value_0:checked"))
-    val elementsNo: List[WebElement]  = driver.findElements(By.cssSelector("#value_1:checked"))
+    val elementsYes: util.List[WebElement] = driver.findElements(By.cssSelector("#value_0:checked"))
+    val elementsNo: util.List[WebElement]  = driver.findElements(By.cssSelector("#value_1:checked"))
     assert(((elementsYes.size === 0) && (elementsNo.size === 0)) === true)
   }
 
   def verifyYesNoNotSelectedForIncludeInProfits(): Unit = {
-    val elementsYes: List[WebElement] = driver.findElements(By.cssSelector("#distributionsIncluded:checked"))
-    val elementsNo: List[WebElement]  = driver.findElements(By.cssSelector("#distributionsIncluded-2:checked"))
+    val elementsYes: util.List[WebElement] = driver.findElements(By.cssSelector("#distributionsIncluded:checked"))
+    val elementsNo: util.List[WebElement]  = driver.findElements(By.cssSelector("#distributionsIncluded-2:checked"))
     assert(((elementsYes.size === 0) && (elementsNo.size === 0)) === true)
   }
 

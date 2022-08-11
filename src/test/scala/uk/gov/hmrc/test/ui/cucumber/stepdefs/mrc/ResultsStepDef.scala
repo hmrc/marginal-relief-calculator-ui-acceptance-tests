@@ -41,6 +41,6 @@ class ResultsStepDef extends BaseStepDef {
     ResultPage.verifyRows
   }
   Then("the corporation tax liability body is not displayed") { () =>
-    ResultPage.verifycorporationTaxLiabilityBody
+    ResultPage.verifyCorporationTaxLiabilityBody
   }
 }

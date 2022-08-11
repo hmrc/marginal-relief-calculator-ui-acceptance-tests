@@ -37,7 +37,7 @@ trait BasePage extends BrowserDriver with Matchers {
       )
 
   def verifyLinkText(linkText: String): Unit = {
-    var elements: List[WebElement] = driver.findElements(By.tagName("a"))
+    val elements: List[WebElement] = driver.findElements(By.tagName("a"))
     print(elements.size())
     print(elements.get(0).getText)
 
