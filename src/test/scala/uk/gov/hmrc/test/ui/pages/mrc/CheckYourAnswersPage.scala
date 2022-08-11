@@ -40,7 +40,7 @@ object CheckYourAnswersPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  def verifyPageTitle: Unit                 =
+  def verifyPageTitle(): Unit               =
     verifyPageTitle(checkYourAnswers)
   def changeLinkForAccountingPeriod(): Unit =
     changeLinkForAccPeriod.isDisplayed
@@ -78,7 +78,7 @@ object CheckYourAnswersPage extends BasePage {
   }
 
   def verifyNoOfAssociatedCompanies(associatedCompanies: String): Unit = {
-    val AC = NoOfAssociatedCompanies.getText()
+    val AC = NoOfAssociatedCompanies.getText
     assert(AC === associatedCompanies)
   }
 

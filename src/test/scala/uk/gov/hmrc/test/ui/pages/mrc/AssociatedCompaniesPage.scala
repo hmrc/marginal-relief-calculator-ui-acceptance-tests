@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
 
 object AssociatedCompaniesPage extends BasePage {
 
-  @FindBy(how = How.CSS, using = "span h1") var headderMessage: WebElement                                = _
+  @FindBy(how = How.CSS, using = "span h1") var headerMessage: WebElement                                 = _
   @FindBy(how = How.ID, using = "associatedCompanies") var yesOption: WebElement                          = _
   @FindBy(how = How.ID, using = "associatedCompanies-2") var noOption: WebElement                         = _
   @FindBy(how = How.ID, using = "associatedCompaniesCount") var inputAssociatedCompaniesCount: WebElement = _
@@ -31,9 +31,9 @@ object AssociatedCompaniesPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  def titleMessage: String = {
+  def titleMessage(): String = {
     Thread.sleep(1000)
-    headderMessage.getText
+    headerMessage.getText
   }
 
   def verifyPageTitle(): Unit =
@@ -45,8 +45,8 @@ object AssociatedCompaniesPage extends BasePage {
   }
 
   def verifyYesAndNoOptionsNotSelected(): Unit = {
-    assert(!yesOption.isSelected())
-    assert(!noOption.isSelected())
+    assert(!yesOption.isSelected)
+    assert(!noOption.isSelected)
   }
 
   def selectOptionYes(): Unit = {
@@ -59,8 +59,8 @@ object AssociatedCompaniesPage extends BasePage {
     noOption.isSelected()
   }
 
-  def isAssociatedCompaniesCountInputDisplayed(): Unit =
-    inputAssociatedCompaniesCount.isDisplayed()
+  def isAssociatedCompaniesCountInputDisplayed: Boolean =
+    inputAssociatedCompaniesCount.isDisplayed
 
   def clickOnContinue(): Unit =
     continueButton.click()
