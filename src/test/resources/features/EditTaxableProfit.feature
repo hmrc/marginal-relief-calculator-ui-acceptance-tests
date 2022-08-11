@@ -1,4 +1,4 @@
-Feature:Edit Accounting Period - Validations
+Feature:Edit Taxable Profit - Validations
 
   Background:
     Given Marginal Relief Calculator is launched
@@ -22,7 +22,7 @@ Feature:Edit Accounting Period - Validations
     Then I can validate my company profit as "£50,000"
     And I click on change link next to the company's profit
     And I am navigated to taxable profit page
-    And I validate company profit is pre-populated as "£50000"
+    And I validate company profit is pre-populated as "50000"
     And the profit is "100000"
     And the user clicks continue button on taxable profit page
     Then I am presented with change link next to the company's profit
@@ -34,7 +34,7 @@ Feature:Edit Accounting Period - Validations
     Then I can validate my company profit as "£50,000"
     And I click on change link next to the company's profit
     And I am navigated to taxable profit page
-    And I validate company profit is pre-populated as "£50000"
+    And I validate company profit is pre-populated as "50000"
     And the profit is "100000.50"
     And the user clicks continue button on taxable profit page
     Then the user is alerted to taxable profits "<profitError>"

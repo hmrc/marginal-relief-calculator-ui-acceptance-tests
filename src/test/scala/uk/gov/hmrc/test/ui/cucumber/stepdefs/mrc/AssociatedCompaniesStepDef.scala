@@ -19,6 +19,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.AssociatedCompaniesPage.titleMessage
 import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, CheckYourAnswersPage}
+import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.errorMessage
 
 class AssociatedCompaniesStepDef extends BaseStepDef {
   Then("""display the {string} on associated company""") { (message: String) =>
@@ -28,6 +29,9 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
     AssociatedCompaniesPage.verifyPageTitle()
   }
 
+  Then("""I validate associated companies is pre-populated as {string}""") { (associatedCo: String) =>
+    AssociatedCompaniesPage.verifyAssociatedCompanies(associatedCo)
+  }
   And("user can see the options yes and No as not selected") { () =>
     AssociatedCompaniesPage.verifyYesAndNoOptionsPresent()
     AssociatedCompaniesPage.verifyYesAndNoOptionsNotSelected()
@@ -46,9 +50,9 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
     AssociatedCompaniesPage.isAssociatedCompaniesCountInputDisplayed()
   }
 
-  And("""user inputs a valid number as {string} associated companies""") { (InvalidAC: String) =>
-    Thread.sleep(2000)
-    AssociatedCompaniesPage.inputAssociatedCompanies(InvalidAC)
+  And("""user inputs a valid number as {string} associated companies""") { (associatedCo: String) =>
+    Thread.sleep(1000)
+    AssociatedCompaniesPage.inputAssociatedCompanies(associatedCo)
   }
 
   Then("the user clicks continue button on associated companies page") { () =>
@@ -59,8 +63,8 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
     CheckYourAnswersPage.verifyPageTitle
   }
 
-  Then("""the user is displayed with error message {string} for associated company""") { (message: String) =>
-    assert(AssociatedCompaniesPage.errorMessage.contains(message) === true, "Error message is not matching")
+  Then("""the user is displayed with error message {string} for associated company""") { (ErrorMessage: String) =>
+    errorMessage should be(ErrorMessage)
   }
 
   And("user is presented with input field for associated companies with value as null") { () =>

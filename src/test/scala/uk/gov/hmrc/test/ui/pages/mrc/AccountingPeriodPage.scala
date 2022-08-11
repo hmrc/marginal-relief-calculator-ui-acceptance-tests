@@ -21,8 +21,6 @@ import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object AccountingPeriodPage extends BasePage {
-
-  @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var errorMsg: WebElement               = _
   @FindBy(how = How.ID, using = "accountingPeriodStartDate.day") var accountingStartDay: WebElement     = _
   @FindBy(how = How.ID, using = "accountingPeriodStartDate.month") var accountingStartMonth: WebElement = _
   @FindBy(how = How.ID, using = "accountingPeriodStartDate.year") var accountingStartYear: WebElement   = _
@@ -125,11 +123,6 @@ object AccountingPeriodPage extends BasePage {
 
   def verifyReferenceLink() =
     referenceLink.isDisplayed
-
-  def errorMessage(): String = {
-    Thread.sleep(3000)
-    errorMsg.getText
-  }
 
   def VerifyAccountingPeriodsDatesAsNUll(): Unit = {
     accountingStartDay.getAttribute("value").contains("")
