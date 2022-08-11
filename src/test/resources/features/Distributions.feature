@@ -34,7 +34,7 @@ Feature:Exempt Distributions - Validations
     And the user clicks continue button on distributions page
     Then user is landed on associated companies page
 
-  @runME
+  @mrc-37
   Scenario Outline: Error message validations
     And the user selects option "Yes" for the question Did your company receive any distributions?
     And the user clicks continue button on distributions page
