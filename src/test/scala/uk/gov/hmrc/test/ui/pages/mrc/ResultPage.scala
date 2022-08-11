@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium
 import org.openqa.selenium.{By, WebElement}
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
@@ -39,30 +38,30 @@ object ResultPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  def verifyPageTitle: Unit =
-    assert(driver.getTitle().contains(resultsPage))
+  def verifyPageTitle(): Unit =
+    assert(driver.getTitle.contains(resultsPage))
 
-  def clickRunAnotherCalculation: Unit      =
+  def clickRunAnotherCalculation(): Unit      =
     runAnotherCalculationButton.click()
-  def runAnotherCalculationIsEnabled: Unit  =
+  def runAnotherCalculationIsEnabled(): Unit  =
     runAnotherCalculationButton.isEnabled()
 
-  def greenBoxMessage: String = {
+  def greenBoxMessage(): String = {
     Thread.sleep(1000)
     panelMessage.getText
   }
-  def corporationTaxLiabilityHeader: String =
+  def corporationTaxLiabilityHeader(): String =
     ctAmount.getText
 
-  def corporationTaxLiabilityBody: String =
+  def corporationTaxLiabilityBody(): String =
     ctBody.getText
 
-  def verifycorporationTaxLiabilityBody: Unit = {
+  def verifyCorporationTaxLiabilityBody(): Unit = {
     val corporationTaxLiabilityBody = driver.getPageSource.contains("Reduced from")
     assert(corporationTaxLiabilityBody === false)
   }
 
-  def verifyTable: Unit =
+  def verifyTable(): Unit =
     ctTable.isDisplayed
 
   def verifyRows: Boolean =
@@ -70,12 +69,12 @@ object ResultPage extends BasePage {
   ctSecondRow.getText.contains("2022 to 2023")
   ctThirdRow.getText.contains("Overall")
 
-  def verifyRowsCountForDualYear: Unit = {
+  def verifyRowsCountForDualYear(): Unit = {
     val rows  = driver.findElements(By.xpath("//table/thead/tr/th"))
     val count = rows.size
     assert(count == 4)
   }
-  def verifyRowsCountForSingleYear: Unit = {
+  def verifyRowsCountForSingleYear(): Unit = {
     val rows  = driver.findElements(By.xpath("//table/thead/tr/th"))
     val count = rows.size
     assert(count == 2)
