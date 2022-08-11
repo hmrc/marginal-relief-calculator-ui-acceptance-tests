@@ -23,11 +23,14 @@ import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
 
 object AssociatedCompaniesPage extends BasePage {
 
-  @FindBy(how = How.CSS, using = "span h1") var headerMessage: WebElement                                 = _
-  @FindBy(how = How.ID, using = "associatedCompanies") var yesOption: WebElement                          = _
-  @FindBy(how = How.ID, using = "associatedCompanies-2") var noOption: WebElement                         = _
-  @FindBy(how = How.ID, using = "associatedCompaniesCount") var inputAssociatedCompaniesCount: WebElement = _
-  @FindBy(how = How.CSS, using = "form > button") var continueButton: WebElement                          = _
+  @FindBy(how = How.CSS, using = "span h1") var headerMessage: WebElement         = _
+  @FindBy(how = How.ID, using = "associatedCompanies") var yesOption: WebElement  = _
+  @FindBy(how = How.ID, using = "associatedCompanies-2") var noOption: WebElement = _
+  @FindBy(
+    how = How.XPATH,
+    using = "//*[@class='govuk-label']/following-sibling::input"
+  ) var inputAssociatedCompaniesCount: WebElement                                 = _
+  @FindBy(how = How.CSS, using = "form > button") var continueButton: WebElement  = _
 
   PageFactory.initElements(driver, this)
 

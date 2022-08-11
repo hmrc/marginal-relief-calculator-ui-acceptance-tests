@@ -84,15 +84,15 @@ class CheckYourAnswersStepDef extends BaseStepDef {
   }
 
   Then("I am navigated to MRC results page") { () =>
-    ResultPage.verifyPageTitle
+    ResultPage.verifyPageTitle()
   }
 
   Then("I can see run another calculation button enabled") { () =>
-    ResultPage.runAnotherCalculationIsEnabled
+    ResultPage.runAnotherCalculationIsEnabled()
   }
 
   Then("I click on run another calculation button") { () =>
-    ResultPage.clickRunAnotherCalculation
+    ResultPage.clickRunAnotherCalculation()
   }
 
   Then("""I can validate distributions included as {string}""") { (distributions: String) =>

@@ -12,8 +12,7 @@ Feature: Associated companies - Validations
     And the user selects option "no" for the question Did your company receive any distributions?
     And the user clicks continue button on distributions page
 
-
-  @mrc-38
+  @ignore @mrc-38
   Scenario: Associated companies - Happy path
     Then user is landed on associated companies page
     And user can see the options yes and No as not selected
