@@ -50,7 +50,7 @@ Feature:Exempt Distributions - Validations
       | -1            | Enter an amount greater than 0                                      |
       | 6.23          | Do not use decimal points. Enter a whole number. For example, 70000 |
       | Zero          | Enter a valid received distributions amount. For example, 70000     |
-      | 1000000001    | Enter an amount lower than or equal to 1000000000                   |
+      | 1,000,000,001 | Enter an amount lower than or equal to 1000000000                   |
       |               | Enter an amount for your received distributions                     |
 
   @mrc-37

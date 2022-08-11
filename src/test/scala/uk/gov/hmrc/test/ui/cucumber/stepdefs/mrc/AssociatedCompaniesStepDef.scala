@@ -60,7 +60,7 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
   }
 
   Then("""the user is displayed with error message {string} for associated company""") { (message: String) =>
-    AssociatedCompaniesPage.errorMessage contains message
+    assert(AssociatedCompaniesPage.errorMessage.contains(message) === true, "Error message is not matching")
   }
 
   And("user is presented with input field for associated companies with value as null") { () =>

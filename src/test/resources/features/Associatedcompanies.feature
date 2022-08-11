@@ -47,7 +47,7 @@ Feature: Associated companies - Validations
     Then the user clicks continue button on associated companies page
     Then the user is displayed with error message "Enter the number of associated companies you have. For example, 1" for associated company
 
-  @mrc-38
+  @mrc-38 @mrc-130
   Scenario Outline: Associated companies - Error Message validations
     Then user is landed on associated companies page
     And user can see the options yes and No as not selected
@@ -60,6 +60,7 @@ Feature: Associated companies - Validations
     Examples:
       | InvalidAC | Error Message                                                   |
       | 1.        | Do not use decimal points. Enter a whole number. For example, 1 |
-      | -3        | Enter an amount between 1 and 99                                |
+      | -3        | Enter an amount greater than 0                                  |
       | 1B        | Enter your Number of associated companies using numbers         |
-      | 0         | Enter an amount between 1 and 99                                |
+      | 0         | Enter an amount greater than 0                                  |
+      | 100       | Enter a number lower than or equal to 99                        |
