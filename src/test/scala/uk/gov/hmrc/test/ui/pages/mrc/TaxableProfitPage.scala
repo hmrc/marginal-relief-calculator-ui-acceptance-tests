@@ -28,12 +28,14 @@ object TaxableProfitPage extends BasePage {
   def verifyTitle(): Unit                                                 =
     verifyPageTitle(taxableProfitPage)
 
-  def provideProfit(profitValue: String) = {
+  def provideProfit(profitValue: String): Unit = {
     inputProfitValue.clear()
     inputProfitValue.sendKeys(profitValue)
   }
-  def verifyProfitValue(profitValue: String): Unit                        =
-    inputProfitValue.getAttribute("value").contains(profitValue)
+  def verifyProfitValue(profitValue: String): Unit = {
+    val TP = inputProfitValue.getAttribute("value")
+    assert(TP === profitValue)
+  }
 
   def submitAccountingPeriodInformation(): Unit = {
     Thread.sleep(1000)

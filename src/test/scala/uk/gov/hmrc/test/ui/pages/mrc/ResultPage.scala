@@ -65,7 +65,7 @@ object ResultPage extends BasePage {
   def verifyTable: Unit =
     ctTable.isDisplayed
 
-  def verifyRows: Unit =
+  def verifyRows: Boolean =
     ctFirstRow.getText.contains("2022 to 2023")
   ctSecondRow.getText.contains("2022 to 2023")
   ctThirdRow.getText.contains("Overall")

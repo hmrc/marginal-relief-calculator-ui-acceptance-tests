@@ -60,6 +60,6 @@ Feature: Associated companies - Validations
     Examples:
       | InvalidAC | Error Message                                                   |
       | 1.        | Do not use decimal points. Enter a whole number. For example, 1 |
-      | -3        | Enter an amount between 1 and 99                                |
+      | -3        | Enter an amount greater than 0                                  |
       | 1B        | Enter your Number of associated companies using numbers         |
-      | 0         | Enter an amount between 1 and 99                                |
+      | 100       | Enter a number lower than or equal to 99                        |

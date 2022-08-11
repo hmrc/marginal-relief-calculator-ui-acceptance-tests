@@ -19,6 +19,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
 
 object AssociatedCompaniesPage extends BasePage {
 
@@ -27,7 +28,6 @@ object AssociatedCompaniesPage extends BasePage {
   @FindBy(how = How.ID, using = "associatedCompanies-2") var noOption: WebElement                         = _
   @FindBy(how = How.ID, using = "associatedCompaniesCount") var inputAssociatedCompaniesCount: WebElement = _
   @FindBy(how = How.CSS, using = "form > button") var continueButton: WebElement                          = _
-  @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var errorMsg: WebElement                 = _
 
   PageFactory.initElements(driver, this)
 
@@ -65,14 +65,20 @@ object AssociatedCompaniesPage extends BasePage {
   def clickOnContinue(): Unit =
     continueButton.click()
 
-  def inputAssociatedCompanies(noOfAssociatedCompanies: String): Unit =
+  def inputAssociatedCompanies(noOfAssociatedCompanies: String): Unit = {
+    inputAssociatedCompaniesCount.clear()
     inputAssociatedCompaniesCount.sendKeys(noOfAssociatedCompanies)
-
-  def errorMessage(): String = {
-    Thread.sleep(3000)
-    errorMsg.getText
   }
 
   def associatedCompaniesCountAsNull(): Unit =
     inputAssociatedCompaniesCount.getAttribute("value").contains("")
+
+  def verifyCompaniesProfitAsNull(): Unit =
+    inputProfitValue.getAttribute("value").contains("")
+
+  def verifyAssociatedCompanies(associatedCo: String): Unit = {
+    val AC = inputAssociatedCompaniesCount.getAttribute("value")
+    assert(AC === associatedCo)
+  }
+
 }
