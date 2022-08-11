@@ -51,7 +51,6 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
   }
 
   And("""user inputs a valid number as {string} associated companies""") { (associatedCo: String) =>
-    Thread.sleep(1000)
     AssociatedCompaniesPage.inputAssociatedCompanies(associatedCo)
   }
 
@@ -60,7 +59,7 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
   }
 
   Then("user is presented with Check Your Answers page") { () =>
-    CheckYourAnswersPage.verifyPageTitle
+    CheckYourAnswersPage.verifyPageTitle()
   }
 
   Then("""the user is displayed with error message {string} for associated company""") { (ErrorMessage: String) =>

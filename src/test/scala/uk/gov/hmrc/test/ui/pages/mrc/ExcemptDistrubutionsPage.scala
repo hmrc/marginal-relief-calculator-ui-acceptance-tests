@@ -32,13 +32,12 @@ object ExcemptDistrubutionsPage extends BasePage {
   @FindBy(how = How.ID, using = "distributionsIncluded") var yesForIncludeInProfits: WebElement         = _
   @FindBy(how = How.ID, using = "distributionsIncluded-2") var noForIncludeInProfits: WebElement        = _
 
-  @FindBy(how = How.CSS, using = "#value_0:checked") var yesOptionChecked: util.List[WebElement] = _
-  @FindBy(how = How.CSS, using = "#value_1:checked") var noOptionChecked: util.List[WebElement]  = _
-  @FindBy(how = How.CSS, using = "#distributionsIncluded:checked") var yesForIncludeInProfitsChecked
-    : util.List[WebElement]                                                                      =
+  @FindBy(how = How.CSS, using = "#value_0:checked") var yesOptionChecked: List[WebElement]                            = _
+  @FindBy(how = How.CSS, using = "#value_1:checked") var noOptionChecked: List[WebElement]                             = _
+  @FindBy(how = How.CSS, using = "#distributionsIncluded:checked") var yesForIncludeInProfitsChecked: List[WebElement] =
     _
   @FindBy(how = How.CSS, using = "#distributionsIncluded-2:checked") var noForIncludeInProfitsChecked
-    : util.List[WebElement]                                                                      = _
+    : List[WebElement]                                                                                                 = _
 
   PageFactory.initElements(driver, this)
 
@@ -78,7 +77,7 @@ object ExcemptDistrubutionsPage extends BasePage {
     submitPage()
   }
 
-  def verifyYesNoNotSelected(): Unit = {
+  def verifyYesNoNotSelected: Unit = {
     val elementsYes: util.List[WebElement] = driver.findElements(By.cssSelector("#value_0:checked"))
     val elementsNo: util.List[WebElement]  = driver.findElements(By.cssSelector("#value_1:checked"))
     assert(((elementsYes.size === 0) && (elementsNo.size === 0)) === true)
