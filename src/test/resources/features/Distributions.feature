@@ -46,11 +46,12 @@ Feature:Exempt Distributions - Validations
 
     Examples:
       | distributions | ErrorMessage                                                        |
-      | 0             | Enter an amount that is between 1 and 1000000000                    |
-      | -1            | Enter an amount that is between 1 and 1000000000                    |
+      | 0             | Enter an amount greater than 0                                      |
+      | -1            | Enter an amount greater than 0                                      |
       | 6.23          | Do not use decimal points. Enter a whole number. For example, 70000 |
-      | ASDF          | Enter a valid received distributions amount. For example, 70000     |
-      | 2147483648    | Enter an amount that is between 1 and 1000000000                    |
+      | Zero          | Enter a valid received distributions amount. For example, 70000     |
+      | 1000000001    | Enter an amount lower than or equal to 1000000000                   |
+      |               | Enter an amount for your received distributions                     |
 
   @mrc-37
   Scenario: Continue with out selecting Yes or no option for question Did your company receive any distributions
