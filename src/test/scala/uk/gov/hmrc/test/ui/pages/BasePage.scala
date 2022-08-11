@@ -24,8 +24,8 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import java.util.List
 
 trait BasePage extends BrowserDriver with Matchers {
-
-  @FindBy(how = How.XPATH, using = "//a[text()='Back']") var backButton: WebElement = _
+  @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var errorMsg: WebElement = _
+  @FindBy(how = How.XPATH, using = "//a[text()='Back']") var backButton: WebElement       = _
 
   def submitPage(): Unit =
     driver.findElement(By.cssSelector("button.govuk-button")).click()
@@ -51,6 +51,10 @@ trait BasePage extends BrowserDriver with Matchers {
 
   def clickBackLink(): Unit =
     backButton.click()
-}
 
+  def errorMessage(): String = {
+    Thread.sleep(3000)
+    errorMsg.getText
+  }
+}
 case class PageNotFoundException(s: String) extends Exception(s)

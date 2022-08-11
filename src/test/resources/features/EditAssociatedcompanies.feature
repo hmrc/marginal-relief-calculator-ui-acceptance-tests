@@ -25,5 +25,22 @@ Feature:Edit Associated Companies - Validations
     And user is landed on associated companies page
     And I validate associated companies is pre-populated as "25"
     And user inputs a valid number as "50" associated companies
+    Then the user clicks continue button on associated companies page
+    And user is presented with Check Your Answers page
+    And I can validate the associated companies as "50"
+
+  @mrc-45
+  Scenario Outline: Edit Associated Companies-Invalid Associated Companies
+    And I am presented with change link next to the associated companies
+    Then I can validate the associated companies as "25"
+    And I click on change link next to the associated companies
+    And user is landed on associated companies page
+    And I validate associated companies is pre-populated as "25"
+    And user inputs a valid number as "500" associated companies
+    Then the user clicks continue button on associated companies page
+    Then the user is displayed with error message "<ErrorMessage>" for associated company
+    Examples:
+      | ErrorMessage                             |
+      | Enter a number lower than or equal to 99 |
 
 

@@ -28,7 +28,6 @@ object AssociatedCompaniesPage extends BasePage {
   @FindBy(how = How.ID, using = "associatedCompanies-2") var noOption: WebElement                         = _
   @FindBy(how = How.ID, using = "associatedCompaniesCount") var inputAssociatedCompaniesCount: WebElement = _
   @FindBy(how = How.CSS, using = "form > button") var continueButton: WebElement                          = _
-  @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var errorMsg: WebElement                 = _
 
   PageFactory.initElements(driver, this)
 
@@ -66,13 +65,9 @@ object AssociatedCompaniesPage extends BasePage {
   def clickOnContinue(): Unit =
     continueButton.click()
 
-  def inputAssociatedCompanies(noOfAssociatedCompanies:String): Unit =
+  def inputAssociatedCompanies(noOfAssociatedCompanies: String): Unit = {
     inputAssociatedCompaniesCount.clear()
     inputAssociatedCompaniesCount.sendKeys(noOfAssociatedCompanies)
-
-  def errorMessage(): String = {
-    Thread.sleep(3000)
-    errorMsg.getText
   }
 
   def associatedCompaniesCountAsNull(): Unit =
