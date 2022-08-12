@@ -30,6 +30,18 @@ Feature:Edit Associated Companies - Validations
     And I can validate the associated companies as "50"
 
   @mrc-45
+  Scenario: Edit Associated Companies-No Associated Company
+    And I am presented with change link next to the associated companies
+    Then I can validate the associated companies as "25"
+    And I click on change link next to the associated companies
+    And user is landed on associated companies page
+    And I validate associated companies is pre-populated as "25"
+    And the user selects option "No" for the question Did your company have any active associated companies?
+    Then the user clicks continue button on associated companies page
+    And user is presented with Check Your Answers page
+    And I can validate the associated companies as "0"
+
+  @mrc-45
   Scenario Outline: Edit Associated Companies-Invalid Associated Companies
     And I am presented with change link next to the associated companies
     Then I can validate the associated companies as "25"

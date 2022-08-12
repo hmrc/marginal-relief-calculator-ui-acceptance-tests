@@ -26,7 +26,7 @@ Feature: Run another calculation - Validations
     Then I am navigated to MRC results page
     And I can see run another calculation button enabled
 
-  @mrc-44
+  @mrc-44 @zap
   Scenario: Click on Run Another Calculation and verify fields as NULL
     When I click on run another calculation button
     Then I am landed on before you start page
