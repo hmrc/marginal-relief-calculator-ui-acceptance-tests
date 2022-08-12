@@ -24,7 +24,7 @@ import uk.gov.hmrc.test.ui.pages.mrc.BeforeYouStartPage.verifyLinkText
 class BeforeYouStartStepDef extends BaseStepDef {
 
   Given("Marginal Relief Calculator is launched") { () =>
-    BeforeYouStartPage.loadPage
+    BeforeYouStartPage.loadPage()
   }
 
   Then("I am landed on before you start page") { () =>
@@ -36,12 +36,16 @@ class BeforeYouStartStepDef extends BaseStepDef {
     BeforeYouStartPage.verifyBreadcrumbs()
   }
 
+  And("I can verify that Welsh language is not displayed") { () =>
+    BeforeYouStartPage.verifyWelshLanguageLink()
+  }
+
   And("""I can verify the link present on screen""") { (linkText: DataTable) =>
     for (i <- 0 until linkText.asList().size())
       verifyLinkText(linkText.asList().get(i))
   }
 
   And("the user clicks on start now button") { () =>
-    BeforeYouStartPage.clickOnStartNowButton
+    BeforeYouStartPage.clickOnStartNowButton()
   }
 }
