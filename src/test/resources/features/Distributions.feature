@@ -33,7 +33,7 @@ Feature:Exempt Distributions - Validations
     And the user clicks continue button on distributions page
     Then user is landed on associated companies page
 
-  @mrc-37 @mrc-130
+  @mrc-37 @mrc-130 @now
   Scenario Outline: Error message validations
     And the user selects option "Yes" for the question Did your company receive any distributions?
     And the user clicks continue button on distributions page
@@ -50,19 +50,19 @@ Feature:Exempt Distributions - Validations
       | 6.23          | Do not use decimal points. Enter a whole number. For example, 70000 |
       | Zero          | Enter a valid received distributions amount. For example, 70000     |
       | 1000000001    | Enter an amount lower than or equal to 1000000000                   |
-      |               | Enter a valid received distributions amount. For example, 70000     |
+      |               | Enter an amount for your received distributions                     |
 
   @mrc-37
   Scenario: Continue with out selecting Yes or no option for question Did your company receive any distributions
     And the user clicks continue button on distributions page
     Then the user is displayed with error message "Select whether you received distributions or not" for distributions
 
-  @mrc-37
+  @mrc-37 @now
   Scenario: Continue with out selecting Yes or no option for include profits page
     And the user selects option "Yes" for the question Did your company receive any distributions?
     And the user clicks continue button on distributions page
     And the user clicks continue button on distributions page
-    Then the user is displayed with error message "Select whether you have distributions or not" for distributions
+    Then the user is displayed with error message "Select whether you received distributions or not" for distributions
 
   @mrc-118
   Scenario: Happy Path - Distributions amount is displayed on check your answers page

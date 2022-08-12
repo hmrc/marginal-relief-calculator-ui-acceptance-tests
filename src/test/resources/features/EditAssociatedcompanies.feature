@@ -17,7 +17,7 @@ Feature:Edit Associated Companies - Validations
     Then the user clicks continue button on associated companies page
     Then user is presented with Check Your Answers page
 
-  @mrc-45
+  @mrc-45 @zap
   Scenario: Edit Associated Companies
     And I am presented with change link next to the associated companies
     Then I can validate the associated companies as "25"
@@ -54,5 +54,3 @@ Feature:Edit Associated Companies - Validations
     Examples:
       | ErrorMessage                             |
       | Enter a number lower than or equal to 99 |
-
-
