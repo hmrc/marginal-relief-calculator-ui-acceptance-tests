@@ -4,8 +4,7 @@ Feature: Associated companies - Validations
     Given Marginal Relief Calculator is launched
     When the user clicks on start now button
     Then the user lands on accounting period page
-    When the accounting period start date is provided as "31/03/2024"
-    And the accounting period end date is provided as "30/03/2025"
+    When the accounting period start date is provided as "01/01/2023"
     Then the user clicks continue button on accounting period page
     And the profit is "50000"
     Then the user clicks continue button on taxable profit page
