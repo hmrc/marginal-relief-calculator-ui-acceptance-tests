@@ -50,4 +50,9 @@ object BeforeYouStartPage extends BasePage {
 
   def clickOnStartNowButton(): Unit =
     startNowButton.click()
+
+  def verifyWelshLanguageLink(): Unit = {
+    val welshLanguageLinkPresent = driver.getPageSource.contains("Welsh")
+    assert(welshLanguageLinkPresent === false)
+  }
 }
