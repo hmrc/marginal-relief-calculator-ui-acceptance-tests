@@ -27,7 +27,7 @@ object ResultPage extends BasePage {
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-panel__body']") var panelMessage: WebElement            = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l']") var ctAmount: WebElement                  = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body']") var ctBody: WebElement                         = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var ctBody: WebElement                      = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-table']") var ctTable: WebElement                       = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table/thead/tr/th[4]") var ctThirdRow
     : WebElement                                                                                              = _
@@ -72,11 +72,11 @@ object ResultPage extends BasePage {
   def verifyRowsCountForDualYear(): Unit = {
     val rows  = driver.findElements(By.xpath("//table/thead/tr/th"))
     val count = rows.size
-    assert(count == 4)
+    assert(count == 8)
   }
   def verifyRowsCountForSingleYear(): Unit = {
     val rows  = driver.findElements(By.xpath("//table/thead/tr/th"))
     val count = rows.size
-    assert(count == 2)
+    assert(count == 4)
   }
 }
