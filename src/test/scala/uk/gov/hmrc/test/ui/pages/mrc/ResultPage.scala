@@ -27,8 +27,9 @@ object ResultPage extends BasePage {
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-panel__body']") var panelMessage: WebElement            = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l']") var ctAmount: WebElement                  = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var ctBody: WebElement                      = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-table']") var ctTable: WebElement                       = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var singleYearCTBody: WebElement            = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var dualYearCTBody: WebElement              = _
+  @FindBy(how = How.LINK_TEXT, using = "Corporation Tax liability") var ctTable: WebElement                   = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table/thead/tr/th[4]") var ctThirdRow
     : WebElement                                                                                              = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table/thead/tr/th[2]") var ctFirstRow
@@ -41,42 +42,57 @@ object ResultPage extends BasePage {
   def verifyPageTitle(): Unit =
     assert(driver.getTitle.contains(resultsPage))
 
-  def clickRunAnotherCalculation(): Unit      =
+  def clickRunAnotherCalculation(): Unit =
     runAnotherCalculationButton.click()
-  def runAnotherCalculationIsEnabled(): Unit  =
+
+  def runAnotherCalculationIsEnabled(): Unit =
     runAnotherCalculationButton.isEnabled()
 
   def greenBoxMessage(): String = {
     Thread.sleep(1000)
     panelMessage.getText
   }
+
   def corporationTaxLiabilityHeader(): String =
     ctAmount.getText
 
-  def corporationTaxLiabilityBody(): String =
-    ctBody.getText
+  def dualYearCTLiability(): String =
+    dualYearCTBody.getText
+
+  def singlelYearCTLiability(): String =
+    singleYearCTBody.getText
 
   def verifyCorporationTaxLiabilityBody(): Unit = {
     val corporationTaxLiabilityBody = driver.getPageSource.contains("Reduced from")
     assert(corporationTaxLiabilityBody === false)
   }
 
-  def verifyTable(): Unit =
-    ctTable.isDisplayed
-
   def verifyRows: Boolean =
     ctFirstRow.getText.contains("2022 to 2023")
   ctSecondRow.getText.contains("2022 to 2023")
   ctThirdRow.getText.contains("Overall")
 
-  def verifyRowsCountForDualYear(): Unit = {
-    val rows  = driver.findElements(By.xpath("//table/thead/tr/th"))
+  def verifyRowsCount(): Unit = {
+    val rows  = driver.findElements(By.xpath("//tr[@class='govuk-table__row']"))
     val count = rows.size
+    assert(count == 9)
+  }
+  def verifyRowsCountForNOMRC(): Unit = {
+    val rows  = driver.findElements(By.xpath("//tr[@class='govuk-table__row']"))
+    val count = rows.size
+    assert(count == 6)
+  }
+
+  def verifyColumnCount(): Unit = {
+    val cols  = driver.findElements(By.xpath("//*[@scope='col']"))
+    val count = cols.size
     assert(count == 8)
   }
-  def verifyRowsCountForSingleYear(): Unit = {
-    val rows  = driver.findElements(By.xpath("//table/thead/tr/th"))
-    val count = rows.size
+
+  def verifyColumnCountForSingleYear(): Unit = {
+    val cols  = driver.findElements(By.xpath("//*[@scope='col']"))
+    val count = cols.size
     assert(count == 4)
+
   }
 }
