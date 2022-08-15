@@ -17,6 +17,6 @@ Feature: Associated companies Title Message - Validations
     Then display the "<message>" on associated company
 
     Examples:
-      | accountingStartDate | accountingEndDate | profitValue | message                                                                                   |
-      | 01/05/2024          | 31/12/2024        | 50000       | Did your company have any active associated companies?                                    |
-      | 01/01/2023          | 31/12/2023        | 50000       | Did your company have any active associated companies between 1 Apr 2023 and 31 Dec 2023? |
+      | accountingStartDate | accountingEndDate | profitValue | message                                                                                        |
+      | 01/05/2024          | 31/12/2024        | 50000       | Did your company have any active associated companies?                                         |
+      | 01/01/2023          | 31/12/2023        | 50000       | Did your company have any active associated companies between 1 Apr 2023 and 31 December 2023? |
