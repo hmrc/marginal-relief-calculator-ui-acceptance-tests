@@ -68,4 +68,4 @@ Feature:Edit Accounting Period - Validations
     Then the user is displayed with error message "<errorMessage>" for accounting period
     Examples:
       | errorMessage                                                                                          |
-      | The accounting period End date must be less than or equal to a full calendar year from the Start date |
+      | The accounting period End date must be less than or equal to a full calendar year from the start date |
