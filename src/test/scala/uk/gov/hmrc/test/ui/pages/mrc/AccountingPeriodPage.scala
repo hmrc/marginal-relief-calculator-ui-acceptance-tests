@@ -43,7 +43,7 @@ object AccountingPeriodPage extends BasePage {
   val irrelevantPageTitle                 = "You're not eligible for Marginal Relief"
   val irrelevantPageMessage               = "Your accounting period is before the 1 April 2023 start date for Marginal Relief."
   val accountingPeriodLengthError         =
-    "The accounting period End date must be less than or equal to a full calendar year from the start date"
+    "The accounting period end date must be less than or equal to a full year from the start date"
 
   def verifyTitle(): Unit =
     verifyPageTitle(accountingPeriodPage)

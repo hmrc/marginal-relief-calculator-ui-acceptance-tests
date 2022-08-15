@@ -72,6 +72,6 @@ Feature: Accounting Period - Validations
     Then the user is displayed with error message "<errorMessage>" for accounting period
 
     Examples:
-      | accountingStartDate | accountingEndDate | errorMessage                                                                                          |
-      | 01/04/2022          | 30/04/2023        | The accounting period End date must be less than or equal to a full calendar year from the start date |
-      | 01/04/2022          | 31/03/2022        | The accounting period End date must be after the Start date                                           |
+      | accountingStartDate | accountingEndDate | errorMessage                                                                                 |
+      | 01/04/2022          | 30/04/2023        | The accounting period end date must be less than or equal to a full year from the start date |
+      | 01/04/2022          | 31/03/2022        | The accounting period End date must be after the Start date                                  |
