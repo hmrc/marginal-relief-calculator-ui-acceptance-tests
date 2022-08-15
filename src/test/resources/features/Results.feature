@@ -95,9 +95,8 @@ Feature:Results - Validations
     And the user clicks on calculate marginal relief button on check you answers page
     Then display the green box of type "£2,034.25"
     Then the corporation tax liability heading is displayed as "£14,430.13"
-    And the corporation tax liability body is displayed as "Reduced from £16,464.38 after £2,034.25 Marginal Relief"
+    And the corporation tax liability body is displayed as "Reduced from £16,464.38 after £2,034.25 Marginal Relief" for dual year
     And the dual year corporation tax liability table is displayed
-
   @mrc-42
   Scenario: CT liability payable- MRC Single year
     When the profit is "70000"
@@ -119,9 +118,8 @@ Feature:Results - Validations
     And the user clicks on calculate marginal relief button on check you answers page
     Then display the green box of type "£1,148.63"
     And the corporation tax liability heading is displayed as "£16,351.37"
-    And the corporation tax liability body is displayed as "Reduced from £17,500 after £1,148.63 Marginal Relief"
+    And the corporation tax liability body is displayed as "Reduced from £17,500 after £1,148.63 Marginal Relief" for single year
     And the single year corporation tax liability table is displayed
-
   @mrc-42
   Scenario: CT liability payable- No MRC
     When the profit is "45000"
@@ -135,7 +133,7 @@ Feature:Results - Validations
     Then display the green box of type "Your taxable profits are below the Marginal Relief limit"
     And the corporation tax liability heading is displayed as "£8,550"
     And the corporation tax liability body is not displayed
-    And the dual year corporation tax liability table is displayed
+    And the NO MRC dual year corporation tax liability table is displayed
 
 
 

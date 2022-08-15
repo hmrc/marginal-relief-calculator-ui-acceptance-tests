@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.ResultPage
-import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{corporationTaxLiabilityBody, corporationTaxLiabilityHeader, greenBoxMessage}
+import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{corporationTaxLiabilityHeader, dualYearCTLiability, greenBoxMessage, singlelYearCTLiability}
 
 class ResultsStepDef extends BaseStepDef {
   Then("""display the green box of type {string}""") { (panelBody: String) =>
@@ -27,20 +27,28 @@ class ResultsStepDef extends BaseStepDef {
   Then("""the corporation tax liability heading is displayed as {string}""") { (ctAmount: String) =>
     corporationTaxLiabilityHeader should be(ctAmount)
   }
-  Then("""the corporation tax liability body is displayed as {string}""") { (ctAmountReduced: String) =>
-    corporationTaxLiabilityBody should be(ctAmountReduced)
+  Then("""the corporation tax liability body is displayed as {string} for dual year""") { (ctAmountReduced: String) =>
+    dualYearCTLiability should be(ctAmountReduced)
+  }
+  Then("""the corporation tax liability body is displayed as {string} for single year""") { (ctAmountReduced: String) =>
+    singlelYearCTLiability should be(ctAmountReduced)
   }
   Then("the dual year corporation tax liability table is displayed") { () =>
-    ResultPage.verifyTable
-    ResultPage.verifyRowsCountForDualYear
+    ResultPage.verifyRowsCount()
+    ResultPage.verifyColumnCount()
     ResultPage.verifyRows
   }
   Then("the single year corporation tax liability table is displayed") { () =>
-    ResultPage.verifyTable
-    ResultPage.verifyRowsCountForSingleYear
+    ResultPage.verifyRowsCount()
+    ResultPage.verifyColumnCountForSingleYear()
     ResultPage.verifyRows
   }
   Then("the corporation tax liability body is not displayed") { () =>
-    ResultPage.verifyCorporationTaxLiabilityBody
+    ResultPage.verifyCorporationTaxLiabilityBody()
+  }
+  Then("the NO MRC dual year corporation tax liability table is displayed") { () =>
+    ResultPage.verifyRowsCountForNOMRC()
+    ResultPage.verifyColumnCount()
+    ResultPage.verifyRows
   }
 }
