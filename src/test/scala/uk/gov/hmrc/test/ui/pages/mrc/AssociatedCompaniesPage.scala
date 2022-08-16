@@ -16,12 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.{Keys, WebElement}
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
-
-import java.util
 
 object AssociatedCompaniesPage extends BasePage {
 
@@ -98,9 +96,10 @@ object AssociatedCompaniesPage extends BasePage {
     linkCtl.click()
 
   def verifyNewWindow(): Unit = {
-    val browserTabs = driver.getWindowHandle
-    driver.switchTo().window(browserTabs)
-    val URL         = driver.getCurrentUrl
+    import java.util
+    val newTab = new util.ArrayList[String](driver.getWindowHandles)
+    driver.switchTo.window(newTab.get(0))
+    val URL    = driver.getCurrentUrl
     assert(URL == "https://www.gov.uk/hmrc-internal-manuals/company-taxation-manual/ctm60210")
     driver.close()
   }

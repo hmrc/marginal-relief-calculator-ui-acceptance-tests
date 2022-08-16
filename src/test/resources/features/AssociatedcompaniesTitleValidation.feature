@@ -21,7 +21,7 @@ Feature: Associated companies Title Message - Validations
       | 01/05/2024          | 31/12/2024        | 50000       | Did your company have any active associated companies?                                           |
       | 01/01/2023          | 31/12/2023        | 50000       | Did your company have any active associated companies between 1 April 2023 and 31 December 2023? |
 
-  @mrc-135
+  @mrc-135 @runME
   Scenario Outline:Enter associated companies for a portion of the accounting period
     When the accounting period start date is provided as "<accountingStartDate>"
     And the accounting period end date is provided as "<accountingEndDate>"
