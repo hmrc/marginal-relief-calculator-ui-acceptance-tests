@@ -98,7 +98,7 @@ object AssociatedCompaniesPage extends BasePage {
   def verifyNewWindow(): Unit = {
     import java.util
     val newTab = new util.ArrayList[String](driver.getWindowHandles)
-    driver.switchTo.window(newTab.get(0))
+    driver.switchTo.window(newTab.get(1))
     val URL    = driver.getCurrentUrl
     assert(URL == "https://www.gov.uk/hmrc-internal-manuals/company-taxation-manual/ctm60210")
     driver.close()
