@@ -25,8 +25,8 @@ object ResultPage extends BasePage {
     "Marginal Relief Results - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement = _
-  @FindBy(how = How.CSS, using = "div.govuk-heading-s") var HMRCFinancialYearsHeader: WebElement = _
-  @FindBy(how = How.XPATH, using = "//main/div/div/p") var HMRCFinancialYearsSection: WebElement = _
+  @FindBy(how = How.CSS, using = "div.govuk-heading-s") var HMRCFinancialYearsHeader: WebElement              = _
+  @FindBy(how = How.XPATH, using = "//main/div/div/p") var HMRCFinancialYearsSection: WebElement              = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-panel__body']") var panelMessage: WebElement            = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l']") var ctAmount: WebElement                  = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var singleYearCTBody: WebElement            = _
@@ -69,7 +69,7 @@ object ResultPage extends BasePage {
     assert(corporationTaxLiabilityBody === false)
   }
 
-  def verifyRows: Boolean =
+  def verifyRows: Boolean                    =
     ctFirstRow.getText.contains("2022 to 2023")
   ctSecondRow.getText.contains("2022 to 2023")
   ctThirdRow.getText.contains("Overall")
@@ -97,12 +97,10 @@ object ResultPage extends BasePage {
     assert(count == 4)
 
   }
-  def HMRCFinancialYearsHeaderText(): String = {
+  def HMRCFinancialYearsHeaderText(): String =
     HMRCFinancialYearsHeader.getText
-  }
 
-  def HMRCFinancialYearsSectionText(): String = {
+  def HMRCFinancialYearsSectionText(): String =
     HMRCFinancialYearsSection.getText
-  }
 
 }
