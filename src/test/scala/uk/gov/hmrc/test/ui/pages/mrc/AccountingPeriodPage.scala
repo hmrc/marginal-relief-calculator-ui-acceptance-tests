@@ -25,13 +25,14 @@ object AccountingPeriodPage extends BasePage {
   @FindBy(how = How.ID, using = "accountingPeriodStartDate.month") var accountingStartMonth: WebElement = _
   @FindBy(how = How.ID, using = "accountingPeriodStartDate.year") var accountingStartYear: WebElement   = _
 
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate.day") var accountingEndDay: WebElement           = _
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate.month") var accountingEndMonth: WebElement       = _
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate.year") var accountingEndYear: WebElement         = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-xl']") var irrelevantPageHeader: WebElement = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var irrelevantPageContent: WebElement   = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var restartButton: WebElement           = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var referenceLink: WebElement           = _
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate.day") var accountingEndDay: WebElement              = _
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate.month") var accountingEndMonth: WebElement          = _
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate.year") var accountingEndYear: WebElement            = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-xl']") var irrelevantPageHeader: WebElement    = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var irrelevantPageContent: WebElement      = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var restartButton: WebElement              = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var referenceLink: WebElement              = _
+  @FindBy(how = How.CSS, using = "#main-content > div > div > form > p") var accountingPeriodMsg: WebElement = _
 
   PageFactory.initElements(driver, this)
 
@@ -123,6 +124,9 @@ object AccountingPeriodPage extends BasePage {
 
   def verifyReferenceLink(): Unit =
     referenceLink.isDisplayed
+
+  def accountingPeriodMessage(): String =
+    accountingPeriodMsg.getText
 
   def VerifyAccountingPeriodsDatesAsNUll(): Unit = {
     accountingStartDay.getAttribute("value").contains("")

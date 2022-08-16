@@ -75,3 +75,13 @@ Feature: Accounting Period - Validations
       | accountingStartDate | accountingEndDate | errorMessage                                                                                 |
       | 01/04/2022          | 30/04/2023        | The accounting period end date must be less than or equal to a full year from the start date |
       | 01/04/2022          | 31/03/2022        | The accounting period End date must be after the Start date                                  |
+
+  @mrc-135
+  Scenario Outline:Accounting period-Content change
+    When the user reads content as "<accountingPeriodContent>"
+
+    Examples:
+      | accountingPeriodContent                                                                                                                           |
+      | Your accounting period cannot be longer than a full year and is normally the same as the financial year covered by your companys annual accounts. |
+
+

@@ -69,5 +69,14 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
   And("user is presented with input field for associated companies with value as null") { () =>
     AssociatedCompaniesPage.associatedCompaniesCountAsNull()
   }
+  And("the user click on What are associated companies?") { () =>
+    AssociatedCompaniesPage.clickOnQuestion()
+  }
+  And("the user click on control") { () =>
+    AssociatedCompaniesPage.clickOnControl()
+  }
+  And("the new link opens in new window") { () =>
+    AssociatedCompaniesPage.verifyNewWindow()
+  }
 
 }
