@@ -151,6 +151,3 @@ Feature:Results - Validations
     And the corporation tax liability heading is displayed as "£8,550"
     And the corporation tax liability body is not displayed
     And the NO MRC dual year corporation tax liability table is displayed
-
-
-
