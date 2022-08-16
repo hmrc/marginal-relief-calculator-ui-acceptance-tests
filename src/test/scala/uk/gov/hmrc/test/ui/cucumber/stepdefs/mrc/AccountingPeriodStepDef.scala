@@ -81,7 +81,10 @@ class AccountingPeriodStepDef extends BaseStepDef {
   Then("I can see accounting period start and end dates as null") { () =>
     AccountingPeriodPage.VerifyAccountingPeriodsDatesAsNUll()
   }
-  Then("""the user reads content as {string}""") { (accountingPeriodContent: String) =>
+  Then("""the user reads content on accounting period as {string}""") { (accountingPeriodContent: String) =>
     accountingPeriodMessage should be(accountingPeriodContent)
+  }
+  Then("""the user reads content on accounting end date as "{string}""") { (accountEndDateMessage: String) =>
+    accountEndDateMessage should be(accountEndDateMessage)
   }
 }

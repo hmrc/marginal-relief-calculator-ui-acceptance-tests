@@ -33,6 +33,7 @@ object AccountingPeriodPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var restartButton: WebElement              = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var referenceLink: WebElement              = _
   @FindBy(how = How.CSS, using = "#main-content > div > div > form > p") var accountingPeriodMsg: WebElement = _
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate-hint") var accountEndDateMsg: WebElement            = _
 
   PageFactory.initElements(driver, this)
 
@@ -127,6 +128,9 @@ object AccountingPeriodPage extends BasePage {
 
   def accountingPeriodMessage(): String =
     accountingPeriodMsg.getText
+
+  def accountEndDateMessage(): String =
+    accountEndDateMsg.getText
 
   def VerifyAccountingPeriodsDatesAsNUll(): Unit = {
     accountingStartDay.getAttribute("value").contains("")

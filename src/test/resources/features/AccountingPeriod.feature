@@ -78,7 +78,8 @@ Feature: Accounting Period - Validations
 
   @mrc-135
   Scenario Outline:Accounting period-Content change
-    When the user reads content as "<accountingPeriodContent>"
+    When the user reads content on accounting period as "<accountingPeriodContent>"
+    Then the user reads content on accounting end date as "<accountingPeriodEndDateContent>"
 
     Examples:
       | accountingPeriodContent                                                                                                                           |
