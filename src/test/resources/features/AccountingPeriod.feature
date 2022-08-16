@@ -76,7 +76,7 @@ Feature: Accounting Period - Validations
       | 01/04/2022          | 30/04/2023        | The accounting period end date must be less than or equal to a full year from the start date |
       | 01/04/2022          | 31/03/2022        | The accounting period End date must be after the Start date                                  |
 
-  @mrc-135 @runME
+  @mrc-135
   Scenario Outline:Accounting period-Content change
     When the user reads content on accounting period as "<accountingPeriodContent>"
     Then the user reads content on accounting end date as "<accountingPeriodEndDateContent>"
