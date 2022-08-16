@@ -84,7 +84,7 @@ class AccountingPeriodStepDef extends BaseStepDef {
   Then("""the user reads content on accounting period as {string}""") { (accountingPeriodContent: String) =>
     accountingPeriodMessage should be(accountingPeriodContent)
   }
-  Then("""the user reads content on accounting end date as "{string}""") { (accountEndDateMessage: String) =>
+  Then("""the user reads content on accounting end date as {string}""") { (accountEndDateMessage: String) =>
     accountEndDateMessage should be(accountEndDateMessage)
   }
 }
