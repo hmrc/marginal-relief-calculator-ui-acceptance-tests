@@ -4,11 +4,11 @@ Feature:Results - Validations
     Given Marginal Relief Calculator is launched
     When the user clicks on start now button
     Then the user lands on accounting period page
-    When the accounting period start date is provided as "01/01/2023"
-    Then the user clicks continue button on accounting period page
 
   @mrc-41
   Scenario: Your taxable profits are above the Marginal Relief limit
+    When the accounting period start date is provided as "01/01/2023"
+    Then the user clicks continue button on accounting period page
     When the profit is "260000"
     Then the user clicks continue button on taxable profit page
     And the user selects option "No" for the question Did your company receive any distributions?
@@ -22,6 +22,8 @@ Feature:Results - Validations
 
   @mrc-41
   Scenario: Your taxable profits and included distributions are above the Marginal Relief limit
+    When the accounting period start date is provided as "01/01/2023"
+    Then the user clicks continue button on accounting period page
     When the profit is "260000"
     Then the user clicks continue button on taxable profit page
     And the user selects option "Yes" for the question Did your company receive any distributions?
@@ -39,6 +41,8 @@ Feature:Results - Validations
 
   @mrc-41
   Scenario: Your taxable profits are below the Marginal Relief limit
+    When the accounting period start date is provided as "01/01/2023"
+    Then the user clicks continue button on accounting period page
     When the profit is "45000"
     Then the user clicks continue button on taxable profit page
     And the user selects option "No" for the question Did your company receive any distributions?
@@ -52,6 +56,8 @@ Feature:Results - Validations
 
   @mrc-41
   Scenario: Your taxable profits and included distributions are above the Marginal Relief limit
+    When the accounting period start date is provided as "01/01/2023"
+    Then the user clicks continue button on accounting period page
     When the profit is "45000"
     Then the user clicks continue button on taxable profit page
     And the user selects option "Yes" for the question Did your company receive any distributions?
@@ -69,6 +75,8 @@ Feature:Results - Validations
 
   @mrc-41
   Scenario: Your taxable profits and included distributions are above the Marginal Relief limit
+    When the accounting period start date is provided as "01/01/2023"
+    Then the user clicks continue button on accounting period page
     When the profit is "60000"
     Then the user clicks continue button on taxable profit page
     And the user selects option "Yes" for the question Did your company receive any distributions?
@@ -83,8 +91,10 @@ Feature:Results - Validations
     And the user clicks on calculate marginal relief button on check you answers page
     Then display the green box of type "£1,929.93"
 
-  @mrc-42 @a11y
+  @mrc-126 @mrc-42 @a11y
   Scenario: CT liability payable- MRC Dual year
+    When the accounting period start date is provided as "01/01/2023"
+    Then the user clicks continue button on accounting period page
     When the profit is "70000"
     Then the user clicks continue button on taxable profit page
     And the user selects option "no" for the question Did your company receive any distributions?
@@ -95,10 +105,14 @@ Feature:Results - Validations
     And the user clicks on calculate marginal relief button on check you answers page
     Then display the green box of type "£2,034.25"
     Then the corporation tax liability heading is displayed as "£14,430.13"
+    Then the accounting period covering 2 years section is displayed
     And the corporation tax liability body is displayed as "Reduced from £16,464.38 after £2,034.25 Marginal Relief" for dual year
     And the dual year corporation tax liability table is displayed
-  @mrc-42
+
+  @mrc-42 @wip
   Scenario: CT liability payable- MRC Single year
+    When the accounting period start date is provided as "01/01/2023"
+    Then the user clicks continue button on accounting period page
     When the profit is "70000"
     And the user clicks continue button on taxable profit page
     And the user selects option "no" for the question Did your company receive any distributions?
@@ -120,8 +134,11 @@ Feature:Results - Validations
     And the corporation tax liability heading is displayed as "£16,351.37"
     And the corporation tax liability body is displayed as "Reduced from £17,500 after £1,148.63 Marginal Relief" for single year
     And the single year corporation tax liability table is displayed
+
   @mrc-42
   Scenario: CT liability payable- No MRC
+    When the accounting period start date is provided as "01/01/2023"
+    Then the user clicks continue button on accounting period page
     When the profit is "45000"
     Then the user clicks continue button on taxable profit page
     And the user selects option "No" for the question Did your company receive any distributions?

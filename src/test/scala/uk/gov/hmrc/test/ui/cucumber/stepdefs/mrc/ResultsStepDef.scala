@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.ResultPage
-import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{corporationTaxLiabilityHeader, dualYearCTLiability, greenBoxMessage, singlelYearCTLiability}
+import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{HMRCFinancialYearsHeaderText, HMRCFinancialYearsSectionText, corporationTaxLiabilityHeader, dualYearCTLiability, greenBoxMessage, singlelYearCTLiability}
 
 class ResultsStepDef extends BaseStepDef {
   Then("""display the green box of type {string}""") { (panelBody: String) =>
@@ -50,5 +50,9 @@ class ResultsStepDef extends BaseStepDef {
     ResultPage.verifyRowsCountForNOMRC()
     ResultPage.verifyColumnCount()
     ResultPage.verifyRows
+  }
+  Then("the accounting period covering 2 years section is displayed") { () =>
+    HMRCFinancialYearsHeaderText should be ("Your accounting period covers 2 HMRC financial years")
+    HMRCFinancialYearsSectionText should be ("2022 to 2023: 1 Jan 2023 to 31 Mar 2023\n2023 to 2024: 1 Apr 2023 to 31 Dec 2023")
   }
 }
