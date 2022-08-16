@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage
-import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.{accountingPeriodLengthError, accountingPeriodMandatoryFieldError, accountingPeriodMandatoryValueError, errorMessage}
+import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.{accountingPeriodLengthError, accountingPeriodMandatoryFieldError, accountingPeriodMandatoryValueError, accountingPeriodMessage, errorMessage}
 
 class AccountingPeriodStepDef extends BaseStepDef {
   Then("the user lands on accounting period page") { () =>
@@ -81,5 +81,10 @@ class AccountingPeriodStepDef extends BaseStepDef {
   Then("I can see accounting period start and end dates as null") { () =>
     AccountingPeriodPage.VerifyAccountingPeriodsDatesAsNUll()
   }
-
+  Then("""the user reads content on accounting period as {string}""") { (accountingPeriodContent: String) =>
+    accountingPeriodMessage should be(accountingPeriodContent)
+  }
+  Then("""the user reads content on accounting end date as "{string}""") { (accountEndDateMessage: String) =>
+    accountEndDateMessage should be(accountEndDateMessage)
+  }
 }
