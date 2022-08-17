@@ -19,6 +19,7 @@ logs
 /.idea_modules
 eclipse
 .scala_dependencies
+/Runner.run.xml
 
 # sbt files
 dist

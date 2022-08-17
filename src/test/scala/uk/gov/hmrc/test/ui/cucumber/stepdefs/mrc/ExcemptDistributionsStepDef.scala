@@ -24,18 +24,18 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
   And("""the user selects option {string} for the question Did your company receive any distributions?""") {
     (option: String) =>
       if (option.equalsIgnoreCase("yes")) {
-        ExcemptDistrubutionsPage.selectOptionYes
+        ExcemptDistrubutionsPage.selectOptionYes()
       } else {
-        ExcemptDistrubutionsPage.selectOptionNo
+        ExcemptDistrubutionsPage.selectOptionNo()
       }
   }
   And(
     """the user selects option {string} for the question Do any distributions need to be included with your profits?"""
   ) { (option: String) =>
     if (option.equalsIgnoreCase("yes")) {
-      ExcemptDistrubutionsPage.yesToIncludeInProfits
+      ExcemptDistrubutionsPage.yesToIncludeInProfits()
     } else {
-      ExcemptDistrubutionsPage.noToIncludeInProfits
+      ExcemptDistrubutionsPage.noToIncludeInProfits()
     }
   }
   Then("the user is provided with input field to provide distributions") { () =>

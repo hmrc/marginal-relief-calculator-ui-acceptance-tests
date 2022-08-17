@@ -83,6 +83,6 @@ Feature: Accounting Period - Validations
 
     Examples:
       | accountingPeriodContent                                                                                                                           | accountingPeriodEndDateContent                                                |
-      | Your accounting period cannot be longer than a full year and is normally the same as the financial year covered by your companys annual accounts. | If you do not enter a date we will default to a full year from the start date |
+      | Your accounting period cannot be longer than a full year and is normally the same as the financial year covered by your company's annual accounts. | If you do not enter a date we will default to a full year from the start date |
 
 
