@@ -23,19 +23,19 @@ import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
 
 object AssociatedCompaniesPage extends BasePage {
 
-  @FindBy(how = How.CSS, using = "span h1") var headerMessage: WebElement                               = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-details__summary-text']") var refLink: WebElement = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-fieldset__legend--l']") var headerMessage: WebElement = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-details__summary-text']") var refLink: WebElement     = _
   @FindBy(
     how = How.XPATH,
     using = "//a[@href='https://www.gov.uk/hmrc-internal-manuals/company-taxation-manual/ctm60210']"
-  ) var linkCtl: WebElement                                                                             = _
-  @FindBy(how = How.ID, using = "associatedCompanies") var yesOption: WebElement                        = _
-  @FindBy(how = How.ID, using = "associatedCompanies-2") var noOption: WebElement                       = _
+  ) var linkCtl: WebElement                                                                                 = _
+  @FindBy(how = How.ID, using = "associatedCompanies") var yesOption: WebElement                            = _
+  @FindBy(how = How.ID, using = "associatedCompanies-2") var noOption: WebElement                           = _
   @FindBy(
     how = How.XPATH,
     using = "//*[@class='govuk-label']/following-sibling::input"
-  ) var inputAssociatedCompaniesCount: WebElement                                                       = _
-  @FindBy(how = How.CSS, using = "form > button") var continueButton: WebElement                        = _
+  ) var inputAssociatedCompaniesCount: WebElement                                                           = _
+  @FindBy(how = How.CSS, using = "form > button") var continueButton: WebElement                            = _
 
   PageFactory.initElements(driver, this)
 
@@ -101,7 +101,7 @@ object AssociatedCompaniesPage extends BasePage {
     driver.switchTo.window(newTab.get(1))
     val URL    = driver.getCurrentUrl
     assert(URL == "https://www.gov.uk/hmrc-internal-manuals/company-taxation-manual/ctm60210")
-    driver.close()
+    driver.switchTo.window(newTab.get(0))
   }
 
 }

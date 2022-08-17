@@ -91,7 +91,7 @@ Feature:Results - Validations
     And the user clicks on calculate marginal relief button on check you answers page
     Then display the green box of type "£1,929.93"
 
-  @mrc-126 @mrc-42 @a11y
+  @mrc-126 @mrc-42
   Scenario: CT liability payable- MRC Dual year
     When the accounting period start date is provided as "01/01/2023"
     Then the user clicks continue button on accounting period page
