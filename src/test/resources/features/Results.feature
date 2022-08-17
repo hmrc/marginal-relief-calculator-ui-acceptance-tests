@@ -109,7 +109,7 @@ Feature:Results - Validations
     And the corporation tax liability body is displayed as "Reduced from £16,464.38 after £2,034.25 Marginal Relief" for dual year
     And the dual year corporation tax liability table is displayed
 
-  @mrc-42 @wip
+  @mrc-42
   Scenario: CT liability payable- MRC Single year
     When the accounting period start date is provided as "01/06/2023"
     And the accounting period end date is provided as "31/12/2023"
