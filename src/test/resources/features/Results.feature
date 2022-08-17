@@ -111,22 +111,14 @@ Feature:Results - Validations
 
   @mrc-42 @wip
   Scenario: CT liability payable- MRC Single year
-    When the accounting period start date is provided as "01/01/2023"
+    When the accounting period start date is provided as "01/06/2023"
+    And the accounting period end date is provided as "31/12/2023"
     Then the user clicks continue button on accounting period page
     When the profit is "70000"
     And the user clicks continue button on taxable profit page
     And the user selects option "no" for the question Did your company receive any distributions?
     And the user clicks continue button on distributions page
     And user is landed on associated companies page
-    And the user selects option "no" for the question Did your company have any active associated companies?
-    And the user clicks continue button on associated companies page
-    And I click on change link next to the accounting period dates
-    And the accounting period start date is provided as "01/06/2023"
-    And the user clicks continue button on accounting period page
-    And the profit is "70000"
-    And the user clicks continue button on taxable profit page
-    And the user selects option "no" for the question Did your company receive any distributions?
-    And the user clicks continue button on distributions page
     And the user selects option "no" for the question Did your company have any active associated companies?
     And the user clicks continue button on associated companies page
     And the user clicks on calculate marginal relief button on check you answers page
