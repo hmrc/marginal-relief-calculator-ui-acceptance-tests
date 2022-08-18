@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 object CheckYourAnswersPage extends BasePage {
 
   val checkYourAnswers =
-    "Check Your Answers - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+    "Check Your answers - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
   @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd >a") var changeLinkForDist: WebElement                    = _
   @FindBy(how = How.CSS, using = "dl > div:nth-child(2) > dd >a") var changeLinkForProfit: WebElement                  = _
