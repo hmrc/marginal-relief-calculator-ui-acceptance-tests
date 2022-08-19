@@ -1,0 +1,7 @@
+{
+  "contextId": 1,
+  "url": "https:\/\/www\\.googletagmanager\\.com\/gtm\\.js.*",
+  "ruleId": 10098,
+  "newLevel": -1,
+  "urlIsRegex": "true"
+}
