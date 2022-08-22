@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.ResultPage
-import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{HMRCFinancialYearsHeaderText, HMRCFinancialYearsSectionText, corporationTaxLiabilityHeader, dualYearCTLiability, greenBoxMessage, singlelYearCTLiability}
+import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{HMRCFinancialYearsHeaderText, HMRCFinancialYearsSectionText, corporationTaxLiabilityHeader, dualYearCTLiability, effectiveTaxBodyDual, effectiveTaxBodySingle, effectiveTaxHeader, greenBoxMessage, singleYearCTLiability, verifyETContent}
 
 class ResultsStepDef extends BaseStepDef {
   Then("""display the green box of type {string}""") { (panelBody: String) =>
@@ -31,30 +31,55 @@ class ResultsStepDef extends BaseStepDef {
     dualYearCTLiability should be(ctAmountReduced)
   }
   Then("""the corporation tax liability body is displayed as {string} for single year""") { (ctAmountReduced: String) =>
-    singlelYearCTLiability should be(ctAmountReduced)
+    singleYearCTLiability should be(ctAmountReduced)
   }
   Then("the dual year corporation tax liability table is displayed") { () =>
-    ResultPage.verifyRowsCount()
-    ResultPage.verifyColumnCount()
-    ResultPage.verifyRows
+    ResultPage.verifyCTHeaderCountForDualYear()
+    ResultPage.verifyCTBodyCountForDualYear()
+    ResultPage.verifyHeaderForDualYear
   }
   Then("the single year corporation tax liability table is displayed") { () =>
-    ResultPage.verifyRowsCount()
-    ResultPage.verifyColumnCountForSingleYear()
-    ResultPage.verifyRows
+    ResultPage.verifyCTHeaderCountForSingleYear()
+    ResultPage.verifyCTBodyCountForSingleYear()
   }
   Then("the corporation tax liability body is not displayed") { () =>
     ResultPage.verifyCorporationTaxLiabilityBody()
   }
   Then("the NO MRC dual year corporation tax liability table is displayed") { () =>
-    ResultPage.verifyRowsCountForNOMRC()
-    ResultPage.verifyColumnCount()
-    ResultPage.verifyRows
+    ResultPage.verifyCTHeaderCountForNoMrc()
+    ResultPage.verifyCTBodyCountForNoMrc()
   }
   Then("the accounting period covering 2 years section is displayed") { () =>
     HMRCFinancialYearsHeaderText  should be("Your accounting period covers 2 HMRC financial years")
     HMRCFinancialYearsSectionText should be(
       "2022 to 2023: 1 Jan 2023 to 31 Mar 2023\n2023 to 2024: 1 Apr 2023 to 31 Dec 2023"
     )
+  }
+  Then("""the effective tax rate heading is displayed as {string}""") { (effectiveTax: String) =>
+    effectiveTaxHeader should be(effectiveTax)
+  }
+  Then("""the effective tax body is displayed as {string} for dual year""") { (effectiveTaxMsg: String) =>
+    effectiveTaxBodyDual should be(effectiveTaxMsg)
+  }
+  Then("""the effective tax body is displayed as {string} for single year""") { (effectiveTaxMsg: String) =>
+    effectiveTaxBodySingle should be(effectiveTaxMsg)
+  }
+  Then("the dual year effective tax table is displayed") { () =>
+    ResultPage.verifyETHeaderCountForDualYear()
+    ResultPage.verifyETBodyCountForDualYear()
+    ResultPage.verifyHeaderForDualYear
+  }
+  Then("the single year effective tax table is displayed") { () =>
+    ResultPage.verifyETHeaderCountForSingleYear()
+    ResultPage.verifyETBodyCountForSingleYear()
+  }
+  Then("the NO MRC effective tax table is displayed") { () =>
+    ResultPage.verifyETHeaderCountForNOMRC()
+    ResultPage.verifyETBodyCountForNOMRC()
+  }
+  Then("""the {string} effective tax table is displayed""") { (smallProfit: String) =>
+    ResultPage.verifyETHeaderCountForNOMRC()
+    ResultPage.verifyETBodyCountForNOMRC()
+    verifyETContent should be(smallProfit)
   }
 }

@@ -143,3 +143,69 @@ Feature:Results - Validations
     And the corporation tax liability heading is displayed as "£8,550"
     And the corporation tax liability body is not displayed
     And the NO MRC dual year corporation tax liability table is displayed
+
+  @mrc-40
+  Scenario: Effective tax rate- MRC Dual year
+    When the accounting period start date is provided as "01/01/2023"
+    Then the user clicks continue button on accounting period page
+    When the profit is "70000"
+    And the user clicks continue button on taxable profit page
+    And the user selects option "no" for the question Did your company receive any distributions?
+    And the user clicks continue button on distributions page
+    And user is landed on associated companies page
+    And the user selects option "no" for the question Did your company have any active associated companies?
+    And the user clicks continue button on associated companies page
+    And the user clicks on calculate marginal relief button on check you answers page
+    And the effective tax rate heading is displayed as "20.61%"
+    And the effective tax body is displayed as "Reduced from 23.52% after Marginal Relief" for dual year
+    And the dual year effective tax table is displayed
+
+  @mrc-40
+  Scenario: Effective tax rate- MRC Single year
+    When the accounting period start date is provided as "01/06/2023"
+    When the accounting period end date is provided as "31/12/2023"
+    Then the user clicks continue button on accounting period page
+    When the profit is "70000"
+    And the user clicks continue button on taxable profit page
+    And the user selects option "no" for the question Did your company receive any distributions?
+    And the user clicks continue button on distributions page
+    And user is landed on associated companies page
+    And the user selects option "no" for the question Did your company have any active associated companies?
+    And the user clicks continue button on associated companies page
+    And the user clicks on calculate marginal relief button on check you answers page
+    And the effective tax rate heading is displayed as "23.36%"
+    And the effective tax body is displayed as "Reduced from 25.00% after Marginal Relief" for single year
+    And the single year effective tax table is displayed
+
+  @mrc-40
+  Scenario: Effective tax rate- NO MRC Dual year
+    When the accounting period start date is provided as "01/01/2023"
+    When the accounting period end date is provided as "31/12/2023"
+    Then the user clicks continue button on accounting period page
+    When the profit is "37000"
+    And the user clicks continue button on taxable profit page
+    And the user selects option "no" for the question Did your company receive any distributions?
+    And the user clicks continue button on distributions page
+    And user is landed on associated companies page
+    And the user selects option "no" for the question Did your company have any active associated companies?
+    And the user clicks continue button on associated companies page
+    And the user clicks on calculate marginal relief button on check you answers page
+    And the effective tax rate heading is displayed as "19.00%"
+    And the NO MRC effective tax table is displayed
+
+  @mrc-40
+  Scenario: Effective tax rate- Small profit rate
+    When the accounting period start date is provided as "01/01/2024"
+    Then the user clicks continue button on accounting period page
+    When the profit is "25000"
+    And the user clicks continue button on taxable profit page
+    And the user selects option "no" for the question Did your company receive any distributions?
+    And the user clicks continue button on distributions page
+    And user is landed on associated companies page
+    And the user selects option "no" for the question Did your company have any active associated companies?
+    And the user clicks continue button on associated companies page
+    And the user clicks on calculate marginal relief button on check you answers page
+    And the effective tax rate heading is displayed as "19.00%"
+    And the "Small profits rate" effective tax table is displayed
+
+
