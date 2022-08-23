@@ -77,7 +77,7 @@ object ExcemptDistrubutionsPage extends BasePage {
     submitPage()
   }
 
-  def verifyYesNoNotSelected: Unit = {
+  def verifyYesNoNotSelected(): Unit = {
     val elementsYes: util.List[WebElement] = driver.findElements(By.cssSelector("#value_0:checked"))
     val elementsNo: util.List[WebElement]  = driver.findElements(By.cssSelector("#value_1:checked"))
     assert(((elementsYes.size === 0) && (elementsNo.size === 0)) === true)

@@ -52,7 +52,7 @@ class ResultsStepDef extends BaseStepDef {
   Then("the accounting period covering 2 years section is displayed") { () =>
     HMRCFinancialYearsHeaderText  should be("Your accounting period covers 2 HMRC financial years")
     HMRCFinancialYearsSectionText should be(
-      "2022 to 2023: 1 Jan 2023 to 31 Mar 2023\n2023 to 2024: 1 Apr 2023 to 31 Dec 2023"
+      "2022 to 2023: 1 January 2023 to 31 March 2023\n2023 to 2024: 1 April 2023 to 31 December 2023"
     )
   }
   Then("""the effective tax rate heading is displayed as {string}""") { (effectiveTax: String) =>
