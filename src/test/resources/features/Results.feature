@@ -206,6 +206,6 @@ Feature:Results - Validations
     And the user clicks continue button on associated companies page
     And the user clicks on calculate marginal relief button on check you answers page
     And the effective tax rate heading is displayed as "19.00%"
-    And the "Small profits rate" effective tax table is displayed
+    And the "Small profit rate" effective tax table is displayed
 
 
