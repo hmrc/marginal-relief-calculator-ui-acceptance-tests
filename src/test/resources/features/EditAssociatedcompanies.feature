@@ -48,9 +48,9 @@ Feature:Edit Associated Companies - Validations
     And I click on change link next to the associated companies
     And user is landed on associated companies page
     And I validate associated companies is pre-populated as "25"
-    And user inputs a valid number as "500" associated companies
+    And user inputs a valid number as "0" associated companies
     Then the user clicks continue button on associated companies page
     Then the user is displayed with error message "<ErrorMessage>" for associated company
     Examples:
-      | ErrorMessage                             |
-      | Enter a number lower than or equal to 99 |
+      | ErrorMessage                   |
+      | Enter an amount greater than 0 |
