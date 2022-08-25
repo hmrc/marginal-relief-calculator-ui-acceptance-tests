@@ -15,7 +15,7 @@ Feature:Taxable Profit - Validations
     Examples:
       | profitValue  | profitError                                                                             |
       | 50000.67     | Do not use decimal points for taxable profits. Enter a whole number. For example, 70000 |
-      | 10000000000  | Enter an amount that is between 1 and 1,000,000,000                                     |
+      | 10000000000  | Enter an amount between 1 and 1,000,000,000                                             |
       | 1000000001   | Enter an amount lower than or equal to 1,000,000,000                                    |
       |              | Enter an amount for your taxable profits                                                |
       | ONE THOUSAND | Enter a valid taxable profit. For example, 70000                                        |
