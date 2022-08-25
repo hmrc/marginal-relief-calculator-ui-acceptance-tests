@@ -61,4 +61,3 @@ Feature: Associated companies - Validations
       | -3        | Enter an amount greater than 0                                  |
       | 1B        | Enter your Number of associated companies using numbers         |
       | 0         | Enter an amount greater than 0                                  |
-      | 100       | Enter a number lower than or equal to 99                        |
