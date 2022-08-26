@@ -1,7 +1,7 @@
 **This is a template README.md.  Be sure to update this with project specific content that describes your ui test project.**
 
 # marginal-relief-calculator-ui-acceptance-tests
-UI test suite for the `<digital service name>` using WebDriver and `<scalatest/cucumber>`.  
+UI test suite for the MRC using WebDriver and Cucumber. 
 
 ## Running the tests
 
@@ -17,11 +17,11 @@ Run the following command to start services locally:
 
 Using the `--wait 100` argument ensures a health check is run on all the services started as part of the profile. `100` refers to the given number of seconds to wait for services to pass health checks.
 
-Then execute the `run_tests.sh` script:
+Then execute the `run_marginal_relief_calculator_ui_tests.sh` script:
 
-    ./run_tests.sh <browser-driver> <environment> 
+    ./run_marginal_relief_calculator_ui_tests.sh remote-chrome
 
-The `run_tests.sh` script defaults to using `chrome` in the `local` environment.  For a complete list of supported param values, see:
+The `run_marginal_relief_calculator_ui_tests.sh` script defaults to using `chrome` in the `local` environment.  For a complete list of supported param values, see:
  - `src/test/resources/application.conf` for **environment** 
  - [webdriver-factory](https://github.com/hmrc/webdriver-factory#2-instantiating-a-browser-with-default-options) for **browser-driver**
 
@@ -46,9 +46,9 @@ To run against a containerised Chrome browser:
 To run the tests against an environment set the corresponding `host` environment property as specified under
  `<env>.host.services` in the [application.conf](/src/test/resources/application.conf). 
 
-For example, to execute the `run_tests.sh` script using Chrome remote-webdriver against QA environment 
+For example, to execute the `run_marginal_relief_calculator_ui_tests.sh` script using Chrome remote-webdriver against QA environment 
 
-    ./run_tests.sh remote-chrome qa
+    ./run_marginal_relief_calculator_ui_tests.sh remote-chrome qa
 
 ## Running ZAP tests
 
@@ -68,26 +68,24 @@ This is achieved using [webdriver-factory](https://github.com/hmrc/webdriver-fac
 
 #### Executing a ZAP test
 
-The shell script `run_zap_tests.sh` is available to execute ZAP tests. The script proxies a set of journey tests, 
-tagged as `ZapTests`, via ZAP.  
+The shell script `run_marginal_relief_calculator_ui_zap_tests.sh` is available to execute ZAP tests. The script proxies a set of journey tests, 
+tagged as `@zap`, via ZAP.  
 
 For example, to execute ZAP tests locally using a Chrome browser
 
 ```
-./run_zap_test.sh chrome local
+./run_marginal_relief_calculator_ui_zap_tests.sh chrome local
 ```
 
 To execute ZAP tests locally using a remote-chrome browser
 
 ```
 ./run_browser_with_docker.sh remote-chrome 
-./run_zap_test.sh remote-chrome local
+./run_marginal_relief_calculator_ui_zap_tests.sh remote-chrome local
 ``` 
 
 `./run_browser_with_docker.sh` is **NOT** required when running in a CI environment.
 
-### Running tests using BrowserStack
-If you would like to run your tests via BrowserStack from your local development environment please refer to the [webdriver-factory](https://github.com/hmrc/webdriver-factory/blob/main/README.md/#user-content-running-tests-using-browser-stack) project.
 
 ## Installing local driver binaries
 
