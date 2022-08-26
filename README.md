@@ -122,3 +122,9 @@ See the `drivers/` directory for some helpful scripts to do the installation wor
  ```
 
 [Visit the official Scalafmt documentation to view a complete list of tasks which can be run.](https://scalameta.org/scalafmt/docs/installation.html#task-keys)
+ Jenkins
+Regression tests, accessibility tests, and zap tests from this repo can also be run from Jenkins.
+
+Running tests in Jenkins is preferable to running locally.
+
+For each Jenkins job, to run the tests just select Build with Parameters and then click Build.
