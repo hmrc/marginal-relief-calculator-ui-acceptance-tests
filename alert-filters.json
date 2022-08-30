@@ -13,6 +13,20 @@
       "ruleId": 10021,
       "newLevel": -1,
       "urlIsRegex": "true"
+    },
+    {
+      "contextId": 1,
+      "url": "https:\/\/www\\..*\\.googleapis\\.com.*",
+      "ruleId": 10020,
+      "newLevel": -1,
+      "urlIsRegex": "true"
+    },
+    {
+      "contextId": 1,
+      "url": "https:\/\/www\\..*\\.googleapis\\.com.*",
+      "ruleId": 10021,
+      "newLevel": -1,
+      "urlIsRegex": "true"
     }
   ]
 }
