@@ -25,8 +25,8 @@ object ResultPage extends BasePage {
     "Marginal Relief Results - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement = _
-  @FindBy(how = How.CSS, using = "div.govuk-heading-s") var HMRCFinancialYearsHeader: WebElement              = _
-  @FindBy(how = How.XPATH, using = "//main/div/div/p") var HMRCFinancialYearsSection: WebElement              = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-s']") var HMRCFinancialYearsHeader: WebElement  = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var HMRCFinancialYearsSection: WebElement   = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-panel__body']") var panelMessage: WebElement            = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][1]") var ctAmount: WebElement               = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var singleYearCTBody: WebElement            = _
