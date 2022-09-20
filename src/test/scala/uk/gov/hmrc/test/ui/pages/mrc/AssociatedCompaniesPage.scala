@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
 
 object AssociatedCompaniesPage extends BasePage {
 
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-fieldset__legend--l']") var headerMessage: WebElement = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/form/h1") var headerMessage: WebElement = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-details__summary-text']") var refLink: WebElement     = _
   @FindBy(
     how = How.XPATH,

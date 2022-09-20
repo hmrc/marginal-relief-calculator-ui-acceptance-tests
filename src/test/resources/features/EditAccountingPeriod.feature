@@ -32,13 +32,13 @@ Feature:Edit Accounting Period - Validations
     When the accounting period start date is provided as "01/01/2023"
     And the accounting period end date is provided as "31/12/2023"
     Then the user clicks continue button on accounting period page
-    And the profit is "50000"
-    Then the user clicks continue button on taxable profit page
-    And the user selects option "no" for the question Did your company receive any distributions?
-    And the user clicks continue button on distributions page
-    Then user is landed on associated companies page
-    When the user selects option "no" for the question Did your company have any active associated companies?
-    Then the user clicks continue button on associated companies page
+#    And the profit is "50000"
+#    Then the user clicks continue button on taxable profit page
+#    And the user selects option "no" for the question Did your company receive any distributions?
+#    And the user clicks continue button on distributions page
+#    Then user is landed on associated companies page
+#    When the user selects option "no" for the question Did your company have any active associated companies?
+#    Then the user clicks continue button on associated companies page
     Then user is presented with Check Your Answers page
     And I can validate my accounting period dates as "1 Jan 2023 to 31 Dec 2023"
 
@@ -52,13 +52,13 @@ Feature:Edit Accounting Period - Validations
     When the accounting period start date is provided as "01/01/2023"
     And the accounting period end date is provided as "31/12/2023"
     Then the user clicks continue button on accounting period page
-    And the profit is "50000"
-    Then the user clicks continue button on taxable profit page
-    And the user selects option "no" for the question Did your company receive any distributions?
-    And the user clicks continue button on distributions page
-    Then user is landed on associated companies page
-    When the user selects option "no" for the question Did your company have any active associated companies?
-    Then the user clicks continue button on associated companies page
+#    And the profit is "50000"
+#    Then the user clicks continue button on taxable profit page
+#    And the user selects option "no" for the question Did your company receive any distributions?
+#    And the user clicks continue button on distributions page
+#    Then user is landed on associated companies page
+#    When the user selects option "no" for the question Did your company have any active associated companies?
+#    Then the user clicks continue button on associated companies page
     Then user is presented with Check Your Answers page
     And I can validate my accounting period dates as "1 Jan 2023 to 31 Dec 2023"
     When I click on change link next to the accounting period dates
