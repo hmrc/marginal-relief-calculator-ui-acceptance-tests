@@ -1,4 +1,5 @@
 Feature: Before you start page - Validations
+
   @mrc-82 @mrc-132
   Scenario: Validating before you start page validations
     Given Marginal Relief Calculator is launched
