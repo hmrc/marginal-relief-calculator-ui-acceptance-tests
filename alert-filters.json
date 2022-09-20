@@ -14,7 +14,7 @@
       "newLevel": -1,
       "urlIsRegex": "true"
     },
-     {
+    {
       "contextId": 1,
       "url": "https:\/\/optimizationguide-pa\\.googleapis\\.com.*",
       "ruleId": 10020,

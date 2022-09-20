@@ -17,8 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.CheckYourAnswersPage
-import uk.gov.hmrc.test.ui.pages.mrc.ResultPage
+import uk.gov.hmrc.test.ui.pages.mrc.{CheckYourAnswersPage, ResultPage}
 
 class CheckYourAnswersStepDef extends BaseStepDef {
   Then("I am presented with change link next to the distribution amount") { () =>
