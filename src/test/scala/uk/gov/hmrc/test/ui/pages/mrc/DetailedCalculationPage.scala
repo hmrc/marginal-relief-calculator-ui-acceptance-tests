@@ -22,12 +22,14 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 
 object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//a[@href='/marginal-relief-calculator/full-results-page']") var detailLinK
-    : WebElement                                                                                              = _
-  @FindBy(how = How.XPATH, using = "//h1") var detailPageHeader: WebElement                                   = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/dl/div[1]/dd/p[2]") var detailedPageMessage: WebElement         = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/dl/div[3]/dd") var detailedPageDistributionAmt: WebElement = _
+    : WebElement                                                            = _
+  @FindBy(how = How.XPATH, using = "//h1") var detailPageHeader: WebElement = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/dl/div[1]/dd/p[2]") var detailedPageMessage
+    : WebElement                                                            = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/dl/div[3]/dd") var detailedPageDistributionAmt
+    : WebElement                                                            = _
   PageFactory.initElements(driver, this)
-  def verifyDetailLink(): Boolean                                                                             =
+  def verifyDetailLink(): Boolean                                           =
     detailLinK.isDisplayed()
 
   def clickDetailLink(): Unit =
