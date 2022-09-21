@@ -2,42 +2,42 @@
   "add": [
     {
       "contextId": 1,
-      "url": "https: \/\/www\\.googletagmanager\\.com\/.*",
+      "url": "https:\/\/www\\.googletagmanager\\.com\/.*",
       "ruleId": 10098,
       "newLevel": -1,
       "urlIsRegex": "true"
     },
     {
       "contextId": 1,
-      "url": "https: \/\/www\\.googletagmanager\\.com\/.*",
+      "url": "https:\/\/www\\.googletagmanager\\.com\/.*",
       "ruleId": 10021,
       "newLevel": -1,
       "urlIsRegex": "true"
     },
     {
       "contextId": 1,
-      "url": "https: \/\/.*\\.google-analytics\\.com\/.*",
+      "url": "https:\/\/.*\\.google-analytics\\.com\/.*",
       "ruleId": 2,
       "newLevel": -1,
       "urlIsRegex": "true"
     },
     {
       "contextId": 1,
-      "url": "https: \/\/.*\\.google-analytics\\.com.*",
+      "url": "https:\/\/.*\\.google-analytics\\.com.*",
       "ruleId": 3,
       "newLevel": -1,
       "urlIsRegex": "true"
     },
     {
       "contextId": 1,
-      "url": "https: \/\/optimizationguide-pa\\.googleapis\\.com.*",
+      "url": "https:\/\/optimizationguide-pa\\.googleapis\\.com.*",
       "ruleId": 10020,
       "newLevel": -1,
       "urlIsRegex": "true"
     },
     {
       "contextId": 1,
-      "url": "https: \/\/optimizationguide-pa\\.googleapis\\.com.*",
+      "url": "https:\/\/optimizationguide-pa\\.googleapis\\.com.*",
       "ruleId": 10021,
       "newLevel": -1,
       "urlIsRegex": "true"
