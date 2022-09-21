@@ -17,10 +17,16 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage.detailedPageTitle
-import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage.detailedPageContent
+import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage
+import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage.{detailedPageContent, detailedPageDistribution, detailedPageTitle}
 
 class DetailedCalculationStepDef extends BaseStepDef {
+  And("the Check Marginal Relief calculation in detail link is displayed") { () =>
+    DetailedCalculationPage.verifyDetailLink()
+  }
+  And("the user click on Check Marginal Relief calculation in detail link") { () =>
+    DetailedCalculationPage.clickDetailLink()
+  }
   Then("""header displays as {string}""") { (headerTitle: String) =>
     detailedPageTitle should be(headerTitle)
   }
@@ -30,4 +36,5 @@ class DetailedCalculationStepDef extends BaseStepDef {
   Then("""the distribution amount has £ prefix and displayed as {string}""") { (distributionamt: String) =>
     detailedPageDistribution should be(distributionamt)
   }
+
 }
