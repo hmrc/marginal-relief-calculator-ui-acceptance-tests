@@ -20,20 +20,29 @@ import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
+import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
+
 object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//a[@href='/marginal-relief-calculator/full-results-page']") var detailLinK
-    : WebElement                                                            = _
-  @FindBy(how = How.XPATH, using = "//h1") var detailPageHeader: WebElement = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/dl/div[1]/dd/p[2]") var detailedPageMessage
-    : WebElement                                                            = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/dl/div[3]/dd") var detailedPageDistributionAmt
-    : WebElement                                                            = _
-    : WebElement                                                                                              = _
-  @FindBy(how = How.XPATH, using = "//h1") var detailPageHeader: WebElement                                   = _
-  @FindBy(how = How.XPATH, using = "//div[1]/dd") var yourDetailsAccountingPeriod: WebElement         = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var detailedPageDistributionAmt: WebElement = _
+    : WebElement                                                                                                      = _
+  @FindBy(how = How.XPATH, using = "//h1") var detailPageHeader: WebElement                                           = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/dl/div[3]/dd") var yourDetailsDistributionAmt
+    : WebElement                                                                                                      = _
+  @FindBy(how = How.XPATH, using = "//div[1]/dd") var yourDetailsAccountingPeriod: WebElement                         = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/h2[2]") var howItsCalculatedSection: WebElement =
+    _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/caption") var taxableProfitSection
+    : WebElement                                                                                                      = _
+
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[1]/tbody/tr") var mrCalculationSteps
+    : List[WebElement] = _
+
+  @FindBy(how = How.XPATH, using = "//details/summary/span") var mRFractionLink: WebElement                = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/h2[3]") var totalMRValue: WebElement = _
+
   PageFactory.initElements(driver, this)
-  def verifyDetailLink(): Boolean                                           =
+
+  def verifyDetailLink(): Boolean =
     detailLinK.isDisplayed()
 
   def clickDetailLink(): Unit =
@@ -45,7 +54,25 @@ object DetailedCalculationPage extends BasePage {
   def yourDetailsAccountingPeriodText(): String =
     yourDetailsAccountingPeriod.getText
 
-  def detailedPageDistribution(): String =
-    detailedPageDistributionAmt.getText
+  def yourDetailsDistributionAmtText(): String =
+    yourDetailsDistributionAmt.getText
 
+  def isHowItsCalculatedSectionDisplayed(): Boolean =
+    howItsCalculatedSection.isDisplayed()
+
+  def isTaxableProfitSectionDisplayed(): Boolean =
+    taxableProfitSection.isDisplayed()
+
+  def validateMrCalculationSteps(calSteps: String): Unit = {
+    val steps                             = calSteps.toInt
+    val webElementsList: List[WebElement] =
+      driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/table[1]/tbody/tr")).toList
+    webElementsList.length shouldBe steps
+  }
+
+  def verifyMRFractionLinkPresentOnPage(): Boolean =
+    mRFractionLink.isDisplayed
+
+  def validateTotalMR(): String =
+    totalMRValue.getText
 }

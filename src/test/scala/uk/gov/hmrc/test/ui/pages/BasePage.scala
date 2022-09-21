@@ -56,5 +56,11 @@ trait BasePage extends BrowserDriver with Matchers {
     Thread.sleep(3000)
     errorMsg.getText
   }
+
+  def verifyTextPresentOnPage(text: String): Boolean =
+    driver.getPageSource.contains(text)
+
+  def verifyLinkTextPresentOnPage(text: String): Boolean =
+    driver.findElement(By.linkText(text)).isDisplayed
 }
 case class PageNotFoundException(s: String) extends Exception(s)
