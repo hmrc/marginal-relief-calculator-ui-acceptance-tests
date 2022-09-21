@@ -24,30 +24,30 @@ object ResultPage extends BasePage {
   val resultsPage =
     "Marginal Relief Results - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
-  @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-s']") var HMRCFinancialYearsHeader: WebElement  = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var HMRCFinancialYearsSection: WebElement   = _
-  @FindBy(how = How.XPATH, using = "//*[@id='main-content']/div/div/div[1]/div") var panelMessage: WebElement = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][1]") var ctAmount: WebElement               = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var singleYearCTBody: WebElement            = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var dualYearCTBody: WebElement              = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][2]") var ETHeader: WebElement               = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var ETBodySingle: WebElement                = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var ETBodyDual: WebElement                  = _
+  @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement   = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-s']") var HMRCFinancialYearsHeader: WebElement    = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var HMRCFinancialYearsSection: WebElement     = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[1]/div") var panelMessage: WebElement = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][1]") var ctAmount: WebElement                 = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var singleYearCTBody: WebElement              = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var dualYearCTBody: WebElement                = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][2]") var ETHeader: WebElement                 = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var ETBodySingle: WebElement                  = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var ETBodyDual: WebElement                    = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[3]/table/tbody/tr[2]/th") var ETContent
-    : WebElement                                                                                              = _
+    : WebElement                                                                                                = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[2]") var etFirstRow
-    : WebElement                                                                                              = _
+    : WebElement                                                                                                = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[3]") var etSecondRow
-    : WebElement                                                                                              = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[4]") var etThirdRow
-    : WebElement                                                                                              = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[4]") var ctThirdRow
-    : WebElement                                                                                              = _
+    : WebElement                                                                                                = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[3]") var etThirdRow
+    : WebElement                                                                                                = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[3]") var ctThirdRow
+    : WebElement                                                                                                = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[2]") var ctFirstRow
-    : WebElement                                                                                              = _
+    : WebElement                                                                                                = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[3]") var ctSecondRow
-    : WebElement                                                                                              = _
+    : WebElement                                                                                                = _
 
   PageFactory.initElements(driver, this)
 
@@ -97,7 +97,7 @@ object ResultPage extends BasePage {
   def verifyCTHeaderCountForDualYear(): Unit = {
     val header = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th"))
     val count  = header.size
-    assert(count == 4)
+    assert(count == 3)
   }
   def verifyCTBodyCountForDualYear(): Unit = {
     val body  = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/tbody/tr"))
@@ -107,7 +107,7 @@ object ResultPage extends BasePage {
   def verifyCTHeaderCountForNoMrc(): Unit = {
     val header = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th"))
     val count  = header.size
-    assert(count == 4)
+    assert(count == 3)
   }
   def verifyCTBodyCountForNoMrc(): Unit = {
     val body  = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/tbody/tr"))
@@ -117,7 +117,7 @@ object ResultPage extends BasePage {
   def verifyETHeaderCountForDualYear(): Unit = {
     val header = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[3]/table/thead/tr/th"))
     val count  = header.size
-    assert(count == 4)
+    assert(count == 3)
   }
   def verifyETBodyCountForDualYear(): Unit = {
     val body  = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[3]/table/tbody/tr"))
@@ -127,7 +127,7 @@ object ResultPage extends BasePage {
   def verifyETHeaderCountForSingleYear(): Unit = {
     val header = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[3]/table/thead/tr/th"))
     val count  = header.size
-    assert(count == 2)
+    assert(count == 1)
   }
   def verifyETBodyCountForSingleYear(): Unit = {
     val body  = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[3]/table/tbody/tr"))
@@ -137,12 +137,12 @@ object ResultPage extends BasePage {
   def verifyCTHeaderCountForSingleYear(): Unit = {
     val header = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th"))
     val count  = header.size
-    assert(count == 2)
+    assert(count == 1)
   }
   def verifyETHeaderCountForNOMRC(): Unit = {
     val header = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[3]/table/thead/tr/th"))
     val count  = header.size
-    assert(count == 4)
+    assert(count == 3)
   }
   def verifyETBodyCountForNOMRC(): Unit = {
     val body  = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[3]/table/tbody/tr"))

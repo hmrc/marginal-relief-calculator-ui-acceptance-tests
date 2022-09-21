@@ -21,11 +21,19 @@ import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object DetailedCalculationPage extends BasePage {
+  @FindBy(how = How.XPATH, using = "//a[@href='/marginal-relief-calculator/full-results-page']") var detailLinK
+    : WebElement                                                                                              = _
   @FindBy(how = How.XPATH, using = "//h1") var detailPageHeader: WebElement                                   = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var detailedPageMessage: WebElement         = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var detailedPageMessage: WebElement         = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var detailedPageDistributionAmt: WebElement = _
   PageFactory.initElements(driver, this)
-  def detailedPageTitle(): String                                                                             =
+  def verifyDetailLink(): Boolean                                                                             =
+    detailLinK.isDisplayed()
+
+  def clickDetailLink(): Unit =
+    detailLinK.click()
+
+  def detailedPageTitle(): String =
     detailPageHeader.getText
 
   def detailedPageContent(): String =
