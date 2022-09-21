@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage
-import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage.{detailedPageContent, detailedPageDistribution, detailedPageTitle}
+import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage.{yourDetailsAccountingPeriodText, detailedPageDistribution, detailedPageTitle}
 
 class DetailedCalculationStepDef extends BaseStepDef {
   And("the Check Marginal Relief calculation in detail link is displayed") { () =>
@@ -31,7 +31,7 @@ class DetailedCalculationStepDef extends BaseStepDef {
     detailedPageTitle should be(headerTitle)
   }
   Then("""the Your details page contains {string}""") { (detailedContent: String) =>
-    detailedPageContent should be(detailedContent)
+    yourDetailsAccountingPeriodText contains (detailedContent)
   }
   Then("""the distribution amount has £ prefix and displayed as {string}""") { (distributionamt: String) =>
     detailedPageDistribution should be(distributionamt)

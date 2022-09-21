@@ -24,7 +24,7 @@ object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//a[@href='/marginal-relief-calculator/full-results-page']") var detailLinK
     : WebElement                                                                                              = _
   @FindBy(how = How.XPATH, using = "//h1") var detailPageHeader: WebElement                                   = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var detailedPageMessage: WebElement         = _
+  @FindBy(how = How.XPATH, using = "//div[1]/dd") var yourDetailsAccountingPeriod: WebElement         = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var detailedPageDistributionAmt: WebElement = _
   PageFactory.initElements(driver, this)
   def verifyDetailLink(): Boolean                                                                             =
@@ -36,8 +36,8 @@ object DetailedCalculationPage extends BasePage {
   def detailedPageTitle(): String =
     detailPageHeader.getText
 
-  def detailedPageContent(): String =
-    detailedPageMessage.getText
+  def yourDetailsAccountingPeriodText(): String =
+    yourDetailsAccountingPeriod.getText
 
   def detailedPageDistribution(): String =
     detailedPageDistributionAmt.getText

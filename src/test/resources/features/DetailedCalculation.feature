@@ -15,7 +15,7 @@ Feature:Detailed Calculation - Validations
     Then the user clicks continue button on associated companies page
     Then user is presented with Check Your Answers page
 
-  @mrc-125
+  @mrc-125 @mrc-143
   Scenario: View your details (on full MR calculation page)
     And the user clicks on calculate marginal relief button on check you answers page
     And the Check Marginal Relief calculation in detail link is displayed
@@ -23,3 +23,5 @@ Feature:Detailed Calculation - Validations
     Then header displays as "Full Marginal Relief calculation in detail"
     And the Your details page contains "Covers 2 HMRC financial years"
     And the distribution amount has £ prefix and displayed as "£0"
+    And the How its calculated section is displayed
+    And the Taxable Profit section is displayed
