@@ -37,10 +37,10 @@ class DetailedCalculationStepDef extends BaseStepDef {
     yourDetailsDistributionAmtText should be(distributionamt)
   }
   Then("""the How its calculated section is displayed""") { () =>
-    DetailedCalculationPage.isHowItsCalculatedSectionDisplayed()
+    DetailedCalculationPage.isHowItsCalculatedSectionDisplayed
   }
   Then("""the Taxable Profit section is displayed""") { () =>
-    DetailedCalculationPage.isTaxableProfitSectionDisplayed()
+    DetailedCalculationPage.isTaxableProfitSectionDisplayed
   }
   Then("""{string} is displayed on the page""") { (string: String) =>
     DetailedCalculationPage.verifyTextPresentOnPage(string)
@@ -53,6 +53,12 @@ class DetailedCalculationStepDef extends BaseStepDef {
   }
   Then("""the total Marginal relief is {string}""") { (totalMR: String) =>
     validateTotalMR should be(totalMR)
+  }
+  Then("the tabs are displayed") { () =>
+    DetailedCalculationPage.validateTabs()
+  }
+  Then("I click on 2025 tab and verify the tab") { () =>
+    DetailedCalculationPage.clickOn2025tab()
   }
 
 }
