@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage
-import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage.{detailedPageContent, detailedPageDistribution, detailedPageTitle}
+import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage.{detailedPageTitle, validateTotalMR, yourDetailsAccountingPeriodText, yourDetailsDistributionAmtText}
 
 class DetailedCalculationStepDef extends BaseStepDef {
   And("the Check Marginal Relief calculation in detail link is displayed") { () =>
@@ -31,10 +31,28 @@ class DetailedCalculationStepDef extends BaseStepDef {
     detailedPageTitle should be(headerTitle)
   }
   Then("""the Your details page contains {string}""") { (detailedContent: String) =>
-    detailedPageContent should be(detailedContent)
+    yourDetailsAccountingPeriodText contains detailedContent
   }
   Then("""the distribution amount has £ prefix and displayed as {string}""") { (distributionamt: String) =>
-    detailedPageDistribution should be(distributionamt)
+    yourDetailsDistributionAmtText should be(distributionamt)
+  }
+  Then("""the How its calculated section is displayed""") { () =>
+    DetailedCalculationPage.isHowItsCalculatedSectionDisplayed()
+  }
+  Then("""the Taxable Profit section is displayed""") { () =>
+    DetailedCalculationPage.isTaxableProfitSectionDisplayed()
+  }
+  Then("""{string} is displayed on the page""") { (string: String) =>
+    DetailedCalculationPage.verifyTextPresentOnPage(string)
+  }
+  Then("""{string} MR calculation steps are displayed""") { (calSteps: String) =>
+    DetailedCalculationPage.validateMrCalculationSteps(calSteps)
+  }
+  Then("""What is the marginal rate fraction link is displayed""") { () =>
+    DetailedCalculationPage.verifyMRFractionLinkPresentOnPage()
+  }
+  Then("""the total Marginal relief is {string}""") { (totalMR: String) =>
+    validateTotalMR should be(totalMR)
   }
 
 }
