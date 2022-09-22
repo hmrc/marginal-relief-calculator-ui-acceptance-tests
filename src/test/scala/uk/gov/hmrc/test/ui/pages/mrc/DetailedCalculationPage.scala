@@ -39,11 +39,13 @@ object DetailedCalculationPage extends BasePage {
 
   @FindBy(how = How.XPATH, using = "//details/summary/span") var mRFractionLink: WebElement                = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/h2[3]") var totalMRValue: WebElement = _
+  @FindBy(how = How.XPATH, using = "//*[@id='tab_year2024']") var tabYear2024: WebElement                  = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-tabs__list-item']") var tabYear2025: WebElement      = _
 
   PageFactory.initElements(driver, this)
 
-  def verifyDetailLink(): Boolean =
-    detailLinK.isDisplayed()
+  def verifyDetailLink(): Unit =
+    detailLinK.isDisplayed
 
   def clickDetailLink(): Unit =
     detailLinK.click()
@@ -57,11 +59,11 @@ object DetailedCalculationPage extends BasePage {
   def yourDetailsDistributionAmtText(): String =
     yourDetailsDistributionAmt.getText
 
-  def isHowItsCalculatedSectionDisplayed(): Boolean =
-    howItsCalculatedSection.isDisplayed()
+  def isHowItsCalculatedSectionDisplayed: Boolean =
+    howItsCalculatedSection.isDisplayed
 
-  def isTaxableProfitSectionDisplayed(): Boolean =
-    taxableProfitSection.isDisplayed()
+  def isTaxableProfitSectionDisplayed: Boolean =
+    taxableProfitSection.isDisplayed
 
   def validateMrCalculationSteps(calSteps: String): Unit = {
     val steps                             = calSteps.toInt
@@ -75,4 +77,13 @@ object DetailedCalculationPage extends BasePage {
 
   def validateTotalMR(): String =
     totalMRValue.getText
+
+  def validateTabs(): Unit =
+    tabYear2024.isDisplayed
+
+  def clickOn2025tab(): Unit = {
+    tabYear2025.click()
+    tabYear2025.isDisplayed
+  }
+
 }
