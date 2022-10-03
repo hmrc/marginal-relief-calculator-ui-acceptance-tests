@@ -31,7 +31,7 @@ object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//div[1]/dd") var yourDetailsAccountingPeriod: WebElement                         = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/h2[2]") var howItsCalculatedSection: WebElement =
     _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/caption") var taxableProfitSection
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/table") var taxableProfitSection
     : WebElement                                                                                                      = _
 
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[1]/tbody/tr") var mrCalculationSteps
@@ -68,7 +68,7 @@ object DetailedCalculationPage extends BasePage {
   def validateMrCalculationSteps(calSteps: String): Unit = {
     val steps                             = calSteps.toInt
     val webElementsList: List[WebElement] =
-      driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/table[1]/tbody/tr")).toList
+      driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/table/tbody/tr")).toList
     webElementsList.length shouldBe steps
   }
 

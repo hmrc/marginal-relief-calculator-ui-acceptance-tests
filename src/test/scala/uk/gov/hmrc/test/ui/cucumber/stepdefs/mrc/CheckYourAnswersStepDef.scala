@@ -75,7 +75,13 @@ class CheckYourAnswersStepDef extends BaseStepDef {
   }
 
   Then("""I can validate accounting period as {string}""") { (accountingPeriod: String) =>
-    CheckYourAnswersPage.verifyAccountingPeriodValue(accountingPeriod)
+    if (accountingPeriod.contains("\\n")) {
+      val expectedText = accountingPeriod.split("\\\\n")
+      for (h <- expectedText)
+        CheckYourAnswersPage.verifyAccountingPeriodValue(h)
+    } else {
+      CheckYourAnswersPage.verifyAccountingPeriodValue(accountingPeriod)
+    }
   }
 
   Then("""I can validate profit as {string}""") { (profit: String) =>
