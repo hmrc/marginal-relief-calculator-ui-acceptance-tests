@@ -31,6 +31,8 @@ Feature: Associated companies Title Message - Validations
     And the user selects option "no" for the question Did your company receive any distributions?
     And the user clicks continue button on distributions page
     And the user click on What are associated companies?
+#    And the user click on control
+#    Then the new link opens in new window
 
     Examples:
       | accountingStartDate | accountingEndDate | profitValue |
