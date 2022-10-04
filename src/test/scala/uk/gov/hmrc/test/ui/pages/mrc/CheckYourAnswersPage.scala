@@ -70,7 +70,7 @@ object CheckYourAnswersPage extends BasePage {
     distributions.getText.contains(distributionsAmount)
 
   def verifyAccountingPeriodValue(AccountingPeriod: String): Unit =
-    distributions.getText.contains(AccountingPeriod)
+    assert(accountingPeriodDates.getText.contains(AccountingPeriod))
 
   def verifyProfitValue(profitValue: String): Unit = {
     val TP = profit.getText
