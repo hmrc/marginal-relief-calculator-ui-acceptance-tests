@@ -21,12 +21,14 @@ import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ResultPage extends BasePage {
-  val resultsPage =
-    "Marginal Relief Results - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+//  val resultsPage =
+  "Marginal Relief Results - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement   = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-s']") var HMRCFinancialYearsHeader: WebElement    = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var HMRCFinancialYearsSection: WebElement     = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body govuk-!-margin-0']") var HMRCFinancialYearsSectionY1
+    : WebElement                                                                                                = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var HMRCFinancialYearsSectionY2: WebElement   = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[1]/div") var panelMessage: WebElement = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][1]") var ctAmount: WebElement                 = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var singleYearCTBody: WebElement              = _
@@ -51,8 +53,8 @@ object ResultPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  def verifyPageTitle(): Unit =
-    assert(driver.getTitle.contains(resultsPage))
+//  def verifyPageTitle(): Unit =
+//    assert(driver.getTitle.contains(resultsPage))
 
   def clickRunAnotherCalculation(): Unit =
     runAnotherCalculationButton.click()
@@ -158,8 +160,11 @@ object ResultPage extends BasePage {
   def HMRCFinancialYearsHeaderText(): String =
     HMRCFinancialYearsHeader.getText
 
-  def HMRCFinancialYearsSectionText(): String =
-    HMRCFinancialYearsSection.getText
+  def HMRCFinancialYearsSectionYearOne(): String =
+    HMRCFinancialYearsSectionY1.getText
+
+  def HMRCFinancialYearsSectionYearTwo(): String =
+    HMRCFinancialYearsSectionY2.getText
 
   def verifyETContent(): String =
     ETContent.getText

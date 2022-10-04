@@ -88,9 +88,9 @@ class CheckYourAnswersStepDef extends BaseStepDef {
     CheckYourAnswersPage.verifyProfitValue(profit)
   }
 
-  Then("I am navigated to MRC results page") { () =>
-    ResultPage.verifyPageTitle()
-  }
+//  Then("I am navigated to MRC results page") { () =>
+//    ResultPage.verifyPageTitle()
+//  }
 
   Then("I can see run another calculation button enabled") { () =>
     ResultPage.runAnotherCalculationIsEnabled()

@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.ResultPage
-import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{HMRCFinancialYearsHeaderText, HMRCFinancialYearsSectionText, corporationTaxLiabilityHeader, dualYearCTLiability, effectiveTaxBodyDual, effectiveTaxBodySingle, effectiveTaxHeader, greenBoxMessage, singleYearCTLiability, verifyETContent}
+import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{HMRCFinancialYearsHeaderText, HMRCFinancialYearsSectionYearOne, HMRCFinancialYearsSectionYearTwo, corporationTaxLiabilityHeader, dualYearCTLiability, effectiveTaxBodyDual, effectiveTaxBodySingle, effectiveTaxHeader, greenBoxMessage, singleYearCTLiability, verifyETContent}
 
 class ResultsStepDef extends BaseStepDef {
   Then("""display the green box of type {string}""") { (panelBody: String) =>
@@ -50,10 +50,10 @@ class ResultsStepDef extends BaseStepDef {
     ResultPage.verifyCTBodyCountForNoMrc()
   }
   Then("the accounting period covering 2 years section is displayed") { () =>
-    HMRCFinancialYearsHeaderText  should be("Your accounting period covers 2 HMRC financial years")
-    HMRCFinancialYearsSectionText should be(
-      "2022 to 2023: 1 January 2023 to 31 March 2023\n2023 to 2024: 1 April 2023 to 31 December 2023"
-    )
+    HMRCFinancialYearsHeaderText     should be("Your accounting period covers 2 HMRC financial years")
+    HMRCFinancialYearsSectionYearOne should be("2022 to 2023: 1 January 2023 to 31 March 2023")
+    HMRCFinancialYearsSectionYearTwo should be("2023 to 2024: 1 April 2023 to 31 December 2023")
+
   }
   Then("""the effective tax rate heading is displayed as {string}""") { (effectiveTax: String) =>
     effectiveTaxHeader should be(effectiveTax)
