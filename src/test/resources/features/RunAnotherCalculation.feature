@@ -23,7 +23,7 @@ Feature: Run another calculation - Validations
     Then user is presented with Check Your Answers page
     And I can see calculate margin relief button enabled
     When I can click on calculate margin relief button
-    Then I am navigated to MRC results page
+#    Then I am navigated to MRC results page
     And I can see run another calculation button enabled
 
   @mrc-44 @zap @a11y
@@ -57,5 +57,5 @@ Feature: Run another calculation - Validations
     Then user is presented with Check Your Answers page
     And I can see calculate margin relief button enabled
     When I can click on calculate margin relief button
-    Then I am navigated to MRC results page
+#    Then I am navigated to MRC results page
     And I can see run another calculation button enabled
