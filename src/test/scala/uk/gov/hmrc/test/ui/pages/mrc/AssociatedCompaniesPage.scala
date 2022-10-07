@@ -25,10 +25,10 @@ object AssociatedCompaniesPage extends BasePage {
 
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/form/h1") var headerMessage: WebElement = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-details__summary-text']") var refLink: WebElement       = _
-  @FindBy(
-    how = How.XPATH,
-    using = "//a[@href='https://www.gov.uk/hmrc-internal-manuals/company-taxation-manual/ctm60210']"
-  ) var linkCtl: WebElement                                                                                   = _
+//  @FindBy(
+//    how = How.XPATH,
+//    using = "//a[@href='https://www.gov.uk/hmrc-internal-manuals/company-taxation-manual/ctm60210']"
+//  ) var linkCtl: WebElement                                                                                   = _
   @FindBy(how = How.ID, using = "associatedCompanies") var yesOption: WebElement                              = _
   @FindBy(how = How.ID, using = "associatedCompanies-2") var noOption: WebElement                             = _
   @FindBy(
@@ -92,16 +92,16 @@ object AssociatedCompaniesPage extends BasePage {
   def clickOnQuestion(): Unit =
     refLink.click()
 
-  def clickOnControl(): Unit =
-    linkCtl.click()
+//  def clickOnControl(): Unit =
+//    linkCtl.click()
 
-  def verifyNewWindow(): Unit = {
-    import java.util
-    val newTab = new util.ArrayList[String](driver.getWindowHandles)
-    driver.switchTo.window(newTab.get(1))
-    val URL    = driver.getCurrentUrl
-    assert(URL == "https://www.gov.uk/hmrc-internal-manuals/company-taxation-manual/ctm60210")
-    driver.switchTo.window(newTab.get(0))
-  }
+//  def verifyNewWindow(): Unit = {
+//    import java.util
+//    val newTab = new util.ArrayList[String](driver.getWindowHandles)
+//    driver.switchTo.window(newTab.get(1))
+//    val URL    = driver.getCurrentUrl
+//    assert(URL == "https://www.gov.uk/hmrc-internal-manuals/company-taxation-manual/ctm60210")
+//    driver.switchTo.window(newTab.get(0))
+//  }
 
 }

@@ -174,7 +174,7 @@ Feature:Results - Validations
     And the user clicks continue button on associated companies page
     And the user clicks on calculate marginal relief button on check you answers page
     And the effective tax rate heading is displayed as "23.36%"
-    And the effective tax body is displayed as "Reduced from 25.00% after Marginal Relief" for single year
+    And the effective tax body is displayed as "Reduced from 25% after Marginal Relief" for single year
     And the single year effective tax table is displayed
 
   @mrc-40
@@ -190,7 +190,7 @@ Feature:Results - Validations
     And the user selects option "no" for the question Did your company have any active associated companies?
     And the user clicks continue button on associated companies page
     And the user clicks on calculate marginal relief button on check you answers page
-    And the effective tax rate heading is displayed as "19.00%"
+    And the effective tax rate heading is displayed as "19%"
     And the NO MRC effective tax table is displayed
 
   @mrc-40
@@ -205,7 +205,7 @@ Feature:Results - Validations
     And the user selects option "no" for the question Did your company have any active associated companies?
     And the user clicks continue button on associated companies page
     And the user clicks on calculate marginal relief button on check you answers page
-    And the effective tax rate heading is displayed as "19.00%"
+    And the effective tax rate heading is displayed as "19%"
     And the "Small profit rate" effective tax table is displayed
 
 

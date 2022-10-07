@@ -53,7 +53,7 @@ Feature:Detailed Calculation - Validations
     When the user click on Check Marginal Relief calculation in detail link
     Then header displays as "Full Marginal Relief calculation in detail"
     And the Your details page contains "Covers 2 HMRC financial years"
-    And the distribution amount has £ prefix and displayed as "£10,000"
+    And the distribution amount has £ prefix and displayed as "£10,000.00"
     And the How its calculated section is displayed
     And "Marginal Relief was not available in financial year 2022 to 2023" is displayed on the page
     And the total Marginal relief is "£0"
@@ -81,7 +81,7 @@ Feature:Detailed Calculation - Validations
     When the user click on Check Marginal Relief calculation in detail link
     Then header displays as "Full Marginal Relief calculation in detail"
     And the Your details page contains "Covers 2 HMRC financial years"
-    And the distribution amount has £ prefix and displayed as "£7,000"
+    And the distribution amount has £ prefix and displayed as "£7,000.00"
     And the How its calculated section is displayed
     And "Marginal Relief was not available in financial year 2022 to 2023" is displayed on the page
     And the total Marginal relief is "£0"
