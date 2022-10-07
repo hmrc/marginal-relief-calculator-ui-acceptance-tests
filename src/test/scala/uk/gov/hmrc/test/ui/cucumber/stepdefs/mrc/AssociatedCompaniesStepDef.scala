@@ -72,11 +72,4 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
   And("the user click on What are associated companies?") { () =>
     AssociatedCompaniesPage.clickOnQuestion()
   }
-  And("the user click on control") { () =>
-    AssociatedCompaniesPage.clickOnControl()
-  }
-  And("the new link opens in new window") { () =>
-    AssociatedCompaniesPage.verifyNewWindow()
-  }
-
 }

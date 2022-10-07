@@ -56,8 +56,8 @@ Feature: Associated companies - Validations
     Then the user is displayed with error message "<Error Message>" for associated company
 
     Examples:
-      | InvalidAC | Error Message                                                   |
-      | 1.        | Do not use decimal points. Enter a whole number. For example, 1 |
-      | -3        | Enter an amount greater than 0                                  |
-      | 1B        | Enter your Number of associated companies using numbers         |
-      | 0         | Enter an amount greater than 0                                  |
+      | InvalidAC | Error Message                                                    |
+      | 1.        | Do not use decimal points. Enter a whole number. For example, 1. |
+      | -3        | Enter an amount greater than 0.                                  |
+      | 1B        | Enter a valid number for your associated companies.              |
+      | 0         | Enter an amount greater than 0.                                  |

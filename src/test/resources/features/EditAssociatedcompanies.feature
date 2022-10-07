@@ -52,5 +52,5 @@ Feature:Edit Associated Companies - Validations
     Then the user clicks continue button on associated companies page
     Then the user is displayed with error message "<ErrorMessage>" for associated company
     Examples:
-      | ErrorMessage                   |
-      | Enter an amount greater than 0 |
+      | ErrorMessage                    |
+      | Enter an amount greater than 0. |

@@ -40,8 +40,8 @@ object AccountingPeriodPage extends BasePage {
   val accountingPeriodPage                =
     "What are your accounting period dates? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
   val mrcHomePageError                    = "Error: What are your accounting period dates? - marginal-relief-calculator-frontend - GOV.UK"
-  val accountingPeriodMandatoryValueError = "The start date must include day"
-  val accountingPeriodMandatoryFieldError = "Enter a valid start date for the accounting period, like 27 3 2023"
+  val accountingPeriodMandatoryValueError = "The start date must include day."
+  val accountingPeriodMandatoryFieldError = "Enter a valid start date for the accounting period, like 27 3 2023."
   val irrelevantPageTitle                 = "You're not eligible for Marginal Relief"
   val irrelevantPageMessage               = "Your accounting period is before the 1 April 2023 start date for Marginal Relief."
   val accountingPeriodLengthError         =

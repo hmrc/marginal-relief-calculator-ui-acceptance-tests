@@ -44,14 +44,14 @@ Feature:Exempt Distributions - Validations
     Then the user is displayed with error message "<ErrorMessage>" for distributions
 
     Examples:
-      | distributions | ErrorMessage                                                        |
-      | 0             | Enter an amount greater than 0                                      |
-      | -1            | Enter an amount greater than 0                                      |
-      | 6.23          | Do not use decimal points. Enter a whole number. For example, 70000 |
-      | Zero          | Enter a valid received distributions amount. For example, 70000     |
-      | 1000000001    | Enter an amount lower than or equal to 1,000,000,000                |
-      | 10000000001   | Enter an amount between 1 and 1,000,000,000                         |
-      |               | Enter an amount for your received distributions                     |
+      | distributions | ErrorMessage                                                         |
+      | 0             | Enter an amount greater than 0.                                      |
+      | -1            | Enter an amount greater than 0.                                      |
+      | 6.23          | Do not use decimal points. Enter a whole number. For example, 70000. |
+      | Zero          | Enter a valid received distributions amount. For example, 70000.     |
+      | 1000000001    | Enter an amount lower than or equal to 1,000,000,000.                |
+      | 10000000001   | Enter an amount between 1 and 1,000,000,000.                         |
+      |               | Enter an amount for your received distributions.                     |
 
   @mrc-37
   Scenario: Continue with out selecting Yes or no option for question Did your company receive any distributions
