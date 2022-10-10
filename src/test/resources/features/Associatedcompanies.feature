@@ -43,7 +43,7 @@ Feature: Associated companies - Validations
     When the user selects option "yes" for the question Did your company have any active associated companies?
     Then user is presented with input field for associated companies
     Then the user clicks continue button on associated companies page
-    Then the user is displayed with error message "Enter the number of associated companies you have. For example, 1" for associated company
+    Then the user is displayed with error message "Enter the number of associated companies you have. For example, 1." for associated company
 
   @mrc-38 @mrc-130
   Scenario Outline: Associated companies - Error Message validations
