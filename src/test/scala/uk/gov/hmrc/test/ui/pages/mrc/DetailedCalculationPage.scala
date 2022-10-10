@@ -31,8 +31,7 @@ object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//div[1]/dd") var yourDetailsAccountingPeriod: WebElement                         = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/h2[2]") var howItsCalculatedSection: WebElement =
     _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/table") var taxableProfitSection
-    : WebElement                                                                                                      = _
+  @FindBy(how = How.XPATH, using = "//table") var taxableProfitSection: WebElement                                    = _
 
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[1]/tbody/tr") var mrCalculationSteps
     : List[WebElement] = _
