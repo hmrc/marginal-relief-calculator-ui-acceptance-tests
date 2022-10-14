@@ -34,7 +34,7 @@ Feature: Associated companies - Validations
     Then user is landed on associated companies page
     And user can see the options yes and No as not selected
     Then the user clicks continue button on associated companies page
-    Then the user is displayed with error message "Select whether you have associated companies or not" for associated company
+    Then the user is displayed with error message "Select whether you have associated companies or not." for associated company
 
   @mrc-38
   Scenario: Yes selected and clicked on continue on associated companies page
