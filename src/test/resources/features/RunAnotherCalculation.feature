@@ -23,7 +23,6 @@ Feature: Run another calculation - Validations
     Then user is presented with Check Your Answers page
     And I can see calculate margin relief button enabled
     When I can click on calculate margin relief button
-#    Then I am navigated to MRC results page
     And I can see run another calculation button enabled
 
   @mrc-44 @zap @a11y
@@ -41,7 +40,6 @@ Feature: Run another calculation - Validations
     And I can see options yes, no are not selected
     And the user selects option "Yes" for the question Did your company receive any distributions?
     And the user clicks continue button on distributions page
-    Then I am navigated to Second exempt distributions page
     And I can see options yes,no are not selected on Second exempt distributions page
     And the user selects option "Yes" for the question Do any distributions need to be included with your profits?
     Then the user is provided with input field to provide distributions
@@ -57,5 +55,4 @@ Feature: Run another calculation - Validations
     Then user is presented with Check Your Answers page
     And I can see calculate margin relief button enabled
     When I can click on calculate margin relief button
-#    Then I am navigated to MRC results page
     And I can see run another calculation button enabled
