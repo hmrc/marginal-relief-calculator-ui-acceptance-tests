@@ -25,7 +25,7 @@ object ExcemptDistrubutionsPage extends BasePage {
   val distributionsPageTitle  =
     "Did your company receive any distributions? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
   val distributionsPageTitle2 =
-    "Number of associated companies - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+    "Do any distributions need to be included with your profits? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
   @FindBy(how = How.ID, using = "distributionsIncludedAmount") var inputExcemptDistribution: WebElement = _
   @FindBy(how = How.ID, using = "value_0") var yesOption: WebElement                                    = _

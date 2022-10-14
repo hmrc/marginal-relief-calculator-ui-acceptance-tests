@@ -48,7 +48,7 @@ Feature:Check your answers - Validations
     Then user is presented with Check Your Answers page
     And I can validate my distribution amount as "£30,000"
     When the user clicks on back button
-    Then I am navigated to Second exempt distributions page
+    Then user is landed on associated companies page
 
     @mrc-128
     Scenario: Verify message for default accounting period end date
