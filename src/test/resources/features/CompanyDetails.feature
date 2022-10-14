@@ -37,3 +37,12 @@ Feature:Company Details  - Validations
       | longUTRNumber    | errorMessage                             |
       | 9876543210123456 | UTR number must be 15 characters or less |
 
+  @mrc-146
+  Scenario Outline: Company Details- Valid Scenario
+    When the user provides a "<validCompanyName>" on Company name field
+    And the user provides a "<validUTRNumber>" on UTR number field
+    And the user clicks continue button on company details page
+    Then I verify same name is displayed on Preview summary page
+    Examples:
+      | validCompanyName  | validUTRNumber |
+      | Test-Company name | 987654321      |

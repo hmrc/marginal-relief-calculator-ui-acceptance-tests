@@ -29,7 +29,9 @@ class PreviewSummaryStepDef extends BaseStepDef {
   }
   And("marginal results are shown") { () =>
     PreviewSummaryPage.verifyTables()
-
+  }
+  And("I verify same name is displayed on Preview summary page") { () =>
+    PreviewSummaryPage.verifyCompanydetails()
   }
 
 }
