@@ -24,8 +24,8 @@ Feature:Company Details  - Validations
     And the user clicks continue button on company details page
     Then an "<errorMessage>" is displayed
     Examples:
-      | longCompanyName                                                                                                                                                      | errorMessage                                |
-      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.Ut enim ad minim, quis nostrud exercitation. | Company name must be 160 characters or less |
+      | longCompanyName                                                                                                                                                      | errorMessage                                 |
+      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.Ut enim ad minim, quis nostrud exercitation. | Company name must be 160 characters or less. |
 
 
   @mrc-146
@@ -34,8 +34,8 @@ Feature:Company Details  - Validations
     And the user clicks continue button on company details page
     Then an "<errorMessage>" is displayed
     Examples:
-      | longUTRNumber    | errorMessage                             |
-      | 9876543210123456 | UTR number must be 15 characters or less |
+      | longUTRNumber    | errorMessage                              |
+      | 9876543210123456 | UTR number must be 15 characters or less. |
 
   @mrc-146
   Scenario Outline: Company Details- Valid Scenario
