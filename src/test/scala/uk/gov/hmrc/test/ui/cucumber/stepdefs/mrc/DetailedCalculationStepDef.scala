@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage
+import uk.gov.hmrc.test.ui.pages.mrc.{CompanyDetailsPage, DetailedCalculationPage}
 import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage.{detailedPageTitle, validateTotalMR, yourDetailsAccountingPeriodText, yourDetailsDistributionAmtText}
 
 class DetailedCalculationStepDef extends BaseStepDef {
@@ -59,6 +59,9 @@ class DetailedCalculationStepDef extends BaseStepDef {
   }
   Then("I click on 2025 tab and verify the tab") { () =>
     DetailedCalculationPage.clickOn2025tab()
+  }
+  Then("the user clicks on Print or save your calculation link") { () =>
+    DetailedCalculationPage.clickOnPrintAndSave()
   }
 
 }
