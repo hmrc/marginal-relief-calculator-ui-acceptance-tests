@@ -79,7 +79,7 @@ object DetailedCalculationPage extends BasePage {
   def validateTotalMR(): String =
     totalMRValue.getText
 
-  def validateTabs(): Unit        =
+  def validateTabs(): Unit =
     tabYear2024.isDisplayed
 
   def clickOn2025tab(): Unit = {
