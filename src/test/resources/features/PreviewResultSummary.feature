@@ -5,7 +5,7 @@ Feature:Preview Result Summary  - Validations
     And the user clicks on start now button
     And the user lands on accounting period page
 
-  @mrc-162
+  @mrc-162 @a11y
   Scenario: Preview results summary information before retaining a calculation
     And the accounting period start date is provided as "01/01/2023"
     And the user clicks continue button on accounting period page
