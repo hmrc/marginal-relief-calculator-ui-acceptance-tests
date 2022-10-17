@@ -88,7 +88,7 @@ Feature:Detailed Calculation - Validations
     And "3" MR calculation steps are displayed
     And the Taxable Profit section is displayed
 
-  @mrc-159
+  @mrc-159 @a11y
   Scenario: Display MR detail in tabs
     When the accounting period start date is provided as "01/01/2024"
     Then the user clicks continue button on accounting period page

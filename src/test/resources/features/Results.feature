@@ -144,7 +144,7 @@ Feature:Results - Validations
     And the corporation tax liability body is not displayed
     And the NO MRC dual year corporation tax liability table is displayed
 
-  @mrc-40
+  @mrc-40 @a11y
   Scenario: Effective tax rate- MRC Dual year
     When the accounting period start date is provided as "01/01/2023"
     Then the user clicks continue button on accounting period page
