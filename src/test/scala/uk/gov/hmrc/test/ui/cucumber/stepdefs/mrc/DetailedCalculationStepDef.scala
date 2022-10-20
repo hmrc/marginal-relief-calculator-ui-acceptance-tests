@@ -17,8 +17,8 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.{CompanyDetailsPage, DetailedCalculationPage}
-import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage.{detailedPageTitle, validateTotalMR, yourDetailsAccountingPeriodText, yourDetailsDistributionAmtText}
+import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage
+import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage.{DateInWhatToDoNextSection, detailedPageTitle, validateTotalMR, verifySectionHeader, verifysectionlable, yourDetailsAccountingPeriodText, yourDetailsDistributionAmtText}
 
 class DetailedCalculationStepDef extends BaseStepDef {
   And("the Check Marginal Relief calculation in detail link is displayed") { () =>
@@ -62,6 +62,13 @@ class DetailedCalculationStepDef extends BaseStepDef {
   }
   Then("the user clicks on Print or save your calculation link") { () =>
     DetailedCalculationPage.clickOnPrintAndSave()
+  }
+  Then("""{string} section is displayed and it contains {string}""") { (sectionHeader: String, sectionText: String) =>
+    verifySectionHeader should be(sectionHeader)
+    verifysectionlable  should be(sectionText)
+  }
+  Then("""What to do next session contains date 9months after POA end date which is {string}""") { (date: String) =>
+    DateInWhatToDoNextSection should be(date)
   }
 
 }
