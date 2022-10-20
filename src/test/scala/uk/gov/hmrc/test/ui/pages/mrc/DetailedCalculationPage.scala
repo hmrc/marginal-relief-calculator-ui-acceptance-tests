@@ -40,6 +40,9 @@ object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/h2[3]") var totalMRValue: WebElement = _
   @FindBy(how = How.XPATH, using = "//*[@id='tab_year2024']") var tabYear2024: WebElement                  = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-tabs__list-item']") var tabYear2025: WebElement      = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[2]/b") var lblDate: WebElement = _
+  @FindBy(how = How.XPATH, using = "//h3[@class='govuk-heading-s'][2]") var headerSection: WebElement      = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[1]") var lblText: WebElement   = _
   @FindBy(how = How.XPATH, using = "//*[@href='/marginal-relief-calculator/pdf-meta-data']") var linkPrintandSave
     : WebElement                                                                                           = _
 
@@ -79,14 +82,24 @@ object DetailedCalculationPage extends BasePage {
   def validateTotalMR(): String =
     totalMRValue.getText
 
-  def validateTabs(): Unit        =
+  def validateTabs(): Unit =
     tabYear2024.isDisplayed
 
   def clickOn2025tab(): Unit = {
     tabYear2025.click()
     tabYear2025.isDisplayed
   }
+
   def clickOnPrintAndSave(): Unit =
     linkPrintandSave.click()
+
+  def verifySectionHeader(): String =
+    headerSection.getText
+
+  def verifysectionlable(): String =
+    lblText.getText
+
+  def DateInWhatToDoNextSection(): String =
+    lblDate.getText
 
 }
