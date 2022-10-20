@@ -21,12 +21,16 @@ import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object PreviewSummaryPage extends BasePage {
-  @FindBy(how = How.XPATH, using = "//h1[@class='govuk-heading-l']") var lblHeader: WebElement                = _
-  @FindBy(how = How.XPATH, using = "//a[@class='print-this__print']") var linkPrint: WebElement               = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/div[1]/h2") var tblCT: WebElement         = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/div[2]/h2") var tblET: WebElement         = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[2]/p") var lblCompanyName: WebElement = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"pdf-preview\"]/div[1]/div[3]/p") var lblUTR: WebElement         = _
+  @FindBy(how = How.XPATH, using = "//h1[@class='govuk-heading-l']") var lblHeader: WebElement                         = _
+  @FindBy(how = How.XPATH, using = "//a[@class='print-this__print']") var linkPrint: WebElement                        = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/div[1]/h2") var tblCT: WebElement  =
+    _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/div[2]/h2") var tblET: WebElement  =
+    _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[2]/p") var lblCompanyName
+    : WebElement                                                                                                       = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[3]/p") var lblUTR: WebElement =
+    _
 
   PageFactory.initElements(driver, this)
 
