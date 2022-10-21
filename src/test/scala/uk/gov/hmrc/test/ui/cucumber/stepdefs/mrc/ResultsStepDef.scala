@@ -82,4 +82,9 @@ class ResultsStepDef extends BaseStepDef {
     ResultPage.verifyETBodyCountForNOMRC()
     verifyETContent should be(smallProfit)
   }
+  Then("""the user navigated to back to result page and display the green box of type {string}""") {
+    (panelBody: String) =>
+      greenBoxMessage should be(panelBody)
+  }
+
 }
