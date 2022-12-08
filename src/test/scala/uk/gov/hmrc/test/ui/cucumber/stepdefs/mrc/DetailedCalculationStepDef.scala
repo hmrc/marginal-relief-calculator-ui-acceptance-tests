@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage.{DateInWhatToDoNextSection, detailedPageTitle, validateTotalMR, verifySectionHeader, verifysectionlable, yourDetailsAccountingPeriodText, yourDetailsDistributionAmtText}
 import uk.gov.hmrc.test.ui.pages.mrc.{AddCompanyDetailsToResultsPage, DetailedCalculationPage}
@@ -82,7 +81,7 @@ class DetailedCalculationStepDef extends BaseStepDef {
     } else {
       AddCompanyDetailsToResultsPage.selectOptionNo()
     }
-    driver.findElement(By.cssSelector("button.govuk-button")).click()
+    AddCompanyDetailsToResultsPage.clickOnContinueButton()
   }
 
 }

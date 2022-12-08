@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.WebElement
+import org.openqa.selenium.{By, WebElement}
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
@@ -34,6 +34,10 @@ object AddCompanyDetailsToResultsPage extends BasePage {
   def selectOptionNo(): Unit = {
     noOption.click()
     noOption.isSelected
+  }
+
+  def clickOnContinueButton(): Unit = {
+    driver.findElement(By.cssSelector("button.govuk-button")).click()
   }
 
 }
