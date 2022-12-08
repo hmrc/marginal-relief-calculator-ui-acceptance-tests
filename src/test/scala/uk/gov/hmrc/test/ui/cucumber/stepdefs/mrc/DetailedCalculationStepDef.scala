@@ -17,8 +17,8 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage
 import uk.gov.hmrc.test.ui.pages.mrc.DetailedCalculationPage.{DateInWhatToDoNextSection, detailedPageTitle, validateTotalMR, verifySectionHeader, verifysectionlable, yourDetailsAccountingPeriodText, yourDetailsDistributionAmtText}
+import uk.gov.hmrc.test.ui.pages.mrc.{AddCompanyDetailsToResultsPage, DetailedCalculationPage}
 
 class DetailedCalculationStepDef extends BaseStepDef {
   And("the Check Marginal Relief calculation in detail link is displayed") { () =>
@@ -61,7 +61,7 @@ class DetailedCalculationStepDef extends BaseStepDef {
     DetailedCalculationPage.clickOn2025tab()
   }
   Then("the user clicks on Print or save your calculation link") { () =>
-    DetailedCalculationPage.clickOnPrintAndSave()
+    DetailedCalculationPage.clickOnGetACopyOfResults()
   }
   Then("""{string} section is displayed and it contains {string}""") { (sectionHeader: String, sectionText: String) =>
     verifySectionHeader should be(sectionHeader)
@@ -69,6 +69,19 @@ class DetailedCalculationStepDef extends BaseStepDef {
   }
   Then("""What to do next session contains date 9months after POA end date which is {string}""") { (date: String) =>
     DateInWhatToDoNextSection should be(date)
+  }
+  Then("the user is presented with add company details to your result page") { () =>
+    AddCompanyDetailsToResultsPage.verifyPageTitle(
+      "Do you want to add company details to your results? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+    )
+  }
+  And("""the user selects option as {string} on add company details page""") { (option: String) =>
+    if (option.equalsIgnoreCase("yes")) {
+      AddCompanyDetailsToResultsPage.selectOptionYes()
+    } else {
+      AddCompanyDetailsToResultsPage.selectOptionNo()
+    }
+    AddCompanyDetailsToResultsPage.clickOnContinueButton()
   }
 
 }
