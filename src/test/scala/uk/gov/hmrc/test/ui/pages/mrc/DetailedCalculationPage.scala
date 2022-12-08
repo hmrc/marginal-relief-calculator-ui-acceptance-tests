@@ -37,7 +37,7 @@ object DetailedCalculationPage extends BasePage {
     : List[WebElement] = _
 
   @FindBy(how = How.XPATH, using = "//details/summary/span") var mRFractionLink: WebElement                = _
-  @FindBy(how = How.CSS, using = "#main-content > div > div > span") var totalMRValue: WebElement = _
+  @FindBy(how = How.CSS, using = "#main-content > div > div > span") var totalMRValue: WebElement          = _
   @FindBy(how = How.XPATH, using = "//*[@id='tab_year2024']") var tabYear2024: WebElement                  = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-tabs__list-item']") var tabYear2025: WebElement      = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[2]/b") var lblDate: WebElement = _
