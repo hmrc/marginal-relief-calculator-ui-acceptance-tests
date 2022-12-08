@@ -20,24 +20,20 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-object CompanyDetailsPage extends BasePage {
-  @FindBy(how = How.XPATH, using = "//button[@class='govuk-button']") var btnContinue: WebElement = _
-  @FindBy(how = How.XPATH, using = "//input[@id='companyName']") var fldCompanyName: WebElement   = _
-  @FindBy(how = How.XPATH, using = "//input[@id='utr']") var fldUTR: WebElement                   = _
-  @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var charaError: WebElement       = _
+object AddCompanyDetailsToResultsPage extends BasePage {
+  @FindBy(how = How.ID, using = "pdfAddCompanyDetails") var yesOption: WebElement          = _
+  @FindBy(how = How.ID, using = "pdfAddCompanyDetails-2") var noOption: WebElement         = _
 
   PageFactory.initElements(driver, this)
 
-  def provideLongCompanyName(longCompanyName: String) =
-    fldCompanyName.sendKeys(longCompanyName)
+  def selectOptionYes(): Unit = {
+    yesOption.click()
+    yesOption.isSelected
+  }
 
-  def provideUTRnumber(longUTRNumber: String) =
-    fldUTR.sendKeys(longUTRNumber)
-
-  def clickOnContinue(): Unit =
-    btnContinue.click()
-
-  def charaValidationError(): String =
-    charaError.getText
+  def selectOptionNo(): Unit = {
+    noOption.click()
+    noOption.isSelected
+  }
 
 }

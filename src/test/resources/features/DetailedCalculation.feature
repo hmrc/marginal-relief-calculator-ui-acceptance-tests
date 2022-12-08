@@ -110,7 +110,7 @@ Feature:Detailed Calculation - Validations
     And the tabs are displayed
     Then I click on 2025 tab and verify the tab
 
-  @mrc-200
+  @mrc-200 @failed
   Scenario: Back button
     When the accounting period start date is provided as "01/01/2024"
     Then the user clicks continue button on accounting period page
@@ -131,7 +131,7 @@ Feature:Detailed Calculation - Validations
     When the user click on back button
     Then the user navigated to back to result page and display the green box of type "£2,752.49"
 
-@mrc-221
+  @mrc-221
   Scenario: What to do next
     When the accounting period start date is provided as "01/01/2023"
     Then the user clicks continue button on accounting period page

@@ -41,7 +41,7 @@ object BeforeYouStartPage extends BasePage {
   }
 
   def verifyTitle(): Unit =
-    //verifyPageTitle(beforeYouStartPage)
+    verifyPageTitle(beforeYouStartPage)
 
   def verifyBreadcrumbs(): Unit = {
     breadcrumbs.getText.contains("Home")
