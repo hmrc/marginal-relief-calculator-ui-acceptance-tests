@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 
 object PreviewSummaryPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//h1[@class='govuk-heading-l']") var lblHeader: WebElement                        = _
-  @FindBy(how = How.XPATH, using = "//a[@class='print-this__print']") var linkPrint: WebElement                       = _
+  @FindBy(how = How.XPATH, using = "//a[@class='govuk-link print-this__print']") var linkPrint: WebElement            = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/div[1]/h2") var tblCT: WebElement =
     _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/div[2]/h2") var tblET: WebElement =

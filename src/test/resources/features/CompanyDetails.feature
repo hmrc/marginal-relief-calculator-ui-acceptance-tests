@@ -17,6 +17,8 @@ Feature:Company Details  - Validations
     And the user clicks on calculate marginal relief button on check you answers page
     And the Check Marginal Relief calculation in detail link is displayed
     And the user clicks on Print or save your calculation link
+    Then the user is presented with add company details to your result page
+    And the user selects option as "yes" on add company details page
 
   @mrc-146
   Scenario Outline: Company Details- Character limit on Company Name
@@ -34,8 +36,8 @@ Feature:Company Details  - Validations
     And the user clicks continue button on company details page
     Then an "<errorMessage>" is displayed
     Examples:
-      | longUTRNumber    | errorMessage                              |
-      | 9876543210123456 | UTR number must be 15 characters or less. |
+      | longUTRNumber    | errorMessage                                |
+      | 9876543210123456 | Unique Tax Reference must be 10 characters. |
 
   @mrc-146 @a11y
   Scenario Outline: Company Details- Valid Scenario

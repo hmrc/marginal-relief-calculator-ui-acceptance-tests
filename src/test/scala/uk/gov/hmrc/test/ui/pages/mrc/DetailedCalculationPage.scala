@@ -45,7 +45,7 @@ object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//h3[@class='govuk-heading-s'][2]") var headerSection: WebElement          = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[1]") var lblText: WebElement       = _
   @FindBy(how = How.XPATH, using = "//*[@href='/marginal-relief-calculator/pdf-meta-data']") var linkPrintandSave
-    : WebElement                                                                                               = _
+    : WebElement                                                                                           = _
 
   PageFactory.initElements(driver, this)
 
@@ -93,9 +93,6 @@ object DetailedCalculationPage extends BasePage {
 
   def clickOnPrintAndSave(): Unit =
     linkPrintandSave.click()
-
-  def getCopyOfResults(): Unit =
-    getCopyOfResult.click()
 
   def verifySectionHeader(): String =
     headerSection.getText
