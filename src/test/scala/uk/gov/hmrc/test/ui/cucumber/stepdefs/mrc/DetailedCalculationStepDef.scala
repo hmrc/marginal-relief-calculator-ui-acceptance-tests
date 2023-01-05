@@ -61,7 +61,7 @@ class DetailedCalculationStepDef extends BaseStepDef {
     DetailedCalculationPage.clickOn2025tab()
   }
   Then("the user clicks on Print or save your calculation link") { () =>
-    DetailedCalculationPage.clickOnPrintAndSave()
+    DetailedCalculationPage.getCopyOfResults()
   }
   Then("""{string} section is displayed and it contains {string}""") { (sectionHeader: String, sectionText: String) =>
     verifySectionHeader should be(sectionHeader)

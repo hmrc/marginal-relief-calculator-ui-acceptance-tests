@@ -16,17 +16,34 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
-import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object CompanyDetailsPage extends BasePage {
+  val addCompanyDetailsPage                                                                       =
+    "Do you want to add company details to your results? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
   @FindBy(how = How.XPATH, using = "//button[@class='govuk-button']") var btnContinue: WebElement = _
   @FindBy(how = How.XPATH, using = "//input[@id='companyName']") var fldCompanyName: WebElement   = _
   @FindBy(how = How.XPATH, using = "//input[@id='utr']") var fldUTR: WebElement                   = _
   @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var charaError: WebElement       = _
+  @FindBy(how = How.ID, using = "pdfAddCompanyDetails") var yesOption: WebElement                 = _
+  @FindBy(how = How.ID, using = "pdfAddCompanyDetails-2") var noOption: WebElement                = _
 
   PageFactory.initElements(driver, this)
+
+  def verifyPageTitle(): Unit =
+    verifyPageTitle(addCompanyDetailsPage)
+
+  def selectOptionYes(): Unit = {
+    yesOption.click()
+    yesOption.isSelected()
+  }
+
+  def selectOptionNo(): Unit = {
+    noOption.click()
+    noOption.isSelected()
+  }
 
   def provideLongCompanyName(longCompanyName: String) =
     fldCompanyName.sendKeys(longCompanyName)
