@@ -21,8 +21,6 @@ import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object CompanyDetailsPage extends BasePage {
-  val addCompanyDetailsPage                                                                       =
-    "Do you want to add company details to your results? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
   @FindBy(how = How.XPATH, using = "//button[@class='govuk-button']") var btnContinue: WebElement = _
   @FindBy(how = How.XPATH, using = "//input[@id='companyName']") var fldCompanyName: WebElement   = _
   @FindBy(how = How.XPATH, using = "//input[@id='utr']") var fldUTR: WebElement                   = _
@@ -31,9 +29,6 @@ object CompanyDetailsPage extends BasePage {
   @FindBy(how = How.ID, using = "pdfAddCompanyDetails-2") var noOption: WebElement                = _
 
   PageFactory.initElements(driver, this)
-
-  def verifyPageTitle(): Unit =
-    verifyPageTitle(addCompanyDetailsPage)
 
   def selectOptionYes(): Unit = {
     yesOption.click()

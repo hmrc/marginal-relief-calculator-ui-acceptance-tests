@@ -42,11 +42,10 @@ Feature:Company Details  - Validations
   @mrc-146 @a11y
   Scenario Outline: Company Details- Valid Scenario
     Then the user lands on AddCompanyDetails page
-    And the user selects "Yes" and continue on add company details page
     When the user provides a "<validCompanyName>" on Company name field
     And the user provides a "<validUTRNumber>" on UTR number field
     And the user clicks continue button on company details page
     Then I verify same name is displayed on Preview summary page
     Examples:
       | validCompanyName  | validUTRNumber |
-      | Test-Company name | 0987654321      |
+      | Test-Company name | 0987654321     |
