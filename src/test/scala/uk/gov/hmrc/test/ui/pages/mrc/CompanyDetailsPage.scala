@@ -25,8 +25,20 @@ object CompanyDetailsPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//input[@id='companyName']") var fldCompanyName: WebElement   = _
   @FindBy(how = How.XPATH, using = "//input[@id='utr']") var fldUTR: WebElement                   = _
   @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var charaError: WebElement       = _
+  @FindBy(how = How.ID, using = "pdfAddCompanyDetails") var yesOption: WebElement                 = _
+  @FindBy(how = How.ID, using = "pdfAddCompanyDetails-2") var noOption: WebElement                = _
 
   PageFactory.initElements(driver, this)
+
+  def selectOptionYes(): Unit = {
+    yesOption.click()
+    yesOption.isSelected()
+  }
+
+  def selectOptionNo(): Unit = {
+    noOption.click()
+    noOption.isSelected()
+  }
 
   def provideLongCompanyName(longCompanyName: String) =
     fldCompanyName.sendKeys(longCompanyName)

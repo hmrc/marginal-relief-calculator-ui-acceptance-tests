@@ -36,15 +36,16 @@ object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[1]/tbody/tr") var mrCalculationSteps
     : List[WebElement] = _
 
-  @FindBy(how = How.XPATH, using = "//details/summary/span") var mRFractionLink: WebElement                = _
-  @FindBy(how = How.CSS, using = "#main-content > div > div > span") var totalMRValue: WebElement          = _
-  @FindBy(how = How.XPATH, using = "//*[@id='tab_year2024']") var tabYear2024: WebElement                  = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-tabs__list-item']") var tabYear2025: WebElement      = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[2]/b") var lblDate: WebElement = _
-  @FindBy(how = How.XPATH, using = "//h3[@class='govuk-heading-s'][2]") var headerSection: WebElement      = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[1]") var lblText: WebElement   = _
+  @FindBy(how = How.XPATH, using = "//details/summary/span") var mRFractionLink: WebElement                    = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/p[9]/a") var getCopyOfResult: WebElement = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/span") var totalMRValue: WebElement      = _
+  @FindBy(how = How.XPATH, using = "//*[@id='tab_year2024']") var tabYear2024: WebElement                      = _
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-tabs__list-item']") var tabYear2025: WebElement          = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[2]/b") var lblDate: WebElement     = _
+  @FindBy(how = How.XPATH, using = "//h3[@class='govuk-heading-s'][2]") var headerSection: WebElement          = _
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[1]") var lblText: WebElement       = _
   @FindBy(how = How.XPATH, using = "//*[@href='/marginal-relief-calculator/pdf-meta-data']") var linkPrintandSave
-    : WebElement                                                                                           = _
+    : WebElement                                                                                               = _
 
   PageFactory.initElements(driver, this)
 
@@ -92,6 +93,9 @@ object DetailedCalculationPage extends BasePage {
 
   def clickOnGetACopyOfResults(): Unit =
     driver.findElement(By.linkText("Get a copy of these results")).click()
+
+  def getCopyOfResults(): Unit =
+    getCopyOfResult.click()
 
   def verifySectionHeader(): String =
     headerSection.getText

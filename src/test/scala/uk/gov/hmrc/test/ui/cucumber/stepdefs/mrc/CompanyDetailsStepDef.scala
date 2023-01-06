@@ -33,7 +33,20 @@ class CompanyDetailsStepDef extends BaseStepDef {
   }
   Then("""an {string} is displayed""") { (errorMessage: String) =>
     charaValidationError should be(errorMessage)
-
   }
 
+  Then("""the user lands on AddCompanyDetails page""") { () =>
+    CompanyDetailsPage.verifyPageTitle(
+      "Add company details before you print or save your calculation - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+    )
+  }
+
+  Then("""the user selects {string} and continue on add company details page""") { (option: String) =>
+    if (option.equalsIgnoreCase("yes")) {
+      CompanyDetailsPage.selectOptionYes()
+    } else {
+      CompanyDetailsPage.selectOptionNo()
+    }
+    CompanyDetailsPage.clickOnContinue()
+  }
 }

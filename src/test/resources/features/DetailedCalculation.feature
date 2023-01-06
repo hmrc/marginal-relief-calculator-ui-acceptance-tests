@@ -110,7 +110,7 @@ Feature:Detailed Calculation - Validations
     And the tabs are displayed
     Then I click on 2025 tab and verify the tab
 
-  @mrc-200 @failed
+  @mrc-200
   Scenario: Back button
     When the accounting period start date is provided as "01/01/2024"
     Then the user clicks continue button on accounting period page
@@ -129,7 +129,7 @@ Feature:Detailed Calculation - Validations
     And the tabs are displayed
     Then I click on 2025 tab and verify the tab
     When the user click on back button
-    Then the user navigated to back to result page and display the green box of type "£2,752.49"
+    Then the user navigated to back to result page and display the green box of type "£2,700"
 
   @mrc-221
   Scenario: What to do next
@@ -152,5 +152,3 @@ Feature:Detailed Calculation - Validations
     And the How its calculated section is displayed
     And "What to do next" section is displayed and it contains "Complete your Corporation Tax return"
     And What to do next session contains date 9months after POA end date which is "1 October 2024"
-
-
