@@ -107,4 +107,12 @@ class CheckYourAnswersStepDef extends BaseStepDef {
   Then("""I can validate associated companies as {string}""") { (associatedCompanies: String) =>
     CheckYourAnswersPage.verifyNoOfAssociatedCompanies(associatedCompanies)
   }
+
+  Then("""I can validate associated companies for first part of financial year as {string}""") { (ac: String) =>
+    CheckYourAnswersPage.verifyAcForFirstPartofFinancialYear(ac)
+  }
+
+  Then("""I can validate associated companies for second part of financial year as {string}""") { (ac: String) =>
+    CheckYourAnswersPage.verifyAcForSecondPartofFinancialYear(ac)
+  }
 }

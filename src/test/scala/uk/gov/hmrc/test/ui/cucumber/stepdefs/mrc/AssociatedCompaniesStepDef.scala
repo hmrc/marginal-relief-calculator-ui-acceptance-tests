@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.errorMessage
 import uk.gov.hmrc.test.ui.pages.mrc.AssociatedCompaniesPage.titleMessage
-import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, CheckYourAnswersPage}
+import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, CheckYourAnswersPage, TaxableProfitPage}
 
 class AssociatedCompaniesStepDef extends BaseStepDef {
   Then("""display the {string} on associated company""") { (message: String) =>
@@ -71,5 +71,13 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
   }
   And("the user click on What are associated companies?") { () =>
     AssociatedCompaniesPage.clickOnQuestion()
+  }
+
+  And("""the user inputs {string} as associated companies for first part of accounting period""") { (noOfAc: String) =>
+    AssociatedCompaniesPage.inputAcForFirstPartOfFinancialYear(noOfAc)
+  }
+
+  And("""the user inputs {string} as associated companies for second part of accounting period""") { (noOfAc: String) =>
+    AssociatedCompaniesPage.inputAcForSecondPartOfFinancialYear(noOfAc)
   }
 }

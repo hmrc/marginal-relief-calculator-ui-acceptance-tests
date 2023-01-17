@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.CompanyDetailsPage
+import uk.gov.hmrc.test.ui.pages.mrc.{CompanyDetailsPage, DetailedCalculationPage}
 import uk.gov.hmrc.test.ui.pages.mrc.CompanyDetailsPage.charaValidationError
 
 class CompanyDetailsStepDef extends BaseStepDef {

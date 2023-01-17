@@ -33,10 +33,10 @@ object CheckYourAnswersPage extends BasePage {
   @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd.govuk-summary-list__value") var accountingPeriodDates
     : WebElement                                                                                                       = _
   @FindBy(how = How.CSS, using = "dl > div:nth-child(2) > dd.govuk-summary-list__value") var profit: WebElement        = _
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd.govuk-summary-list__value") var distributions: WebElement =
-    _
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd.govuk-summary-list__value") var NoOfAssociatedCompanies
-    : WebElement                                                                                                       = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd.govuk-summary-list__value") var distributions: WebElement = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd.govuk-summary-list__value") var NoOfAssociatedCompanies: WebElement                    = _
+  @FindBy(how = How.CSS, using = "div:nth-child(5) > dd.govuk-summary-list__value") var noOfAcForFirstPartOfFinancialYear: WebElement                    = _
+  @FindBy(how = How.CSS, using = "div:nth-child(6) > dd.govuk-summary-list__value") var noOfAcForSecondPartOfFinancialYear: WebElement                    = _
 
   PageFactory.initElements(driver, this)
 
@@ -91,4 +91,13 @@ object CheckYourAnswersPage extends BasePage {
   def clickMRCButton(): Unit =
     calculateMRCButton.click()
 
+  def verifyAcForFirstPartofFinancialYear(noOfAc: String): Unit = {
+    val AC = noOfAcForFirstPartOfFinancialYear.getText
+    assert(AC === noOfAc)
+  }
+
+  def verifyAcForSecondPartofFinancialYear(noOfAc: String): Unit = {
+    val AC = noOfAcForSecondPartOfFinancialYear.getText
+    assert(AC === noOfAc)
+  }
 }

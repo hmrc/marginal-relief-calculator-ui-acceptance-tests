@@ -16,7 +16,7 @@ Feature:Company Details  - Validations
     Then user is presented with Check Your Answers page
     And the user clicks on calculate marginal relief button on check you answers page
     And the Check Marginal Relief calculation in detail link is displayed
-    And the user clicks on Print or save your calculation link
+    And the user clicks on Get A Copy Of Results your calculation link
     Then the user is presented with add company details to your result page
     And the user selects option as "yes" on add company details page
 
