@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
 
@@ -37,10 +38,10 @@ object AssociatedCompaniesPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  def titleMessage(): String = {
-    Thread.sleep(1000)
-    headerMessage.getText
-  }
+  def titleMessage(): String =
+    eventually {
+      headerMessage.getText
+    }
 
   def verifyPageTitle(): Unit =
     verifyPageTitle("Number of associated companies - Calculate Marginal Relief for Corporation Tax - GOV.UK")

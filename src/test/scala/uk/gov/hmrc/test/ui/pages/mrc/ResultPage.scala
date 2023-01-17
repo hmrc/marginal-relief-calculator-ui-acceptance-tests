@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
+import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ResultPage extends BasePage {
@@ -63,10 +64,10 @@ object ResultPage extends BasePage {
   def runAnotherCalculationIsEnabled(): Unit =
     runAnotherCalculationButton.isEnabled()
 
-  def greenBoxMessage(): String = {
-    Thread.sleep(1000)
-    panelMessage.getText
-  }
+  def greenBoxMessage(): String =
+    eventually {
+      panelMessage.getText
+    }
 
   def corporationTaxLiabilityHeader(): String =
     ctAmount.getText

@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
+import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 import java.util
@@ -73,10 +74,11 @@ object ExcemptDistrubutionsPage extends BasePage {
     inputExcemptDistribution.sendKeys(distributions)
   }
 
-  def submitaccountingPeriodInformation(): Unit = {
-    Thread.sleep(1000)
-    submitPage()
-  }
+//  def submitAccountingPeriodInformation(): Unit = {
+//    eventually {
+//      submitPage()
+//    }
+//  }
 
   def verifyYesNoNotSelected(): Unit = {
     val elementsYes: util.List[WebElement] = driver.findElements(By.cssSelector("#value_0:checked"))
