@@ -19,13 +19,9 @@ Feature:Preview Result Summary  - Validations
     And user is presented with Check Your Answers page
     And the user clicks on calculate marginal relief button on check you answers page
     And the Check Marginal Relief calculation in detail link is displayed
-    When the user clicks on Print or save your calculation link
+    When the user clicks on Get A Copy Of Results your calculation link
     And the user selects option as "yes" on add company details page
     And the user clicks continue button on company details page
     Then "Print or save your calculation" should be displayed
     And  "Print your full calculation" link is available
     And marginal results are shown
-
-
-
-

@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object TaxableProfitPage extends BasePage {
@@ -37,10 +38,10 @@ object TaxableProfitPage extends BasePage {
     assert(TP === profitValue)
   }
 
-  def submitAccountingPeriodInformation(): Unit = {
-    Thread.sleep(1000)
-    submitPage()
-  }
+  def submitAccountingPeriodInformation(): Unit =
+    eventually {
+      submitPage()
+    }
 
   def verifyCompaniesProfitAsNull(): Unit =
     inputProfitValue.getAttribute("value").contains("")

@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
+import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ResultPage extends BasePage {
@@ -36,6 +37,7 @@ object ResultPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][2]") var ETHeader: WebElement                 = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var ETBodySingle: WebElement                  = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var ETBodyDual: WebElement                    = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var TwoAssociatedComapniesText: WebElement       = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[3]/table/tbody/tr[2]/th") var ETContent
     : WebElement                                                                                                = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[2]") var etFirstRow
@@ -62,10 +64,10 @@ object ResultPage extends BasePage {
   def runAnotherCalculationIsEnabled(): Unit =
     runAnotherCalculationButton.isEnabled()
 
-  def greenBoxMessage(): String = {
-    Thread.sleep(1000)
-    panelMessage.getText
-  }
+  def greenBoxMessage(): String =
+    eventually {
+      panelMessage.getText
+    }
 
   def corporationTaxLiabilityHeader(): String =
     ctAmount.getText
@@ -168,4 +170,7 @@ object ResultPage extends BasePage {
 
   def verifyETContent(): String =
     ETContent.getText
+
+  def verifyTwoAssociatedCompanies(noOfAssociatedCompanies: String): Unit =
+    TwoAssociatedComapniesText.getText.contains(noOfAssociatedCompanies)
 }

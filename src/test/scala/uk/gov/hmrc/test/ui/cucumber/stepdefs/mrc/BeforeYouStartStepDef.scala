@@ -29,7 +29,7 @@ class BeforeYouStartStepDef extends BaseStepDef {
 
   Then("I am landed on before you start page") { () =>
     BeforeYouStartPage.verifyTitle()
-    Thread.sleep(10000)
+  //Thread.sleep(10000)
   }
 
   And("I can see the breadcrumbs on the page") { () =>

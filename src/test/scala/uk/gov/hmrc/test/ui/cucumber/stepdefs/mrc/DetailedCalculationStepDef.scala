@@ -60,7 +60,7 @@ class DetailedCalculationStepDef extends BaseStepDef {
   Then("I click on 2025 tab and verify the tab") { () =>
     DetailedCalculationPage.clickOn2025tab()
   }
-  Then("the user clicks on Print or save your calculation link") { () =>
+  Then("the user clicks on Get A Copy Of Results your calculation link") { () =>
     DetailedCalculationPage.clickOnGetACopyOfResults()
   }
   Then("""{string} section is displayed and it contains {string}""") { (sectionHeader: String, sectionText: String) =>
@@ -84,4 +84,8 @@ class DetailedCalculationStepDef extends BaseStepDef {
     AddCompanyDetailsToResultsPage.clickOnContinueButton()
   }
 
+  Then("""I can validate the associated companies on detailed calculation page as {string}""") {
+    (associateCompanies: String) =>
+      DetailedCalculationPage.verifyAssociatedCompanies(associateCompanies)
+  }
 }

@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
+import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.{CheckYourAnswersPage, ResultPage}
 
@@ -58,12 +59,14 @@ class CheckYourAnswersStepDef extends BaseStepDef {
     CheckYourAnswersPage.clickOnChangeLinkForAssociatedCompanies()
   }
   When("the user clicks on back button") { () =>
-    Thread.sleep(2000)
-    CheckYourAnswersPage.clickBackLink()
+    eventually {
+      CheckYourAnswersPage.clickBackLink()
+    }
   }
   When("the user clicks on calculate marginal relief button on check you answers page") { () =>
-    Thread.sleep(500)
-    CheckYourAnswersPage.clickMRCButton()
+    eventually {
+      CheckYourAnswersPage.clickMRCButton()
+    }
   }
 
   And("I can see calculate margin relief button enabled") { () =>
@@ -88,10 +91,6 @@ class CheckYourAnswersStepDef extends BaseStepDef {
     CheckYourAnswersPage.verifyProfitValue(profit)
   }
 
-//  Then("I am navigated to MRC results page") { () =>
-//    ResultPage.verifyPageTitle()
-//  }
-
   Then("I can see run another calculation button enabled") { () =>
     ResultPage.runAnotherCalculationIsEnabled()
   }
@@ -106,5 +105,13 @@ class CheckYourAnswersStepDef extends BaseStepDef {
 
   Then("""I can validate associated companies as {string}""") { (associatedCompanies: String) =>
     CheckYourAnswersPage.verifyNoOfAssociatedCompanies(associatedCompanies)
+  }
+
+  Then("""I can validate associated companies for first part of financial year as {string}""") { (ac: String) =>
+    CheckYourAnswersPage.verifyAcForFirstPartofFinancialYear(ac)
+  }
+
+  Then("""I can validate associated companies for second part of financial year as {string}""") { (ac: String) =>
+    CheckYourAnswersPage.verifyAcForSecondPartofFinancialYear(ac)
   }
 }

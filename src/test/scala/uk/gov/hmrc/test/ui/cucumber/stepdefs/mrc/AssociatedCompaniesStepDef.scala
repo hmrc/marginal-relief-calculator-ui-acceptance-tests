@@ -72,4 +72,12 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
   And("the user click on What are associated companies?") { () =>
     AssociatedCompaniesPage.clickOnQuestion()
   }
+
+  And("""the user inputs {string} as associated companies for first part of accounting period""") { (noOfAc: String) =>
+    AssociatedCompaniesPage.inputAcForFirstPartOfFinancialYear(noOfAc)
+  }
+
+  And("""the user inputs {string} as associated companies for second part of accounting period""") { (noOfAc: String) =>
+    AssociatedCompaniesPage.inputAcForSecondPartOfFinancialYear(noOfAc)
+  }
 }

@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
 
@@ -27,6 +28,8 @@ object AssociatedCompaniesPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-details__summary-text']") var refLink: WebElement       = _
   @FindBy(how = How.ID, using = "associatedCompanies") var yesOption: WebElement                              = _
   @FindBy(how = How.ID, using = "associatedCompanies-2") var noOption: WebElement                             = _
+  @FindBy(how = How.ID, using = "associatedCompaniesFY1Count") var acForFirstPartOfFinancialYear: WebElement  = _
+  @FindBy(how = How.ID, using = "associatedCompaniesFY2Count") var acForSecondPartOfFinancialYear: WebElement = _
   @FindBy(
     how = How.XPATH,
     using = "//*[@class='govuk-label']/following-sibling::input"
@@ -35,10 +38,10 @@ object AssociatedCompaniesPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  def titleMessage(): String = {
-    Thread.sleep(1000)
-    headerMessage.getText
-  }
+  def titleMessage(): String =
+    eventually {
+      headerMessage.getText
+    }
 
   def verifyPageTitle(): Unit =
     verifyPageTitle("Number of associated companies - Calculate Marginal Relief for Corporation Tax - GOV.UK")
@@ -87,4 +90,10 @@ object AssociatedCompaniesPage extends BasePage {
 
   def clickOnQuestion(): Unit =
     refLink.click()
+
+  def inputAcForFirstPartOfFinancialYear(noOfAc: String): Unit =
+    acForFirstPartOfFinancialYear.sendKeys(noOfAc)
+
+  def inputAcForSecondPartOfFinancialYear(noOfAc: String): Unit =
+    acForSecondPartOfFinancialYear.sendKeys(noOfAc)
 }

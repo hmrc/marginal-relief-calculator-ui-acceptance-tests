@@ -34,4 +34,8 @@ class PreviewSummaryStepDef extends BaseStepDef {
     PreviewSummaryPage.verifyCompanydetails()
   }
 
+  Then("""I can validate the associated companies on PDF page as {string}""") { (associateCompanies: String) =>
+    PreviewSummaryPage.verifyAssociatedCompanies(associateCompanies)
+  }
+
 }

@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.support.{FindBy, How}
 import org.openqa.selenium.{By, WebElement}
+import org.scalatest.concurrent.Eventually.eventually
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
@@ -52,10 +53,10 @@ trait BasePage extends BrowserDriver with Matchers {
   def clickBackLink(): Unit =
     backButton.click()
 
-  def errorMessage(): String = {
-    Thread.sleep(3000)
-    errorMsg.getText
-  }
+  def errorMessage(): String =
+    eventually {
+      errorMsg.getText
+    }
 
   def verifyTextPresentOnPage(text: String): Boolean =
     driver.getPageSource.contains(text)
