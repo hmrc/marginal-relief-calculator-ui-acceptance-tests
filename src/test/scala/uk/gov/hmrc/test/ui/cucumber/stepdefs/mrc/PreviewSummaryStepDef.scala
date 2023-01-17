@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.{DetailedCalculationPage, PreviewSummaryPage}
+import uk.gov.hmrc.test.ui.pages.mrc.PreviewSummaryPage
 import uk.gov.hmrc.test.ui.pages.mrc.PreviewSummaryPage.{verifyHeader, verifyLinkPrint}
 
 class PreviewSummaryStepDef extends BaseStepDef {
