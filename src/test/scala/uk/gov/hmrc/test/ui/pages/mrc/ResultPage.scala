@@ -36,7 +36,7 @@ object ResultPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][2]") var ETHeader: WebElement                 = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var ETBodySingle: WebElement                  = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var ETBodyDual: WebElement                    = _
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var TwoAssociatedComapniesText: WebElement                    = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var TwoAssociatedComapniesText: WebElement       = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[3]/table/tbody/tr[2]/th") var ETContent
     : WebElement                                                                                                = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[2]") var etFirstRow
@@ -170,7 +170,6 @@ object ResultPage extends BasePage {
   def verifyETContent(): String =
     ETContent.getText
 
-  def verifyTwoAssociatedCompanies(noOfAssociatedCompanies: String): Unit = {
+  def verifyTwoAssociatedCompanies(noOfAssociatedCompanies: String): Unit =
     TwoAssociatedComapniesText.getText.contains(noOfAssociatedCompanies)
-  }
 }

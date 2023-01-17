@@ -84,7 +84,8 @@ class DetailedCalculationStepDef extends BaseStepDef {
     AddCompanyDetailsToResultsPage.clickOnContinueButton()
   }
 
-  Then ("""I can validate the associated companies on detailed calculation page as {string}""") { (associateCompanies: String) =>
-    DetailedCalculationPage.verifyAssociatedCompanies(associateCompanies)
+  Then("""I can validate the associated companies on detailed calculation page as {string}""") {
+    (associateCompanies: String) =>
+      DetailedCalculationPage.verifyAssociatedCompanies(associateCompanies)
   }
 }

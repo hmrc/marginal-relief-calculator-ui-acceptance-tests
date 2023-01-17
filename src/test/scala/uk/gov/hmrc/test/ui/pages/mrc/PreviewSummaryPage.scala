@@ -31,7 +31,7 @@ object PreviewSummaryPage extends BasePage {
     : WebElement                                                                                                      = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[3]/p") var lblUTR: WebElement =
     _
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var twoAssociatedCompaniesText: WebElement = _
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var twoAssociatedCompaniesText: WebElement             = _
 
   PageFactory.initElements(driver, this)
 
@@ -50,7 +50,6 @@ object PreviewSummaryPage extends BasePage {
     lblUTR.getText.contains("987654321")
   }
 
-  def verifyAssociatedCompanies(noOfAssociatedCompanies: String): Unit = {
+  def verifyAssociatedCompanies(noOfAssociatedCompanies: String): Unit =
     twoAssociatedCompaniesText.getText.contains(noOfAssociatedCompanies)
-  }
 }
