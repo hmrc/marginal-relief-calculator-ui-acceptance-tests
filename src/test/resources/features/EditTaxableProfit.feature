@@ -39,5 +39,5 @@ Feature:Edit Taxable Profit - Validations
     And the user clicks continue button on taxable profit page
     Then the user is alerted to taxable profits "<profitError>"
     Examples:
-      | profitError                                                                              |
-      | Do not use decimal points for taxable profits. Enter a whole number. For example, 70000. |
+      | profitError                                                                               |
+      | Do not use decimal points for taxable profits. Enter a whole number. For example, £70000. |
