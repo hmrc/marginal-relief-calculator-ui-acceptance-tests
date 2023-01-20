@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ object TestConfiguration {
   val env: String           = config.getString("environment")
   val defaultConfig: Config = config.getConfig("qa")
   val envConfig: Config     = config.getConfig(env).withFallback(defaultConfig)
-  val url: String           = "https://www.qa.tax.service.gov.uk"
+  //val url: String           = "https://www.qa.tax.service.gov.uk"
 
   def url(service: String): String = {
     val host = env match {
