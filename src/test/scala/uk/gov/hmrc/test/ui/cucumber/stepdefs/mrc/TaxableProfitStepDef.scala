@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
-import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.errorMessage
 import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage

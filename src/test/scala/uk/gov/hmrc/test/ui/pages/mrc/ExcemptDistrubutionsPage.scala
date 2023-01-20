@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
-import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 import java.util
