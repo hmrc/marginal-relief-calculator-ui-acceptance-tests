@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,14 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object BeforeYouStartPage extends BasePage {
   val beforeYouStartPage    =
     "Calculate Marginal Relief for Corporation Tax - Calculate Marginal Relief for Corporation Tax - GOV.UK"
-  //val url: String           = TestConfiguration.url("marginal-relief-calculator-frontend")
-  val url: String           = "https://www.qa.tax.service.gov.uk/marginal-relief-calculator"
+  val url: String           = TestConfiguration.url("marginal-relief-calculator-frontend")
+  //val url: String           = "https://www.qa.tax.service.gov.uk/marginal-relief-calculator"
   //val url: String           = "https://www.development.tax.service.gov.uk/marginal-relief-calculator"
   val mrcBeforeYouStartPage =
     "Calculate Marginal Relief for Corporation Tax - Calculate Marginal Relief for Corporation Tax - GOV.UK"

@@ -18,5 +18,5 @@ Feature:Taxable Profit - Validations
       | 10000000000  | Enter an amount between 1 and 1,000,000,000.                                              |
       | 1000000001   | Enter an amount lower than or equal to 1,000,000,000.                                     |
       |              | Enter an amount for your taxable profits.                                                 |
-      | ONE THOUSAND | Enter a valid taxable profit. For example, £70000.                                         |
+      | ONE THOUSAND | Enter a valid taxable profit. For example, £70000.                                        |
       | -1000        | Enter an amount greater than 0.                                                           |
