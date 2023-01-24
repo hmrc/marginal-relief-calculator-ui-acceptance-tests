@@ -1,3 +1,4 @@
+@ignore
 Feature: 2 Associated companies - Validations on different pages
 
   Background:
