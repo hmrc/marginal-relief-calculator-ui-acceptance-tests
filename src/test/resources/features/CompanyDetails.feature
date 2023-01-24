@@ -30,7 +30,7 @@ Feature:Company Details  - Validations
       | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.Ut enim ad minim, quis nostrud exercitation. | Company name must be 160 characters or less. |
 
 
-  @mrc-146
+  @mrc-146 @mrc-257
   Scenario Outline: Company Details- Character limit on UTR Number
     When the user provides a "<longUTRNumber>" on UTR number field
     And the user clicks continue button on company details page
@@ -39,7 +39,7 @@ Feature:Company Details  - Validations
       | longUTRNumber    | errorMessage                                |
       | 9876543210123456 | Unique Tax Reference must be 10 characters. |
 
-  @mrc-146 @a11y
+  @mrc-146 @mrc-257 @a11y
   Scenario Outline: Company Details- Valid Scenario
     Then the user lands on AddCompanyDetails page
     When the user provides a "<validCompanyName>" on Company name field

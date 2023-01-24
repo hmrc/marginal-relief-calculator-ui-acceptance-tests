@@ -1,5 +1,4 @@
-@now
-Feature: Associated companies Title Message - Validations
+Feature: 2 Associated companies - Validations on different pages
 
   Background:
     Given Marginal Relief Calculator is launched
