@@ -55,10 +55,10 @@ Feature:Results - Validations
     Then display the green box of type "Your taxable profits are below the Marginal Relief limit"
 
   @mrc-41
-  Scenario: Your taxable profits and included distributions are above the Marginal Relief limit
+  Scenario: Your taxable profits and included distributions are below the Marginal Relief limit
     When the accounting period start date is provided as "01/01/2023"
     Then the user clicks continue button on accounting period page
-    When the profit is "45000"
+    When the profit is "44500"
     Then the user clicks continue button on taxable profit page
     And the user selects option "Yes" for the question Did your company receive any distributions?
     And the user clicks continue button on distributions page
@@ -89,7 +89,7 @@ Feature:Results - Validations
     When the user selects option "no" for the question Did your company have any active associated companies?
     Then the user clicks continue button on associated companies page
     And the user clicks on calculate marginal relief button on check you answers page
-    Then display the green box of type "£1,929.93"
+    Then display the green box of type "£1,922.80"
 
   @mrc-126 @mrc-42
   Scenario: CT liability payable- MRC Dual year
@@ -103,10 +103,10 @@ Feature:Results - Validations
     When the user selects option "no" for the question Did your company have any active associated companies?
     Then the user clicks continue button on associated companies page
     And the user clicks on calculate marginal relief button on check you answers page
-    Then display the green box of type "£2,034.25"
-    Then the corporation tax liability heading is displayed as "£14,430.13"
+    Then display the green box of type "£2,026.53"
+    Then the corporation tax liability heading is displayed as "£14,437.85"
     Then the accounting period covering 2 years section is displayed
-    And the corporation tax liability body is displayed as "Reduced from £16,464.38 after £2,034.25 Marginal Relief" for dual year
+    And the corporation tax liability body is displayed as "Reduced from £16,464.38 after £2,026.53 Marginal Relief" for dual year
     And the dual year corporation tax liability table is displayed
 
   @mrc-42
@@ -122,9 +122,9 @@ Feature:Results - Validations
     And the user selects option "no" for the question Did your company have any active associated companies?
     And the user clicks continue button on associated companies page
     And the user clicks on calculate marginal relief button on check you answers page
-    Then display the green box of type "£1,148.63"
-    And the corporation tax liability heading is displayed as "£16,351.37"
-    And the corporation tax liability body is displayed as "Reduced from £17,500 after £1,148.63 Marginal Relief" for single year
+    Then display the green box of type "£1,142.62"
+    And the corporation tax liability heading is displayed as "£16,357.38"
+    And the corporation tax liability body is displayed as "Reduced from £17,500 after £1,142.62 Marginal Relief" for single year
     And the single year corporation tax liability table is displayed
 
   @mrc-42
@@ -156,7 +156,7 @@ Feature:Results - Validations
     And the user selects option "no" for the question Did your company have any active associated companies?
     And the user clicks continue button on associated companies page
     And the user clicks on calculate marginal relief button on check you answers page
-    And the effective tax rate heading is displayed as "20.61%"
+    And the effective tax rate heading is displayed as "20.63%"
     And the effective tax body is displayed as "Reduced from 23.52% after Marginal Relief" for dual year
     And the dual year effective tax table is displayed
 
@@ -173,7 +173,7 @@ Feature:Results - Validations
     And the user selects option "no" for the question Did your company have any active associated companies?
     And the user clicks continue button on associated companies page
     And the user clicks on calculate marginal relief button on check you answers page
-    And the effective tax rate heading is displayed as "23.36%"
+    And the effective tax rate heading is displayed as "23.37%"
     And the effective tax body is displayed as "Reduced from 25% after Marginal Relief" for single year
     And the single year effective tax table is displayed
 

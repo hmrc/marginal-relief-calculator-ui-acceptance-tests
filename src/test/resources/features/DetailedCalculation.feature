@@ -25,7 +25,7 @@ Feature:Detailed Calculation - Validations
     And the distribution amount has £ prefix and displayed as "£0"
     And the How its calculated section is displayed
     And "Marginal Relief was not available in financial year 2022 to 2023" is displayed on the page
-    And the total Marginal relief is "£2,034.25"
+    And the total Marginal relief is "£2,026.53"
     And "5" MR calculation steps are displayed
     And What is the marginal rate fraction link is displayed
     And the Taxable Profit section is displayed
