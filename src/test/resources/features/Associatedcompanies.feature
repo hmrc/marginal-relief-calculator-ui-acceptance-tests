@@ -43,7 +43,7 @@ Feature: Associated companies - Validations
     When the user selects option "yes" for the question Did your company have any active associated companies?
     Then user is presented with input field for associated companies
     Then the user clicks continue button on associated companies page
-    Then the user is displayed with error message "Enter the number of associated companies you have. For example, 1." for associated company
+    Then the user is displayed with error message "Enter the number of associated companies, like 1" for associated company
 
   @mrc-38 @mrc-130
   Scenario Outline: Associated companies - Error Message validations
@@ -57,7 +57,7 @@ Feature: Associated companies - Validations
 
     Examples:
       | InvalidAC | Error Message                                                    |
-      | 1.        | Do not use decimal points. Enter a whole number. For example, 1. |
-      | -3        | Enter an amount greater than 0.                                  |
-      | 1B        | Enter a valid number for your associated companies.              |
-      | 0         | Enter an amount greater than 0.                                  |
+      | 1.        | The number of associated companies must be a whole number, like 1 |
+      | -3        | The number of associated companies must be greater than 0                                  |
+      | 1B        | The number of associated companies must be a number, like 1              |
+      | 0         | The number of associated companies must be greater than 0                                  |
