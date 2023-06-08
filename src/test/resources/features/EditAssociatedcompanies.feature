@@ -53,4 +53,4 @@ Feature:Edit Associated Companies - Validations
     Then the user is displayed with error message "<ErrorMessage>" for associated company
     Examples:
       | ErrorMessage                    |
-      | Enter an amount greater than 0. |
+      | The number of associated companies must be greater than 0 |

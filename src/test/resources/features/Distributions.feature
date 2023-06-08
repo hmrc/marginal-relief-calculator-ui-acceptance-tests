@@ -45,18 +45,18 @@ Feature:Exempt Distributions - Validations
 
     Examples:
       | distributions | ErrorMessage                                                          |
-      | 0             | Enter an amount greater than 0.                                       |
-      | -1            | Enter an amount greater than 0.                                       |
+      | 0             | The received distributions must be greater than 0                                       |
+      | -1            | The received distributions must be greater than 0                                       |
       | 6.23          | Do not use decimal points. Enter a whole number. For example, £70000. |
       | Zero          | Enter a valid received distributions amount. For example, £70000.     |
       | 1000000001    | Enter an amount lower than or equal to 1,000,000,000.                 |
-      | 10000000001   | Enter an amount between 1 and 1,000,000,000.                          |
-      |               | Enter an amount for your received distributions.                      |
+      | 10000000001   | The amount must be between 1 and 1,000,000,000                          |
+      |               | Enter an amount for your received distributions                      |
 
   @mrc-37
   Scenario: Continue with out selecting Yes or no option for question Did your company receive any distributions
     And the user clicks continue button on distributions page
-    Then the user is displayed with error message "Select whether you received distributions or not." for distributions
+    Then the user is displayed with error message "Select whether distributions need to be included in your profits or not" for distributions
 
   @mrc-37
   Scenario: Continue with out selecting Yes or no option for include profits page

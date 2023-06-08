@@ -37,7 +37,7 @@ Feature:Company Details  - Validations
     Then an "<errorMessage>" is displayed
     Examples:
       | longUTRNumber    | errorMessage                                |
-      | 9876543210123456 | Unique Tax Reference must be 10 characters. |
+      | 9876543210123456 | Unique Taxpayer Reference must be 10 characters |
 
   @mrc-146 @mrc-257 @a11y
   Scenario Outline: Company Details- Valid Scenario
