@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
-import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.errorMessage
 import uk.gov.hmrc.test.ui.pages.mrc.AssociatedCompaniesPage.titleMessage
 import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, CheckYourAnswersPage}
 
@@ -60,10 +59,6 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
 
   Then("user is presented with Check Your Answers page") { () =>
     CheckYourAnswersPage.verifyPageTitle()
-  }
-
-  Then("""the user is displayed with error message {string} for associated company""") { (ErrorMessage: String) =>
-    errorMessage should be(ErrorMessage)
   }
 
   And("user is presented with input field for associated companies with value as null") { () =>

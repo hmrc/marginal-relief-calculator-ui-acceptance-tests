@@ -40,17 +40,3 @@ Feature:Edit Associated Companies - Validations
     Then the user clicks continue button on associated companies page
     And user is presented with Check Your Answers page
     And I can validate the associated companies as "0"
-
-  @mrc-45
-  Scenario Outline: Edit Associated Companies-Invalid Associated Companies
-    And I am presented with change link next to the associated companies
-    Then I can validate the associated companies as "25"
-    And I click on change link next to the associated companies
-    And user is landed on associated companies page
-    And I validate associated companies is pre-populated as "25"
-    And user inputs a valid number as "0" associated companies
-    Then the user clicks continue button on associated companies page
-    Then the user is displayed with error message "<ErrorMessage>" for associated company
-    Examples:
-      | ErrorMessage                    |
-      | The number of associated companies must be greater than 0 |

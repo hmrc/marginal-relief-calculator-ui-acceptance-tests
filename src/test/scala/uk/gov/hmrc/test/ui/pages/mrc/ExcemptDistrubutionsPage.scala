@@ -73,12 +73,6 @@ object ExcemptDistrubutionsPage extends BasePage {
     inputExcemptDistribution.sendKeys(distributions)
   }
 
-//  def submitAccountingPeriodInformation(): Unit = {
-//    eventually {
-//      submitPage()
-//    }
-//  }
-
   def verifyYesNoNotSelected(): Unit = {
     val elementsYes: util.List[WebElement] = driver.findElements(By.cssSelector("#value_0:checked"))
     val elementsNo: util.List[WebElement]  = driver.findElements(By.cssSelector("#value_1:checked"))

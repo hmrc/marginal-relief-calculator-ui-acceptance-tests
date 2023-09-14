@@ -37,16 +37,10 @@ object AccountingPeriodPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
-  val accountingPeriodPage                =
+  val accountingPeriodPage  =
     "What are your accounting period dates? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
-  val mrcHomePageError                    = "Error: What are your accounting period dates? - marginal-relief-calculator-frontend - GOV.UK"
-  val accountingPeriodMandatoryValueError = "The start date must include day"
-  val accountingPeriodMandatoryFieldError =
-    "Enter a start date for the accounting period (End date can be left blank as it's not compulsory)"
-  val irrelevantPageTitle                 = "You're not eligible for Marginal Relief"
-  val irrelevantPageMessage               = "Your accounting period is before the 1 April 2023 start date for Marginal Relief."
-  val accountingPeriodLengthError         =
-    "The accounting period end date must be less than or equal to a full year from the start date"
+  val irrelevantPageTitle   = "You're not eligible for Marginal Relief"
+  val irrelevantPageMessage = "Your accounting period is before the 1 April 2023 start date for Marginal Relief."
 
   def verifyTitle(): Unit =
     verifyPageTitle(accountingPeriodPage)

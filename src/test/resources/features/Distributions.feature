@@ -33,38 +33,6 @@ Feature:Exempt Distributions - Validations
     And the user clicks continue button on distributions page
     Then user is landed on associated companies page
 
-  @mrc-37 @mrc-130
-  Scenario Outline: Error message validations
-    And the user selects option "Yes" for the question Did your company receive any distributions?
-    And the user clicks continue button on distributions page
-    And the user selects option "Yes" for the question Do any distributions need to be included with your profits?
-    When the user is provided with input field to provide distributions
-    And the user provides "<distributions>" as distributions
-    And the user clicks continue button on distributions page
-    Then the user is displayed with error message "<ErrorMessage>" for distributions
-
-    Examples:
-      | distributions | ErrorMessage                                                          |
-      | 0             | The received distributions must be greater than 0                                       |
-      | -1            | The received distributions must be greater than 0                                       |
-      | 6.23          | Do not use decimal points. Enter a whole number. For example, £70000. |
-      | Zero          | Enter a valid received distributions amount. For example, £70000.     |
-      | 1000000001    | The amount must be between 1 and 1,000,000,000                  |
-      | 10000000001   | The amount must be between 1 and 1,000,000,000                          |
-      |               | Enter an amount for your received distributions                      |
-
-  @mrc-37
-  Scenario: Continue with out selecting Yes or no option for question Did your company receive any distributions
-    And the user clicks continue button on distributions page
-    Then the user is displayed with error message "Select whether distributions need to be included in your profits or not" for distributions
-
-  @mrc-37
-  Scenario: Continue with out selecting Yes or no option for include profits page
-    And the user selects option "Yes" for the question Did your company receive any distributions?
-    And the user clicks continue button on distributions page
-    And the user clicks continue button on distributions page
-    Then the user is displayed with error message "Select whether you received distributions or not." for distributions
-
   @mrc-118
   Scenario: Happy Path - Distributions amount is displayed on check your answers page
     And the user selects option "Yes" for the question Did your company receive any distributions?

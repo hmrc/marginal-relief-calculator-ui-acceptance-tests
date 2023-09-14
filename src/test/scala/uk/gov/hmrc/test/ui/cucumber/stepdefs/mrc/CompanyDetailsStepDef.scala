@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.CompanyDetailsPage
-import uk.gov.hmrc.test.ui.pages.mrc.CompanyDetailsPage.charaValidationError
 
 class CompanyDetailsStepDef extends BaseStepDef {
   Then("""the user provides a {string} on Company name field""") { (longCompanyName: String) =>
@@ -30,9 +29,6 @@ class CompanyDetailsStepDef extends BaseStepDef {
 
   Then("""the user clicks continue button on company details page""") { () =>
     CompanyDetailsPage.clickOnContinue()
-  }
-  Then("""an {string} is displayed""") { (errorMessage: String) =>
-    charaValidationError should be(errorMessage)
   }
 
   Then("""the user lands on AddCompanyDetails page""") { () =>

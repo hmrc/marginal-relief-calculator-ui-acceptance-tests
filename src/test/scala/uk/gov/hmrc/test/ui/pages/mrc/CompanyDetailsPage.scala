@@ -24,7 +24,6 @@ object CompanyDetailsPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//button[@class='govuk-button']") var btnContinue: WebElement = _
   @FindBy(how = How.XPATH, using = "//input[@id='companyName']") var fldCompanyName: WebElement   = _
   @FindBy(how = How.XPATH, using = "//input[@id='utr']") var fldUTR: WebElement                   = _
-  @FindBy(how = How.CSS, using = ".govuk-error-summary__body a") var charaError: WebElement       = _
   @FindBy(how = How.ID, using = "pdfAddCompanyDetails") var yesOption: WebElement                 = _
   @FindBy(how = How.ID, using = "pdfAddCompanyDetails-2") var noOption: WebElement                = _
 
@@ -48,8 +47,5 @@ object CompanyDetailsPage extends BasePage {
 
   def clickOnContinue(): Unit =
     btnContinue.click()
-
-  def charaValidationError(): String =
-    charaError.getText
 
 }
