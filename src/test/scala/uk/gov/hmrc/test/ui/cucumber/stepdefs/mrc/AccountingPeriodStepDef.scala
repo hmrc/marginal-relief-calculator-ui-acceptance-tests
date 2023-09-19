@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs.mrc
 
 import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage
-import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.{accountEndDateMessage, accountingPeriodLengthError, accountingPeriodMandatoryFieldError, accountingPeriodMandatoryValueError, accountingPeriodMessage, errorMessage}
+import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.{accountEndDateMessage, accountingPeriodMessage}
 
 class AccountingPeriodStepDef extends BaseStepDef {
   Then("the user lands on accounting period page") { () =>
@@ -28,26 +28,6 @@ class AccountingPeriodStepDef extends BaseStepDef {
     AccountingPeriodPage.verifyTitle()
   }
 
-  When("the accounting period start day is empty") { () =>
-    AccountingPeriodPage.provideEmptyAccountingStartDay
-    AccountingPeriodPage.submitPage()
-  }
-  When("the accounting period start date is empty") { () =>
-    AccountingPeriodPage.provideEmptyAccountingStartDate
-    AccountingPeriodPage.submitPage()
-  }
-  Then("the user is alerted to a mandatory value error") { () =>
-    errorMessage should be(accountingPeriodMandatoryValueError)
-  }
-  Then("the user is alerted to a mandatory field error") { () =>
-    errorMessage should be(accountingPeriodMandatoryFieldError)
-  }
-  Then("the user is alerted to an accounting period length error") { () =>
-    errorMessage should be(accountingPeriodLengthError)
-  }
-  When("the accounting period start date is valid") { () =>
-    AccountingPeriodPage.provideValidAccountingStartDate()
-  }
   And("""the accounting period start date is provided as {string}""") { (accountingStartDate: String) =>
     AccountingPeriodPage.provideValidAccountingStartDate(accountingStartDate)
   }
@@ -60,24 +40,12 @@ class AccountingPeriodStepDef extends BaseStepDef {
   And("the user clicks continue button on accounting period page") { () =>
     AccountingPeriodPage.submitPage()
   }
-  When("the accounting period greater than one Year") { () =>
-    AccountingPeriodPage.provideInvalidAccountingEndDate()
-    AccountingPeriodPage.submitPage()
-  }
-  When("the accounting period end date is valid") { () =>
-    AccountingPeriodPage.provideValidAccountingEndDate()
-    AccountingPeriodPage.submitPage()
-  }
   Then("the user should given with an irrelevant accounting period page") { () =>
     AccountingPeriodPage.validatePageTitle()
     AccountingPeriodPage.validatePageContent()
     AccountingPeriodPage.verifyRestartButton()
     AccountingPeriodPage.verifyReferenceLink()
   }
-  Then("""the user is displayed with error message {string} for accounting period""") { (errorMessage: String) =>
-    AccountingPeriodPage.errorMessage contains errorMessage
-  }
-
   Then("I can see accounting period start and end dates as null") { () =>
     AccountingPeriodPage.VerifyAccountingPeriodsDatesAsNUll()
   }

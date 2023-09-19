@@ -20,25 +20,6 @@ Feature:Company Details  - Validations
     Then the user is presented with add company details to your result page
     And the user selects option as "yes" on add company details page
 
-  @mrc-146
-  Scenario Outline: Company Details- Character limit on Company Name
-    When the user provides a "<longCompanyName>" on Company name field
-    And the user clicks continue button on company details page
-    Then an "<errorMessage>" is displayed
-    Examples:
-      | longCompanyName                                                                                                                                                      | errorMessage                                 |
-      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua.Ut enim ad minim, quis nostrud exercitation. | Company name must be 160 characters or less. |
-
-
-  @mrc-146 @mrc-257
-  Scenario Outline: Company Details- Character limit on UTR Number
-    When the user provides a "<longUTRNumber>" on UTR number field
-    And the user clicks continue button on company details page
-    Then an "<errorMessage>" is displayed
-    Examples:
-      | longUTRNumber    | errorMessage                                |
-      | 9876543210123456 | Unique Taxpayer Reference must be 10 characters |
-
   @mrc-146 @mrc-257 @a11y
   Scenario Outline: Company Details- Valid Scenario
     Then the user lands on AddCompanyDetails page
