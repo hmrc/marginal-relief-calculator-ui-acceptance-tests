@@ -25,7 +25,7 @@ Feature:Edit Accounting Period - Validations
   @mrc-115
   Scenario: Edit Accounting Period
     Then I am presented with change link next to the accounting period dates
-    And I can validate my accounting period dates as "1 Apr 2023 to 31 Mar 2024"
+    And I can validate my accounting period dates as "1 April 2023 to 31 March 2024"
     When I click on change link next to the accounting period dates
     Then I am navigated to accounting period page
     Then the user can see the accounting end period as "31/03/2024"
@@ -33,4 +33,4 @@ Feature:Edit Accounting Period - Validations
     And the accounting period end date is provided as "31/12/2023"
     Then the user clicks continue button on accounting period page
     Then user is presented with Check Your Answers page
-    And I can validate my accounting period dates as "1 Jan 2023 to 31 Dec 2023"
+    And I can validate my accounting period dates as "1 January 2023 to 31 December 2023"
