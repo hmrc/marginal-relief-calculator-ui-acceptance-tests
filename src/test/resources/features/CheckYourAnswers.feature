@@ -23,7 +23,7 @@ Feature:Check your answers - Validations
 
   @mrc-39 @mrc-128
   Scenario: Validate all values on check your answers page
-    Then I can validate accounting period as "1 Jan 2023 to 31 Dec 2023.\nEnd date defaulted to a full year from the start date."
+    Then I can validate accounting period as "1 January 2023 to 31 December 2023.\nEnd date defaulted to a full year from the start date."
     Then I can validate profit as "£50,000"
     Then I can validate distributions included as "£50,000"
     Then I can validate associated companies as "10"
@@ -52,7 +52,7 @@ Feature:Check your answers - Validations
 
   @mrc-128
   Scenario: Verify message for default accounting period end date
-    Then I can validate accounting period as "1 Jan 2023 to 31 Dec 2023.\nEnd date defaulted to a full year from the start date."
+    Then I can validate accounting period as "1 January 2023 to 31 December 2023.\nEnd date defaulted to a full year from the start date."
     When I click on change link next to the accounting period dates
     Then I am navigated to accounting period page
     Then the user can see the accounting end period as "31/12/2023"
@@ -60,4 +60,4 @@ Feature:Check your answers - Validations
     And the accounting period end date is provided as "31/03/2024"
     Then the user clicks continue button on accounting period page
     Then user is presented with Check Your Answers page
-    And I can validate my accounting period dates as "1 Apr 2023 to 31 Mar 2024"
+    And I can validate my accounting period dates as "1 April 2023 to 31 March 2024"
