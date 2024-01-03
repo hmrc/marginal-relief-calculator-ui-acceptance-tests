@@ -22,6 +22,6 @@ Feature:Preview Result Summary  - Validations
     When the user clicks on Get A Copy Of Results your calculation link
     And the user selects option as "yes" on add company details page
     And the user clicks continue button on company details page
-    Then "Print or save your calculation" should be displayed
+    Then "Print your calculation" should be displayed
     And  "Print your full calculation" link is available
     And marginal results are shown
