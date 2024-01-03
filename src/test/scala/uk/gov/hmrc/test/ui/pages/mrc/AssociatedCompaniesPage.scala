@@ -44,7 +44,7 @@ object AssociatedCompaniesPage extends BasePage {
     }
 
   def verifyPageTitle(): Unit =
-    verifyPageTitle("Number of associated companies - Calculate Marginal Relief for Corporation Tax - GOV.UK")
+    verifyPageTitle(s"${headerMessage.getText} - Calculate Marginal Relief for Corporation Tax - GOV.UK")
 
   def verifyYesAndNoOptionsPresent(): Unit = {
     yesOption.isDisplayed
