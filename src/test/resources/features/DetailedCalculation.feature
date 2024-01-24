@@ -129,7 +129,7 @@ Feature:Detailed Calculation - Validations
     And the tabs are displayed
     Then I click on 2025 tab and verify the tab
     When the user click on back button
-    Then the user navigated to back to result page and display the green box of type "£2,752.49"
+    Then the user navigated to back to result page and display the green box of type "£2,700"
 
   @mrc-221
   Scenario: What to do next
