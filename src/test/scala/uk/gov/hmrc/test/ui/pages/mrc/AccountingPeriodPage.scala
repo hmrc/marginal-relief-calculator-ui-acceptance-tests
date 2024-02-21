@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ object AccountingPeriodPage extends BasePage {
   @FindBy(how = How.ID, using = "accountingPeriodEndDate.day") var accountingEndDay: WebElement              = _
   @FindBy(how = How.ID, using = "accountingPeriodEndDate.month") var accountingEndMonth: WebElement          = _
   @FindBy(how = How.ID, using = "accountingPeriodEndDate.year") var accountingEndYear: WebElement            = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-xl']") var irrelevantPageHeader: WebElement    = _
+  @FindBy(how = How.TAG_NAME, using = "h1") var irrelevantPageHeader: WebElement                             = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var irrelevantPageContent: WebElement      = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var restartButton: WebElement              = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var referenceLink: WebElement              = _

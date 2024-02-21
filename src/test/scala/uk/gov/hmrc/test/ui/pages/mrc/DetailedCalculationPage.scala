@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/dl/div[3]/dd") var yourDetailsDistributionAmt
     : WebElement                                                                                                      = _
   @FindBy(how = How.XPATH, using = "//div[1]/dd") var yourDetailsAccountingPeriod: WebElement                         = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/h2[2]") var howItsCalculatedSection: WebElement =
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/h2[1]") var howItsCalculatedSection: WebElement =
     _
   @FindBy(how = How.XPATH, using = "//table") var taxableProfitSection: WebElement                                    = _
 
@@ -43,7 +43,7 @@ object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//*[@id='tab_year2024']") var tabYear2024: WebElement                      = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-tabs__list-item']") var tabYear2025: WebElement          = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[2]/b") var lblDate: WebElement     = _
-  @FindBy(how = How.XPATH, using = "//h3[@class='govuk-heading-s'][2]") var headerSection: WebElement          = _
+  @FindBy(how = How.XPATH, using = "//h2[@class='govuk-heading-m'][4]") var headerSection: WebElement          = _
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[1]") var lblText: WebElement       = _
   @FindBy(how = How.XPATH, using = "//*[@href='/marginal-relief-calculator/pdf-meta-data']") var linkPrintandSave
     : WebElement                                                                                               = _
