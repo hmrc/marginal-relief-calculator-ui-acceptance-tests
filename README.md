@@ -10,8 +10,10 @@ UI test suite for the MRC using WebDriver and Cucumber.
 Prior to executing the tests ensure you have:
 
 - Docker - to run mongo and browser (Chrome or Firefox) inside a container
+- Selenium-grid - Either [docker-selenium-grid](https://github.com/hmrc/docker-selenium-grid) for containerised testing or [local-selenium-grid](https://github.com/hmrc/local-selenium-grid) for local testing  
 - Appropriate [drivers installed](#installing-local-driver-binaries) - to run tests against locally installed Browser
 - Installed/configured [service manager](https://github.com/hmrc/service-manager).
+- 
 
 Run the following command to start services locally:
 
@@ -21,80 +23,38 @@ Run the following command to start services locally:
 Using the `--wait 100` argument ensures a health check is run on all the services started as part of the profile. `100`
 refers to the given number of seconds to wait for services to pass health checks.
 
-Then execute the `run_marginal_relief_calculator_ui_tests.sh` script:
+Then start either docker-selenium-grid or local-selenium-grid and ensure the interface is accessing http://localhost:4444/ successfully.
 
-    ./run_marginal_relief_calculator_ui_tests.sh remote-chrome
+Then execute the `run-tests.sh` script:
 
-The `run_marginal_relief_calculator_ui_tests.sh` script defaults to using `chrome` in the `local` environment. For a
+    ./run-tests.sh chrome local
+
+The `./run-tests.sh` script defaults to using `chrome` in the `local` environment. For a
 complete list of supported param values, see:
 
 - `src/test/resources/application.conf` for **environment**
-- [webdriver-factory](https://github.com/hmrc/webdriver-factory#2-instantiating-a-browser-with-default-options) for **
-  browser-driver**
+- [ui-test-runner](https://github.com/hmrc/ui-test-runner?tab=readme-ov-file#configuration) for **browser**
 
 ## Running tests against a containerised browser - on a developer machine
 
-The script `./run_browser_with_docker.sh` can be used to start a Chrome or Firefox container on a developer machine.
-The script requires `remote-chrome` or `remote-firefox` as an argument.
+To run the tests in a containerised browser first start [docker-selenium-grid](https://github.com/hmrc/docker-selenium-grid)
 
-Read more about the script's functionality [here](run_browser_with_docker.sh).
-
-To run against a containerised Chrome browser:
-
-```bash
-./run_browser_with_docker.sh remote-chrome 
-./run_marginal_relief_calculator_ui_tests.sh remote-chrome local
-```
-
-`./run_browser_with_docker.sh` is **NOT** required when running in a CI environment.
-
-#### Running the tests against a test environment
-
-To run the tests against an environment set the corresponding `host` environment property as specified under
-`<env>.host.services` in the [application.conf](/src/test/resources/application.conf).
-
-For example, to execute the `run_marginal_relief_calculator_ui_tests.sh` script using Chrome remote-webdriver against QA
-environment
-
-    ./run_marginal_relief_calculator_ui_tests.sh remote-chrome qa
+Then run script `./run-tests.sh browser` where `browser` can be used to start a `chrome` or `firefox` container on a developer machine.
 
 ## Running ZAP tests
 
-ZAP tests can be automated using the HMRC Dynamic Application Security Testing approach. Running
+ZAP tests can be automated through the ui-test-runner and can be toggled to run during the test execution. Running
 automated ZAP tests should not be considered a substitute for manual exploratory testing using OWASP ZAP.
 
-#### Tagging tests for ZAP
+#### Pre-requisate for ZAP tests
 
-It is not required to proxy every journey test via ZAP. The intention of proxying a test through ZAP is to expose all
-the
-relevant pages of an application to ZAP. So tagging a subset of the journey tests or creating a
-single ZAP focused journey test is sufficient.
-
-#### Configuring the browser to proxy via ZAP
-
-Setting the system property `zap.proxy=true` configures the browser specified in `browser` property to proxy via ZAP.
-This is achieved using [webdriver-factory](https://github.com/hmrc/webdriver-factory#proxying-trafic-via-zap).
+In order to execute ZAP tests, it is required that the [dast-config-manager](https://github.com/hmrc/dast-config-manager) is cloned to your WORKSPACE folder. 
 
 #### Executing a ZAP test
 
-The shell script `run_marginal_relief_calculator_ui_zap_tests.sh` is available to execute ZAP tests. The script proxies
-a set of journey tests,
-tagged as `@zap`, via ZAP.
+ZAP test execution default is set to false
 
-For example, to execute ZAP tests locally using a Chrome browser
-
-```
-./run_marginal_relief_calculator_ui_zap_tests.sh chrome local
-```
-
-To execute ZAP tests locally using a remote-chrome browser
-
-```
-./run_browser_with_docker.sh remote-chrome 
-./run_marginal_relief_calculator_ui_zap_tests.sh remote-chrome local
-``` 
-
-`./run_browser_with_docker.sh` is **NOT** required when running in a CI environment.
+To execute the ZAP tests, run the script `./run-tests.sh browser environemnt DAST` with `chrome`, `local`, `true`
 
 ## Installing local driver binaries
 
