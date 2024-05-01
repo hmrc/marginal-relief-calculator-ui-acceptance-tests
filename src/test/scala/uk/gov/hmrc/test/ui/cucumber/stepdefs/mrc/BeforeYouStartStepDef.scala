@@ -27,25 +27,24 @@ class BeforeYouStartStepDef extends BaseStepDef {
     BeforeYouStartPage.loadPage()
   }
 
-  Then("I am landed on before you start page") { () =>
+  Then("the user lands on the before you start page") { () =>
     BeforeYouStartPage.verifyTitle()
-  //Thread.sleep(10000)
   }
 
-  And("I can see the breadcrumbs on the page") { () =>
+  And("the user can see the breadcrumbs on the page") { () =>
     BeforeYouStartPage.verifyBreadcrumbs()
   }
 
-  And("I can verify that Welsh language is not displayed") { () =>
+  And("the user can verify that Welsh language is not displayed") { () =>
     BeforeYouStartPage.verifyWelshLanguageLink()
   }
 
-  And("""I can verify the link present on screen""") { (linkText: DataTable) =>
+  And("""the user can verify the link present on screen""") { (linkText: DataTable) =>
     for (i <- 0 until linkText.asList().size())
       verifyLinkText(linkText.asList().get(i))
   }
 
-  And("the user clicks on start now button") { () =>
+  And("the user clicks the start now button") { () =>
     BeforeYouStartPage.clickOnStartNowButton()
   }
 }

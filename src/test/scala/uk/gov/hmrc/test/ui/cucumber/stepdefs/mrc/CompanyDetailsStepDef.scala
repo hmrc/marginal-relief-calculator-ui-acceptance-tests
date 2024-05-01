@@ -27,7 +27,7 @@ class CompanyDetailsStepDef extends BaseStepDef {
     CompanyDetailsPage.provideUTRnumber(longUTRNumber)
   }
 
-  Then("""the user clicks continue button on company details page""") { () =>
+  Then("""the user clicks the continue button on the company details page""") { () =>
     CompanyDetailsPage.clickOnContinue()
   }
 

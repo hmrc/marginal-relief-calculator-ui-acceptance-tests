@@ -2,57 +2,57 @@ Feature: Run another calculation - Validations
 
   Background:
     Given Marginal Relief Calculator is launched
-    When the user clicks on start now button
-    Then the user lands on accounting period page
+    When the user clicks the start now button
+    Then the user lands on the accounting period page
     When the accounting period start date is provided as "31/03/2023"
     And the accounting period end date is provided as "30/03/2024"
-    Then the user clicks continue button on accounting period page
+    Then the user clicks the continue button on the accounting period page
     And the profit is "50000"
     Then the user clicks continue button on taxable profit page
     And the user selects option "Yes" for the question Did your company receive any distributions?
-    And the user clicks continue button on distributions page
+    And the user clicks the continue button on the distributions page
     And the user selects option "Yes" for the question Do any distributions need to be included with your profits?
-    Then the user is provided with input field to provide distributions
+    Then the user is provided with an input field to provide distributions
     And the user provides "£50,000" as distributions
-    And the user clicks continue button on distributions page
-    Then user is landed on associated companies page
+    And the user clicks the continue button on the distributions page
+    Then the user lands on the associated companies page
     When the user selects option "yes" for the question Did your company have any active associated companies?
-    Then user is presented with input field for associated companies
-    And user inputs a valid number as "10" associated companies
-    Then the user clicks continue button on associated companies page
-    Then user is presented with Check Your Answers page
-    And I can see calculate margin relief button enabled
-    When I can click on calculate margin relief button
-    And I can see run another calculation button enabled
+    Then the user is presented with an input field for associated companies
+    And the user inputs a valid number as "10" associated companies
+    Then the user clicks the continue button on the associated companies page
+    Then the user is presented with the Check Your Answers page
+    And the user can see the calculate margin relief button enabled
+    When the user can click on the calculate margin relief button
+    And the user can see the run another calculation button enabled
 
   @mrc-44 @zap @a11y
   Scenario: Click on Run Another Calculation and verify fields as NULL
-    When I click on run another calculation button
-    Then I am landed on before you start page
-    When the user clicks on start now button
-    Then I can see accounting period start and end dates as null
+    When the user clicks the run another calculation button
+    Then the user lands on the before you start page
+    When the user clicks the start now button
+    Then the user can see the accounting period start and end dates as null
     When the accounting period start date is provided as "31/03/2023"
-    When the user clicks continue button on accounting period page
+    When the user clicks the continue button on the accounting period page
     Then I can see companies taxable profit as null
     And the profit is "50000"
     When the user clicks continue button on taxable profit page
-    Then I am navigated to exempt distributions page
-    And I can see options yes, no are not selected
+    Then the user is navigated to the exempt distributions page
+    And the user can see the options yes, no are not selected
     And the user selects option "Yes" for the question Did your company receive any distributions?
-    And the user clicks continue button on distributions page
-    And I can see options yes,no are not selected on Second exempt distributions page
+    And the user clicks the continue button on the distributions page
+    And the user can see the options yes,no are not selected on the Second exempt distributions page
     And the user selects option "Yes" for the question Do any distributions need to be included with your profits?
-    Then the user is provided with input field to provide distributions
+    Then the user is provided with an input field to provide distributions
     And the user provides "£50,000" as distributions
-    And the user clicks continue button on distributions page
-    Then user is landed on associated companies page
-    And user can see the options yes and No as not selected
+    And the user clicks the continue button on the distributions page
+    Then the user lands on the associated companies page
+    And the user can see the options yes and No as not selected
     When the user selects option "yes" for the question Did your company have any active associated companies?
-    Then user is presented with input field for associated companies
-    And user is presented with input field for associated companies with value as null
-    And user inputs a valid number as "2" associated companies
-    Then the user clicks continue button on associated companies page
-    Then user is presented with Check Your Answers page
-    And I can see calculate margin relief button enabled
-    When I can click on calculate margin relief button
-    And I can see run another calculation button enabled
+    Then the user is presented with an input field for associated companies
+    And the user is presented with an input field for associated companies with the value as null
+    And the user inputs a valid number as "2" associated companies
+    Then the user clicks the continue button on the associated companies page
+    Then the user is presented with the Check Your Answers page
+    And the user can see the calculate margin relief button enabled
+    When the user can click on the calculate margin relief button
+    And the user can see the run another calculation button enabled

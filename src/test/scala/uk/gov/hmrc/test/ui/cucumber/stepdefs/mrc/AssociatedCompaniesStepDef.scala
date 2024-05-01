@@ -24,14 +24,14 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
   Then("""display the {string} on associated company""") { (message: String) =>
     titleMessage should be(message)
   }
-  Then("user is landed on associated companies page") { () =>
+  Then("the user lands on the associated companies page") { () =>
     AssociatedCompaniesPage.verifyPageTitle()
   }
 
-  Then("""I validate associated companies is pre-populated as {string}""") { (associatedCo: String) =>
+  Then("""the user validates associated companies are pre-populated as {string}""") { (associatedCo: String) =>
     AssociatedCompaniesPage.verifyAssociatedCompanies(associatedCo)
   }
-  And("user can see the options yes and No as not selected") { () =>
+  And("the user can see the options yes and No as not selected") { () =>
     AssociatedCompaniesPage.verifyYesAndNoOptionsPresent()
     AssociatedCompaniesPage.verifyYesAndNoOptionsNotSelected()
   }
@@ -45,34 +45,34 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
       }
   }
 
-  And("user is presented with input field for associated companies") { () =>
+  And("the user is presented with an input field for associated companies") { () =>
     AssociatedCompaniesPage.isAssociatedCompaniesCountInputDisplayed
   }
 
-  And("""user inputs a valid number as {string} associated companies""") { (associatedCo: String) =>
+  And("""the user inputs a valid number as {string} associated companies""") { (associatedCo: String) =>
     AssociatedCompaniesPage.inputAssociatedCompanies(associatedCo)
   }
 
-  Then("the user clicks continue button on associated companies page") { () =>
+  Then("the user clicks the continue button on the associated companies page") { () =>
     AssociatedCompaniesPage.clickOnContinue()
   }
 
-  Then("user is presented with Check Your Answers page") { () =>
+  Then("the user is presented with the Check Your Answers page") { () =>
     CheckYourAnswersPage.verifyPageTitle()
   }
 
-  And("user is presented with input field for associated companies with value as null") { () =>
+  And("the user is presented with an input field for associated companies with the value as null") { () =>
     AssociatedCompaniesPage.associatedCompaniesCountAsNull()
   }
-  And("the user click on What are associated companies?") { () =>
+  And("the user clicks on What are associated companies?") { () =>
     AssociatedCompaniesPage.clickOnQuestion()
   }
 
-  And("""the user inputs {string} as associated companies for first part of accounting period""") { (noOfAc: String) =>
+  And("""the user inputs {string} associated companies for the first part of accounting period""") { (noOfAc: String) =>
     AssociatedCompaniesPage.inputAcForFirstPartOfFinancialYear(noOfAc)
   }
 
-  And("""the user inputs {string} as associated companies for second part of accounting period""") { (noOfAc: String) =>
+  And("""the user inputs {string} associated companies for the second part of accounting period""") { (noOfAc: String) =>
     AssociatedCompaniesPage.inputAcForSecondPartOfFinancialYear(noOfAc)
   }
 }

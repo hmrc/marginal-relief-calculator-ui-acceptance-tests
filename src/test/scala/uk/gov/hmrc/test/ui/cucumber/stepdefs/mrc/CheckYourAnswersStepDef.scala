@@ -20,63 +20,63 @@ import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 import uk.gov.hmrc.test.ui.pages.mrc.{CheckYourAnswersPage, ResultPage}
 
 class CheckYourAnswersStepDef extends BaseStepDef {
-  Then("I am presented with change link next to the distribution amount") { () =>
+  Then("the user is presented with change link next to the distribution amount") { () =>
     CheckYourAnswersPage.changeLinkForDistributions()
   }
 
-  Then("""I can validate my distribution amount as {string}""") { (distributionsAmount: String) =>
+  Then("""the user can validate their distribution amount as {string}""") { (distributionsAmount: String) =>
     CheckYourAnswersPage.verifyDistributionsValue(distributionsAmount)
   }
-  Then("I am presented with change link next to the accounting period dates") { () =>
+  Then("the user is presented with a change link next to the accounting period dates") { () =>
     CheckYourAnswersPage.changeLinkForAccountingPeriod()
   }
-  Then("I am presented with change link next to the company's profit") { () =>
+  Then("the user is presented with a change link next to the company's profit") { () =>
     CheckYourAnswersPage.verifyChangeLinkForProfit()
   }
-  Then("I am presented with change link next to the associated companies") { () =>
+  Then("the user is presented with a change link next to the associated companies") { () =>
     CheckYourAnswersPage.verifyChangeLinkForAC()
   }
-  Then("""I can validate my accounting period dates as {string}""") { (AccountingPeriod: String) =>
+  Then("""the user can validate their accounting period dates as {string}""") { (AccountingPeriod: String) =>
     CheckYourAnswersPage.verifyAccountingPeriodValue(AccountingPeriod)
   }
-  Then("""I can validate my company profit as {string}""") { (profit: String) =>
+  Then("""the user can validate their company profit as {string}""") { (profit: String) =>
     CheckYourAnswersPage.verifyProfitValue(profit)
   }
-  Then("""I can validate the associated companies as {string}""") { (associatedCompanies: String) =>
+  Then("""the user can validate the associated companies as {string}""") { (associatedCompanies: String) =>
     CheckYourAnswersPage.verifyNoOfAssociatedCompanies(associatedCompanies)
   }
-  Then("I click on change link next to the distribution amount") { () =>
+  Then("the user clicks the change link next to the distribution amount") { () =>
     CheckYourAnswersPage.clickOnChangeLinkForDistributions()
   }
-  Then("I click on change link next to the company's profit") { () =>
+  Then("the user clicks the change link next to the company's profit") { () =>
     CheckYourAnswersPage.clickOnChangeLinkForProfit()
   }
-  Then("I click on change link next to the accounting period dates") { () =>
+  Then("the user clicks the change link next to the accounting period dates") { () =>
     CheckYourAnswersPage.clickOnChangeLinkForAccPeriod()
   }
-  Then("I click on change link next to the associated companies") { () =>
+  Then("the user clicks the change link next to the associated companies") { () =>
     CheckYourAnswersPage.clickOnChangeLinkForAssociatedCompanies()
   }
-  When("the user clicks on back button") { () =>
+  When("the user clicks the back button") { () =>
     eventually {
       CheckYourAnswersPage.clickBackLink()
     }
   }
-  When("the user clicks on calculate marginal relief button on check you answers page") { () =>
+  When("the user clicks the calculate marginal relief button on the check your answers page") { () =>
     eventually {
       CheckYourAnswersPage.clickMRCButton()
     }
   }
 
-  And("I can see calculate margin relief button enabled") { () =>
+  And("the user can see the calculate margin relief button enabled") { () =>
     CheckYourAnswersPage.verifyMRCButtonEnabled()
   }
 
-  When("I can click on calculate margin relief button") { () =>
+  When("the user can click on the calculate margin relief button") { () =>
     CheckYourAnswersPage.clickMRCButton()
   }
 
-  Then("""I can validate accounting period as {string}""") { (accountingPeriod: String) =>
+  Then("""the user can validate the accounting period as {string}""") { (accountingPeriod: String) =>
     if (accountingPeriod.contains("\\n")) {
       val expectedText = accountingPeriod.split("\\\\n")
       for (h <- expectedText)
@@ -86,31 +86,31 @@ class CheckYourAnswersStepDef extends BaseStepDef {
     }
   }
 
-  Then("""I can validate profit as {string}""") { (profit: String) =>
+  Then("""the user can validate profit as {string}""") { (profit: String) =>
     CheckYourAnswersPage.verifyProfitValue(profit)
   }
 
-  Then("I can see run another calculation button enabled") { () =>
+  Then("the user can see the run another calculation button enabled") { () =>
     ResultPage.runAnotherCalculationIsEnabled()
   }
 
-  Then("I click on run another calculation button") { () =>
+  Then("the user clicks the run another calculation button") { () =>
     ResultPage.clickRunAnotherCalculation()
   }
 
-  Then("""I can validate distributions included as {string}""") { (distributions: String) =>
+  Then("""the user can validate distributions included as {string}""") { (distributions: String) =>
     CheckYourAnswersPage.verifyDistributionsValue(distributions)
   }
 
-  Then("""I can validate associated companies as {string}""") { (associatedCompanies: String) =>
+  Then("""the user can validate associated companies as {string}""") { (associatedCompanies: String) =>
     CheckYourAnswersPage.verifyNoOfAssociatedCompanies(associatedCompanies)
   }
 
-  Then("""I can validate associated companies for first part of financial year as {string}""") { (ac: String) =>
+  Then("""the user validates associated companies for the first part of financial year as {string}""") { (ac: String) =>
     CheckYourAnswersPage.verifyAcForFirstPartofFinancialYear(ac)
   }
 
-  Then("""I can validate associated companies for second part of financial year as {string}""") { (ac: String) =>
+  Then("""the user validates associated companies for the second part of financial year as {string}""") { (ac: String) =>
     CheckYourAnswersPage.verifyAcForSecondPartofFinancialYear(ac)
   }
 }
