@@ -30,11 +30,11 @@ class PreviewSummaryStepDef extends BaseStepDef {
   And("marginal results are shown") { () =>
     PreviewSummaryPage.verifyTables()
   }
-  And("I verify same name is displayed on Preview summary page") { () =>
+  And("the user verifies the same name is displayed on the Preview summary page") { () =>
     PreviewSummaryPage.verifyCompanydetails()
   }
 
-  Then("""I can validate the associated companies on PDF page as {string}""") { (associateCompanies: String) =>
+  Then("""the user validates the associated companies on the PDF page as {string}""") { (associateCompanies: String) =>
     PreviewSummaryPage.verifyAssociatedCompanies(associateCompanies)
   }
 

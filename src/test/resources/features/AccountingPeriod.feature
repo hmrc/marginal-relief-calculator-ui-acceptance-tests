@@ -2,14 +2,14 @@ Feature: Accounting Period - Validations
 
   Background:
     Given Marginal Relief Calculator is launched
-    When the user clicks on start now button
-    Then the user lands on accounting period page
+    When the user clicks the start now button
+    Then the user lands on the accounting period page
 
   @mrc-93
   Scenario Outline: Auto generated accounting end date when accounting end date is not provided
     When the accounting period start date is provided as "<accountingStartDate>"
-    And the user clicks continue button on accounting period page
-    And the user click on back button
+    And the user clicks the continue button on the accounting period page
+    And the user clicks the back button
     Then the user can see the accounting end period as "<ExpectedAccountingEndDate>"
 
     Examples:
@@ -22,8 +22,8 @@ Feature: Accounting Period - Validations
   Scenario Outline:Marginal Relief not relevant for accounting period
     When the accounting period start date is provided as "<accountingStartDate>"
     And the accounting period end date is provided as "<accountingEndDate>"
-    And the user clicks continue button on accounting period page
-    Then the user should given with an irrelevant accounting period page
+    And the user clicks the continue button on the accounting period page
+    Then the user should given an irrelevant accounting period page
 
     Examples:
       | accountingStartDate | accountingEndDate |
@@ -33,8 +33,8 @@ Feature: Accounting Period - Validations
   @mrc-90
   Scenario Outline:Marginal Relief not relevant for accounting period
     When the accounting period start date is provided as "<accountingStartDate>"
-    And the user clicks continue button on accounting period page
-    Then the user should given with an irrelevant accounting period page
+    And the user clicks the continue button on the accounting period page
+    Then the user should given an irrelevant accounting period page
 
     Examples:
       | accountingStartDate |

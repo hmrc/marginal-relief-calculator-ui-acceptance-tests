@@ -21,10 +21,10 @@ import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage
 import uk.gov.hmrc.test.ui.pages.mrc.AccountingPeriodPage.{accountEndDateMessage, accountingPeriodMessage}
 
 class AccountingPeriodStepDef extends BaseStepDef {
-  Then("the user lands on accounting period page") { () =>
+  Then("the user lands on the accounting period page") { () =>
     AccountingPeriodPage.verifyTitle()
   }
-  Then("I am navigated to accounting period page") { () =>
+  Then("the user is navigated to the accounting period page") { () =>
     AccountingPeriodPage.verifyTitle()
   }
 
@@ -37,16 +37,16 @@ class AccountingPeriodStepDef extends BaseStepDef {
   Then("""the user can see the accounting end period as {string}""") { (accountingEndDate: String) =>
     AccountingPeriodPage.verifyAccountingEndDate(accountingEndDate)
   }
-  And("the user clicks continue button on accounting period page") { () =>
+  And("the user clicks the continue button on the accounting period page") { () =>
     AccountingPeriodPage.submitPage()
   }
-  Then("the user should given with an irrelevant accounting period page") { () =>
+  Then("the user should given an irrelevant accounting period page") { () =>
     AccountingPeriodPage.validatePageTitle()
     AccountingPeriodPage.validatePageContent()
     AccountingPeriodPage.verifyRestartButton()
     AccountingPeriodPage.verifyReferenceLink()
   }
-  Then("I can see accounting period start and end dates as null") { () =>
+  Then("the user can see the accounting period start and end dates as null") { () =>
     AccountingPeriodPage.VerifyAccountingPeriodsDatesAsNUll()
   }
   Then("""the user reads content on accounting period as {string}""") { (accountingPeriodContent: String) =>

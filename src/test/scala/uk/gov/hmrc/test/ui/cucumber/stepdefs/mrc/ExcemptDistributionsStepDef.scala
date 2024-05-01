@@ -37,7 +37,7 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
       ExcemptDistrubutionsPage.noToIncludeInProfits()
     }
   }
-  Then("the user is provided with input field to provide distributions") { () =>
+  Then("the user is provided with an input field to provide distributions") { () =>
     ExcemptDistrubutionsPage.inputExcemptDistribution.isDisplayed
   }
 
@@ -45,27 +45,27 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
     ExcemptDistrubutionsPage.provideDistributions(distributions)
   }
 
-  And("the user clicks continue button on distributions page") { () =>
+  And("the user clicks the continue button on the distributions page") { () =>
     ExcemptDistrubutionsPage.submitPage()
   }
 
-  Then("I am navigated to exempt distributions page") { () =>
+  Then("the user is navigated to the exempt distributions page") { () =>
     ExcemptDistrubutionsPage.verifyTitle()
   }
 
-  Then("I am navigated to Second exempt distributions page") { () =>
+  Then("the user is navigated to the Second exempt distributions page") { () =>
     ExcemptDistrubutionsPage.verifySecondPageTitle()
   }
 
-  Then("""I change the distributions value to {string}""") { (distributions: String) =>
+  Then("""the user changes the distributions value to {string}""") { (distributions: String) =>
     ExcemptDistrubutionsPage.provideDistributions(distributions)
   }
 
-  Then("I can see options yes, no are not selected") { () =>
+  Then("the user can see the options yes, no are not selected") { () =>
     ExcemptDistrubutionsPage.verifyYesNoNotSelected()
   }
 
-  Then("I can see options yes,no are not selected on Second exempt distributions page") { () =>
+  Then("the user can see the options yes,no are not selected on the Second exempt distributions page") { () =>
     ExcemptDistrubutionsPage.verifyYesNoNotSelectedForIncludeInProfits()
   }
 }

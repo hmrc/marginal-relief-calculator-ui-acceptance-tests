@@ -82,12 +82,12 @@ class ResultsStepDef extends BaseStepDef {
     ResultPage.verifyETBodyCountForNOMRC()
     verifyETContent should be(smallProfit)
   }
-  Then("""the user navigated to back to result page and display the green box of type {string}""") {
+  Then("""the user navigates back to the result page and displays the green box of type {string}""") {
     (panelBody: String) =>
       greenBoxMessage should be(panelBody)
   }
 
-  Then("""I can validate the associated companies on results page as {string}""") { (associateCompanies: String) =>
+  Then("""the user validates the associated companies on the results page as {string}""") { (associateCompanies: String) =>
     ResultPage.verifyTwoAssociatedCompanies(associateCompanies)
   }
 }

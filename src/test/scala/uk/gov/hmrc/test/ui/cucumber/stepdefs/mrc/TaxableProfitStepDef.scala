@@ -24,12 +24,6 @@ class TaxableProfitStepDef extends BaseStepDef {
     TaxableProfitPage.provideProfit(profitValue)
   }
 
-  And("the user click on back button") { () =>
-    eventually {
-      TaxableProfitPage.clickBackLink()
-    }
-  }
-
   And("the user clicks continue button on taxable profit page") { () =>
     TaxableProfitPage.submitPage()
   }

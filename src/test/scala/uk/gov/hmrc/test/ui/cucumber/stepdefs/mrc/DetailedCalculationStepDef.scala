@@ -24,7 +24,7 @@ class DetailedCalculationStepDef extends BaseStepDef {
   And("the Check Marginal Relief calculation in detail link is displayed") { () =>
     DetailedCalculationPage.verifyDetailLink()
   }
-  And("the user click on Check Marginal Relief calculation in detail link") { () =>
+  And("the user clicks the Check Marginal Relief calculation in detail link") { () =>
     DetailedCalculationPage.clickDetailLink()
   }
   Then("""header displays as {string}""") { (headerTitle: String) =>
@@ -57,10 +57,10 @@ class DetailedCalculationStepDef extends BaseStepDef {
   Then("the tabs are displayed") { () =>
     DetailedCalculationPage.validateTabs()
   }
-  Then("I click on 2025 tab and verify the tab") { () =>
+  Then("the user clicks 2025 tab and verifies the tab") { () =>
     DetailedCalculationPage.clickOn2025tab()
   }
-  Then("the user clicks on Get A Copy Of Results your calculation link") { () =>
+  Then("the user clicks the Get A Copy Of Results link") { () =>
     DetailedCalculationPage.clickOnGetACopyOfResults()
   }
   Then("""{string} section is displayed and it contains {string}""") { (sectionHeader: String, sectionText: String) =>
@@ -84,7 +84,7 @@ class DetailedCalculationStepDef extends BaseStepDef {
     AddCompanyDetailsToResultsPage.clickOnContinueButton()
   }
 
-  Then("""I can validate the associated companies on detailed calculation page as {string}""") {
+  Then("""the user validates the associated companies on the detailed calculation page as {string}""") {
     (associateCompanies: String) =>
       DetailedCalculationPage.verifyAssociatedCompanies(associateCompanies)
   }
