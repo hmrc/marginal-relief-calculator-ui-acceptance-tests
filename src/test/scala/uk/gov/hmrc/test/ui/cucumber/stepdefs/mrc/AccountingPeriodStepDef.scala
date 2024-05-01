@@ -40,7 +40,7 @@ class AccountingPeriodStepDef extends BaseStepDef {
   And("the user clicks the continue button on the accounting period page") { () =>
     AccountingPeriodPage.submitPage()
   }
-  Then("the user should given an irrelevant accounting period page") { () =>
+  Then("the user is shown the ineligible accounting period page") { () =>
     AccountingPeriodPage.validatePageTitle()
     AccountingPeriodPage.validatePageContent()
     AccountingPeriodPage.verifyRestartButton()

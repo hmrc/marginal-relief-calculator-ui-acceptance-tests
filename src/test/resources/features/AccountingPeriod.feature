@@ -23,7 +23,7 @@ Feature: Accounting Period - Validations
     When the accounting period start date is provided as "<accountingStartDate>"
     And the accounting period end date is provided as "<accountingEndDate>"
     And the user clicks the continue button on the accounting period page
-    Then the user should given an irrelevant accounting period page
+    Then the user is shown the ineligible accounting period page
 
     Examples:
       | accountingStartDate | accountingEndDate |
@@ -34,7 +34,7 @@ Feature: Accounting Period - Validations
   Scenario Outline:Marginal Relief not relevant for accounting period
     When the accounting period start date is provided as "<accountingStartDate>"
     And the user clicks the continue button on the accounting period page
-    Then the user should given an irrelevant accounting period page
+    Then the user is shown the ineligible accounting period page
 
     Examples:
       | accountingStartDate |
