@@ -1,6 +1,3 @@
-**This is a template README.md. Be sure to update this with project specific content that describes your ui test
-project.**
-
 # marginal-relief-calculator-ui-acceptance-tests
 
 UI test suite for the MRC using WebDriver and Cucumber.
@@ -9,7 +6,7 @@ UI test suite for the MRC using WebDriver and Cucumber.
 
 Prior to executing the tests ensure you have:
 
-- Docker - to run mongo and browser (Chrome or Firefox) inside a container
+- Docker - to run mongo and browser (Chrome or Firefox) inside a container (Note - there are other ways to run Docker on the command line so this command may be different)
 - Selenium-grid - Either [docker-selenium-grid](https://github.com/hmrc/docker-selenium-grid) for containerised testing or [local-selenium-grid](https://github.com/hmrc/local-selenium-grid) for local testing  
 - Appropriate [drivers installed](#installing-local-driver-binaries) - to run tests against locally installed Browser
 - Installed/configured [service manager](https://github.com/hmrc/service-manager).
@@ -18,7 +15,7 @@ Prior to executing the tests ensure you have:
 Run the following command to start services locally:
 
     docker run --rm -d --name mongo -d -p 27017:27017 mongo:4.0
-    sm --start MARGINAL_RELIEF_CALCULATOR_ALL -r --wait 100
+    sm2 --start MARGINAL_RELIEF_CALCULATOR_ALL -r --wait 100
 
 Using the `--wait 100` argument ensures a health check is run on all the services started as part of the profile. `100`
 refers to the given number of seconds to wait for services to pass health checks.
@@ -46,7 +43,7 @@ Then run script `./run-tests.sh browser` where `browser` can be used to start a 
 ZAP tests can be automated through the ui-test-runner and can be toggled to run during the test execution. Running
 automated ZAP tests should not be considered a substitute for manual exploratory testing using OWASP ZAP.
 
-#### Pre-requisate for ZAP tests
+#### Pre-requisite for ZAP tests
 
 In order to execute ZAP tests, it is required that the [dast-config-manager](https://github.com/hmrc/dast-config-manager) is cloned to your WORKSPACE folder. 
 
