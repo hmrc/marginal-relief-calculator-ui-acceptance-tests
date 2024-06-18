@@ -28,13 +28,13 @@ class DetailedCalculationStepDef extends BaseStepDef {
     DetailedCalculationPage.clickDetailLink()
   }
   Then("""header displays as {string}""") { (headerTitle: String) =>
-    detailedPageTitle should be(headerTitle)
+    detailedPageTitle() should be(headerTitle)
   }
   Then("""the Your details page contains {string}""") { (detailedContent: String) =>
-    yourDetailsAccountingPeriodText contains detailedContent
+    yourDetailsAccountingPeriodText() contains detailedContent
   }
   Then("""the distribution amount has £ prefix and displayed as {string}""") { (distributionamt: String) =>
-    yourDetailsDistributionAmtText should be(distributionamt)
+    yourDetailsDistributionAmtText() should be(distributionamt)
   }
   Then("""the How its calculated section is displayed""") { () =>
     DetailedCalculationPage.isHowItsCalculatedSectionDisplayed
@@ -52,7 +52,7 @@ class DetailedCalculationStepDef extends BaseStepDef {
     DetailedCalculationPage.verifyMRFractionLinkPresentOnPage()
   }
   Then("""the total Marginal relief is {string}""") { (totalMR: String) =>
-    validateTotalMR should be(totalMR)
+    validateTotalMR() should be(totalMR)
   }
   Then("the tabs are displayed") { () =>
     DetailedCalculationPage.validateTabs()
@@ -64,11 +64,11 @@ class DetailedCalculationStepDef extends BaseStepDef {
     DetailedCalculationPage.clickOnGetACopyOfResults()
   }
   Then("""{string} section is displayed and it contains {string}""") { (sectionHeader: String, sectionText: String) =>
-    verifySectionHeader should be(sectionHeader)
-    verifysectionlable  should be(sectionText)
+    verifySectionHeader() should be(sectionHeader)
+    verifysectionlable()  should be(sectionText)
   }
   Then("""What to do next session contains date 9months after POA end date which is {string}""") { (date: String) =>
-    DateInWhatToDoNextSection should be(date)
+    DateInWhatToDoNextSection() should be(date)
   }
   Then("the user is presented with add company details to your result page") { () =>
     AddCompanyDetailsToResultsPage.verifyPageTitle(

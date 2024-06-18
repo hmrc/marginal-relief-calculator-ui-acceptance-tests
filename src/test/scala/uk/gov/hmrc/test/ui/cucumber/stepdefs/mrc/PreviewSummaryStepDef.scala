@@ -22,10 +22,10 @@ import uk.gov.hmrc.test.ui.pages.mrc.PreviewSummaryPage.{verifyHeader, verifyLin
 
 class PreviewSummaryStepDef extends BaseStepDef {
   And("""{string} should be displayed""") { (header: String) =>
-    verifyHeader should be(header)
+    verifyHeader() should be(header)
   }
   And("""{string} link is available""") { (link: String) =>
-    verifyLinkPrint should be(link)
+    verifyLinkPrint() should be(link)
   }
   And("marginal results are shown") { () =>
     PreviewSummaryPage.verifyTables()
