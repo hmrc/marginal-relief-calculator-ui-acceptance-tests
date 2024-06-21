@@ -20,7 +20,7 @@ import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
+import scala.jdk.CollectionConverters.ListHasAsScala
 
 object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//a[@href='/marginal-relief-calculator/full-results-page']") var detailLinK
@@ -74,7 +74,7 @@ object DetailedCalculationPage extends BasePage {
   def validateMrCalculationSteps(calSteps: String): Unit = {
     val steps                             = calSteps.toInt
     val webElementsList: List[WebElement] =
-      driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/table/tbody/tr")).toList
+      driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/table/tbody/tr")).asScala.toList
     webElementsList.length shouldBe steps
   }
 

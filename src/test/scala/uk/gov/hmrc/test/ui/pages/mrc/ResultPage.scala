@@ -22,8 +22,7 @@ import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object ResultPage extends BasePage {
-//  val resultsPage =
-  "Marginal Relief Results - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+//  val resultsPage = "Marginal Relief Results - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement   = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-s']") var HMRCFinancialYearsHeader: WebElement    = _

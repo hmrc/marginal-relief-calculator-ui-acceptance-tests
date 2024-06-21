@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, CheckYourAnswersP
 
 class AssociatedCompaniesStepDef extends BaseStepDef {
   Then("""display the {string} on associated company""") { (message: String) =>
-    titleMessage should be(message)
+    titleMessage() should be(message)
   }
   Then("the user lands on the associated companies page") { () =>
     AssociatedCompaniesPage.verifyPageTitle()

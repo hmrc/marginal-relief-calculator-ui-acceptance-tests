@@ -22,16 +22,16 @@ import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{HMRCFinancialYearsHeaderText, H
 
 class ResultsStepDef extends BaseStepDef {
   Then("""display the green box of type {string}""") { (panelBody: String) =>
-    greenBoxMessage should be(panelBody)
+    greenBoxMessage() should be(panelBody)
   }
   Then("""the corporation tax liability heading is displayed as {string}""") { (ctAmount: String) =>
-    corporationTaxLiabilityHeader should be(ctAmount)
+    corporationTaxLiabilityHeader() should be(ctAmount)
   }
   Then("""the corporation tax liability body is displayed as {string} for dual year""") { (ctAmountReduced: String) =>
-    dualYearCTLiability should be(ctAmountReduced)
+    dualYearCTLiability() should be(ctAmountReduced)
   }
   Then("""the corporation tax liability body is displayed as {string} for single year""") { (ctAmountReduced: String) =>
-    singleYearCTLiability should be(ctAmountReduced)
+    singleYearCTLiability() should be(ctAmountReduced)
   }
   Then("the dual year corporation tax liability table is displayed") { () =>
     ResultPage.verifyCTHeaderCountForDualYear()
@@ -50,19 +50,19 @@ class ResultsStepDef extends BaseStepDef {
     ResultPage.verifyCTBodyCountForNoMrc()
   }
   Then("the accounting period covering 2 years section is displayed") { () =>
-    HMRCFinancialYearsHeaderText     should be("Your accounting period covers 2 HMRC financial years")
-    HMRCFinancialYearsSectionYearOne should be("2022 to 2023: 1 January 2023 to 31 March 2023")
-    HMRCFinancialYearsSectionYearTwo should be("2023 to 2024: 1 April 2023 to 31 December 2023")
+    HMRCFinancialYearsHeaderText()     should be("Your accounting period covers 2 HMRC financial years")
+    HMRCFinancialYearsSectionYearOne() should be("2022 to 2023: 1 January 2023 to 31 March 2023")
+    HMRCFinancialYearsSectionYearTwo() should be("2023 to 2024: 1 April 2023 to 31 December 2023")
 
   }
   Then("""the effective tax rate heading is displayed as {string}""") { (effectiveTax: String) =>
-    effectiveTaxHeader should be(effectiveTax)
+    effectiveTaxHeader() should be(effectiveTax)
   }
   Then("""the effective tax body is displayed as {string} for dual year""") { (effectiveTaxMsg: String) =>
-    effectiveTaxBodyDual should be(effectiveTaxMsg)
+    effectiveTaxBodyDual() should be(effectiveTaxMsg)
   }
   Then("""the effective tax body is displayed as {string} for single year""") { (effectiveTaxMsg: String) =>
-    effectiveTaxBodySingle should be(effectiveTaxMsg)
+    effectiveTaxBodySingle() should be(effectiveTaxMsg)
   }
   Then("the dual year effective tax table is displayed") { () =>
     ResultPage.verifyETHeaderCountForDualYear()
@@ -80,11 +80,11 @@ class ResultsStepDef extends BaseStepDef {
   Then("""the {string} effective tax table is displayed""") { (smallProfit: String) =>
     ResultPage.verifyETHeaderCountForNOMRC()
     ResultPage.verifyETBodyCountForNOMRC()
-    verifyETContent should be(smallProfit)
+    verifyETContent() should be(smallProfit)
   }
   Then("""the user navigates back to the result page and displays the green box of type {string}""") {
     (panelBody: String) =>
-      greenBoxMessage should be(panelBody)
+      greenBoxMessage() should be(panelBody)
   }
 
   Then("""the user validates the associated companies on the results page as {string}""") { (associateCompanies: String) =>
