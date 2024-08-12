@@ -9,7 +9,6 @@ Prior to executing the tests ensure you have:
 - Docker - to run mongo and browser (Chrome or Firefox) inside a container (Note - there are other ways to run Docker on the command line so this command may be different)
 - Appropriate [drivers installed](#installing-local-driver-binaries) - to run tests against locally installed Browser
 - Installed/configured [service manager](https://github.com/hmrc/service-manager).
-- Selenium-grid (Only required if running tests in a containerised browser) - [docker-selenium-grid](https://github.com/hmrc/docker-selenium-grid) for containerised testing
 
 
 Run the following command to start services locally:
@@ -29,12 +28,6 @@ complete list of supported param values, see:
 
 - `src/test/resources/application.conf` for **environment**
 - [ui-test-runner](https://github.com/hmrc/ui-test-runner?tab=readme-ov-file#configuration) for **browser**
-
-## Running tests against a containerised browser - on a developer machine
-
-To run the tests in a containerised browser first start [docker-selenium-grid](https://github.com/hmrc/docker-selenium-grid)
-
-Then run script `./run-tests.sh browser` where `browser` can be used to start a `chrome` or `firefox` container on a developer machine.
 
 ## Running ZAP tests
 
