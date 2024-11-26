@@ -72,7 +72,8 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
     AssociatedCompaniesPage.inputAcForFirstPartOfFinancialYear(noOfAc)
   }
 
-  And("""the user inputs {string} associated companies for the second part of accounting period""") { (noOfAc: String) =>
-    AssociatedCompaniesPage.inputAcForSecondPartOfFinancialYear(noOfAc)
+  And("""the user inputs {string} associated companies for the second part of accounting period""") {
+    (noOfAc: String) =>
+      AssociatedCompaniesPage.inputAcForSecondPartOfFinancialYear(noOfAc)
   }
 }

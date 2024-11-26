@@ -87,7 +87,8 @@ class ResultsStepDef extends BaseStepDef {
       greenBoxMessage() should be(panelBody)
   }
 
-  Then("""the user validates the associated companies on the results page as {string}""") { (associateCompanies: String) =>
-    ResultPage.verifyTwoAssociatedCompanies(associateCompanies)
+  Then("""the user validates the associated companies on the results page as {string}""") {
+    (associateCompanies: String) =>
+      ResultPage.verifyTwoAssociatedCompanies(associateCompanies)
   }
 }
