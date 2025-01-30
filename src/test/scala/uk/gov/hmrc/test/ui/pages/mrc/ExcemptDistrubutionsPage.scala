@@ -27,18 +27,18 @@ object ExcemptDistrubutionsPage extends BasePage {
   val distributionsPageTitle2 =
     "Do any distributions need to be included with your profits? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
-  @FindBy(how = How.ID, using = "distributionsIncludedAmount") var inputExcemptDistribution: WebElement = _
-  @FindBy(how = How.ID, using = "value_0") var yesOption: WebElement                                    = _
-  @FindBy(how = How.ID, using = "value_1") var noOption: WebElement                                     = _
-  @FindBy(how = How.ID, using = "distributionsIncluded") var yesForIncludeInProfits: WebElement         = _
-  @FindBy(how = How.ID, using = "distributionsIncluded-2") var noForIncludeInProfits: WebElement        = _
+  @FindBy(how = How.ID, using = "distributionsIncludedAmount") var inputExcemptDistribution: WebElement = null
+  @FindBy(how = How.ID, using = "value_0") var yesOption: WebElement                                    = null
+  @FindBy(how = How.ID, using = "value_1") var noOption: WebElement                                     = null
+  @FindBy(how = How.ID, using = "distributionsIncluded") var yesForIncludeInProfits: WebElement         = null
+  @FindBy(how = How.ID, using = "distributionsIncluded-2") var noForIncludeInProfits: WebElement        = null
 
-  @FindBy(how = How.CSS, using = "#value_0:checked") var yesOptionChecked: List[WebElement]                            = _
-  @FindBy(how = How.CSS, using = "#value_1:checked") var noOptionChecked: List[WebElement]                             = _
+  @FindBy(how = How.CSS, using = "#value_0:checked") var yesOptionChecked: List[WebElement]                            = null
+  @FindBy(how = How.CSS, using = "#value_1:checked") var noOptionChecked: List[WebElement]                             = null
   @FindBy(how = How.CSS, using = "#distributionsIncluded:checked") var yesForIncludeInProfitsChecked: List[WebElement] =
-    _
+    null
   @FindBy(how = How.CSS, using = "#distributionsIncluded-2:checked") var noForIncludeInProfitsChecked
-    : List[WebElement]                                                                                                 = _
+    : List[WebElement]                                                                                                 = null
 
   PageFactory.initElements(driver, this)
 
