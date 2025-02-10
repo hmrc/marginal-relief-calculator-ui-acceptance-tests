@@ -24,29 +24,29 @@ import scala.jdk.CollectionConverters.ListHasAsScala
 
 object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//a[@href='/marginal-relief-calculator/full-results-page']") var detailLinK
-    : WebElement                                                                                                      = _
-  @FindBy(how = How.XPATH, using = "//h1") var detailPageHeader: WebElement                                           = _
+    : WebElement                                                                                                      = null
+  @FindBy(how = How.XPATH, using = "//h1") var detailPageHeader: WebElement                                           = null
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/dl/div[3]/dd") var yourDetailsDistributionAmt
-    : WebElement                                                                                                      = _
-  @FindBy(how = How.XPATH, using = "//div[1]/dd") var yourDetailsAccountingPeriod: WebElement                         = _
+    : WebElement                                                                                                      = null
+  @FindBy(how = How.XPATH, using = "//div[1]/dd") var yourDetailsAccountingPeriod: WebElement                         = null
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/h2[1]") var howItsCalculatedSection: WebElement =
-    _
-  @FindBy(how = How.XPATH, using = "//table") var taxableProfitSection: WebElement                                    = _
+    null
+  @FindBy(how = How.XPATH, using = "//table") var taxableProfitSection: WebElement                                    = null
 
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[1]/tbody/tr") var mrCalculationSteps
     : List[WebElement] = _
 
-  @FindBy(how = How.XPATH, using = "//details/summary/span") var mRFractionLink: WebElement                    = _
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var associatedCompanies: WebElement             = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/p[9]/a") var getCopyOfResult: WebElement = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/span") var totalMRValue: WebElement      = _
-  @FindBy(how = How.XPATH, using = "//*[@id='tab_year2024']") var tabYear2024: WebElement                      = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-tabs__list-item']") var tabYear2025: WebElement          = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[2]/b") var lblDate: WebElement     = _
-  @FindBy(how = How.XPATH, using = "//h2[@class='govuk-heading-m'][4]") var headerSection: WebElement          = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[1]") var lblText: WebElement       = _
+  @FindBy(how = How.XPATH, using = "//details/summary/span") var mRFractionLink: WebElement                    = null
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var associatedCompanies: WebElement             = null
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/p[9]/a") var getCopyOfResult: WebElement = null
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/span") var totalMRValue: WebElement      = null
+  @FindBy(how = How.XPATH, using = "//*[@id='tab_year2024']") var tabYear2024: WebElement                      = null
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-tabs__list-item']") var tabYear2025: WebElement          = null
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[2]/b") var lblDate: WebElement     = null
+  @FindBy(how = How.XPATH, using = "//h2[@class='govuk-heading-m'][4]") var headerSection: WebElement          = null
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[1]") var lblText: WebElement       = null
   @FindBy(how = How.XPATH, using = "//*[@href='/marginal-relief-calculator/pdf-meta-data']") var linkPrintandSave
-    : WebElement                                                                                               = _
+    : WebElement                                                                                               = null
 
   PageFactory.initElements(driver, this)
 
