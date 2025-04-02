@@ -3,14 +3,13 @@ import sbt._
 object Dependencies {
 
   val test = Seq(
-    "uk.gov.hmrc"         %% "ui-test-runner"  % "0.45.0"   % Test,
-    "org.scalatestplus"   %% "selenium-4-17"   % "3.2.18.0" % Test,
-    "io.cucumber"         %% "cucumber-scala"  % "8.23.0"   % Test,
-    "io.cucumber"          % "cucumber-junit"  % "7.18.0"   % Test,
-    "org.scalatest"       %% "scalatest"       % "3.2.18"   % Test,
-    "junit"                % "junit"           % "4.13.2"   % Test,
-    "com.github.sbt"       % "junit-interface" % "0.13.3"   % Test,
-    "com.typesafe"         % "config"          % "1.4.3"    % Test
+    "uk.gov.hmrc"         %% "ui-test-runner"  % "0.45.0",
+    "org.scalatestplus"   %% "selenium-4-17"   % "3.2.18.0",
+    "io.cucumber"         %% "cucumber-scala"  % "8.25.1",
+    "io.cucumber"          % "cucumber-junit"  % "7.19.0",
+    "org.scalatest"       %% "scalatest"       % "3.2.18",
+    "com.typesafe"         % "config"          % "1.4.3",
+    "org.playframework"    %% "play-test"      % "3.0.5" exclude("ch.qos.logback", "logback-classic")
   )
 
 }
