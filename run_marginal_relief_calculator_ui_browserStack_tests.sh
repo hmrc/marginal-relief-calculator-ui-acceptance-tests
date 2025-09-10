@@ -50,5 +50,5 @@ declare -a setups=("BS_ElCapitan_Chrome_v64" "BS_ElCapitan_Firefox_v58" "BS_Win7
 
 for setup in "${setups[@]}"; do
     echo "******************** Loading config from $setup.json ********************"
-    sbt -Dlogback.configurationFile=logback.xml -Dbrowser=browserstack -Dbrowserstack.username="saralhenerysteph_vKQPeM" -Dbrowserstack.key="zcSPC6sE9QDsQKCgpjez" -DtestDevice="$setup" -Denvironment="$ENV" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.BSRunner"
+    sbt -Dlogback.configurationFile=logback.xml -Dbrowser=browserstack -Dbrowserstack.username="${BROWSERSTACK_USERNAME}" -Dbrowserstack.key="${BROWSERSTACK_ACCESS_KEY}" -DtestDevice="$setup" -Denvironment="$ENV" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.BSRunner"
 done
