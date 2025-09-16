@@ -10,6 +10,14 @@ Prior to executing the tests ensure you have:
 - Appropriate [drivers installed](#installing-local-driver-binaries) - to run tests against locally installed Browser
 - Installed/configured [service manager](https://github.com/hmrc/service-manager).
 
+BrowserStack Credentials Setup - 
+
+Before running tests, retrieve `BROWSERSTACK_USERNAME` and `BROWSERSTACK_ACCESS_KEY` from the notes "UI Test Credentials MRC" created in the Bitwarden collection "DDCW Live Services" 
+Then export them in your terminal:
+
+export BROWSERSTACK_USERNAME="your-username"
+
+export BROWSERSTACK_ACCESS_KEY="your-access-key"
 
 Run the following command to start services locally:
 
