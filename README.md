@@ -14,9 +14,9 @@ BrowserStack Credentials Setup -
 
 Before running tests, retrieve `BROWSERSTACK_USERNAME` and `BROWSERSTACK_ACCESS_KEY` from the notes "UI Test Credentials MRC" created in the Bitwarden collection "DDCW Live Services" 
 Then export them in your terminal:
-export BROWSERSTACK_USERNAME="your-username"
+export BROWSERSTACK_USERNAME="username"
 
-export BROWSERSTACK_ACCESS_KEY="your-access-key"
+export BROWSERSTACK_ACCESS_KEY="access-key"
 
 Run the following command to start services locally:
 
