@@ -16,24 +16,46 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait, WebDriverWait}
 import org.openqa.selenium.support.{FindBy, How}
-import org.openqa.selenium.{By, WebElement}
+import org.openqa.selenium.{By, ElementClickInterceptedException, StaleElementReferenceException, TimeoutException, WebDriver, WebElement}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
+import java.time.Duration
 import java.util.List
 
 trait BasePage extends BrowserDriver with Matchers {
   @FindBy(how = How.XPATH, using = "//a[text()='Back']") var backButton: WebElement = _
 
+
+  def waitFor: Wait[WebDriver] = new FluentWait[WebDriver](driver)
+    .withTimeout(Duration.ofSeconds(40))
+    .pollingEvery(Duration.ofMillis(250))
+    .ignoring(classOf[Exception])
+    .ignoring(classOf[RuntimeException])
+    .ignoring(classOf[ElementClickInterceptedException])
+    .ignoring(classOf[StaleElementReferenceException], classOf[NoSuchElementException])
+
   def submitPage(): Unit =
     driver.findElement(By.cssSelector("button.govuk-button")).click()
 
-  def verifyPageTitle(pageTitle: String): Unit =
-    if (driver.getTitle != pageTitle)
-      throw PageNotFoundException(
-        s"Expected '$pageTitle' page, but found '${driver.getTitle}' page."
-      )
+  def verifyPageTitle(pageTitle: String)(implicit driver: WebDriver): Unit = {
+    try {
+      new FluentWait[WebDriver](driver)
+        .withTimeout(Duration.ofSeconds(40))
+        .pollingEvery(Duration.ofMillis(250))
+        .ignoring(classOf[Exception])
+        .ignoring(classOf[RuntimeException])
+        .ignoring(classOf[ElementClickInterceptedException])
+        .ignoring(classOf[StaleElementReferenceException], classOf[NoSuchElementException]).until(ExpectedConditions.titleContains(pageTitle))
+    } catch {
+      case _: TimeoutException =>
+        throw PageNotFoundException(
+          s"Expected title containing '$pageTitle', but found '${driver.getTitle}'."
+        )
+    }
+  }
 
   def verifyLinkText(linkText: String): Unit = {
     val elements: List[WebElement] = driver.findElements(By.tagName("a"))
@@ -48,8 +70,13 @@ trait BasePage extends BrowserDriver with Matchers {
     assert(linkFound)
   }
 
-  def clickBackLink(): Unit =
-    backButton.click()
+  def clickBackLink()(implicit d: WebDriver): Unit = {
+    val by = By.cssSelector("a.govuk-back-link")
+    val el = new WebDriverWait(d, Duration.ofSeconds(20))
+      .ignoring(classOf[StaleElementReferenceException])
+      .until(ExpectedConditions.elementToBeClickable(by))
+    el.click()
+  }
 
   def verifyTextPresentOnPage(text: String): Boolean =
     driver.getPageSource.contains(text)

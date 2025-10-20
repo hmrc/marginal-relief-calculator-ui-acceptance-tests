@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
@@ -27,9 +28,6 @@ object ExcemptDistrubutionsPage extends BasePage {
   val distributionsPageTitle2 =
     "Do any distributions need to be included with your profits? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
-  @FindBy(how = How.ID, using = "distributionsIncludedAmount") var inputExcemptDistribution: WebElement = null
-  @FindBy(how = How.ID, using = "value_0") var yesOption: WebElement                                    = null
-  @FindBy(how = How.ID, using = "value_1") var noOption: WebElement                                     = null
   @FindBy(how = How.ID, using = "distributionsIncluded") var yesForIncludeInProfits: WebElement         = null
   @FindBy(how = How.ID, using = "distributionsIncluded-2") var noForIncludeInProfits: WebElement        = null
 
@@ -42,6 +40,10 @@ object ExcemptDistrubutionsPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
+  private val inputExcemptDistribution = By.id("distributionsIncludedAmount")
+  private val yesOption = By.id("value_0")
+  private val noOption = By.id("value_1")
+
   def verifyTitle(): Unit =
     verifyPageTitle(distributionsPageTitle)
 
@@ -49,13 +51,15 @@ object ExcemptDistrubutionsPage extends BasePage {
     verifyPageTitle(distributionsPageTitle2)
 
   def selectOptionYes(): Unit = {
-    yesOption.click()
-    yesOption.isSelected
+    val el = waitFor.until(ExpectedConditions.presenceOfElementLocated(yesOption))
+    el.click()
+    el.isSelected
   }
 
   def selectOptionNo(): Unit = {
-    noOption.click()
-    noOption.isSelected
+    val el = waitFor.until(ExpectedConditions.presenceOfElementLocated(noOption))
+    el.click()
+    el.isSelected
   }
 
   def yesToIncludeInProfits(): Unit = {
@@ -69,8 +73,14 @@ object ExcemptDistrubutionsPage extends BasePage {
   }
 
   def provideDistributions(distributions: String): Unit = {
-    inputExcemptDistribution.clear()
-    inputExcemptDistribution.sendKeys(distributions)
+    val el = waitFor.until(ExpectedConditions.presenceOfElementLocated(inputExcemptDistribution))
+    el.clear()
+    el.sendKeys(distributions)
+  }
+
+  def displayDistributions(): Unit = {
+    val el = waitFor.until(ExpectedConditions.presenceOfElementLocated(inputExcemptDistribution))
+    el.isDisplayed
   }
 
   def verifyYesNoNotSelected(): Unit = {

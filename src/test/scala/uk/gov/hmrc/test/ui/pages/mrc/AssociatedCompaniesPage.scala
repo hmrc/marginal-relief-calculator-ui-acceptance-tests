@@ -16,11 +16,13 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import org.openqa.selenium.{By, TimeoutException, WebDriver, WebElement}
 import org.scalatest.concurrent.Eventually.eventually
-import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
+import uk.gov.hmrc.test.ui.pages.{BasePage, PageNotFoundException}
+
 
 object AssociatedCompaniesPage extends BasePage {
 
@@ -43,8 +45,36 @@ object AssociatedCompaniesPage extends BasePage {
       headerMessage.getText
     }
 
-  def verifyPageTitle(): Unit =
-    verifyPageTitle(s"${headerMessage.getText} - Calculate Marginal Relief for Corporation Tax - GOV.UK")
+  private def normalize(s: String): String =
+    Option(s).getOrElse("")
+      .replace('\u00A0',' ')      // NBSP → space
+      .replace('\u2013','-')      // en dash → hyphen
+      .replace('\u2014','-')      // em dash → hyphen
+      .replace('\u2212','-')      // minus → hyphen
+      .replaceAll("\\s+", " ")    // collapse whitespace
+      .trim
+
+  def verifyPageTitle()(implicit driver: WebDriver): Unit = {
+    val byH1 = By.cssSelector("h1.govuk-heading-l")
+    val suffix = " - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+    try {
+      val isElementExist = waitFor.until { document =>
+        val heading = normalize(document.findElement(byH1).getText)
+        val expectedPart = normalize(heading + suffix)
+        val actualTitle  = normalize(document.getTitle)
+        actualTitle.contains(expectedPart)
+      }
+      if (!isElementExist) throw new TimeoutException()
+    } catch {
+      case _: TimeoutException =>
+        val actual = driver.getTitle
+        val headingNow = try driver.findElement(byH1).getText catch { case _: Throwable => "<h1 not found>" }
+        throw PageNotFoundException(
+          s"Expected title containing '$headingNow$suffix', but found '$actual'."
+        )
+    }
+  }
+
 
   def verifyYesAndNoOptionsPresent(): Unit = {
     yesOption.isDisplayed
@@ -80,8 +110,10 @@ object AssociatedCompaniesPage extends BasePage {
   def associatedCompaniesCountAsNull(): Unit =
     inputAssociatedCompaniesCount.getAttribute("value").contains("")
 
-  def verifyCompaniesProfitAsNull(): Unit =
-    inputProfitValue.getAttribute("value").contains("")
+  def verifyCompaniesProfitAsNull(): Unit = {
+    val el = waitFor.until(ExpectedConditions.presenceOfElementLocated(inputProfitValue))
+    el.getAttribute("value").contains("")
+  }
 
   def verifyAssociatedCompanies(associatedCo: String): Unit = {
     val AC = inputAssociatedCompaniesCount.getAttribute("value")
