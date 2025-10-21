@@ -19,6 +19,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.mrc.ExcemptDistrubutionsPage.verifyPageTitle
 
 object AccountingPeriodPage extends BasePage {
   @FindBy(how = How.ID, using = "accountingPeriodStartDate.day") var accountingStartDay: WebElement     = _
@@ -28,7 +29,6 @@ object AccountingPeriodPage extends BasePage {
   @FindBy(how = How.ID, using = "accountingPeriodEndDate.day") var accountingEndDay: WebElement              = _
   @FindBy(how = How.ID, using = "accountingPeriodEndDate.month") var accountingEndMonth: WebElement          = _
   @FindBy(how = How.ID, using = "accountingPeriodEndDate.year") var accountingEndYear: WebElement            = _
-  @FindBy(how = How.TAG_NAME, using = "h1") var irrelevantPageHeader: WebElement                             = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var irrelevantPageContent: WebElement      = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var restartButton: WebElement              = _
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var referenceLink: WebElement              = _
@@ -109,8 +109,9 @@ object AccountingPeriodPage extends BasePage {
     accountingEndYear.sendKeys("2023")
   }
 
-  def validatePageTitle(): Unit =
-    irrelevantPageHeader.getText.contains(irrelevantPageTitle)
+  def validatePageTitle(): Unit = {
+    verifyPageTitle(irrelevantPageTitle)
+  }
 
   def validatePageContent(): Unit =
     irrelevantPageContent.getText.contains(irrelevantPageMessage)

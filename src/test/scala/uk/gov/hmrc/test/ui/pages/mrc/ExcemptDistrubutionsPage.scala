@@ -17,32 +17,21 @@
 package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.support.ui.ExpectedConditions
-import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 import java.util
 object ExcemptDistrubutionsPage extends BasePage {
-  val distributionsPageTitle  =
+  private val distributionsPageTitle  =
     "Did your company receive any distributions? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
-  val distributionsPageTitle2 =
+  private val distributionsPageTitle2 =
     "Do any distributions need to be included with your profits? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
-
-  @FindBy(how = How.ID, using = "distributionsIncluded") var yesForIncludeInProfits: WebElement         = null
-  @FindBy(how = How.ID, using = "distributionsIncluded-2") var noForIncludeInProfits: WebElement        = null
-
-  @FindBy(how = How.CSS, using = "#value_0:checked") var yesOptionChecked: List[WebElement]                            = null
-  @FindBy(how = How.CSS, using = "#value_1:checked") var noOptionChecked: List[WebElement]                             = null
-  @FindBy(how = How.CSS, using = "#distributionsIncluded:checked") var yesForIncludeInProfitsChecked: List[WebElement] =
-    null
-  @FindBy(how = How.CSS, using = "#distributionsIncluded-2:checked") var noForIncludeInProfitsChecked
-    : List[WebElement]                                                                                                 = null
-
-  PageFactory.initElements(driver, this)
 
   private val inputExcemptDistribution = By.id("distributionsIncludedAmount")
   private val yesOption = By.id("value_0")
   private val noOption = By.id("value_1")
+  private val yesForIncludeInProfits = By.id("distributionsIncluded")
+  private val noForIncludeInProfits = By.id("distributionsIncluded-2")
 
   def verifyTitle(): Unit =
     verifyPageTitle(distributionsPageTitle)
@@ -63,13 +52,15 @@ object ExcemptDistrubutionsPage extends BasePage {
   }
 
   def yesToIncludeInProfits(): Unit = {
-    yesForIncludeInProfits.click()
-    yesForIncludeInProfits.isSelected
+    val el = waitFor.until(ExpectedConditions.presenceOfElementLocated(yesForIncludeInProfits))
+    el.click()
+    el.isSelected
   }
 
   def noToIncludeInProfits(): Unit = {
-    noForIncludeInProfits.click()
-    noForIncludeInProfits.isSelected
+    val el = waitFor.until(ExpectedConditions.presenceOfElementLocated(noForIncludeInProfits))
+    el.click()
+    el.isSelected
   }
 
   def provideDistributions(distributions: String): Unit = {
