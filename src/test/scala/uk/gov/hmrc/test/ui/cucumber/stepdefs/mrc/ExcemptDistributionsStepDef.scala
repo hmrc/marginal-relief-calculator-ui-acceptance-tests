@@ -38,7 +38,7 @@ class ExcemptDistributionsStepDef extends BaseStepDef {
     }
   }
   Then("the user is provided with an input field to provide distributions") { () =>
-    ExcemptDistrubutionsPage.inputExcemptDistribution.isDisplayed
+    ExcemptDistrubutionsPage.displayDistributions()
   }
 
   And("""the user provides {string} as distributions""") { (distributions: String) =>

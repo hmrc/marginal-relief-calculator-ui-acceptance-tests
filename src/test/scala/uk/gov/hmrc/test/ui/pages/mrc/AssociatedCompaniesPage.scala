@@ -16,11 +16,13 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.concurrent.Eventually.eventually
-import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
+import uk.gov.hmrc.test.ui.pages.BasePage
+
 
 object AssociatedCompaniesPage extends BasePage {
 
@@ -38,13 +40,23 @@ object AssociatedCompaniesPage extends BasePage {
 
   PageFactory.initElements(driver, this)
 
+  val pageHeading = By.cssSelector("h1.govuk-heading-l")
+  val suffix = " - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+
   def titleMessage(): String =
     eventually {
       headerMessage.getText
     }
 
-  def verifyPageTitle(): Unit =
-    verifyPageTitle(s"${headerMessage.getText} - Calculate Marginal Relief for Corporation Tax - GOV.UK")
+
+
+  def validatePageTitle()(implicit driver: WebDriver): Unit = {
+    waitFor.until(ExpectedConditions.titleContains("associated companies"))
+    val headingElement = waitFor.until(ExpectedConditions.presenceOfElementLocated(pageHeading))
+    val heading = headingElement.getText.trim
+    verifyPageTitle(heading + suffix)
+  }
+
 
   def verifyYesAndNoOptionsPresent(): Unit = {
     yesOption.isDisplayed
@@ -80,8 +92,10 @@ object AssociatedCompaniesPage extends BasePage {
   def associatedCompaniesCountAsNull(): Unit =
     inputAssociatedCompaniesCount.getAttribute("value").contains("")
 
-  def verifyCompaniesProfitAsNull(): Unit =
-    inputProfitValue.getAttribute("value").contains("")
+  def verifyCompaniesProfitAsNull(): Unit = {
+    val el = waitFor.until(ExpectedConditions.presenceOfElementLocated(inputProfitValue))
+    el.getAttribute("value").contains("")
+  }
 
   def verifyAssociatedCompanies(associatedCo: String): Unit = {
     val AC = inputAssociatedCompaniesCount.getAttribute("value")

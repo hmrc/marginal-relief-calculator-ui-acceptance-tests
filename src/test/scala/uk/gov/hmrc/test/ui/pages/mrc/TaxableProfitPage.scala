@@ -16,25 +16,29 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.WebElement
-import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import org.openqa.selenium.By
+import org.openqa.selenium.support.PageFactory
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object TaxableProfitPage extends BasePage {
-  @FindBy(how = How.ID, using = "value") var inputProfitValue: WebElement = _
+  val inputProfitValue: By = By.id("value")
   val taxableProfitPage                                                   =
     "How much is your company's taxable profit? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
   PageFactory.initElements(driver, this)
+
   def verifyTitle(): Unit                                                 =
     verifyPageTitle(taxableProfitPage)
 
   def provideProfit(profitValue: String): Unit = {
-    inputProfitValue.clear()
-    inputProfitValue.sendKeys(profitValue)
+    val el = waitFor.until(ExpectedConditions.presenceOfElementLocated(inputProfitValue))
+    el.clear()
+    el.sendKeys(profitValue)
   }
   def verifyProfitValue(profitValue: String): Unit = {
-    val TP = inputProfitValue.getAttribute("value")
+    val el = waitFor.until(ExpectedConditions.presenceOfElementLocated(inputProfitValue))
+    val TP = el.getAttribute("value")
     assert(TP === profitValue)
   }
 
@@ -43,6 +47,8 @@ object TaxableProfitPage extends BasePage {
       submitPage()
     }
 
-  def verifyCompaniesProfitAsNull(): Unit =
-    inputProfitValue.getAttribute("value").contains("")
+  def verifyCompaniesProfitAsNull(): Unit = {
+    val el = waitFor.until(ExpectedConditions.presenceOfElementLocated(inputProfitValue))
+    el.getAttribute("value").contains("")
+  }
 }

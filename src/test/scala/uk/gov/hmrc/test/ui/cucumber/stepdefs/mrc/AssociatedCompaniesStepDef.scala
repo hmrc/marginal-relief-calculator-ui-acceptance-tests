@@ -25,7 +25,7 @@ class AssociatedCompaniesStepDef extends BaseStepDef {
     titleMessage() should be(message)
   }
   Then("the user lands on the associated companies page") { () =>
-    AssociatedCompaniesPage.verifyPageTitle()
+    AssociatedCompaniesPage.validatePageTitle()
   }
 
   Then("""the user validates associated companies are pre-populated as {string}""") { (associatedCo: String) =>
