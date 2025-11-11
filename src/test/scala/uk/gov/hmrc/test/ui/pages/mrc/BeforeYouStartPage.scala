@@ -20,25 +20,26 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.BasePage
+import scala.compiletime.uninitialized
 
 object BeforeYouStartPage extends BasePage {
   val beforeYouStartPage    =
     "Calculate Marginal Relief for Corporation Tax - Calculate Marginal Relief for Corporation Tax - GOV.UK"
   val url: String           = TestConfiguration.url("marginal-relief-calculator-frontend")
-  //val url: String           = "https://www.qa.tax.service.gov.uk/marginal-relief-calculator"
-  //val url: String           = "https://www.development.tax.service.gov.uk/marginal-relief-calculator"
+  // val url: String           = "https://www.qa.tax.service.gov.uk/marginal-relief-calculator"
+  // val url: String           = "https://www.development.tax.service.gov.uk/marginal-relief-calculator"
   val mrcBeforeYouStartPage =
     "Calculate Marginal Relief for Corporation Tax - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
-  @FindBy(how = How.XPATH, using = "//a[contains(text(),'Start now')]") var startNowButton: WebElement = _
-  @FindBy(how = How.CLASS_NAME, using = "govuk-breadcrumbs__list") var breadcrumbs: WebElement         = _
+  @FindBy(how = How.XPATH, using = "//a[contains(text(),'Start now')]") var startNowButton: WebElement = uninitialized
+  @FindBy(how = How.CLASS_NAME, using = "govuk-breadcrumbs__list") var breadcrumbs: WebElement         = uninitialized
 
   PageFactory.initElements(driver, this)
 
   def loadPage(): Unit = {
     driver.manage().deleteAllCookies()
     driver.navigate().to(url)
-    //driver.switchTo.alert.sendKeys("mrc")
+    // driver.switchTo.alert.sendKeys("mrc")
     verifyPageTitle(mrcBeforeYouStartPage)
   }
 

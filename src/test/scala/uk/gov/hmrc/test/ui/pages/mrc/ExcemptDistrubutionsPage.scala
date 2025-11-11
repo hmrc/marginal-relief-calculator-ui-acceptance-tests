@@ -28,10 +28,10 @@ object ExcemptDistrubutionsPage extends BasePage {
     "Do any distributions need to be included with your profits? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
   private val inputExcemptDistribution = By.id("distributionsIncludedAmount")
-  private val yesOption = By.id("value_0")
-  private val noOption = By.id("value_1")
-  private val yesForIncludeInProfits = By.id("distributionsIncluded")
-  private val noForIncludeInProfits = By.id("distributionsIncluded-2")
+  private val yesOption                = By.id("value_0")
+  private val noOption                 = By.id("value_1")
+  private val yesForIncludeInProfits   = By.id("distributionsIncluded")
+  private val noForIncludeInProfits    = By.id("distributionsIncluded-2")
 
   def verifyTitle(): Unit =
     verifyPageTitle(distributionsPageTitle)

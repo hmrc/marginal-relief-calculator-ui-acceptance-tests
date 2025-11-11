@@ -19,10 +19,11 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
+import scala.compiletime.uninitialized
 
 object AddCompanyDetailsToResultsPage extends BasePage {
-  @FindBy(how = How.ID, using = "pdfAddCompanyDetails") var yesOption: WebElement  = _
-  @FindBy(how = How.ID, using = "pdfAddCompanyDetails-2") var noOption: WebElement = _
+  @FindBy(how = How.ID, using = "pdfAddCompanyDetails") var yesOption: WebElement  = uninitialized
+  @FindBy(how = How.ID, using = "pdfAddCompanyDetails-2") var noOption: WebElement = uninitialized
 
   PageFactory.initElements(driver, this)
 

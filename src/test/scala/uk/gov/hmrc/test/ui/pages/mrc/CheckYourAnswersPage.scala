@@ -31,12 +31,12 @@ object CheckYourAnswersPage extends BasePage {
   @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd >a") var changeLinkForAC: WebElement                      = null
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var calculateMRCButton: WebElement                   = null
   @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd.govuk-summary-list__value") var accountingPeriodDates
-    : WebElement                                                                                                       = null
+    : WebElement = null
   @FindBy(how = How.CSS, using = "dl > div:nth-child(2) > dd.govuk-summary-list__value") var profit: WebElement        = null
   @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd.govuk-summary-list__value") var distributions: WebElement =
     null
   @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd.govuk-summary-list__value") var NoOfAssociatedCompanies
-    : WebElement                                                                                                       = null
+    : WebElement = null
   @FindBy(
     how = How.CSS,
     using = "div:nth-child(5) > dd.govuk-summary-list__value"

@@ -19,12 +19,13 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.{By, WebElement}
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
+import scala.compiletime.uninitialized
 
 object CompanyDetailsPage extends BasePage {
-  @FindBy(how = How.XPATH, using = "//input[@id='companyName']") var fldCompanyName: WebElement   = _
-  @FindBy(how = How.XPATH, using = "//input[@id='utr']") var fldUTR: WebElement                   = _
-  @FindBy(how = How.ID, using = "pdfAddCompanyDetails") var yesOption: WebElement                 = _
-  @FindBy(how = How.ID, using = "pdfAddCompanyDetails-2") var noOption: WebElement                = _
+  @FindBy(how = How.XPATH, using = "//input[@id='companyName']") var fldCompanyName: WebElement = uninitialized
+  @FindBy(how = How.XPATH, using = "//input[@id='utr']") var fldUTR: WebElement                 = uninitialized
+  @FindBy(how = How.ID, using = "pdfAddCompanyDetails") var yesOption: WebElement               = uninitialized
+  @FindBy(how = How.ID, using = "pdfAddCompanyDetails-2") var noOption: WebElement              = uninitialized
 
   PageFactory.initElements(driver, this)
 
@@ -46,6 +47,5 @@ object CompanyDetailsPage extends BasePage {
 
   def clickOnContinue(): Unit =
     driver.findElement(By.cssSelector("button.govuk-button")).click()
-
 
 }
