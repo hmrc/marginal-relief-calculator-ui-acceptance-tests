@@ -21,13 +21,13 @@ import org.openqa.selenium.support.{FindBy, How}
 import org.openqa.selenium.{By, ElementClickInterceptedException, StaleElementReferenceException, TimeoutException, WebDriver, WebElement}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import scala.compiletime.uninitialized
 
 import java.time.Duration
 import java.util.List
 
 trait BasePage extends BrowserDriver with Matchers {
-  @FindBy(how = How.XPATH, using = "//a[text()='Back']") var backButton: WebElement = _
-
+  @FindBy(how = How.XPATH, using = "//a[text()='Back']") var backButton: WebElement = uninitialized
 
   def waitFor: Wait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(Duration.ofSeconds(40))
@@ -40,22 +40,22 @@ trait BasePage extends BrowserDriver with Matchers {
   def submitPage(): Unit =
     driver.findElement(By.cssSelector("button.govuk-button")).click()
 
-  def verifyPageTitle(pageTitle: String)(implicit driver: WebDriver): Unit = {
-    try {
+  def verifyPageTitle(pageTitle: String)(implicit driver: WebDriver): Unit =
+    try
       new FluentWait[WebDriver](driver)
         .withTimeout(Duration.ofSeconds(40))
         .pollingEvery(Duration.ofMillis(250))
         .ignoring(classOf[Exception])
         .ignoring(classOf[RuntimeException])
         .ignoring(classOf[ElementClickInterceptedException])
-        .ignoring(classOf[StaleElementReferenceException], classOf[NoSuchElementException]).until(ExpectedConditions.titleContains(pageTitle))
-    } catch {
+        .ignoring(classOf[StaleElementReferenceException], classOf[NoSuchElementException])
+        .until(ExpectedConditions.titleContains(pageTitle))
+    catch {
       case _: TimeoutException =>
         throw PageNotFoundException(
           s"Expected title containing '$pageTitle', but found '${driver.getTitle}'."
         )
     }
-  }
 
   def verifyLinkText(linkText: String): Unit = {
     val elements: List[WebElement] = driver.findElements(By.tagName("a"))

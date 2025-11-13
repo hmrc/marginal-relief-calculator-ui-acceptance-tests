@@ -31,7 +31,7 @@ class DetailedCalculationStepDef extends BaseStepDef {
     detailedPageTitle() should be(headerTitle)
   }
   Then("""the Your details page contains {string}""") { (detailedContent: String) =>
-    yourDetailsAccountingPeriodText() contains detailedContent
+    yourDetailsAccountingPeriodText().contains(detailedContent)
   }
   Then("""the distribution amount has £ prefix and displayed as {string}""") { (distributionamt: String) =>
     yourDetailsDistributionAmtText() should be(distributionamt)

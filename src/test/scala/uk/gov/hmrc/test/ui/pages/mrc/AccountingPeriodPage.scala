@@ -19,21 +19,22 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.pages.BasePage
-import uk.gov.hmrc.test.ui.pages.mrc.ExcemptDistrubutionsPage.verifyPageTitle
+import scala.compiletime.uninitialized
 
 object AccountingPeriodPage extends BasePage {
-  @FindBy(how = How.ID, using = "accountingPeriodStartDate.day") var accountingStartDay: WebElement     = _
-  @FindBy(how = How.ID, using = "accountingPeriodStartDate.month") var accountingStartMonth: WebElement = _
-  @FindBy(how = How.ID, using = "accountingPeriodStartDate.year") var accountingStartYear: WebElement   = _
+  @FindBy(how = How.ID, using = "accountingPeriodStartDate.day") var accountingStartDay: WebElement     = uninitialized
+  @FindBy(how = How.ID, using = "accountingPeriodStartDate.month") var accountingStartMonth: WebElement = uninitialized
+  @FindBy(how = How.ID, using = "accountingPeriodStartDate.year") var accountingStartYear: WebElement   = uninitialized
 
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate.day") var accountingEndDay: WebElement              = _
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate.month") var accountingEndMonth: WebElement          = _
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate.year") var accountingEndYear: WebElement            = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var irrelevantPageContent: WebElement      = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var restartButton: WebElement              = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var referenceLink: WebElement              = _
-  @FindBy(how = How.CSS, using = "#main-content > div > div > form > p") var accountingPeriodMsg: WebElement = _
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate-hint") var accountEndDateMsg: WebElement            = _
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate.day") var accountingEndDay: WebElement              = uninitialized
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate.month") var accountingEndMonth: WebElement          = uninitialized
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate.year") var accountingEndYear: WebElement            = uninitialized
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var irrelevantPageContent: WebElement      = uninitialized
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var restartButton: WebElement              = uninitialized
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var referenceLink: WebElement              = uninitialized
+  @FindBy(how = How.CSS, using = "#main-content > div > div > form > p") var accountingPeriodMsg: WebElement =
+    uninitialized
+  @FindBy(how = How.ID, using = "accountingPeriodEndDate-hint") var accountEndDateMsg: WebElement            = uninitialized
 
   PageFactory.initElements(driver, this)
 
@@ -109,9 +110,8 @@ object AccountingPeriodPage extends BasePage {
     accountingEndYear.sendKeys("2023")
   }
 
-  def validatePageTitle(): Unit = {
+  def validatePageTitle(): Unit =
     verifyPageTitle(irrelevantPageTitle)
-  }
 
   def validatePageContent(): Unit =
     irrelevantPageContent.getText.contains(irrelevantPageMessage)

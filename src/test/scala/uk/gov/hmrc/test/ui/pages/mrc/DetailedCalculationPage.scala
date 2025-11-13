@@ -19,22 +19,23 @@ package uk.gov.hmrc.test.ui.pages.mrc
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
+import scala.compiletime.uninitialized
 
 import scala.jdk.CollectionConverters.ListHasAsScala
 
 object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//a[@href='/marginal-relief-calculator/full-results-page']") var detailLinK
-    : WebElement                                                                                                      = null
+    : WebElement = null
   @FindBy(how = How.XPATH, using = "//h1") var detailPageHeader: WebElement                                           = null
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/dl/div[3]/dd") var yourDetailsDistributionAmt
-    : WebElement                                                                                                      = null
+    : WebElement = null
   @FindBy(how = How.XPATH, using = "//div[1]/dd") var yourDetailsAccountingPeriod: WebElement                         = null
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/h2[1]") var howItsCalculatedSection: WebElement =
     null
   @FindBy(how = How.XPATH, using = "//table") var taxableProfitSection: WebElement                                    = null
 
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[1]/tbody/tr") var mrCalculationSteps
-    : List[WebElement] = _
+    : List[WebElement] = uninitialized
 
   @FindBy(how = How.XPATH, using = "//details/summary/span") var mRFractionLink: WebElement                    = null
   @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var associatedCompanies: WebElement             = null
@@ -46,7 +47,7 @@ object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//h2[@class='govuk-heading-m'][4]") var headerSection: WebElement          = null
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[1]") var lblText: WebElement       = null
   @FindBy(how = How.XPATH, using = "//*[@href='/marginal-relief-calculator/pdf-meta-data']") var linkPrintandSave
-    : WebElement                                                                                               = null
+    : WebElement = null
 
   PageFactory.initElements(driver, this)
 

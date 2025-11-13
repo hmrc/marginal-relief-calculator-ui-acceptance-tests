@@ -20,37 +20,43 @@ import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
 import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.test.ui.pages.BasePage
+import scala.compiletime.uninitialized
 
 object ResultPage extends BasePage {
 //  val resultsPage = "Marginal Relief Results - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
-  @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement   = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-s']") var HMRCFinancialYearsHeader: WebElement    = _
+  @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement   =
+    uninitialized
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-s']") var HMRCFinancialYearsHeader: WebElement    =
+    uninitialized
   @FindBy(how = How.XPATH, using = "//*[@class='govuk-body govuk-!-margin-0']") var HMRCFinancialYearsSectionY1
-    : WebElement                                                                                                = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var HMRCFinancialYearsSectionY2: WebElement   = _
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[1]/div") var panelMessage: WebElement = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][1]") var ctAmount: WebElement                 = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var singleYearCTBody: WebElement              = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var dualYearCTBody: WebElement                = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][2]") var ETHeader: WebElement                 = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var ETBodySingle: WebElement                  = _
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var ETBodyDual: WebElement                    = _
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var TwoAssociatedComapniesText: WebElement       = _
+    : WebElement = uninitialized
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var HMRCFinancialYearsSectionY2: WebElement   =
+    uninitialized
+  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[1]/div") var panelMessage: WebElement =
+    uninitialized
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][1]") var ctAmount: WebElement                 = uninitialized
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var singleYearCTBody: WebElement              = uninitialized
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var dualYearCTBody: WebElement                = uninitialized
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][2]") var ETHeader: WebElement                 = uninitialized
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var ETBodySingle: WebElement                  = uninitialized
+  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var ETBodyDual: WebElement                    = uninitialized
+  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var TwoAssociatedComapniesText: WebElement       =
+    uninitialized
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[3]/table/tbody/tr[2]/th") var ETContent
-    : WebElement                                                                                                = _
+    : WebElement = uninitialized
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[2]") var etFirstRow
-    : WebElement                                                                                                = _
+    : WebElement = uninitialized
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[3]") var etSecondRow
-    : WebElement                                                                                                = _
+    : WebElement = uninitialized
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[3]") var etThirdRow
-    : WebElement                                                                                                = _
+    : WebElement = uninitialized
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[3]") var ctThirdRow
-    : WebElement                                                                                                = _
+    : WebElement = uninitialized
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[2]") var ctFirstRow
-    : WebElement                                                                                                = _
+    : WebElement = uninitialized
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[3]") var ctSecondRow
-    : WebElement                                                                                                = _
+    : WebElement = uninitialized
 
   PageFactory.initElements(driver, this)
 
@@ -97,32 +103,32 @@ object ResultPage extends BasePage {
     ctThirdRow.getText.contains("Overall")
   }
 
-  def verifyCTHeaderCountForDualYear(): Unit = {
+  def verifyCTHeaderCountForDualYear(): Unit   = {
     val header = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th"))
     val count  = header.size
     assert(count == 3)
   }
-  def verifyCTBodyCountForDualYear(): Unit = {
+  def verifyCTBodyCountForDualYear(): Unit     = {
     val body  = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/tbody/tr"))
     val count = body.size
     assert(count == 4)
   }
-  def verifyCTHeaderCountForNoMrc(): Unit = {
+  def verifyCTHeaderCountForNoMrc(): Unit      = {
     val header = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th"))
     val count  = header.size
     assert(count == 3)
   }
-  def verifyCTBodyCountForNoMrc(): Unit = {
+  def verifyCTBodyCountForNoMrc(): Unit        = {
     val body  = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/tbody/tr"))
     val count = body.size
     assert(count == 2)
   }
-  def verifyETHeaderCountForDualYear(): Unit = {
+  def verifyETHeaderCountForDualYear(): Unit   = {
     val header = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[3]/table/thead/tr/th"))
     val count  = header.size
     assert(count == 3)
   }
-  def verifyETBodyCountForDualYear(): Unit = {
+  def verifyETBodyCountForDualYear(): Unit     = {
     val body  = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[3]/table/tbody/tr"))
     val count = body.size
     assert(count == 3)
@@ -132,7 +138,7 @@ object ResultPage extends BasePage {
     val count  = header.size
     assert(count == 1)
   }
-  def verifyETBodyCountForSingleYear(): Unit = {
+  def verifyETBodyCountForSingleYear(): Unit   = {
     val body  = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[3]/table/tbody/tr"))
     val count = body.size
     assert(count == 3)
@@ -142,17 +148,17 @@ object ResultPage extends BasePage {
     val count  = header.size
     assert(count == 1)
   }
-  def verifyETHeaderCountForNOMRC(): Unit = {
+  def verifyETHeaderCountForNOMRC(): Unit      = {
     val header = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[3]/table/thead/tr/th"))
     val count  = header.size
     assert(count == 3)
   }
-  def verifyETBodyCountForNOMRC(): Unit = {
+  def verifyETBodyCountForNOMRC(): Unit        = {
     val body  = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[3]/table/tbody/tr"))
     val count = body.size
     assert(count == 2)
   }
-  def verifyCTBodyCountForSingleYear(): Unit = {
+  def verifyCTBodyCountForSingleYear(): Unit   = {
     val body  = driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/tbody/tr"))
     val count = body.size
     assert(count == 4)

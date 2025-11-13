@@ -24,14 +24,14 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 
 object TaxableProfitPage extends BasePage {
   val inputProfitValue: By = By.id("value")
-  val taxableProfitPage                                                   =
+  val taxableProfitPage    =
     "How much is your company's taxable profit? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
   PageFactory.initElements(driver, this)
 
-  def verifyTitle(): Unit                                                 =
+  def verifyTitle(): Unit =
     verifyPageTitle(taxableProfitPage)
 
-  def provideProfit(profitValue: String): Unit = {
+  def provideProfit(profitValue: String): Unit     = {
     val el = waitFor.until(ExpectedConditions.presenceOfElementLocated(inputProfitValue))
     el.clear()
     el.sendKeys(profitValue)

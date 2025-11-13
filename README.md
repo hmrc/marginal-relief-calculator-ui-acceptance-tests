@@ -84,6 +84,10 @@ To apply formatting to this repository using the configured rules in [.scalafmt.
  sbt scalafmtAll
  ```
 
+ ```
+ sbt scalafmtSbt
+ ```
+
 To check files have been formatted as expected execute:
 
  ```
