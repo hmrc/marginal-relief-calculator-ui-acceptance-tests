@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object CheckYourAnswersPage extends BasePage {
@@ -31,12 +32,12 @@ object CheckYourAnswersPage extends BasePage {
   @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd >a") var changeLinkForAC: WebElement                      = null
   @FindBy(how = How.CSS, using = "#main-content > div > div > a") var calculateMRCButton: WebElement                   = null
   @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd.govuk-summary-list__value") var accountingPeriodDates
-    : WebElement = null
+  : WebElement = null
   @FindBy(how = How.CSS, using = "dl > div:nth-child(2) > dd.govuk-summary-list__value") var profit: WebElement        = null
   @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd.govuk-summary-list__value") var distributions: WebElement =
     null
   @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd.govuk-summary-list__value") var NoOfAssociatedCompanies
-    : WebElement = null
+  : WebElement = null
   @FindBy(
     how = How.CSS,
     using = "div:nth-child(5) > dd.govuk-summary-list__value"
@@ -46,7 +47,7 @@ object CheckYourAnswersPage extends BasePage {
     using = "div:nth-child(6) > dd.govuk-summary-list__value"
   ) var noOfAcForSecondPartOfFinancialYear: WebElement                                                                 = null
 
-  PageFactory.initElements(driver, this)
+  PageFactory.initElements(Driver.instance, this)
 
   def verifyPageTitle(): Unit               =
     verifyPageTitle(checkYourAnswers)

@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object PreviewSummaryPage extends BasePage {
@@ -28,12 +29,12 @@ object PreviewSummaryPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/div[2]/h2") var tblET: WebElement =
     null
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[2]/p") var lblCompanyName
-    : WebElement = null
+  : WebElement = null
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[3]/p") var lblUTR: WebElement =
     null
   @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var twoAssociatedCompaniesText: WebElement             = null
 
-  PageFactory.initElements(driver, this)
+  PageFactory.initElements(Driver.instance, this)
 
   def verifyHeader(): String =
     lblHeader.getText

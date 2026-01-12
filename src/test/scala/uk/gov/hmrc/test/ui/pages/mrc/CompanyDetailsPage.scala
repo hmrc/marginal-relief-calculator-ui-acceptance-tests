@@ -18,7 +18,9 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.{By, WebElement}
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
+
 import scala.compiletime.uninitialized
 
 object CompanyDetailsPage extends BasePage {
@@ -27,7 +29,7 @@ object CompanyDetailsPage extends BasePage {
   @FindBy(how = How.ID, using = "pdfAddCompanyDetails") var yesOption: WebElement               = uninitialized
   @FindBy(how = How.ID, using = "pdfAddCompanyDetails-2") var noOption: WebElement              = uninitialized
 
-  PageFactory.initElements(driver, this)
+  PageFactory.initElements(Driver.instance, this)
 
   def selectOptionYes(): Unit = {
     yesOption.click()
@@ -46,6 +48,6 @@ object CompanyDetailsPage extends BasePage {
     fldUTR.sendKeys(longUTRNumber)
 
   def clickOnContinue(): Unit =
-    driver.findElement(By.cssSelector("button.govuk-button")).click()
+    Driver.instance.findElement(By.cssSelector("button.govuk-button")).click()
 
 }

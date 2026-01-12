@@ -18,24 +18,25 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
-import scala.compiletime.uninitialized
 
+import scala.compiletime.uninitialized
 import scala.jdk.CollectionConverters.ListHasAsScala
 
 object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//a[@href='/marginal-relief-calculator/full-results-page']") var detailLinK
-    : WebElement = null
+  : WebElement = null
   @FindBy(how = How.XPATH, using = "//h1") var detailPageHeader: WebElement                                           = null
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/dl/div[3]/dd") var yourDetailsDistributionAmt
-    : WebElement = null
+  : WebElement = null
   @FindBy(how = How.XPATH, using = "//div[1]/dd") var yourDetailsAccountingPeriod: WebElement                         = null
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/h2[1]") var howItsCalculatedSection: WebElement =
     null
   @FindBy(how = How.XPATH, using = "//table") var taxableProfitSection: WebElement                                    = null
 
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[1]/tbody/tr") var mrCalculationSteps
-    : List[WebElement] = uninitialized
+  : List[WebElement] = uninitialized
 
   @FindBy(how = How.XPATH, using = "//details/summary/span") var mRFractionLink: WebElement                    = null
   @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var associatedCompanies: WebElement             = null
@@ -47,9 +48,9 @@ object DetailedCalculationPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//h2[@class='govuk-heading-m'][4]") var headerSection: WebElement          = null
   @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[1]") var lblText: WebElement       = null
   @FindBy(how = How.XPATH, using = "//*[@href='/marginal-relief-calculator/pdf-meta-data']") var linkPrintandSave
-    : WebElement = null
+  : WebElement = null
 
-  PageFactory.initElements(driver, this)
+  PageFactory.initElements(Driver.instance, this)
 
   def verifyDetailLink(): Unit =
     detailLinK.isDisplayed
@@ -75,7 +76,7 @@ object DetailedCalculationPage extends BasePage {
   def validateMrCalculationSteps(calSteps: String): Unit = {
     val steps                             = calSteps.toInt
     val webElementsList: List[WebElement] =
-      driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/table/tbody/tr")).asScala.toList
+      Driver.instance.findElements(By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/table/tbody/tr")).asScala.toList
     webElementsList.length shouldBe steps
   }
 
@@ -94,7 +95,7 @@ object DetailedCalculationPage extends BasePage {
   }
 
   def clickOnGetACopyOfResults(): Unit =
-    driver.findElement(By.linkText("Get a copy of these results")).click()
+    Driver.instance.findElement(By.linkText("Get a copy of these results")).click()
 
   def getCopyOfResults(): Unit =
     getCopyOfResult.click()

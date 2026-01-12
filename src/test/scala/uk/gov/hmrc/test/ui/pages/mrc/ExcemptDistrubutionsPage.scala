@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.{By, WebElement}
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 import java.util
@@ -75,14 +76,14 @@ object ExcemptDistrubutionsPage extends BasePage {
   }
 
   def verifyYesNoNotSelected(): Unit = {
-    val elementsYes: util.List[WebElement] = driver.findElements(By.cssSelector("#value_0:checked"))
-    val elementsNo: util.List[WebElement]  = driver.findElements(By.cssSelector("#value_1:checked"))
+    val elementsYes: util.List[WebElement] = Driver.instance.findElements(By.cssSelector("#value_0:checked"))
+    val elementsNo: util.List[WebElement]  = Driver.instance.findElements(By.cssSelector("#value_1:checked"))
     assert(((elementsYes.size === 0) && (elementsNo.size === 0)) === true)
   }
 
   def verifyYesNoNotSelectedForIncludeInProfits(): Unit = {
-    val elementsYes: util.List[WebElement] = driver.findElements(By.cssSelector("#distributionsIncluded:checked"))
-    val elementsNo: util.List[WebElement]  = driver.findElements(By.cssSelector("#distributionsIncluded-2:checked"))
+    val elementsYes: util.List[WebElement] = Driver.instance.findElements(By.cssSelector("#distributionsIncluded:checked"))
+    val elementsNo: util.List[WebElement]  = Driver.instance.findElements(By.cssSelector("#distributionsIncluded-2:checked"))
     assert(((elementsYes.size === 0) && (elementsNo.size === 0)) === true)
   }
 

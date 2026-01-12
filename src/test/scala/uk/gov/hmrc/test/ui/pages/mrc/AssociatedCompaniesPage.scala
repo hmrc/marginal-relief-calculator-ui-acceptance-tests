@@ -20,8 +20,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.concurrent.Eventually.eventually
-import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
+
 import scala.compiletime.uninitialized
 
 object AssociatedCompaniesPage extends BasePage {
@@ -41,7 +43,7 @@ object AssociatedCompaniesPage extends BasePage {
   ) var inputAssociatedCompaniesCount: WebElement                                                             = uninitialized
   @FindBy(how = How.CSS, using = "form > button") var continueButton: WebElement                              = uninitialized
 
-  PageFactory.initElements(driver, this)
+  PageFactory.initElements(Driver.instance, this)
 
   val pageHeading = By.cssSelector("h1.govuk-heading-l")
   val suffix      = " - Calculate Marginal Relief for Corporation Tax - GOV.UK"

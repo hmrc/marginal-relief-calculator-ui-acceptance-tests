@@ -20,13 +20,14 @@ import org.openqa.selenium.By
 import org.openqa.selenium.support.PageFactory
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.scalatest.concurrent.Eventually.eventually
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object TaxableProfitPage extends BasePage {
   val inputProfitValue: By = By.id("value")
   val taxableProfitPage    =
     "How much is your company's taxable profit? - Calculate Marginal Relief for Corporation Tax - GOV.UK"
-  PageFactory.initElements(driver, this)
+  PageFactory.initElements(Driver.instance, this)
 
   def verifyTitle(): Unit =
     verifyPageTitle(taxableProfitPage)

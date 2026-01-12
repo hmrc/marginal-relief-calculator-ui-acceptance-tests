@@ -18,8 +18,10 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.BasePage
+
 import scala.compiletime.uninitialized
 
 object BeforeYouStartPage extends BasePage {
@@ -34,12 +36,12 @@ object BeforeYouStartPage extends BasePage {
   @FindBy(how = How.XPATH, using = "//a[contains(text(),'Start now')]") var startNowButton: WebElement = uninitialized
   @FindBy(how = How.CLASS_NAME, using = "govuk-breadcrumbs__list") var breadcrumbs: WebElement         = uninitialized
 
-  PageFactory.initElements(driver, this)
+  PageFactory.initElements(Driver.instance, this)
 
   def loadPage(): Unit = {
-    driver.manage().deleteAllCookies()
-    driver.navigate().to(url)
-    // driver.switchTo.alert.sendKeys("mrc")
+    Driver.instance.manage().deleteAllCookies()
+    Driver.instance.navigate().to(url)
+    // Driver.instance.switchTo.alert.sendKeys("mrc")
     verifyPageTitle(mrcBeforeYouStartPage)
   }
 
@@ -56,7 +58,7 @@ object BeforeYouStartPage extends BasePage {
     startNowButton.click()
 
   def verifyWelshLanguageLink(): Unit = {
-    val welshLanguageLinkPresent = driver.getPageSource.contains("Welsh")
+    val welshLanguageLinkPresent = Driver.instance.getPageSource.contains("Welsh")
     assert(welshLanguageLinkPresent === false)
   }
 }

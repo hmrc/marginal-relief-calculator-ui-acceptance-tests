@@ -18,7 +18,9 @@ package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
+
 import scala.compiletime.uninitialized
 
 object AccountingPeriodPage extends BasePage {
@@ -36,7 +38,7 @@ object AccountingPeriodPage extends BasePage {
     uninitialized
   @FindBy(how = How.ID, using = "accountingPeriodEndDate-hint") var accountEndDateMsg: WebElement            = uninitialized
 
-  PageFactory.initElements(driver, this)
+  PageFactory.initElements(Driver.instance, this)
 
   val accountingPeriodPage  =
     "What are your accounting period dates? - Calculate Marginal Relief for Corporation Tax - GOV.UK"

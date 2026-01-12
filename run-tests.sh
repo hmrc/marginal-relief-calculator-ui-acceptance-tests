@@ -25,7 +25,7 @@ if ($DAST); then
   echo "=========================================="
 fi
 
-sbt clean -Dbrowser="${BROWSER:=chrome}" -Denvironment="${ENVIRONMENT:=local}" -Dsecurity.assessment="${DAST}" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.Runner" testReport
+sbt clean -Dbrowser="${BROWSER:=chrome}" -Denvironment="${ENVIRONMENT:=local}" -Dsecurity.assessment="${DAST}" "testOnly uk.gov.hmrc.test.ui.specs.*" testReport
 
 if ($DAST); then
   echo "stopping dast-config-manager"
