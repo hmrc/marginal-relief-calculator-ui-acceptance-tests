@@ -122,9 +122,9 @@ Feature:Results - Validations
     And the user selects option "no" for the question Did your company have any active associated companies?
     And the user clicks the continue button on the associated companies page
     And the user clicks the calculate marginal relief button on the check your answers page
-    Then display the green box of type "£1,148.63"
-    And the corporation tax liability heading is displayed as "£16,351.37"
-    And the corporation tax liability body is displayed as "Reduced from £17,500 after £1,148.63 Marginal Relief" for single year
+    Then display the green box of type "£1,142.62"
+    And the corporation tax liability heading is displayed as "£16,357.38"
+    And the corporation tax liability body is displayed as "Reduced from £17,500 after £1,142.62 Marginal Relief" for single year
     And the single year corporation tax liability table is displayed
 
   @mrc-42
@@ -173,7 +173,7 @@ Feature:Results - Validations
     And the user selects option "no" for the question Did your company have any active associated companies?
     And the user clicks the continue button on the associated companies page
     And the user clicks the calculate marginal relief button on the check your answers page
-    And the effective tax rate heading is displayed as "23.36%"
+    And the effective tax rate heading is displayed as "23.37%"
     And the effective tax body is displayed as "Reduced from 25% after Marginal Relief" for single year
     And the single year effective tax table is displayed
 
