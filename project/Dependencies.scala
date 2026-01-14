@@ -3,7 +3,7 @@ import sbt._
 object Dependencies {
 
   val test = Seq(
-    "uk.gov.hmrc"       %% "ui-test-runner" % "0.50.0",
+    "uk.gov.hmrc"       %% "ui-test-runner" % "0.52.0",
     "org.scalatestplus" %% "selenium-4-17"  % "3.2.18.0",
     "io.cucumber"       %% "cucumber-scala" % "8.35.0",
     "io.cucumber"        % "cucumber-junit" % "7.30.0",
