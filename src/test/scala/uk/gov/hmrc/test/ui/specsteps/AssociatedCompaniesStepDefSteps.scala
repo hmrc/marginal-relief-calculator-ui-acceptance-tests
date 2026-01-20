@@ -32,82 +32,68 @@ package uk.gov.hmrc.test.ui.specsteps
  * limitations under the License.
  */
 
-import org.scalatest.matchers.must.Matchers.be
-import org.scalatest.matchers.should.Matchers.convertToStringShouldWrapperForVerb
-import uk.gov.hmrc.selenium.webdriver.Driver.instance
 import uk.gov.hmrc.test.ui.pages.mrc.AssociatedCompaniesPage.titleMessage
 import uk.gov.hmrc.test.ui.pages.mrc.{AssociatedCompaniesPage, CheckYourAnswersPage}
+import org.scalatest.matchers.should.Matchers._
 
 object AssociatedCompaniesStepDefSteps {
 
   // display the {string} on associated company
-  def thenDisplayTheOnAssociatedCompany(message: String): Unit = {
-    titleMessage() should be(message)
-  }
+  def thenDisplayTheOnAssociatedCompany(message: String): Unit =
+    titleMessage() shouldBe message
 
   // the user lands on the associated companies page
-  def thenTheUserLandsOnTheAssociatedCompaniesPage(): Unit = {
+  def thenTheUserLandsOnTheAssociatedCompaniesPage(): Unit =
     AssociatedCompaniesPage.validatePageTitle()
-  }
 
   // the user validates associated companies are pre-populated as {string}
-  def thenTheUserValidatesAssociatedCompaniesArePrepopulatedAs(associatedCo: String): Unit = {
+  def thenTheUserValidatesAssociatedCompaniesArePrepopulatedAs(associatedCo: String): Unit =
     AssociatedCompaniesPage.verifyAssociatedCompanies(associatedCo)
-  }
 
   // the user can see the options yes and No as not selected
   def andTheUserCanSeeTheOptionsYesAndNoAsNotSelected(): Unit = {
     AssociatedCompaniesPage.verifyYesAndNoOptionsPresent()
-        AssociatedCompaniesPage.verifyYesAndNoOptionsNotSelected()
+    AssociatedCompaniesPage.verifyYesAndNoOptionsNotSelected()
   }
 
   // the user selects option {string} for the question Did your company have any active associated companies?
-  def whenTheUserSelectsOptionForTheQuestionDidYourCompanyHaveAnyActiveAssociatedCompanies(option: String): Unit = {
+  def theUserSelectsOptionForTheQuestionDidYourCompanyHaveAnyActiveAssociatedCompanies(option: String): Unit =
     if (option.equalsIgnoreCase("yes")) {
-            AssociatedCompaniesPage.selectOptionYes()
-          } else {
-            AssociatedCompaniesPage.selectOptionNo()
-          }
-  }
+      AssociatedCompaniesPage.selectOptionYes()
+    } else {
+      AssociatedCompaniesPage.selectOptionNo()
+    }
 
   // the user is presented with an input field for associated companies
-  def andTheUserIsPresentedWithAnInputFieldForAssociatedCompanies(): Unit = {
+  def andTheUserIsPresentedWithAnInputFieldForAssociatedCompanies(): Unit =
     AssociatedCompaniesPage.isAssociatedCompaniesCountInputDisplayed
-  }
 
   // the user inputs a valid number as {string} associated companies
-  def andTheUserInputsAValidNumberAsAssociatedCompanies(associatedCo: String): Unit = {
+  def andTheUserInputsAValidNumberAsAssociatedCompanies(associatedCo: String): Unit =
     AssociatedCompaniesPage.inputAssociatedCompanies(associatedCo)
-  }
 
   // the user clicks the continue button on the associated companies page
-  def thenTheUserClicksTheContinueButtonOnTheAssociatedCompaniesPage(): Unit = {
+  def thenTheUserClicksTheContinueButtonOnTheAssociatedCompaniesPage(): Unit =
     AssociatedCompaniesPage.clickOnContinue()
-  }
 
   // the user is presented with the Check Your Answers page
-  def thenTheUserIsPresentedWithTheCheckYourAnswersPage(): Unit = {
+  def thenTheUserIsPresentedWithTheCheckYourAnswersPage(): Unit =
     CheckYourAnswersPage.verifyPageTitle()
-  }
 
   // the user is presented with an input field for associated companies with the value as null
-  def andTheUserIsPresentedWithAnInputFieldForAssociatedCompaniesWithTheValueAsNull(): Unit = {
+  def andTheUserIsPresentedWithAnInputFieldForAssociatedCompaniesWithTheValueAsNull(): Unit =
     AssociatedCompaniesPage.associatedCompaniesCountAsNull()
-  }
 
   // the user clicks on What are associated companies?
-  def andTheUserClicksOnWhatAreAssociatedCompanies(): Unit = {
+  def andTheUserClicksOnWhatAreAssociatedCompanies(): Unit =
     AssociatedCompaniesPage.clickOnQuestion()
-  }
 
   // the user inputs {string} associated companies for the first part of accounting period
-  def andTheUserInputsAssociatedCompaniesForTheFirstPartOfAccountingPeriod(noOfAc: String): Unit = {
+  def andTheUserInputsAssociatedCompaniesForTheFirstPartOfAccountingPeriod(noOfAc: String): Unit =
     AssociatedCompaniesPage.inputAcForFirstPartOfFinancialYear(noOfAc)
-  }
 
   // the user inputs {string} associated companies for the second part of accounting period
-  def andTheUserInputsAssociatedCompaniesForTheSecondPartOfAccountingPeriod(noOfAc: String): Unit = {
+  def andTheUserInputsAssociatedCompaniesForTheSecondPartOfAccountingPeriod(noOfAc: String): Unit =
     AssociatedCompaniesPage.inputAcForSecondPartOfFinancialYear(noOfAc)
-  }
 
 }

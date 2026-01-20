@@ -16,51 +16,68 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
 import org.scalatest.concurrent.Eventually.eventually
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-import scala.compiletime.uninitialized
-
 object ResultPage extends BasePage {
   //  val resultsPage = "Marginal Relief Results - Calculate Marginal Relief for Corporation Tax - GOV.UK"
+  def runAnotherCalculationButton: WebElement =
+    Driver.instance.findElement(By.cssSelector("#main-content > div > div > a"))
 
-  @FindBy(how = How.CSS, using = "#main-content > div > div > a") var runAnotherCalculationButton: WebElement   =
-    uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-s']") var HMRCFinancialYearsHeader: WebElement    =
-    uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body govuk-!-margin-0']") var HMRCFinancialYearsSectionY1
-  : WebElement = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var HMRCFinancialYearsSectionY2: WebElement   =
-    uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[1]/div") var panelMessage: WebElement =
-    uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][1]") var ctAmount: WebElement                 = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var singleYearCTBody: WebElement              = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var dualYearCTBody: WebElement                = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-heading-l'][2]") var ETHeader: WebElement                 = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var ETBodySingle: WebElement                  = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var ETBodyDual: WebElement                    = uninitialized
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var TwoAssociatedComapniesText: WebElement       =
-    uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[3]/table/tbody/tr[2]/th") var ETContent
-  : WebElement = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[2]") var etFirstRow
-  : WebElement = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[3]") var etSecondRow
-  : WebElement = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[3]") var etThirdRow
-  : WebElement = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[3]") var ctThirdRow
-  : WebElement = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[2]") var ctFirstRow
-  : WebElement = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[3]") var ctSecondRow
-  : WebElement = uninitialized
+  def HMRCFinancialYearsHeader: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-heading-s']"))
 
-  PageFactory.initElements(Driver.instance, this)
+  def HMRCFinancialYearsSectionY1: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-body govuk-!-margin-0']"))
+
+  def HMRCFinancialYearsSectionY2: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-body'][1]"))
+
+  def panelMessage: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/div"))
+
+  def ctAmount: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-heading-l'][1]"))
+
+  def singleYearCTBody: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-body'][1]"))
+
+  def dualYearCTBody: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-body'][2]"))
+
+  def ETHeader: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-heading-l'][2]"))
+
+  def ETBodySingle: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-body'][2]"))
+  def ETBodyDual: WebElement   =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-body'][3]"))
+
+  def TwoAssociatedComapniesText: WebElement =
+    Driver.instance.findElement(By.cssSelector("dl > div:nth-child(4) > dd"))
+
+  def ETContent: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/div[3]/table/tbody/tr[2]/th"))
+
+  def etFirstRow: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[2]"))
+
+  def etSecondRow: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[3]"))
+
+  def etThirdRow: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/table[2]/thead/tr/th[3]"))
+
+  def ctThirdRow: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[3]"))
+
+  def ctFirstRow: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[2]"))
+
+  def ctSecondRow: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/table/thead/tr/th[3]"))
 
   //  def verifyPageTitle(): Unit =
   //    assert(Driver.instance.getTitle.contains(resultsPage))

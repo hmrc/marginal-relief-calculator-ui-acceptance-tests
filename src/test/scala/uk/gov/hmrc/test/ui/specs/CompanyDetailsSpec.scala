@@ -32,20 +32,95 @@ package uk.gov.hmrc.test.ui.specs
  * limitations under the License.
  */
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.featurespec.AnyFeatureSpec
-import org.scalatest.GivenWhenThen
+import uk.gov.hmrc.test.ui.specsteps.ExcemptDistributionsStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.BaseSpec
+import uk.gov.hmrc.test.ui.specsteps.AccountingPeriodStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.TaxableProfitStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.CompanyDetailsStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.BeforeYouStartStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.AssociatedCompaniesStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.PreviewSummaryStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.DetailedCalculationStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.CheckYourAnswersStepDefSteps.*
 
-class CompanyDetailsSpec extends AnyFeatureSpec with GivenWhenThen with Matchers {
+class CompanyDetailsSpec extends BaseSpec {
+
+  def givenDefaultState(): Unit = {
+
+    Given("Marginal Relief Calculator is launched")
+    givenMarginalReliefCalculatorIsLaunched()
+
+    When("the user clicks the start now button")
+    andTheUserClicksTheStartNowButton()
+
+    Then("the user lands on the accounting period page")
+    theUserLandsOnTheAccountingPeriodPage()
+
+    When("""the accounting period start date is provided as "01/01/2023"""")
+    theAccountingPeriodStartDateIsProvidedAs("01/01/2023")
+
+    Then("the user clicks the continue button on the accounting period page")
+    andTheUserClicksTheContinueButtonOnTheAccountingPeriodPage()
+
+    And("""the profit is "70000"""")
+    andTheProfitIs("70000")
+
+    Then("the user clicks continue button on taxable profit page")
+    andTheUserClicksContinueButtonOnTaxableProfitPage()
+
+    And("""the user selects option "No" for the question Did your company receive any distributions?""")
+    andTheUserSelectsOptionForTheQuestionDidYourCompanyReceiveAnyDistributions("No")
+
+    And("the user clicks the continue button on the distributions page")
+    andTheUserClicksTheContinueButtonOnTheDistributionsPage()
+
+    Then("the user lands on the associated companies page")
+    thenTheUserLandsOnTheAssociatedCompaniesPage()
+
+    When("""the user selects option "no" for the question Did your company have any active associated companies?""")
+    theUserSelectsOptionForTheQuestionDidYourCompanyHaveAnyActiveAssociatedCompanies("no")
+
+    Then("the user clicks the continue button on the associated companies page")
+    thenTheUserClicksTheContinueButtonOnTheAssociatedCompaniesPage()
+
+    Then("the user is presented with the Check Your Answers page")
+    thenTheUserIsPresentedWithTheCheckYourAnswersPage()
+
+    And("the user clicks the calculate marginal relief button on the check your answers page")
+    theUserClicksTheCalculateMarginalReliefButtonOnTheCheckYourAnswersPage()
+
+    And("the Check Marginal Relief calculation in detail link is displayed")
+    andTheCheckMarginalReliefCalculationInDetailLinkIsDisplayed()
+
+    And("the user clicks the Get A Copy Of Results link")
+    thenTheUserClicksTheGetACopyOfResultsLink()
+
+    Then("the user is presented with add company details to your result page")
+    thenTheUserIsPresentedWithAddCompanyDetailsToYourResultPage()
+
+    And("""the user selects option as "yes" on add company details page""")
+    andTheUserSelectsOptionAsOnAddCompanyDetailsPage("yes")
+  }
 
   Feature("Company Details  - Validations") {
 
-    Scenario("Company Details- Valid Scenario [validCompanyName=Test-Company name, validUTRNumber=0987654321]") {
+    Scenario("Company Details- Valid Scenario") {
+      givenDefaultState()
+
       Then("the user lands on AddCompanyDetails page")
-      When("the user provides a Test-Company name on Company name field")
-      And("the user provides a 0987654321 on UTR number field")
+      theUserLandsOnAddCompanyDetailsPage()
+
+      When("""the user provides a "Test-Company name" on Company name field""")
+      theUserProvidesOnCompanyNameField("Test-Company name")
+
+      And("""the user provides a "0987654321" on UTR number field""")
+      theUserProvidesOnUTRNumberField("0987654321")
+
       And("the user clicks the continue button on the company details page")
+      theUserClicksTheContinueButtonOnTheCompanyDetailsPage()
+
       Then("the user verifies the same name is displayed on the Preview summary page")
+      andTheUserVerifiesTheSameNameIsDisplayedOnThePreviewSummaryPage()
     }
   }
 }

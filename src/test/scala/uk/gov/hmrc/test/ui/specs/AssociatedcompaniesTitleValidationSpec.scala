@@ -16,51 +16,69 @@
 
 package uk.gov.hmrc.test.ui.specs
 
-/*
- * Copyright 2026 HM Revenue & Customs
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+import uk.gov.hmrc.test.ui.specsteps.TaxableProfitStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.BeforeYouStartStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.AccountingPeriodStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.ExcemptDistributionsStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.BaseSpec
+import uk.gov.hmrc.test.ui.specsteps.AssociatedCompaniesStepDefSteps.*
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.featurespec.AnyFeatureSpec
-import org.scalatest.GivenWhenThen
+class AssociatedcompaniesTitleValidationSpec extends BaseSpec {
 
+  def givenDefaultState(): Unit = {
+    Given("Marginal Relief Calculator is launched")
+    givenMarginalReliefCalculatorIsLaunched()
 
-class AssociatedcompaniesTitleValidationSpec extends AnyFeatureSpec with GivenWhenThen with Matchers {
+    When("the user clicks the start now button")
+    andTheUserClicksTheStartNowButton()
+
+    Then("the user lands on the accounting period page")
+    theUserLandsOnTheAccountingPeriodPage()
+  }
 
   Feature("Associated companies Title Message - Validations") {
 
-    Scenario("Enter associated companies for a portion of the accounting period [accountingStartDate=01/05/2024, accountingEndDate=31/12/2024, profitValue=50000, message=Did your company have any active associated companies?]") {
-      When("the accounting period start date is provided as 01/05/2024")
-      And("the accounting period end date is provided as 31/12/2024")
-      And("the user clicks the continue button on the accounting period page")
-      And("the profit is 50000")
-      And("the user clicks continue button on taxable profit page")
-      And("the user selects option no for the question Did your company receive any distributions?")
-      And("the user clicks the continue button on the distributions page")
-      Then("display the Did your company have any active associated companies? on associated company")
-    }
+    val cases    = Seq(
+      ("01/05/2024", "31/12/2024", "50000", "Did your company have any active associated companies?"),
+      (
+        "01/01/2023",
+        "31/12/2023",
+        "50000",
+        "Did your company have any active associated companies between 1 April 2023 and 31 December 2023?"
+      )
+    )
+    val noAnswer = "no"
 
-    Scenario("Enter associated companies for a portion of the accounting period [accountingStartDate=01/01/2023, accountingEndDate=31/12/2023, profitValue=50000, message=Did your company have any active associated companies between 1 April 2023 and 31 December 2023?]") {
-      When("the accounting period start date is provided as 01/01/2023")
-      And("the accounting period end date is provided as 31/12/2023")
-      And("the user clicks the continue button on the accounting period page")
-      And("the profit is 50000")
-      And("the user clicks continue button on taxable profit page")
-      And("the user selects option no for the question Did your company receive any distributions?")
-      And("the user clicks the continue button on the distributions page")
-      Then("display the Did your company have any active associated companies between 1 April 2023 and 31 December 2023? on associated company")
+    cases.foreach { case (accountingStartDate, accountingEndDate, profitValue, message) =>
+      Scenario(
+        s"Enter associated companies for a portion of the accounting period [accountingStartDate=$accountingStartDate, accountingEndDate=$accountingEndDate, profitValue=$profitValue, message=$message]"
+      ) {
+        givenDefaultState()
+
+        When(s"the accounting period start date is provided as $accountingStartDate")
+        theAccountingPeriodStartDateIsProvidedAs(accountingStartDate)
+
+        And(s"the accounting period end date is provided as $accountingEndDate")
+        provideAccountingPeriodEndDate(accountingEndDate)
+
+        And("the user clicks the continue button on the accounting period page")
+        andTheUserClicksTheContinueButtonOnTheAccountingPeriodPage()
+
+        And(s"the profit is $profitValue")
+        andTheProfitIs(profitValue)
+
+        And("the user clicks continue button on taxable profit page")
+        andTheUserClicksContinueButtonOnTaxableProfitPage()
+
+        And(s"the user selects option $noAnswer for the question Did your company receive any distributions?")
+        andTheUserSelectsOptionForTheQuestionDidYourCompanyReceiveAnyDistributions(noAnswer)
+
+        And("the user clicks the continue button on the distributions page")
+        andTheUserClicksTheContinueButtonOnTheDistributionsPage()
+
+        Then(s"display the $message on associated company")
+        thenDisplayTheOnAssociatedCompany(message)
+      }
     }
   }
 }

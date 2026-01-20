@@ -37,28 +37,23 @@ import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage
 object TaxableProfitStepDefSteps {
 
   // the profit is {string}
-  def andTheProfitIs(profitValue: String): Unit = {
+  def andTheProfitIs(profitValue: String): Unit =
     TaxableProfitPage.provideProfit(profitValue)
-  }
 
   // the user clicks continue button on taxable profit page
-  def andTheUserClicksContinueButtonOnTaxableProfitPage(): Unit = {
+  def andTheUserClicksContinueButtonOnTaxableProfitPage(): Unit =
     TaxableProfitPage.submitPage()
-  }
 
   // I can see companies taxable profit as null
-  def thenICanSeeCompaniesTaxableProfitAsNull(): Unit = {
+  def thenICanSeeCompaniesTaxableProfitAsNull(): Unit =
     TaxableProfitPage.verifyCompaniesProfitAsNull()
-  }
 
   // I am navigated to taxable profit page
-  def thenIAmNavigatedToTaxableProfitPage(): Unit = {
+  def thenIAmNavigatedToTaxableProfitPage(): Unit =
     TaxableProfitPage.verifyTitle()
-  }
 
   // I validate company profit is pre-populated as {string}
-  def thenIValidateCompanyProfitIsPrepopulatedAs(profit: String): Unit = {
+  def thenIValidateCompanyProfitIsPrepopulatedAs(profit: String): Unit =
     TaxableProfitPage.verifyProfitValue(profit)
-  }
 
 }

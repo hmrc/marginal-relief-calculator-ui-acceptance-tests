@@ -43,27 +43,23 @@ import java.time.Duration
 object BeforeYouStartStepDefSteps {
 
   // Marginal Relief Calculator is launched
-  def givenMarginalReliefCalculatorIsLaunched(): Unit = {
+  def givenMarginalReliefCalculatorIsLaunched(): Unit =
     BeforeYouStartPage.loadPage()
-  }
 
   // the user lands on the before you start page
-  def thenTheUserLandsOnTheBeforeYouStartPage(): Unit = {
+  def thenTheUserLandsOnTheBeforeYouStartPage(): Unit =
     BeforeYouStartPage.verifyTitle()
-  }
 
   // the user can see the breadcrumbs on the page
-  def andTheUserCanSeeTheBreadcrumbsOnThePage(): Unit = {
+  def andTheUserCanSeeTheBreadcrumbsOnThePage(): Unit =
     BeforeYouStartPage.verifyBreadcrumbs()
-  }
 
   // the user can verify that Welsh language is not displayed
-  def andTheUserCanVerifyThatWelshLanguageIsNotDisplayed(): Unit = {
+  def andTheUserCanVerifyThatWelshLanguageIsNotDisplayed(): Unit =
     BeforeYouStartPage.verifyWelshLanguageLink()
-  }
 
   // Overload for ScalaTest (no DataTable, accepts varargs)
-  def andTheUserCanVerifyTheLinkPresentOnScreen(links: (String, String)*): Unit = {
+  def theUserCanVerifyTheLinkPresentOnScreen(links: (String, String)*): Unit =
     links.foreach { case (text, url) =>
       val driverWait: WebDriverWait =
         new WebDriverWait(Driver.instance, Duration.ofSeconds(10), Duration.ofSeconds(1))
@@ -74,11 +70,9 @@ object BeforeYouStartStepDefSteps {
       )
       verifyLinkText(text)
     }
-  }
 
   // the user clicks the start now button
-  def andTheUserClicksTheStartNowButton(): Unit = {
+  def andTheUserClicksTheStartNowButton(): Unit =
     BeforeYouStartPage.clickOnStartNowButton()
-  }
 
 }

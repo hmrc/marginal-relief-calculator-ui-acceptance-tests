@@ -32,22 +32,35 @@ package uk.gov.hmrc.test.ui.specs
  * limitations under the License.
  */
 
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.featurespec.AnyFeatureSpec
-import org.scalatest.GivenWhenThen
+import uk.gov.hmrc.test.ui.specsteps.BaseSpec
+import uk.gov.hmrc.test.ui.specsteps.BeforeYouStartStepDefSteps.*
+import uk.gov.hmrc.test.ui.specsteps.AccountingPeriodStepDefSteps.*
 
-class BeforeYouStartSpec extends  AnyFeatureSpec with GivenWhenThen with Matchers  {
+class BeforeYouStartSpec extends BaseSpec {
 
   Feature("Before you start page - Validations") {
 
     Scenario("Validating before you start page validations") {
       Given("Marginal Relief Calculator is launched")
+      givenMarginalReliefCalculatorIsLaunched()
+
       When("the user lands on the before you start page")
+      thenTheUserLandsOnTheBeforeYouStartPage()
+
       Then("the user can see the breadcrumbs on the page")
+      andTheUserCanSeeTheBreadcrumbsOnThePage()
+
       And("the user can verify that Welsh language is not displayed")
+      andTheUserCanVerifyThatWelshLanguageIsNotDisplayed()
+
       Then("the user can verify the link present on screen")
+      theUserCanVerifyTheLinkPresentOnScreen()
+
       When("the user clicks the start now button")
+      andTheUserClicksTheStartNowButton()
+
       Then("the user lands on the accounting period page")
+      theUserLandsOnTheAccountingPeriodPage()
     }
   }
 }

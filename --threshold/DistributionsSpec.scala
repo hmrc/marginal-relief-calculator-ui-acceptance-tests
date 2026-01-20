@@ -14,6 +14,24 @@
  * limitations under the License.
  */
 
+package uk.gov.hmrc.test.ui.specs
+
+/*
+ * Copyright 2026 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.GivenWhenThen
@@ -27,12 +45,10 @@ class DistributionsSpec extends AnyFeatureSpec with GivenWhenThen with Matchers 
         // ⚠️ No step-def match found for: the user selects option No for the question Did your company receive any distributions?
 
       And("the user clicks the continue button on the distributions page")
-        // Possible match (best=1.00)
-        andTheUserClicksTheContinueButtonOnTheDistributionsPage()
+        // ⚠️ No step-def match found for: the user clicks the continue button on the distributions page
 
       Then("the user lands on the associated companies page")
-        // Possible match (best=1.00)
-        thenTheUserLandsOnTheAssociatedCompaniesPage()
+        // ⚠️ No step-def match found for: the user lands on the associated companies page
 
     }
 
@@ -41,19 +57,16 @@ class DistributionsSpec extends AnyFeatureSpec with GivenWhenThen with Matchers 
         // ⚠️ No step-def match found for: the user selects option Yes for the question Did your company receive any distributions?
 
       And("the user clicks the continue button on the distributions page")
-        // Possible match (best=1.00)
-        andTheUserClicksTheContinueButtonOnTheDistributionsPage()
+        // ⚠️ No step-def match found for: the user clicks the continue button on the distributions page
 
       And("the user selects option No for the question Do any distributions need to be included with your profits?")
         // ⚠️ No step-def match found for: the user selects option No for the question Do any distributions need to be included with your profits?
 
       And("the user clicks the continue button on the distributions page")
-        // Possible match (best=1.00)
-        andTheUserClicksTheContinueButtonOnTheDistributionsPage()
+        // ⚠️ No step-def match found for: the user clicks the continue button on the distributions page
 
       Then("the user lands on the associated companies page")
-        // Possible match (best=1.00)
-        thenTheUserLandsOnTheAssociatedCompaniesPage()
+        // ⚠️ No step-def match found for: the user lands on the associated companies page
 
     }
 
@@ -62,26 +75,22 @@ class DistributionsSpec extends AnyFeatureSpec with GivenWhenThen with Matchers 
         // ⚠️ No step-def match found for: the user selects option Yes for the question Did your company receive any distributions?
 
       And("the user clicks the continue button on the distributions page")
-        // Possible match (best=1.00)
-        andTheUserClicksTheContinueButtonOnTheDistributionsPage()
+        // ⚠️ No step-def match found for: the user clicks the continue button on the distributions page
 
       And("the user selects option Yes for the question Do any distributions need to be included with your profits?")
         // ⚠️ No step-def match found for: the user selects option Yes for the question Do any distributions need to be included with your profits?
 
       Then("the user is provided with an input field to provide distributions")
-        // Possible match (best=1.00)
-        thenTheUserIsProvidedWithAnInputFieldToProvideDistributions()
+        // ⚠️ No step-def match found for: the user is provided with an input field to provide distributions
 
       And("the user provides £50,000 as distributions")
         // ⚠️ No step-def match found for: the user provides £50,000 as distributions
 
       And("the user clicks the continue button on the distributions page")
-        // Possible match (best=1.00)
-        andTheUserClicksTheContinueButtonOnTheDistributionsPage()
+        // ⚠️ No step-def match found for: the user clicks the continue button on the distributions page
 
       Then("the user lands on the associated companies page")
-        // Possible match (best=1.00)
-        thenTheUserLandsOnTheAssociatedCompaniesPage()
+        // ⚠️ No step-def match found for: the user lands on the associated companies page
 
     }
 
@@ -90,8 +99,7 @@ class DistributionsSpec extends AnyFeatureSpec with GivenWhenThen with Matchers 
         // ⚠️ No step-def match found for: the user selects option Yes for the question Did your company receive any distributions?
 
       And("the user clicks the continue button on the distributions page")
-        // Possible match (best=1.00)
-        andTheUserClicksTheContinueButtonOnTheDistributionsPage()
+        // ⚠️ No step-def match found for: the user clicks the continue button on the distributions page
 
       And("the user selects option Yes for the question Do any distributions need to be included with your profits?")
         // ⚠️ No step-def match found for: the user selects option Yes for the question Do any distributions need to be included with your profits?
@@ -100,12 +108,10 @@ class DistributionsSpec extends AnyFeatureSpec with GivenWhenThen with Matchers 
         // ⚠️ No step-def match found for: the user provides £200,500,000 as distributions
 
       And("the user clicks the continue button on the distributions page")
-        // Possible match (best=1.00)
-        andTheUserClicksTheContinueButtonOnTheDistributionsPage()
+        // ⚠️ No step-def match found for: the user clicks the continue button on the distributions page
 
       Then("the user lands on the associated companies page")
-        // Possible match (best=1.00)
-        thenTheUserLandsOnTheAssociatedCompaniesPage()
+        // ⚠️ No step-def match found for: the user lands on the associated companies page
 
       When("the user selects option yes for the question Did your company have any active associated companies?")
         // ⚠️ No step-def match found for: the user selects option yes for the question Did your company have any active associated companies?
@@ -114,49 +120,37 @@ class DistributionsSpec extends AnyFeatureSpec with GivenWhenThen with Matchers 
         // ⚠️ No step-def match found for: the user inputs a valid number as 1 associated companies
 
       Then("the user clicks the continue button on the associated companies page")
-        // Possible match (best=1.00)
-        thenTheUserClicksTheContinueButtonOnTheAssociatedCompaniesPage()
+        // ⚠️ No step-def match found for: the user clicks the continue button on the associated companies page
 
       Then("the user is presented with the Check Your Answers page")
-        // Possible match (best=1.00)
-        thenTheUserIsPresentedWithTheCheckYourAnswersPage()
+        // ⚠️ No step-def match found for: the user is presented with the Check Your Answers page
 
       Then("the user is presented with change link next to the distribution amount")
-        // Possible match (best=1.00)
-        thenTheUserIsPresentedWithChangeLinkNextToTheDistributionAmount()
-        // --- Other possible matches ---
-        // thenTheUserClicksTheChangeLinkNextToTheDistributionAmount() [0.79] (CheckYourAnswersStepDefSteps.scala) pattern: the user clicks the change link next to the distribution amount
+        // ⚠️ No step-def match found for: the user is presented with change link next to the distribution amount
 
       And("the user can validate their distribution amount as £200,500,000")
         // ⚠️ No step-def match found for: the user can validate their distribution amount as £200,500,000
 
       When("the user clicks the change link next to the distribution amount")
-        // Possible match (best=1.00)
-        thenTheUserClicksTheChangeLinkNextToTheDistributionAmount()
+        // ⚠️ No step-def match found for: the user clicks the change link next to the distribution amount
 
       Then("the user is navigated to the exempt distributions page")
-        // Possible match (best=1.00)
-        thenTheUserIsNavigatedToTheExemptDistributionsPage()
-        // --- Other possible matches ---
-        // thenTheUserIsNavigatedToTheSecondExemptDistributionsPage() [0.78] (ExcemptDistributionsStepDefSteps.scala) pattern: the user is navigated to the Second exempt distributions page
+        // ⚠️ No step-def match found for: the user is navigated to the exempt distributions page
 
       And("the user selects option Yes for the question Did your company receive any distributions?")
         // ⚠️ No step-def match found for: the user selects option Yes for the question Did your company receive any distributions?
 
       And("the user clicks the continue button on the distributions page")
-        // Possible match (best=1.00)
-        andTheUserClicksTheContinueButtonOnTheDistributionsPage()
+        // ⚠️ No step-def match found for: the user clicks the continue button on the distributions page
 
       When("the user changes the distributions value to £30,000")
         // ⚠️ No step-def match found for: the user changes the distributions value to £30,000
 
       And("the user clicks the continue button on the distributions page")
-        // Possible match (best=1.00)
-        andTheUserClicksTheContinueButtonOnTheDistributionsPage()
+        // ⚠️ No step-def match found for: the user clicks the continue button on the distributions page
 
       Then("the user is presented with the Check Your Answers page")
-        // Possible match (best=1.00)
-        thenTheUserIsPresentedWithTheCheckYourAnswersPage()
+        // ⚠️ No step-def match found for: the user is presented with the Check Your Answers page
 
       And("the user can validate their distribution amount as £30,000")
         // ⚠️ No step-def match found for: the user can validate their distribution amount as £30,000
@@ -168,23 +162,19 @@ class DistributionsSpec extends AnyFeatureSpec with GivenWhenThen with Matchers 
         // ⚠️ No step-def match found for: the user selects option No for the question Did your company receive any distributions?
 
       And("the user clicks the continue button on the distributions page")
-        // Possible match (best=1.00)
-        andTheUserClicksTheContinueButtonOnTheDistributionsPage()
+        // ⚠️ No step-def match found for: the user clicks the continue button on the distributions page
 
       Then("the user lands on the associated companies page")
-        // Possible match (best=1.00)
-        thenTheUserLandsOnTheAssociatedCompaniesPage()
+        // ⚠️ No step-def match found for: the user lands on the associated companies page
 
       When("the user selects option no for the question Did your company have any active associated companies?")
         // ⚠️ No step-def match found for: the user selects option no for the question Did your company have any active associated companies?
 
       And("the user clicks the continue button on the associated companies page")
-        // Possible match (best=1.00)
-        thenTheUserClicksTheContinueButtonOnTheAssociatedCompaniesPage()
+        // ⚠️ No step-def match found for: the user clicks the continue button on the associated companies page
 
       Then("the user is presented with the Check Your Answers page")
-        // Possible match (best=1.00)
-        thenTheUserIsPresentedWithTheCheckYourAnswersPage()
+        // ⚠️ No step-def match found for: the user is presented with the Check Your Answers page
 
       And("the user can validate their distribution amount as None")
         // ⚠️ No step-def match found for: the user can validate their distribution amount as None

@@ -16,38 +16,47 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.WebElement
-import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.selenium.webdriver.Driver
+import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 object CheckYourAnswersPage extends BasePage {
 
-  val checkYourAnswers =
+  def checkYourAnswers =
     "Check your answers - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd >a") var changeLinkForDist: WebElement                    = null
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(2) > dd >a") var changeLinkForProfit: WebElement                  = null
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd >a") var changeLinkForAccPeriod: WebElement               = null
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd >a") var changeLinkForAC: WebElement                      = null
-  @FindBy(how = How.CSS, using = "#main-content > div > div > a") var calculateMRCButton: WebElement                   = null
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(1) > dd.govuk-summary-list__value") var accountingPeriodDates
-  : WebElement = null
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(2) > dd.govuk-summary-list__value") var profit: WebElement        = null
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(3) > dd.govuk-summary-list__value") var distributions: WebElement =
-    null
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd.govuk-summary-list__value") var NoOfAssociatedCompanies
-  : WebElement = null
-  @FindBy(
-    how = How.CSS,
-    using = "div:nth-child(5) > dd.govuk-summary-list__value"
-  ) var noOfAcForFirstPartOfFinancialYear: WebElement                                                                  = null
-  @FindBy(
-    how = How.CSS,
-    using = "div:nth-child(6) > dd.govuk-summary-list__value"
-  ) var noOfAcForSecondPartOfFinancialYear: WebElement                                                                 = null
+  def changeLinkForDist: WebElement =
+    Driver.instance.findElement(By.cssSelector("dl > div:nth-child(3) > dd >a"))
 
-  PageFactory.initElements(Driver.instance, this)
+  def changeLinkForProfit: WebElement =
+    Driver.instance.findElement(By.cssSelector("dl > div:nth-child(2) > dd >a"))
+
+  def changeLinkForAccPeriod: WebElement =
+    Driver.instance.findElement(By.cssSelector("dl > div:nth-child(1) > dd >a"))
+
+  def changeLinkForAC: WebElement =
+    Driver.instance.findElement(By.cssSelector("dl > div:nth-child(4) > dd >a"))
+
+  def calculateMRCButton: WebElement =
+    Driver.instance.findElement(By.cssSelector("#main-content > div > div > a"))
+
+  def accountingPeriodDates: WebElement =
+    Driver.instance.findElement(By.cssSelector("dl > div:nth-child(1) > dd.govuk-summary-list__value"))
+
+  def profit: WebElement =
+    Driver.instance.findElement(By.cssSelector("dl > div:nth-child(2) > dd.govuk-summary-list__value"))
+
+  def distributions: WebElement =
+    Driver.instance.findElement(By.cssSelector("dl > div:nth-child(3) > dd.govuk-summary-list__value"))
+
+  def NoOfAssociatedCompanies: WebElement =
+    Driver.instance.findElement(By.cssSelector("dl > div:nth-child(4) > dd.govuk-summary-list__value"))
+
+  def noOfAcForFirstPartOfFinancialYear: WebElement =
+    Driver.instance.findElement(By.cssSelector("div:nth-child(5) > dd.govuk-summary-list__value"))
+
+  def noOfAcForSecondPartOfFinancialYear: WebElement =
+    Driver.instance.findElement(By.cssSelector("div:nth-child(6) > dd.govuk-summary-list__value"))
 
   def verifyPageTitle(): Unit               =
     verifyPageTitle(checkYourAnswers)

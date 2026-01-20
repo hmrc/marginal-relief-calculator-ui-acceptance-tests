@@ -17,19 +17,22 @@
 package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.{By, WebElement}
-import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-import scala.compiletime.uninitialized
-
 object CompanyDetailsPage extends BasePage {
-  @FindBy(how = How.XPATH, using = "//input[@id='companyName']") var fldCompanyName: WebElement = uninitialized
-  @FindBy(how = How.XPATH, using = "//input[@id='utr']") var fldUTR: WebElement                 = uninitialized
-  @FindBy(how = How.ID, using = "pdfAddCompanyDetails") var yesOption: WebElement               = uninitialized
-  @FindBy(how = How.ID, using = "pdfAddCompanyDetails-2") var noOption: WebElement              = uninitialized
 
-  PageFactory.initElements(Driver.instance, this)
+  def fldCompanyName: WebElement =
+    Driver.instance.findElement(By.xpath("//input[@id='companyName']"))
+
+  def fldUTR: WebElement =
+    Driver.instance.findElement(By.xpath("//input[@id='utr']"))
+
+  def yesOption: WebElement =
+    Driver.instance.findElement(By.id("pdfAddCompanyDetails"))
+
+  def noOption: WebElement =
+    Driver.instance.findElement(By.id("pdfAddCompanyDetails-2"))
 
   def selectOptionYes(): Unit = {
     yesOption.click()

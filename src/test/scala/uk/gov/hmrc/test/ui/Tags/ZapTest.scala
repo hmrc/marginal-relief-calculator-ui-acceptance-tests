@@ -17,5 +17,4 @@
 package uk.gov.hmrc.test.ui.Tags
 import org.scalatest.Tag
 
-
 object ZapTest extends Tag("ZapTests")

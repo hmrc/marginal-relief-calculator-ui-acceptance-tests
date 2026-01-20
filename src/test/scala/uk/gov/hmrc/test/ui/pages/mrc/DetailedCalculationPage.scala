@@ -16,41 +16,63 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
-
-import scala.compiletime.uninitialized
 import scala.jdk.CollectionConverters.ListHasAsScala
 
 object DetailedCalculationPage extends BasePage {
-  @FindBy(how = How.XPATH, using = "//a[@href='/marginal-relief-calculator/full-results-page']") var detailLinK
-  : WebElement = null
-  @FindBy(how = How.XPATH, using = "//h1") var detailPageHeader: WebElement                                           = null
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/dl/div[3]/dd") var yourDetailsDistributionAmt
-  : WebElement = null
-  @FindBy(how = How.XPATH, using = "//div[1]/dd") var yourDetailsAccountingPeriod: WebElement                         = null
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/h2[1]") var howItsCalculatedSection: WebElement =
-    null
-  @FindBy(how = How.XPATH, using = "//table") var taxableProfitSection: WebElement                                    = null
 
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/table[1]/tbody/tr") var mrCalculationSteps
-  : List[WebElement] = uninitialized
+  def detailLinK: WebElement =
+    Driver.instance.findElement(By.xpath("//a[@href='/marginal-relief-calculator/full-results-page']"))
 
-  @FindBy(how = How.XPATH, using = "//details/summary/span") var mRFractionLink: WebElement                    = null
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var associatedCompanies: WebElement             = null
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/p[9]/a") var getCopyOfResult: WebElement = null
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/span") var totalMRValue: WebElement      = null
-  @FindBy(how = How.XPATH, using = "//*[@id='tab_year2024']") var tabYear2024: WebElement                      = null
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-tabs__list-item']") var tabYear2025: WebElement          = null
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[2]/b") var lblDate: WebElement     = null
-  @FindBy(how = How.XPATH, using = "//h2[@class='govuk-heading-m'][4]") var headerSection: WebElement          = null
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/ul/li[1]") var lblText: WebElement       = null
-  @FindBy(how = How.XPATH, using = "//*[@href='/marginal-relief-calculator/pdf-meta-data']") var linkPrintandSave
-  : WebElement = null
+  def detailPageHeader: WebElement =
+    Driver.instance.findElement(By.xpath("//h1"))
 
-  PageFactory.initElements(Driver.instance, this)
+  def yourDetailsDistributionAmt: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/dl/div[3]/dd"))
+
+  def yourDetailsAccountingPeriod: WebElement =
+    Driver.instance.findElement(By.xpath("//div[1]/dd"))
+
+  def howItsCalculatedSection: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/h2[1]"))
+
+  def taxableProfitSection: WebElement =
+    Driver.instance.findElement(By.xpath("//table"))
+
+  def mrCalculationSteps: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/table[1]/tbody/tr"))
+
+  def mRFractionLink: WebElement =
+    Driver.instance.findElement(By.xpath("//details/summary/span"))
+
+  def associatedCompanies: WebElement =
+    Driver.instance.findElement(By.cssSelector("dl > div:nth-child(4) > dd"))
+
+  def getCopyOfResult: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/p[9]/a"))
+
+  def totalMRValue: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/span"))
+
+  def tabYear2024: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id='tab_year2024']"))
+
+  def tabYear2025: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-tabs__list-item']"))
+
+  def lblDate: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/ul/li[2]/b"))
+
+  def headerSection: WebElement =
+    Driver.instance.findElement(By.xpath("//h2[@class='govuk-heading-m'][4]"))
+
+  def lblText: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/ul/li[1]"))
+
+  def linkPrintandSave: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@href='/marginal-relief-calculator/pdf-meta-data']"))
 
   def verifyDetailLink(): Unit =
     detailLinK.isDisplayed

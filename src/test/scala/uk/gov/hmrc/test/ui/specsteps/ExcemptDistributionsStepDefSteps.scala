@@ -37,61 +37,51 @@ import uk.gov.hmrc.test.ui.pages.mrc.ExcemptDistrubutionsPage
 object ExcemptDistributionsStepDefSteps {
 
   // the user selects option {string} for the question Did your company receive any distributions?
-  def andTheUserSelectsOptionForTheQuestionDidYourCompanyReceiveAnyDistributions(option: String): Unit = {
+  def andTheUserSelectsOptionForTheQuestionDidYourCompanyReceiveAnyDistributions(option: String): Unit =
     if (option.equalsIgnoreCase("yes")) {
-            ExcemptDistrubutionsPage.selectOptionYes()
-          } else {
-            ExcemptDistrubutionsPage.selectOptionNo()
-          }
-  }
+      ExcemptDistrubutionsPage.selectOptionYes()
+    } else {
+      ExcemptDistrubutionsPage.selectOptionNo()
+    }
 
   // the user selects option {string} for the question Do any distributions need to be included with your profits?
-  def andTheUserSelectsOptionForTheQuestionDoAnyDistributionsNeedToBeIncludedWithYourProfits(option: String): Unit = {
+  def andTheUserSelectsOptionForTheQuestionDoAnyDistributionsNeedToBeIncludedWithYourProfits(option: String): Unit =
     if (option.equalsIgnoreCase("yes")) {
-          ExcemptDistrubutionsPage.yesToIncludeInProfits()
-        } else {
-          ExcemptDistrubutionsPage.noToIncludeInProfits()
-        }
-  }
+      ExcemptDistrubutionsPage.yesToIncludeInProfits()
+    } else {
+      ExcemptDistrubutionsPage.noToIncludeInProfits()
+    }
 
   // the user is provided with an input field to provide distributions
-  def thenTheUserIsProvidedWithAnInputFieldToProvideDistributions(): Unit = {
+  def thenTheUserIsProvidedWithAnInputFieldToProvideDistributions(): Unit =
     ExcemptDistrubutionsPage.displayDistributions()
-  }
 
   // the user provides {string} as distributions
-  def andTheUserProvidesAsDistributions(distributions: String): Unit = {
+  def andTheUserProvidesAsDistributions(distributions: String): Unit =
     ExcemptDistrubutionsPage.provideDistributions(distributions)
-  }
 
   // the user clicks the continue button on the distributions page
-  def andTheUserClicksTheContinueButtonOnTheDistributionsPage(): Unit = {
+  def andTheUserClicksTheContinueButtonOnTheDistributionsPage(): Unit =
     ExcemptDistrubutionsPage.submitPage()
-  }
 
   // the user is navigated to the exempt distributions page
-  def thenTheUserIsNavigatedToTheExemptDistributionsPage(): Unit = {
+  def thenTheUserIsNavigatedToTheExemptDistributionsPage(): Unit =
     ExcemptDistrubutionsPage.verifyTitle()
-  }
 
   // the user is navigated to the Second exempt distributions page
-  def thenTheUserIsNavigatedToTheSecondExemptDistributionsPage(): Unit = {
+  def thenTheUserIsNavigatedToTheSecondExemptDistributionsPage(): Unit =
     ExcemptDistrubutionsPage.verifySecondPageTitle()
-  }
 
   // the user changes the distributions value to {string}
-  def thenTheUserChangesTheDistributionsValueTo(distributions: String): Unit = {
+  def thenTheUserChangesTheDistributionsValueTo(distributions: String): Unit =
     ExcemptDistrubutionsPage.provideDistributions(distributions)
-  }
 
   // the user can see the options yes, no are not selected
-  def thenTheUserCanSeeTheOptionsYesNoAreNotSelected(): Unit = {
+  def thenTheUserCanSeeTheOptionsYesNoAreNotSelected(): Unit =
     ExcemptDistrubutionsPage.verifyYesNoNotSelected()
-  }
 
   // the user can see the options yes,no are not selected on the Second exempt distributions page
-  def thenTheUserCanSeeTheOptionsYesnoAreNotSelectedOnTheSecondExemptDistributionsPage(): Unit = {
+  def thenTheUserCanSeeTheOptionsYesnoAreNotSelectedOnTheSecondExemptDistributionsPage(): Unit =
     ExcemptDistrubutionsPage.verifyYesNoNotSelectedForIncludeInProfits()
-  }
 
 }

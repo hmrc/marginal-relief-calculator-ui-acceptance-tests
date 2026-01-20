@@ -32,36 +32,30 @@ package uk.gov.hmrc.test.ui.specsteps
  * limitations under the License.
  */
 
-import org.scalatest.matchers.must.Matchers.be
 import uk.gov.hmrc.test.ui.pages.mrc.PreviewSummaryPage
 import uk.gov.hmrc.test.ui.pages.mrc.PreviewSummaryPage.{verifyHeader, verifyLinkPrint}
-import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.convertToStringShouldWrapperForVerb
+import org.scalatest.matchers.should.Matchers._
 
 object PreviewSummaryStepDefSteps {
 
   // {string} should be displayed
-  def andShouldBeDisplayed(header: String): Unit = {
-    verifyHeader() should be(header)
-  }
+  def andShouldBeDisplayed(header: String): Unit =
+    verifyHeader() shouldBe header
 
   // {string} link is available
-  def andLinkIsAvailable(link: String): Unit = {
-    verifyLinkPrint() should be(link)
-  }
+  def andLinkIsAvailable(link: String): Unit =
+    verifyLinkPrint() shouldBe link
 
   // marginal results are shown
-  def andMarginalResultsAreShown(): Unit = {
+  def andMarginalResultsAreShown(): Unit =
     PreviewSummaryPage.verifyTables()
-  }
 
   // the user verifies the same name is displayed on the Preview summary page
-  def andTheUserVerifiesTheSameNameIsDisplayedOnThePreviewSummaryPage(): Unit = {
+  def andTheUserVerifiesTheSameNameIsDisplayedOnThePreviewSummaryPage(): Unit =
     PreviewSummaryPage.verifyCompanydetails()
-  }
 
   // the user validates the associated companies on the PDF page as {string}
-  def thenTheUserValidatesTheAssociatedCompaniesOnThePDFPageAs(associateCompanies: String): Unit = {
+  def thenTheUserValidatesTheAssociatedCompaniesOnThePDFPageAs(associateCompanies: String): Unit =
     PreviewSummaryPage.verifyAssociatedCompanies(associateCompanies)
-  }
 
 }

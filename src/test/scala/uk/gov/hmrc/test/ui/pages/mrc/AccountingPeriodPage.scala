@@ -16,29 +16,44 @@
 
 package uk.gov.hmrc.test.ui.pages.mrc
 
-import org.openqa.selenium.WebElement
-import org.openqa.selenium.support.{FindBy, How, PageFactory}
-import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
 
-import scala.compiletime.uninitialized
+import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
+
+import uk.gov.hmrc.selenium.webdriver.Driver
+import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+import java.time.Duration
 
 object AccountingPeriodPage extends BasePage {
-  @FindBy(how = How.ID, using = "accountingPeriodStartDate.day") var accountingStartDay: WebElement     = uninitialized
-  @FindBy(how = How.ID, using = "accountingPeriodStartDate.month") var accountingStartMonth: WebElement = uninitialized
-  @FindBy(how = How.ID, using = "accountingPeriodStartDate.year") var accountingStartYear: WebElement   = uninitialized
+  def accountingStartDay: WebElement    =
+    Driver.instance.findElement(By.id("accountingPeriodStartDate.day"))
+  def accountingStartMonth: WebElement  =
+    Driver.instance.findElement(By.id("accountingPeriodStartDate.month"))
+  def accountingStartYear: WebElement   =
+    Driver.instance.findElement(By.id("accountingPeriodStartDate.year"))
+  def accountingEndDay: WebElement      =
+    Driver.instance.findElement(By.id("accountingPeriodEndDate.day"))
+  def accountingEndMonth: WebElement    =
+    Driver.instance.findElement(By.id("accountingPeriodEndDate.month"))
+  def accountingEndYear: WebElement     =
+    Driver.instance.findElement(By.id("accountingPeriodEndDate.year"))
+  def irrelevantPageContent: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-body'][1]"))
+  def restartButton: WebElement         =
+    Driver.instance.findElement(By.xpath("(//*[contains(@class,'govuk-body')])[2]"))
+  def referenceLink: WebElement         =
+    Driver.instance.findElement(By.xpath("(//*[contains(@class,'govuk-body')])[3]"))
 
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate.day") var accountingEndDay: WebElement              = uninitialized
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate.month") var accountingEndMonth: WebElement          = uninitialized
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate.year") var accountingEndYear: WebElement            = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][1]") var irrelevantPageContent: WebElement      = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][2]") var restartButton: WebElement              = uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-body'][3]") var referenceLink: WebElement              = uninitialized
-  @FindBy(how = How.CSS, using = "#main-content > div > div > form > p") var accountingPeriodMsg: WebElement =
-    uninitialized
-  @FindBy(how = How.ID, using = "accountingPeriodEndDate-hint") var accountEndDateMsg: WebElement            = uninitialized
-
-  PageFactory.initElements(Driver.instance, this)
+  def accountingPeriodMsg: WebElement =
+    new WebDriverWait(Driver.instance, Duration.ofSeconds(5))
+      .until(
+        ExpectedConditions.visibilityOfElementLocated(
+          By.cssSelector("#main-content form p")
+        )
+      )
+  def accountEndDateMsg: WebElement   =
+    Driver.instance.findElement(By.id("accountingPeriodEndDate-hint"))
 
   val accountingPeriodPage  =
     "What are your accounting period dates? - Calculate Marginal Relief for Corporation Tax - GOV.UK"

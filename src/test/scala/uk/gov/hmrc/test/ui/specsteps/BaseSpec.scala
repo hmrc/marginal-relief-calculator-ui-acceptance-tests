@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.specs
+package uk.gov.hmrc.test.ui.specsteps
 
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.matchers.should.Matchers
@@ -22,7 +22,7 @@ import org.scalatest.{BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 
 trait BaseSpec
-  extends AnyFeatureSpec
+    extends AnyFeatureSpec
     with GivenWhenThen
     with Matchers
     with BeforeAndAfterEach
