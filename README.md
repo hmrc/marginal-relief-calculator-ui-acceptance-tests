@@ -1,6 +1,6 @@
 # marginal-relief-calculator-ui-acceptance-tests
 
-UI test suite for the MRC using WebDriver and Cucumber.
+UI test suite for the MRC using WebDriver and ScalaTest.
 
 ## Running the tests
 
