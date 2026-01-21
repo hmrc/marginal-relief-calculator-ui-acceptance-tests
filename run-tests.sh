@@ -19,7 +19,7 @@ if ($DAST); then
   echo "started dast-config-manager"
   echo "=========================================="
   echo "Browser:              ${BROWSER}"
-  echo "Env:                  ${ENV}"
+  echo "Env:                  ${ENVIRONMENT}"
   echo "ZAP Proxy Required:   true"
   echo "ZAP alert filters:    ${ZAP_LOCAL_ALERT_FILTERS}"
   echo "=========================================="
