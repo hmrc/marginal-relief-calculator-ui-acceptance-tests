@@ -17,41 +17,43 @@
 package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.support.ui.ExpectedConditions
-import org.openqa.selenium.support.{FindBy, How, PageFactory}
-import org.openqa.selenium.{By, WebDriver, WebElement}
-import org.scalatest.concurrent.Eventually.eventually
-import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
+import org.openqa.selenium.{By, WebElement}
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
-import scala.compiletime.uninitialized
+import uk.gov.hmrc.test.ui.pages.mrc.TaxableProfitPage.inputProfitValue
 
 object AssociatedCompaniesPage extends BasePage {
 
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/form/h1") var headerMessage: WebElement =
-    uninitialized
-  @FindBy(how = How.XPATH, using = "//*[@class='govuk-details__summary-text']") var refLink: WebElement       = uninitialized
-  @FindBy(how = How.ID, using = "associatedCompanies") var yesOption: WebElement                              = uninitialized
-  @FindBy(how = How.ID, using = "associatedCompanies-2") var noOption: WebElement                             = uninitialized
-  @FindBy(how = How.ID, using = "associatedCompaniesFY1Count") var acForFirstPartOfFinancialYear: WebElement  =
-    uninitialized
-  @FindBy(how = How.ID, using = "associatedCompaniesFY2Count") var acForSecondPartOfFinancialYear: WebElement =
-    uninitialized
-  @FindBy(
-    how = How.XPATH,
-    using = "//*[@class='govuk-label']/following-sibling::input"
-  ) var inputAssociatedCompaniesCount: WebElement                                                             = uninitialized
-  @FindBy(how = How.CSS, using = "form > button") var continueButton: WebElement                              = uninitialized
+  def headerMessage: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/form/h1"))
 
-  PageFactory.initElements(driver, this)
+  def refLink: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-details__summary-text']"))
+
+  def yesOption: WebElement =
+    Driver.instance.findElement(By.id("associatedCompanies"))
+
+  def noOption: WebElement =
+    Driver.instance.findElement(By.id("associatedCompanies-2"))
+
+  def acForFirstPartOfFinancialYear: WebElement =
+    Driver.instance.findElement(By.id("associatedCompaniesFY1Count"))
+
+  def acForSecondPartOfFinancialYear: WebElement =
+    Driver.instance.findElement(By.id("associatedCompaniesFY2Count"))
+
+  def inputAssociatedCompaniesCount: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@class='govuk-label']/following-sibling::input"))
+
+  def continueButton: WebElement =
+    Driver.instance.findElement(By.cssSelector("form > button"))
 
   val pageHeading = By.cssSelector("h1.govuk-heading-l")
   val suffix      = " - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
-  def titleMessage(): String =
-    eventually {
-      headerMessage.getText
-    }
+  def titleMessage(): String = headerMessage.getText
 
-  def validatePageTitle()(implicit driver: WebDriver): Unit = {
+  def validatePageTitle(): Unit = {
     waitFor.until(ExpectedConditions.titleContains("associated companies"))
     val headingElement = waitFor.until(ExpectedConditions.presenceOfElementLocated(pageHeading))
     val heading        = headingElement.getText.trim

@@ -17,26 +17,33 @@
 package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.WebElement
-import org.openqa.selenium.support.{FindBy, How, PageFactory}
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.BasePage
+import org.openqa.selenium.By
 
 object PreviewSummaryPage extends BasePage {
-  @FindBy(how = How.XPATH, using = "//h1[@class='govuk-heading-l']") var lblHeader: WebElement                        = null
-  @FindBy(how = How.XPATH, using = "//a[@class='govuk-link print-this__print']") var linkPrint: WebElement            = null
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/div[1]/h2") var tblCT: WebElement =
-    null
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[2]/div[2]/h2") var tblET: WebElement =
-    null
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[2]/p") var lblCompanyName
-    : WebElement = null
-  @FindBy(how = How.XPATH, using = "//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[3]/p") var lblUTR: WebElement =
-    null
-  @FindBy(how = How.CSS, using = "dl > div:nth-child(4) > dd") var twoAssociatedCompaniesText: WebElement             = null
+  private val headerBy: By = By.cssSelector("#main-content h1.govuk-heading-l") // or just "#main-content h1"
 
-  PageFactory.initElements(driver, this)
+  def linkPrint: WebElement =
+    Driver.instance.findElement(By.xpath("//a[@class='govuk-link print-this__print']"))
+
+  def tblCT: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/div[2]/div[1]/h2"))
+
+  def tblET: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/div[2]/div[2]/h2"))
+
+  def lblCompanyName: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[2]/p"))
+
+  def lblUTR: WebElement =
+    Driver.instance.findElement(By.xpath("//*[@id=\"main-content\"]/div/div/div[2]/div[1]/div[3]/p"))
+
+  def twoAssociatedCompaniesText: WebElement =
+    Driver.instance.findElement(By.xpath("dl > div:nth-child(4) > dd"))
 
   def verifyHeader(): String =
-    lblHeader.getText
+    Driver.instance.findElement(headerBy).getText
 
   def verifyLinkPrint(): String =
     linkPrint.getText

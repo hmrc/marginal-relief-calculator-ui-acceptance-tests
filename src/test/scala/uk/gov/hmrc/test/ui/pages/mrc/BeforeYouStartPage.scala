@@ -17,10 +17,12 @@
 package uk.gov.hmrc.test.ui.pages.mrc
 
 import org.openqa.selenium.WebElement
-import org.openqa.selenium.support.{FindBy, How, PageFactory}
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.BasePage
-import scala.compiletime.uninitialized
+import uk.gov.hmrc.selenium.webdriver.Driver
+import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
+import java.time.Duration
 
 object BeforeYouStartPage extends BasePage {
   val beforeYouStartPage    =
@@ -31,14 +33,25 @@ object BeforeYouStartPage extends BasePage {
   val mrcBeforeYouStartPage =
     "Calculate Marginal Relief for Corporation Tax - Calculate Marginal Relief for Corporation Tax - GOV.UK"
 
-  @FindBy(how = How.XPATH, using = "//a[contains(text(),'Start now')]") var startNowButton: WebElement = uninitialized
-  @FindBy(how = How.CLASS_NAME, using = "govuk-breadcrumbs__list") var breadcrumbs: WebElement         = uninitialized
+  def startNowButton: WebElement =
+    new WebDriverWait(Driver.instance, Duration.ofSeconds(10))
+      .until(
+        ExpectedConditions.elementToBeClickable(
+          By.xpath("//a[contains(normalize-space(), 'Start now')]")
+        )
+      )
 
-  PageFactory.initElements(driver, this)
+  def breadcrumbs: WebElement =
+    new WebDriverWait(Driver.instance, Duration.ofSeconds(5))
+      .until(
+        ExpectedConditions.presenceOfElementLocated(
+          By.cssSelector(".govuk-breadcrumbs__list")
+        )
+      )
 
   def loadPage(): Unit = {
-    driver.manage().deleteAllCookies()
-    driver.navigate().to(url)
+    Driver.instance.manage().deleteAllCookies()
+    Driver.instance.navigate().to(url)
     // driver.switchTo.alert.sendKeys("mrc")
     verifyPageTitle(mrcBeforeYouStartPage)
   }
@@ -56,7 +69,7 @@ object BeforeYouStartPage extends BasePage {
     startNowButton.click()
 
   def verifyWelshLanguageLink(): Unit = {
-    val welshLanguageLinkPresent = driver.getPageSource.contains("Welsh")
+    val welshLanguageLinkPresent = Driver.instance.getPageSource.contains("Welsh")
     assert(welshLanguageLinkPresent === false)
   }
 }

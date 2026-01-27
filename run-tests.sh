@@ -19,13 +19,13 @@ if ($DAST); then
   echo "started dast-config-manager"
   echo "=========================================="
   echo "Browser:              ${BROWSER}"
-  echo "Env:                  ${ENV}"
+  echo "Env:                  ${ENVIRONMENT}"
   echo "ZAP Proxy Required:   true"
   echo "ZAP alert filters:    ${ZAP_LOCAL_ALERT_FILTERS}"
   echo "=========================================="
 fi
 
-sbt clean -Dbrowser="${BROWSER:=chrome}" -Denvironment="${ENVIRONMENT:=local}" -Dsecurity.assessment="${DAST}" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.Runner" testReport
+sbt clean -Dbrowser="${BROWSER:=chrome}" -Denvironment="${ENVIRONMENT:=local}" -Dsecurity.assessment="${DAST}" "testOnly uk.gov.hmrc.test.ui.specs.*" testReport
 
 if ($DAST); then
   echo "stopping dast-config-manager"
