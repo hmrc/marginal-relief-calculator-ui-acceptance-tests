@@ -372,17 +372,17 @@ class ResultsSpec extends BaseSpec {
       And("the user clicks the calculate marginal relief button on the check your answers page")
       theUserClicksTheCalculateMarginalReliefButtonOnTheCheckYourAnswersPage()
 
-      Then("display the green box of type £1,148.63")
-      thenDisplayTheGreenBoxOfType("£1,148.63")
+      Then("display the green box of type £1,142.62")
+      thenDisplayTheGreenBoxOfType("£1,142.62")
 
       And("the corporation tax liability heading is displayed as £16,357.38")
-      thenTheCorporationTaxLiabilityHeadingIsDisplayedAs("£16,351.37")
+      thenTheCorporationTaxLiabilityHeadingIsDisplayedAs("£16,357.38")
 
       And(
-        "the corporation tax liability body is displayed as Reduced from £17,500 after £1,148.63 Marginal Relief for single year"
+        "the corporation tax liability body is displayed as Reduced from £17,500 after £1,142.62 Marginal Relief for single year"
       )
       thenTheCorporationTaxLiabilityBodyIsDisplayedAsForSingleYear(
-        "Reduced from £17,500 after £1,148.63 Marginal Relief"
+        "Reduced from £17,500 after £1,142.62 Marginal Relief"
       )
 
       And("the single year corporation tax liability table is displayed")
@@ -516,8 +516,8 @@ class ResultsSpec extends BaseSpec {
       And("the user clicks the calculate marginal relief button on the check your answers page")
       theUserClicksTheCalculateMarginalReliefButtonOnTheCheckYourAnswersPage()
 
-      And("the effective tax rate heading is displayed as 23.36%")
-      thenTheEffectiveTaxRateHeadingIsDisplayedAs("23.36%")
+      And("the effective tax rate heading is displayed as 23.37%")
+      thenTheEffectiveTaxRateHeadingIsDisplayedAs("23.37%")
 
       And("the effective tax body is displayed as Reduced from 25% after Marginal Relief for single year")
       thenTheEffectiveTaxBodyIsDisplayedAsForSingleYear("Reduced from 25% after Marginal Relief")
