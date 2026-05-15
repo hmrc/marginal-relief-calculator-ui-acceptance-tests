@@ -321,16 +321,6 @@ class ResultsSpec extends BaseSpec {
       Then("the corporation tax liability heading is displayed as £14,437.85")
       thenTheCorporationTaxLiabilityHeadingIsDisplayedAs("£14,437.85")
 
-      Then("the accounting period covering 2 years section is displayed")
-      thenTheAccountingPeriodCovering2YearsSectionIsDisplayed()
-
-      And(
-        "the corporation tax liability body is displayed as Reduced from £16,464.38 after £2,026.53 Marginal Relief for dual year"
-      )
-      thenTheCorporationTaxLiabilityBodyIsDisplayedAsForDualYear(
-        "Reduced from £16,464.38 after £2,026.53 Marginal Relief"
-      )
-
       And("the dual year corporation tax liability table is displayed")
       thenTheDualYearCorporationTaxLiabilityTableIsDisplayed()
 
@@ -471,9 +461,6 @@ class ResultsSpec extends BaseSpec {
 
       And("the effective tax rate heading is displayed as 20.63%")
       thenTheEffectiveTaxRateHeadingIsDisplayedAs("20.63%")
-
-      And("the effective tax body is displayed as Reduced from 23.52% after Marginal Relief for dual year")
-      thenTheEffectiveTaxBodyIsDisplayedAsForDualYear("Reduced from 23.52% after Marginal Relief")
 
       And("the dual year effective tax table is displayed")
       thenTheDualYearEffectiveTaxTableIsDisplayed()

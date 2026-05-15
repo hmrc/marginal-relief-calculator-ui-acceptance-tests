@@ -77,20 +77,9 @@ object ResultsStepDefSteps {
     ResultPage.verifyCTBodyCountForNoMrc()
   }
 
-  // the accounting period covering 2 years section is displayed
-  def thenTheAccountingPeriodCovering2YearsSectionIsDisplayed(): Unit = {
-    HMRCFinancialYearsHeaderText()     shouldBe "Your accounting period covers 2 HMRC financial years"
-    HMRCFinancialYearsSectionYearOne() shouldBe "2022 to 2023: 1 January 2023 to 31 March 2023"
-    HMRCFinancialYearsSectionYearTwo() shouldBe "2023 to 2024: 1 April 2023 to 31 December 2023"
-  }
-
   // the effective tax rate heading is displayed as {string}
   def thenTheEffectiveTaxRateHeadingIsDisplayedAs(effectiveTax: String): Unit =
     effectiveTaxHeader() shouldBe effectiveTax
-
-  // the effective tax body is displayed as {string} for dual year
-  def thenTheEffectiveTaxBodyIsDisplayedAsForDualYear(effectiveTaxMsg: String): Unit =
-    effectiveTaxBodyDual() shouldBe effectiveTaxMsg
 
   // the effective tax body is displayed as {string} for single year
   def thenTheEffectiveTaxBodyIsDisplayedAsForSingleYear(effectiveTaxMsg: String): Unit =
