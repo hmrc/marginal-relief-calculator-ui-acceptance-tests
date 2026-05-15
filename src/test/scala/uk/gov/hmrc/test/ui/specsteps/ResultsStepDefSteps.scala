@@ -33,7 +33,7 @@ package uk.gov.hmrc.test.ui.specsteps
  */
 
 import uk.gov.hmrc.test.ui.pages.mrc.ResultPage
-import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{HMRCFinancialYearsHeaderText, HMRCFinancialYearsSectionYearOne, HMRCFinancialYearsSectionYearTwo, corporationTaxLiabilityHeader, dualYearCTLiability, effectiveTaxBodyDual, effectiveTaxBodySingle, effectiveTaxHeader, greenBoxMessage, singleYearCTLiability, verifyETContent}
+import uk.gov.hmrc.test.ui.pages.mrc.ResultPage.{corporationTaxLiabilityHeader, dualYearCTLiability, effectiveTaxBodySingle, effectiveTaxHeader, greenBoxMessage, singleYearCTLiability, verifyETContent}
 import org.scalatest.matchers.should.Matchers._
 
 object ResultsStepDefSteps {
